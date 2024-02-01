@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script is executed as part of a cronjob task
+# is already run as www-data or any other web user.
+
+set -euo pipefail
+
+DIGEST_ENABLED=${CIPHERGURD_PLUGINS_EMAIL_DIGEST_ENABLED:-1}
+
+DIR=$(dirname "$(readlink -f "$0")")
+
+if [[ "$DIGEST_ENABLED" = 1 ]]; then
+    "$DIR"/cake cipherguard email_digest send
+else
+    "$DIR"/cake EmailQueue.sender
+fi

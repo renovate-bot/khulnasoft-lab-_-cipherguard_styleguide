@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+DIR=$(dirname "$(readlink -f "$0")")
+
+# shellcheck source=utils.sh
+# shellcheck disable=SC1091
+source "$DIR/utils.sh"
+
+user="$(get_web_user)"
+
+"$DIR"/versions "$user"
+run_as "$DIR/cake cipherguard healthcheck" "$user"
+run_as "$DIR/cake cipherguard cleanup --dry-run" "$user"
+run_as "$DIR/cake cipherguard datacheck --hide-success-details" "$user"
+tail -100 "$(run_as "$DIR/cake cipherguard show_logs_path" "$user" | tail -1)"
