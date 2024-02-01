@@ -1,0 +1,57 @@
+<?php
+declare(strict_types=1);
+
+/**
+ * Cipherguard ~ Open source password manager for teams
+ * Copyright (c) Khulnasoft Ltd' (https://www.cipherguard.khulnasoft.com)
+ *
+ * Licensed under GNU Affero General Public License version 3 of the or any later version.
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Copyright (c) Khulnasoft Ltd' (https://www.cipherguard.khulnasoft.com)
+ * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
+ * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
+ * @since         2.0.0
+ */
+
+namespace App\Test\TestCase\Model\Table\Traits\ThemeSettings;
+
+use Cake\Core\Configure;
+use Cake\TestSuite\TestCase;
+use Cipherguard\AccountSettings\Model\Table\Traits\ThemeSettingsTrait;
+
+class FindAllThemesTest extends TestCase
+{
+    /**
+     * @see ThemeSettingsTrait::findAllThemes()
+     */
+    public function testFindAllThemes()
+    {
+        $table = $this->getObjectForTrait(ThemeSettingsTrait::class);
+
+        $expected = [[
+            'id' => '9a5ecc88-f4df-5cc2-b152-6ca310127a67',
+            'name' => 'default',
+            'preview' => Configure::read('App.fullBaseUrl') . '/img/themes/default.png',
+        ],
+        [
+            'id' => '2e6d06eb-e417-5573-80ed-27b2182dc55b',
+            'name' => 'midgar',
+            'preview' => Configure::read('App.fullBaseUrl') . '/img/themes/midgar.png',
+        ],
+        [
+            'id' => '39fe32d0-aeaf-5f9a-aba5-dbf1df71dafc',
+            'name' => 'solarized_dark',
+            'preview' => Configure::read('App.fullBaseUrl') . '/img/themes/solarized_dark.png',
+        ],
+        [
+            'id' => 'd40ba3d7-aa8b-5fc8-a34e-2cbf9011acea',
+            'name' => 'solarized_light',
+            'preview' => Configure::read('App.fullBaseUrl') . '/img/themes/solarized_light.png',
+        ]];
+
+        $response = $table->findAllThemes();
+        $this->assertSame($expected, $response);
+    }
+}

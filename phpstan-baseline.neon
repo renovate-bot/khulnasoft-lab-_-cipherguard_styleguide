@@ -1,0 +1,201 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^If condition is always false\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/AccountSettings/src/Model/Table/AccountSettingsTable.php
+
+		-
+			message: "#^Unsafe access to private property Cipherguard\\\\EmailNotificationSettings\\\\Utility\\\\EmailNotificationSettings\\:\\:\\$configSettingsSource through static\\:\\:\\.$#"
+			count: 4
+			path: plugins/CipherguardCe/EmailNotificationSettings/src/Utility/EmailNotificationSettings.php
+
+		-
+			message: "#^Unsafe access to private property Cipherguard\\\\EmailNotificationSettings\\\\Utility\\\\EmailNotificationSettings\\:\\:\\$dbSettingsSource through static\\:\\:\\.$#"
+			count: 3
+			path: plugins/CipherguardCe/EmailNotificationSettings/src/Utility/EmailNotificationSettings.php
+
+		-
+			message: "#^Unsafe access to private property Cipherguard\\\\EmailNotificationSettings\\\\Utility\\\\EmailNotificationSettings\\:\\:\\$defaultSettingsSource through static\\:\\:\\.$#"
+			count: 4
+			path: plugins/CipherguardCe/EmailNotificationSettings/src/Utility/EmailNotificationSettings.php
+
+		-
+			message: "#^Unsafe access to private property Cipherguard\\\\EmailNotificationSettings\\\\Utility\\\\EmailNotificationSettings\\:\\:\\$settings through static\\:\\:\\.$#"
+			count: 5
+			path: plugins/CipherguardCe/EmailNotificationSettings/src/Utility/EmailNotificationSettings.php
+
+		-
+			message: "#^Dead catch \\- Cake\\\\Datasource\\\\Exception\\\\RecordNotFoundException is never thrown in the try block\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/Folders/src/Service/Folders/FoldersCreateService.php
+
+		-
+			message: "#^Dead catch \\- Cake\\\\Datasource\\\\Exception\\\\RecordNotFoundException is never thrown in the try block\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/Folders/src/Service/Folders/FoldersDeleteService.php
+
+		-
+			message: "#^Dead catch \\- Cake\\\\Datasource\\\\Exception\\\\RecordNotFoundException is never thrown in the try block\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/Folders/src/Service/Resources/ResourcesAfterCreateService.php
+
+		-
+			message: "#^Expression in empty\\(\\) is always falsy\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/Log/src/Model/Table/ActionLogsTable.php
+
+		-
+			message: "#^Expression in empty\\(\\) is always falsy\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/Log/src/Model/Table/ActionsTable.php
+
+		-
+			message: "#^Expression in empty\\(\\) is always falsy\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/Log/src/Model/Table/EntitiesHistoryTable.php
+
+		-
+			message: "#^Expression in empty\\(\\) is always falsy\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/Log/src/Model/Table/PermissionsHistoryTable.php
+
+		-
+			message: "#^Expression in empty\\(\\) is always falsy\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/Log/src/Model/Table/SecretAccessesTable.php
+
+		-
+			message: "#^Expression in empty\\(\\) is always falsy\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/Mobile/src/Service/Transfers/TransfersCreateService.php
+
+		-
+			message: "#^Expression in empty\\(\\) is always falsy\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/Mobile/src/Service/Transfers/TransfersUpdateService.php
+
+		-
+			message: "#^Dead catch \\- InvalidArgumentException is never thrown in the try block\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/Reports/src/Controller/Reports/ReportsViewController.php
+
+		-
+			message: "#^Property Cipherguard\\\\Reports\\\\Utility\\\\AbstractReport\\:\\:\\$template \\(string\\) on left side of \\?\\? is not nullable\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/Reports/src/Utility/AbstractCombinedReport.php
+
+		-
+			message: "#^Property Cipherguard\\\\Reports\\\\Utility\\\\AbstractReport\\:\\:\\$creator \\(App\\\\Model\\\\Entity\\\\User\\) on left side of \\?\\? is not nullable\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/Reports/src/Utility/AbstractReport.php
+
+		-
+			message: "#^Property Cipherguard\\\\Reports\\\\Utility\\\\AbstractReport\\:\\:\\$options \\(App\\\\Model\\\\Table\\\\Dto\\\\FindIndexOptions\\) on left side of \\?\\? is not nullable\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/Reports/src/Utility/AbstractReport.php
+
+		-
+			message: "#^Property Cipherguard\\\\Reports\\\\Utility\\\\AbstractReport\\:\\:\\$template \\(string\\) on left side of \\?\\? is not nullable\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/Reports/src/Utility/AbstractSingleReport.php
+
+		-
+			message: "#^Call to method getMessage\\(\\) on an unknown class Cake\\\\Core\\\\Exception\\\\Exception\\.$#"
+			count: 1
+			path: plugins/CipherguardCe/SmtpSettings/src/Service/SmtpSettingsGetSettingsInDbService.php
+
+		-
+			message: "#^Caught class Cake\\\\Core\\\\Exception\\\\Exception not found\\.$#"
+			count: 2
+			path: plugins/CipherguardCe/SmtpSettings/src/Service/SmtpSettingsGetSettingsInDbService.php
+
+		-
+			message: "#^PHPDoc type array of property App\\\\Authenticator\\\\GpgAuthenticator\\:\\:\\$_config is not covariant with PHPDoc type array\\<string, mixed\\> of overridden property Authentication\\\\Authenticator\\\\AbstractAuthenticator\\:\\:\\$_config\\.$#"
+			count: 1
+			path: src/Authenticator/GpgAuthenticator.php
+
+		-
+			message: "#^Variable \\$user might not be defined\\.$#"
+			count: 1
+			path: src/Controller/Component/UserComponent.php
+
+		-
+			message: "#^Dead catch \\- Cake\\\\Datasource\\\\Exception\\\\RecordNotFoundException is never thrown in the try block\\.$#"
+			count: 1
+			path: src/Controller/Resources/ResourcesDeleteController.php
+
+		-
+			message: "#^PHPDoc tag @var for constant App\\\\Controller\\\\Settings\\\\SettingsIndexController\\:\\:SETTINGS_VISIBILITY_KEY with type array is incompatible with value 'settingsVisibility'\\.$#"
+			count: 1
+			path: src/Controller/Settings/SettingsIndexController.php
+
+		-
+			message: "#^Dead catch \\- Cake\\\\Datasource\\\\Exception\\\\RecordNotFoundException is never thrown in the try block\\.$#"
+			count: 1
+			path: src/Controller/Share/ShareController.php
+
+		-
+			message: "#^Expression in empty\\(\\) is always falsy\\.$#"
+			count: 1
+			path: src/Model/Table/GroupsTable.php
+
+		-
+			message: "#^If condition is always false\\.$#"
+			count: 1
+			path: src/Model/Table/ResourcesTable.php
+
+		-
+			message: "#^Expression in empty\\(\\) is always falsy\\.$#"
+			count: 1
+			path: src/Model/Table/UsersTable.php
+
+		-
+			message: "#^Property Cake\\\\Validation\\\\ValidationRule\\:\\:\\$_message \\(string\\) on left side of \\?\\? is not nullable\\.$#"
+			count: 1
+			path: src/Model/Validation/CipherguardValidationRule.php
+
+		-
+			message: "#^Property App\\\\Service\\\\AuthenticationTokens\\\\AuthenticationTokenGetService\\:\\:\\$AuthenticationTokens \\(App\\\\Model\\\\Table\\\\AuthenticationTokensTable\\) does not accept Cake\\\\ORM\\\\Table\\.$#"
+			count: 1
+			path: src/Service/AuthenticationTokens/AuthenticationTokenGetService.php
+
+		-
+			message: "#^Dead catch \\- Cake\\\\Datasource\\\\Exception\\\\RecordNotFoundException is never thrown in the try block\\.$#"
+			count: 1
+			path: src/Service/Comments/CommentsViewService.php
+
+		-
+			message: "#^Dead catch \\- Cake\\\\Datasource\\\\Exception\\\\RecordNotFoundException is never thrown in the try block\\.$#"
+			count: 1
+			path: src/Service/Favorites/FavoritesDeleteService.php
+
+		-
+			message: "#^Dead catch \\- Cake\\\\Datasource\\\\Exception\\\\RecordNotFoundException is never thrown in the try block\\.$#"
+			count: 1
+			path: src/Service/Groups/GroupGetService.php
+
+		-
+			message: "#^Dead catch \\- Cake\\\\Datasource\\\\Exception\\\\RecordNotFoundException is never thrown in the try block\\.$#"
+			count: 1
+			path: src/Service/Groups/GroupsUpdateService.php
+
+		-
+			message: "#^Comparison operation \"\\<\\=\" between 1 and 5 is always true\\.$#"
+			count: 1
+			path: src/Service/Resources/ResourcesAddService.php
+
+		-
+			message: "#^Dead catch \\- PDOException is never thrown in the try block\\.$#"
+			count: 1
+			path: src/Service/Resources/ResourcesAddService.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: src/Service/Resources/ResourcesAddService.php
+
+		-
+			message: "#^Caught class Cake\\\\Database\\\\Exception not found\\.$#"
+			count: 2
+			path: src/Utility/Healthchecks/DatabaseHealthchecks.php

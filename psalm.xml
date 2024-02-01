@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="4"
+    resolveFromConfigFile="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    autoloader="config/bootstrap.php"
+    usePhpDocMethodsWithoutMagicCall="true"
+    usePhpDocPropertiesWithoutMagicCall="true"
+    findUnusedBaselineEntry="true"
+    findUnusedCode="false"
+    errorBaseline="psalm-baseline-v5-upgrade.xml"
+>
+    <projectFiles>
+        <directory name="src" />
+        <directory name="plugins" />
+        <ignoreFiles>
+            <directory name="vendor" />
+            <directory name="templates" />
+            <directory name="tests" />
+            <directory name="plugins/CipherguardCe/Reports/templates" />
+            <directory name="plugins/CipherguardCe/WebInstaller/templates" />
+            <directory name="plugins/CipherguardCe/JwtAuthentication/templates" />
+            <directory name="plugins/CipherguardCe/EmailDigest/templates/" />
+            <directory name="plugins/CipherguardCe/EmailDigest/tests/Fixture/templates/" />
+            <directory name="plugins/CipherguardCe/MultiFactorAuthentication/templates/" />
+            <directory name="plugins/CipherguardCe/SelfRegistration/templates/" />
+            <directory name="plugins/CipherguardCe/Folders/templates/" />
+        </ignoreFiles>
+    </projectFiles>
+</psalm>
