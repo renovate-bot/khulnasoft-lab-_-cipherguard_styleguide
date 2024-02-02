@@ -106,7 +106,7 @@
         "khulnasoft/cipherguard-selenium-api": "^4.2",
         "khulnasoft/cipherguard-test-data": "^4.4",
         "vierge-noire/cakephp-fixture-factories": "^v2.9.0",
-        "cakephp/localized": "4.0.0",
+        "cakephp/localized": "4.1.2",
         "vimeo/psalm": "^5.0.0",
         "cakedc/cakephp-phpstan": "^2.0"
     },
