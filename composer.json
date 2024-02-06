@@ -102,7 +102,7 @@
         "cakephp/debug_kit": "^4.4.1",
         "cakephp/bake": "^2.3.0",
         "phpunit/phpunit": "~9.5.2",
-        "cakephp/cakephp-codesniffer": "^4.5",
+        "cakephp/cakephp-codesniffer": "^5.0",
         "khulnasoft/cipherguard-selenium-api": "^4.2",
         "khulnasoft/cipherguard-test-data": "^4.4",
         "vierge-noire/cakephp-fixture-factories": "^v2.9.0",
