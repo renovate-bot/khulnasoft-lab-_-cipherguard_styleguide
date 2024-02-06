@@ -20,10 +20,10 @@ function setup_git_user() {
 }
 
 function create_git_tag() {
-  local cipherguard_version="$1"
-  local cipherguard_flavour="$2"
+  local passbolt_version="$1"
+  local passbolt_flavour="$2"
   local filter="$3"
   local component="$4"
-  local tag="$cipherguard_version-$cipherguard_flavour-$filter"
+  local tag="$passbolt_version-$passbolt_flavour-$filter"
   git tag -a "$tag" -m "Release $tag version for $component package" > /dev/null
 }

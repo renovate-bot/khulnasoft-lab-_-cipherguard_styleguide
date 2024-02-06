@@ -1,6 +1,7 @@
 files:
-  - source: /resources/locales/en_UK/*.po
-    translation: /resources/locales/%locale_with_underscore%/%original_file_name%
+  - source: /src/locales/en-UK/*.json
+    type: i18next_json
+    translation: /src/locales/%locale%/%original_file_name%
 export_languages:
   - de
   - en

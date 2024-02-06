@@ -1,0 +1,703 @@
+/**
+ * Cipherguard ~ Open source password manager for teams
+ * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ *
+ * Licensed under GNU Affero General Public License version 3 of the or any later version.
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
+ * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
+ * @since         2.13.0
+ */
+
+import React from "react";
+import {withActionFeedback} from "../../../contexts/ActionFeedbackContext";
+import PropTypes from "prop-types";
+import {withAppContext} from "../../../../shared/context/AppContext/AppContext";
+import {withResourceWorkspace} from "../../../contexts/ResourceWorkspaceContext";
+import Icon from "../../../../shared/components/Icons/Icon";
+import {withDialog} from "../../../contexts/DialogContext";
+import DeleteResource from "../DeleteResource/DeleteResource";
+import EditResource from "../EditResource/EditResource";
+import ShareDialog from "../../Share/ShareDialog";
+import ExportResources from "../ExportResources/ExportResources";
+import {Trans, withTranslation} from "react-i18next";
+import ClipBoard from '../../../../shared/lib/Browser/clipBoard';
+import {withRbac} from "../../../../shared/context/Rbac/RbacContext";
+import {uiActions} from "../../../../shared/services/rbacs/uiActionEnumeration";
+import {withProgress} from "../../../contexts/ProgressContext";
+import {TotpCodeGeneratorService} from "../../../../shared/services/otp/TotpCodeGeneratorService";
+import {TotpWorkflowMode} from "../HandleTotpWorkflow/HandleTotpWorkflowMode";
+import HandleTotpWorkflow from "../HandleTotpWorkflow/HandleTotpWorkflow";
+import {withWorkflow} from "../../../contexts/WorkflowContext";
+
+/**
+ * This component allows the current user to add a new comment on a resource
+ */
+class DisplayResourcesWorkspaceMenu extends React.Component {
+  /**
+   * Constructor
+   * @param {Object} props
+   */
+  constructor(props) {
+    super(props);
+    this.state = this.defaultState;
+    this.createRefs();
+    this.bindCallbacks();
+  }
+
+  /**
+   * Get default state
+   * @returns {*}
+   */
+  get defaultState() {
+    return {
+      moreMenuOpen: false, // more menu open or not
+      viewColumnsMenuOpen: false, // view column menu open or not
+    };
+  }
+
+  /**
+   * Create DOM nodes or React elements references in order to be able to access them programmatically.
+   */
+  createRefs() {
+    this.moreMenuRef = React.createRef();
+    this.viewColumnsMenuRef = React.createRef();
+  }
+
+  /**
+   * Bind callbacks methods
+   */
+  bindCallbacks() {
+    this.handleDocumentClickEvent = this.handleDocumentClickEvent.bind(this);
+    this.handleDocumentContextualMenuEvent = this.handleDocumentContextualMenuEvent.bind(this);
+    this.handleDocumentDragStartEvent = this.handleDocumentDragStartEvent.bind(this);
+    this.handleMoreClickEvent = this.handleMoreClickEvent.bind(this);
+    this.handleDeleteClickEvent = this.handleDeleteClickEvent.bind(this);
+    this.handleEditClickEvent = this.handleEditClickEvent.bind(this);
+    this.handleCopyPermalinkClickEvent = this.handleCopyPermalinkClickEvent.bind(this);
+    this.handleCopyUsernameClickEvent = this.handleCopyUsernameClickEvent.bind(this);
+    this.handleShareClickEvent = this.handleShareClickEvent.bind(this);
+    this.handleCopySecretClickEvent = this.handleCopySecretClickEvent.bind(this);
+    this.handleCopyTotpClickEvent = this.handleCopyTotpClickEvent.bind(this);
+    this.handleViewDetailClickEvent = this.handleViewDetailClickEvent.bind(this);
+    this.handleExportClickEvent = this.handleExportClickEvent.bind(this);
+    this.handleViewColumnsClickEvent = this.handleViewColumnsClickEvent.bind(this);
+    this.handleOnChangeColumnView = this.handleOnChangeColumnView.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('click', this.handleDocumentClickEvent);
+    document.addEventListener('contextmenu', this.handleDocumentContextualMenuEvent, {capture: true});
+    document.addEventListener('dragstart', this.handleDocumentDragStartEvent, {capture: true});
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleDocumentClickEvent);
+    document.removeEventListener('contextmenu', this.handleDocumentContextualMenuEvent, {capture: true});
+    document.removeEventListener('dragstart', this.handleDocumentDragStartEvent, {capture: true});
+  }
+
+  /**
+   * Handle click events on document. Hide the component if the click occurred outside of the component.
+   * @param {ReactEvent} event The event
+   */
+  handleDocumentClickEvent(event) {
+    // Prevent closing when the user click on an element of the menu
+    if (this.moreMenuRef.current.contains(event.target)) {
+      this.handleCloseViewColumnsMenu();
+      return;
+    } else if (this.viewColumnsMenuRef.current.contains(event.target)) { // Prevent closing when the user click on an element of the view columns menu
+      this.handleCloseMoreMenu();
+      return;
+    }
+    this.handleCloseMoreMenu();
+    this.handleCloseViewColumnsMenu();
+  }
+
+  /**
+   * Handle contextual menu events on document. Hide the component if the click occurred outside of the component.
+   * @param {ReactEvent} event The event
+   */
+  handleDocumentContextualMenuEvent(event) {
+    // Prevent closing when the user click on an element of the menu
+    if (this.moreMenuRef.current.contains(event.target)) {
+      this.handleCloseViewColumnsMenu();
+      return;
+    } else if (this.viewColumnsMenuRef.current.contains(event.target)) { // Prevent closing when the user click on an element of the view columns menu
+      this.handleCloseMoreMenu();
+      return;
+    }
+    this.handleCloseMoreMenu();
+    this.handleCloseViewColumnsMenu();
+  }
+
+  /**
+   * Handle drag start event on document. Hide the component if any.
+   */
+  handleDocumentDragStartEvent() {
+    this.handleCloseMoreMenu();
+    this.handleCloseViewColumnsMenu();
+  }
+
+  /**
+   * open or close the more menu
+   */
+  handleMoreClickEvent() {
+    const moreMenuOpen = !this.state.moreMenuOpen;
+    this.setState({moreMenuOpen});
+  }
+
+  /**
+   * handle delete one or more resources
+   */
+  handleDeleteClickEvent() {
+    const passwordDeleteDialogProps = {
+      resources: this.selectedResources
+    };
+    this.props.context.setContext({passwordDeleteDialogProps});
+    this.props.dialogContext.open(DeleteResource);
+    this.handleCloseMoreMenu();
+  }
+
+  /**
+   * handle edit one resource
+   */
+  handleEditClickEvent() {
+    if (this.isStandaloneTotpResource) {
+      this.props.workflowContext.start(HandleTotpWorkflow, {mode: TotpWorkflowMode.EDIT_STANDALONE_TOTP});
+    } else {
+      this.props.dialogContext.open(EditResource, {resourceId: this.selectedResources[0].id});
+    }
+  }
+
+  /**
+   * handle share resources
+   */
+  async handleShareClickEvent() {
+    const resourcesIds = this.selectedResources.map(resource => resource.id);
+    await this.props.context.setContext({shareDialogProps: {resourcesIds}});
+    this.props.dialogContext.open(ShareDialog);
+  }
+
+  /**
+   * handle copy permalink of one resource
+   */
+  async handleCopyPermalinkClickEvent() {
+    this.handleCloseMoreMenu();
+    const baseUrl = this.props.context.userSettings.getTrustedDomain();
+    const permalink = `${baseUrl}/app/passwords/view/${this.selectedResources[0].id}`;
+    await ClipBoard.copy(permalink, this.props.context.port);
+    this.displaySuccessNotification(this.translate("The permalink has been copied to clipboard"));
+  }
+
+  /**
+   * handle copy username of one resource
+   */
+  async handleCopyUsernameClickEvent() {
+    this.handleCloseMoreMenu();
+    await ClipBoard.copy(this.selectedResources[0].username, this.props.context.port);
+    this.displaySuccessNotification(this.translate("The username has been copied to clipboard"));
+  }
+
+  /**
+   * Decrypt the resource secret
+   * @returns {Promise<object>} The secret in plaintext format
+   * @throw UserAbortsOperationError If the user cancel the operation
+   */
+  decryptResourceSecret() {
+    return this.props.context.port.request("passbolt.secret.decrypt", this.selectedResources[0].id);
+  }
+
+  /**
+   * Copy password from dto to clipboard
+   * Support original password (a simple string) and composed objects)
+   *
+   * @param {object} plaintextSecretDto The plaintext secret DTO.
+   * @returns {Promise<void>}
+   */
+  async copyPasswordToClipboard(plaintextSecretDto) {
+    const password = plaintextSecretDto.password;
+    if (!password) {
+      throw new TypeError(this.translate("The password is empty."));
+    }
+    await ClipBoard.copy(password, this.props.context.port);
+  }
+
+  /**
+   * handle copy to clipboard the secret of the selected resource
+   */
+  async handleCopySecretClickEvent() {
+    let plaintextSecretDto;
+    this.handleCloseMoreMenu();
+
+    this.props.progressContext.open(this.props.t('Decrypting secret'));
+    try {
+      plaintextSecretDto = await this.decryptResourceSecret();
+    } catch (error) {
+      if (error.name !== "UserAbortsOperationError") {
+        this.props.actionFeedbackContext.displayError(error.message);
+      }
+    }
+    this.props.progressContext.close();
+
+    if (!plaintextSecretDto?.password?.length) {
+      await this.props.actionFeedbackContext.displayError(this.translate("The password is empty and cannot be copied to clipboard."));
+      return;
+    }
+
+    await this.copyPasswordToClipboard(plaintextSecretDto);
+    this.props.resourceWorkspaceContext.onResourceCopied();
+    this.props.actionFeedbackContext.displaySuccess(this.translate("The secret has been copied to clipboard"));
+  }
+
+  /**
+   * handle copy to clipboard the totp of the selected resource
+   */
+  async handleCopyTotpClickEvent() {
+    let plaintextSecretDto, code;
+    this.handleCloseMoreMenu();
+
+    this.props.progressContext.open(this.props.t('Decrypting secret'));
+    try {
+      plaintextSecretDto = await this.decryptResourceSecret();
+    } catch (error) {
+      if (error.name !== "UserAbortsOperationError") {
+        this.props.actionFeedbackContext.displayError(error.message);
+      }
+    }
+    this.props.progressContext.close();
+
+    if (!plaintextSecretDto) {
+      return;
+    }
+
+    if (!plaintextSecretDto.totp) {
+      await this.props.actionFeedbackContext.displayError(this.translate("The totp is empty and cannot be copied to clipboard."));
+      return;
+    }
+
+    try {
+      code = TotpCodeGeneratorService.generate(plaintextSecretDto.totp);
+    } catch (error) {
+      await this.props.actionFeedbackContext.displayError(this.translate("Unable to copy the TOTP"));
+      return;
+    }
+
+    await ClipBoard.copy(code, this.props.context.port);
+    await this.props.resourceWorkspaceContext.onResourceCopied();
+    await this.props.actionFeedbackContext.displaySuccess(this.translate("The totp has been copied to clipboard"));
+  }
+
+  /**
+   * Whenever the user intends to export the selected resources
+   */
+  handleExportClickEvent() {
+    this.export();
+  }
+
+  /**
+   * open or close the more menu
+   */
+  handleViewColumnsClickEvent() {
+    const viewColumnsMenuOpen = !this.state.viewColumnsMenuOpen;
+    this.setState({viewColumnsMenuOpen});
+  }
+
+  handleOnChangeColumnView(event) {
+    const target = event.target;
+    this.props.resourceWorkspaceContext.onChangeColumnView(target.id, target.checked);
+  }
+
+  /**
+   * display a success notification message
+   * @param message
+   */
+  displaySuccessNotification(message) {
+    this.props.actionFeedbackContext.displaySuccess(message);
+  }
+
+  /**
+   * Close the more menu
+   */
+  handleCloseMoreMenu() {
+    this.setState({moreMenuOpen: false});
+  }
+
+  /**
+   * Close the more menu
+   */
+  handleCloseViewColumnsMenu() {
+    this.setState({viewColumnsMenuOpen: false});
+  }
+
+  /**
+   * selected resources
+   * @returns {[]|null}
+   */
+  get filteredResources() {
+    return this.props.resourceWorkspaceContext.filteredResources;
+  }
+
+  /**
+   * selected resources
+   * @returns {[]|null}
+   */
+  get selectedResources() {
+    return this.props.resourceWorkspaceContext.selectedResources;
+  }
+
+  /**
+   * has at least one resource selected
+   * @returns {boolean}
+   */
+  hasResourceSelected() {
+    return this.selectedResources.length > 0;
+  }
+
+  /**
+   * has at least one resource selected
+   * @returns {boolean}
+   */
+  hasOneResourceSelected() {
+    return this.selectedResources.length === 1;
+  }
+
+  /**
+   * has multiple resources selected
+   * @returns {boolean}
+   */
+  hasMultipleResourcesSelected() {
+    return this.selectedResources.length > 1;
+  }
+
+  /**
+   * Can update the selected resources
+   * @return {boolean}
+   */
+  canUpdate() {
+    return this.hasResourceSelected()
+      && this.selectedResources.every(resource => resource.permission.type >= 7);
+  }
+
+  /**
+   * Can share the selected resources
+   * @return {boolean}
+   */
+  canShare() {
+    return this.hasResourceSelected() && this.selectedResources.every(resource => resource.permission.type === 15);
+  }
+
+  /**
+   * Check if the user can export.
+   * @return {boolean}
+   */
+  canExport() {
+    return this.props.context.siteSettings.canIUse("export")
+      && this.props.rbacContext.canIUseUiAction(uiActions.RESOURCES_EXPORT);
+  }
+
+  /**
+   * Can copy username
+   * @returns {boolean}
+   */
+  canCopyUsername() {
+    return this.hasOneResourceSelected() && this.selectedResources[0].username;
+  }
+
+  /**
+   * Can copy password
+   * @returns {boolean}
+   */
+  canCopyPassword() {
+    return this.hasOneResourceSelected() && this.isPasswordResources;
+  }
+
+  /**
+   * Get resources type settings
+   * @return {ResourceTypesSettings|*}
+   */
+  get resourceTypesSettings() {
+    return this.props.context.resourceTypesSettings;
+  }
+
+  /**
+   * Is password resource
+   * @return {boolean}
+   */
+  get isPasswordResources() {
+    return this.resourceTypesSettings.assertResourceTypeIdHasPassword(this.selectedResources[0].resource_type_id);
+  }
+
+  /**
+   * Can copy totp
+   * @returns {boolean}
+   */
+  canCopyTotp() {
+    return this.hasOneResourceSelected() && this.isTotpResources;
+  }
+
+  /**
+   * Is TOTP resource
+   * @return {boolean}
+   */
+  get isTotpResources() {
+    return this.resourceTypesSettings.assertResourceTypeIdHasTotp(this.selectedResources[0].resource_type_id);
+  }
+
+  /**
+   * Is TOTP resource
+   * @return {boolean}
+   */
+  get isStandaloneTotpResource() {
+    return this.resourceTypesSettings.assertResourceTypeIdIsStandaloneTotp(this.selectedResources[0].resource_type_id);
+  }
+
+  /**
+   * Has at least one action of the more menu allowed.
+   * @return {boolean}
+   */
+  hasMoreActionAllowed() {
+    // If only one resource is selected then the all the copy operation are enabled.
+    if (this.hasOneResourceSelected()) {
+      return true;
+    } else if (this.hasMultipleResourcesSelected) {
+      // If multiple resources are selected, the only more action available is the delete operation.
+      return this.canUpdate();
+    }
+
+    return false;
+  }
+
+  /**
+   * handle view detail click event
+   */
+  handleViewDetailClickEvent() {
+    // lock or unlock the detail resource or folder
+    this.props.resourceWorkspaceContext.onLockDetail();
+  }
+
+  /**
+   * Has lock for the detail display
+   * @returns {boolean}
+   */
+  hasLockDetail() {
+    return this.props.resourceWorkspaceContext.lockDisplayDetail;
+  }
+
+  /**
+   * Exports the selected resources
+   */
+  async export() {
+    const resourcesIds = this.selectedResources.map(resource => resource.id);
+    await this.props.resourceWorkspaceContext.onResourcesToExport({resourcesIds});
+    await this.props.dialogContext.open(ExportResources);
+  }
+
+  /**
+   * Get the columns list of resource
+   * @return {[Object]}
+   */
+  get columnsResourceSetting() {
+    return this.props.resourceWorkspaceContext.columnsResourceSetting?.items;
+  }
+
+  /**
+   * Can use Totp
+   * @return {*}
+   */
+  get canUseTotp() {
+    return this.props.context.siteSettings.canIUse('totpResourceTypes');
+  }
+
+  /**
+   * Get the translate function
+   * @returns {function(...[*]=)}
+   */
+  get translate() {
+    return this.props.t;
+  }
+
+  /**
+   * Render the component
+   * @returns {JSX}
+   */
+  render() {
+    const canCopySecret = this.props.rbacContext.canIUseUiAction(uiActions.SECRETS_COPY);
+    const canViewShare = this.props.rbacContext.canIUseUiAction(uiActions.SHARE_VIEW_LIST);
+
+    return (
+      <div className="col2_3 actions-wrapper">
+        <div className="actions">
+          <ul>
+            {canCopySecret &&
+              <li id="password_action">
+                <button type="button" disabled={!this.hasOneResourceSelected()}
+                  onClick={this.handleCopySecretClickEvent}>
+                  <Icon name="copy-to-clipboard"/>
+                  <span><Trans>Copy</Trans></span>
+                </button>
+              </li>
+            }
+            <li id="edit_action">
+              <button type="button" disabled={!this.hasOneResourceSelected() || !this.canUpdate()}
+                onClick={this.handleEditClickEvent}>
+                <Icon name="edit"/>
+                <span><Trans>Edit</Trans></span>
+              </button>
+            </li>
+            {canViewShare &&
+              <li id="share_action">
+                <button type="button" disabled={!this.hasResourceSelected() || !this.canShare()}
+                  onClick={this.handleShareClickEvent}>
+                  <Icon name="share"/>
+                  <span><Trans>Share</Trans></span>
+                </button>
+              </li>
+            }
+            {this.canExport() &&
+              <li id="export_action">
+                <button
+                  type="button"
+                  disabled={!this.hasResourceSelected()}
+                  onClick={this.handleExportClickEvent}>
+                  <Icon name="download"/>
+                  <span><Trans>Export</Trans></span>
+                </button>
+              </li>
+            }
+            <li>
+              <div className="dropdown" ref={this.moreMenuRef}>
+                <button type="button" className={`more ${this.state.moreMenuOpen ? "open" : ""}`}
+                  disabled={!this.hasMoreActionAllowed()}
+                  onClick={this.handleMoreClickEvent}>
+                  <span><Trans>More</Trans></span>
+                  <Icon name="caret-down"/>
+                </button>
+                <ul className={`dropdown-content menu right ${this.state.moreMenuOpen ? "visible" : ""}`}>
+                  <li id="username_action">
+                    <div className="row">
+                      <div className="main-cell-wrapper">
+                        <div className="main-cell">
+                          <button
+                            type="button"
+                            disabled={!this.canCopyUsername()}
+                            className="link no-border"
+                            onClick={this.handleCopyUsernameClickEvent}>
+                            <span><Trans>Copy username to clipboard</Trans></span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  {canCopySecret &&
+                    <li id="secret_action">
+                      <div className="row">
+                        <div className="main-cell-wrapper">
+                          <div className="main-cell">
+                            <button type="button" disabled={!this.canCopyPassword()} className="link no-border"
+                              onClick={this.handleCopySecretClickEvent}>
+                              <span><Trans>Copy password to clipboard</Trans></span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  }
+                  {this.canUseTotp &&
+                    <li id="totp_action">
+                      <div className="row">
+                        <div className="main-cell-wrapper">
+                          <div className="main-cell">
+                            <button type="button" disabled={!this.canCopyTotp()} className="link no-border"
+                              onClick={this.handleCopyTotpClickEvent}>
+                              <span><Trans>Copy TOTP to clipboard</Trans></span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  }
+                  <li id="permalink_action" className="separator-after">
+                    <div className="row">
+                      <div className="main-cell-wrapper">
+                        <div className="main-cell">
+                          <button type="button" disabled={!this.hasOneResourceSelected()} className="link no-border"
+                            onClick={this.handleCopyPermalinkClickEvent}>
+                            <span><Trans>Copy permalink to clipboard</Trans></span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li id="delete_action">
+                    <div className="row">
+                      <div className="main-cell-wrapper">
+                        <div className="main-cell">
+                          <button type="button" disabled={!this.canUpdate()} className="link no-border"
+                            onClick={this.handleDeleteClickEvent}>
+                            <span><Trans>Delete</Trans></span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div className="actions secondary">
+          <ul>
+            <li>
+              <div className="dropdown" ref={this.viewColumnsMenuRef}>
+                <button type="button" className={`button-action-icon ${this.state.viewColumnsMenuOpen ? "open" : ""}`} onClick={this.handleViewColumnsClickEvent}>
+                  <Icon name="columns"/>
+                  <Icon name="caret-down"/>
+                </button>
+                <ul className={`dropdown-content menu left ${this.state.viewColumnsMenuOpen ? "visible" : ""}`}>
+                  {this.columnsResourceSetting?.map(column =>
+                    <li key={column.id} className={`${column.id === 'uri' ? "separator-after" : ""}`}>
+                      <div className="row">
+                        <div className="main-cell-wrapper">
+                          <div className="main-cell">
+                            <div className="input checkbox">
+                              <input type="checkbox" checked={column.show} id={column.id} name={column.id} onChange={this.handleOnChangeColumnView}/>
+                              <label htmlFor={column.id}><Trans>{column.label}</Trans></label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </li>
+            <li>
+              <button type="button" className={`button-toggle button-action-icon info ${this.hasLockDetail() ? "selected" : ""}`}
+                onClick={this.handleViewDetailClickEvent}>
+                <Icon name="info-circle" big={true}/>
+                <span className="visuallyhidden"><Trans>View detail</Trans></span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    );
+  }
+}
+
+DisplayResourcesWorkspaceMenu.propTypes = {
+  context: PropTypes.any, // The application context
+  rbacContext: PropTypes.any, // The role based access control context
+  actionFeedbackContext: PropTypes.any, // The action feedback context
+  resourceWorkspaceContext: PropTypes.any, // the resource workspace context
+  dialogContext: PropTypes.any, // the dialog context
+  progressContext: PropTypes.any, // The progress context
+  workflowContext: PropTypes.any, // The workflow context
+  t: PropTypes.func, // The translation function
+};
+
+export default withAppContext(withRbac(withDialog(withWorkflow(withProgress(withResourceWorkspace(withActionFeedback(withTranslation('common')(DisplayResourcesWorkspaceMenu))))))));

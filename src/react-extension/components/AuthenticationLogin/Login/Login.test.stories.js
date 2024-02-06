@@ -1,0 +1,63 @@
+/**
+ * Cipherguard ~ Open source password manager for teams
+ * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ *
+ * Licensed under GNU Affero General Public License version 3 of the or any later version.
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
+ * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
+ * @since         3.0.0
+ */
+
+import React from "react";
+import {MemoryRouter, Route} from "react-router-dom";
+import Login, {LoginVariations} from "./Login";
+import {defaultProps, defaultPropsWithAccount} from "./Login.test.data";
+
+export default {
+  title: 'Components/AuthenticationLogin/Login',
+  component: Login
+};
+
+const Template = args =>
+  <div id="container" className="container page login">
+    <div className="content">
+      <div className="login-form">
+        <MemoryRouter initialEntries={['/']}>
+          <Route component={routerProps => <Login {...args} {...routerProps}/>}/>
+        </MemoryRouter>
+      </div>
+    </div>
+  </div>;
+
+const defaultParameters = {
+  css: "ext_authentication"
+};
+
+export const Initial = Template.bind({});
+Initial.args = defaultProps({
+  displayAs: LoginVariations.SIGN_IN,
+  onSignIn: async() => { console.log("onSignIn called"); }
+});
+Initial.parameters = defaultParameters;
+
+export const CompleteRecovery = Template.bind({});
+CompleteRecovery.args = defaultPropsWithAccount({
+  displayAs: LoginVariations.ACCOUNT_RECOVERY,
+  onSignIn: async() => { console.log("onSignIn called"); }
+});
+CompleteRecovery.parameters = defaultParameters;
+
+const passwordError = new Error("Wrong passphrase");
+passwordError.name = "InvalidMasterPasswordError";
+export const LoginWithSsoEnabled = Template.bind({});
+LoginWithSsoEnabled.args = defaultPropsWithAccount({
+  displayAs: LoginVariations.SIGN_IN,
+  isSsoAvailable: true,
+  onCheckPassphrase: () => { throw passwordError; },
+  onSignIn: async() => { console.log("onSignIn called"); }
+});
+LoginWithSsoEnabled.parameters = defaultParameters;

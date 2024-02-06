@@ -1,0 +1,27 @@
+.editorconfig
+.eslintrc.json
+.gitlab-ci.yml
+.idea
+.jest.config.json
+.jest.setup.js
+.storybook
+Gruntfile.js
+crowdin.yml
+node_modules
+src/css
+src/less
+src/video
+src/img/card_teasers
+src/img/papericon
+src/img/screenshots
+scripts
+storybook-static
+webpack-api.config.js
+
+#jest test coverage
+######################
+/coverage
+
+# CI                 #
+######################
+junit.xml

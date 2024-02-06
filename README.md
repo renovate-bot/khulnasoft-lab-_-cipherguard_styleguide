@@ -1,135 +1,150 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/khulnasoft/cipherguard_styleguide/blob/master/src/img/logo/logo_white.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/khulnasoft/cipherguard_styleguide/blob/master/src/img/logo/logo.svg">
-  <img alt="cipherguard-logo" src="https://github.com/khulnasoft/cipherguard_styleguide/blob/master/src/img/logo/logo.svg">
-</picture>
-<br>
-<br>
+	      ____                  __          ____
+	     / __ \____  _____ ____/ /_  ____  / / /_
+	    / /_/ / __ `/ ___/ ___/ __ \/ __ \/ / __/
+	   / ____/ /_/ (__  |__  ) /_/ / /_/ / / /_
+	  /_/    \__,_/____/____/_.___/\____/_/\__/
 
-The open source password manager for teams.
-
-[![License](https://img.shields.io/github/license/khulnasoft/cipherguard)](LICENSE.txt)
-[![PHPStan Enabled](https://img.shields.io/badge/PHPStan-level%206-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
-[![Psalm level](https://img.shields.io/badge/Psalm-level%204-brightgreen.svg?style=flat)](https://psalm.dev/)
+	The open source password manager for teams
+	(c) 2023 Cipherguard SA
 
 
-<details open="open">
-<summary>Table of Contents</summary>
+License
+==============
 
-- [Introducing Cipherguard](#introducing-cipherguard)
-- [Get Started](#get-started)
-  - [Run it on your own server, natively](#run-it-on-your-own-server-natively)
-- [Available Clients & Apps](#available-clients-and-apps)
-  - [Browser Extensions](#browser-extensions)
-  - [Mobile Apps](#mobile-apps)
-  - [CLI](#cli)
-  - [Desktop App](#desktop-app)
-- [Contributing](#contributing)
-- [Reporting a security issue](#reporting-a-security-issue)
-- [License](#license)
+Cipherguard - Open source password manager for teams
 
-</details>
+(c) 2023 Cipherguard SA
 
----
-<br>
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General
+Public License (AGPL) as published by the Free Software Foundation version 3.
 
-![Cipherguard on desktop, mobile, and cli](https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/cipherguard-insitu.png)
+The name "Cipherguard" is a registered trademark of Cipherguard SA, and Cipherguard SA hereby declines to grant a trademark
+license to "Cipherguard" pursuant to the GNU Affero General Public License version 3 Section 7(e), without a separate
+agreement with Cipherguard SA.
 
-# Introducing Cipherguard
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See GNU Affero General Public License for more details.
 
-Cipherguard is a security-first, open source password manager for teams. It helps organizations centralize, organize and share passwords and secrets securely.
+You should have received a copy of the GNU Affero General Public License along with this program. If not,
+see [GNU Affero General Public License v3](http://www.gnu.org/licenses/agpl-3.0.html).
 
-What makes cipherguard different?
-- **Security:** Cipherguard security model features user-owned secret keys and end-to-end encryption. It is audited multiple times annually, and [findings](https://help.cipherguard.khulnasoft.com/faq/security/code-review) are made public.
-- **Collaboration:** Securely share and audit credentials, with powerful and dependable policies for power users.
-- **Privacy:** Cipherguard is headquartered in the EU,:european_union: specifically in Luxembourg. Cipherguard doesn't collect personal data or telemetry, and can be deployed in an air-gapped environment.
+Images and logos in /src/img/third_party belongs to their respective owner.
 
-<br>
+About
+=========
 
-# Get Started
+This is the official styleguide for Cipherguard the open source password manager for teams.
+This styleguide is used to extend, minify and test the stylesheets used by the different
+passbolt components such as the website, the firefox addon, etc.
 
-<a href="https://www.cipherguard.khulnasoft.com/ce/">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/cipherguard-CE-cta-light.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/cipherguard-CE-cta-dark.png">
-  <img alt="cipherguard.khulnasoft.community edition CTA" src="https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/cipherguard-CE-cta-dark.png">
-</picture>
-</a>
-&nbsp; &nbsp;
-<a href="https://www.cipherguard.khulnasoft.com/contact/pro/free-trial">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/cipherguard-pro-cta-light.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/cipherguard-pro-cta-dark.png">
-  <img alt="cipherguard PRO edition CTA" src="https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/cipherguard-pro-cta-dark.png">
-</picture>
-</a>
-&nbsp; &nbsp;
-<a href="https://www.cipherguard.khulnasoft.com/cloud/signup">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/cipherguard-cloud-cta-light.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/cipherguard-cloud-cta-dark.png">
-  <img alt="cipherguard Cloud edition CTA" src="https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/cipherguard-cloud-cta-dark.png">
-</picture>
-</a>
-<br>
+In /src and /build you can find the assets that are used by other projects, like the images
+the less files, the minified css files, fonts, etc.
 
-### Run it on your own server, natively
+Credits
+=========
 
-|[![Install cipherguard on Docker](https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/docker-icon.svg)](https://www.cipherguard.khulnasoft.com/ce/docker) | [![Install cipherguard on Kubernetes](https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/kubernetes-icon.svg)](https://www.cipherguard.khulnasoft.com/ce/kubernetes) | [![Install cipherguard on Ubuntu](https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/ubuntu-icon.svg)](https://www.cipherguard.khulnasoft.com/ce/ubuntu) |[![Install cipherguard on Debian](https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/debian-icon.svg)](https://www.cipherguard.khulnasoft.com/ce/debian) | [![Install cipherguard on RedHat](https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/Redhat-icon.svg)](https://www.cipherguard.khulnasoft.com/ce/redhat) | [![Install cipherguard on Raspberry Pi](https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/raspberry-pi-icon.svg)](https://www.cipherguard.khulnasoft.com/ce/raspberry)  | [![Install cipherguard on RockyLinux](https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/rockylinux-icon.svg)](https://www.cipherguard.khulnasoft.com/ce/rockylinux) |
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-| [![Install cipherguard on AlmaLinux](https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/almalinux-icon.svg)](https://www.cipherguard.khulnasoft.com/ce/almalinux) | [![Install cipherguard on Oracle](https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/oracle-icon.svg)](https://www.cipherguard.khulnasoft.com/ce/oracle)  | [![Install cipherguard on Fedora](https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/fedora-icon.svg)](https://www.cipherguard.khulnasoft.com/ce/fedora) | [![Install cipherguard on openSuse](https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/openSUSE-icon.svg)](https://www.cipherguard.khulnasoft.com/ce/opensuse)  | [![Install cipherguard on AWS](https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/AWS-icon.svg)](https://www.cipherguard.khulnasoft.com/ce/aws) |  [![Install cipherguard on DigitalOcean](https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/digitalocean-icon.svg)](https://www.cipherguard.khulnasoft.com/ce/digitalocean) | [![Install cipherguard on CentOS](https://github.com/khulnasoft/cipherguard-links/blob/main/assets/readme/centos-icon.svg)](https://www.cipherguard.khulnasoft.com/ce/centos) |
+https://www.cipherguard.khulnasoft.com/credits
 
-<br>
 
-## Available Clients And Apps
+Install
+=========
 
-### Browser Extensions
+Install grunt
+```
+npm install -g grunt-cli
+```
 
-- [Chrome](https://chrome.google.com/webstore/detail/cipherguard-open-source-pass/didegimhafipceonhjepacocaffmoppf) - Brave, Opera, Vivaldi, & other Chromium browsers
-- [Firefox](https://addons.mozilla.org/en-US/firefox/addon/cipherguard/)
-- [Edge](https://microsoftedge.microsoft.com/addons/detail/cipherguard-open-source-pa/ljeppgjhohmhpbdhjjjbiflabdgfkhpo)
+Install the needed modules defined in the grunt config
+```
+npm install
+```
 
-### Mobile Apps
+Make sure Grunt watch for less changes and compile them into CSS
+```
+grunt watch
+```
 
-- [App Store](https://apps.apple.com/nz/app/cipherguard-password-manager/id1569629432)
-- [Google Play Store](https://play.google.com/store/apps/details?id=com.cipherguard.mobile.android)
+Edit one LESS file to see if it works!
 
-### CLI
 
-Install cipherguard CLI tool: [go-cipherguard-CLI](https://github.com/khulnasoft/go-cipherguard-cli)
+How to publish the styleguide?
+=============================
 
-### Desktop App
-Coming soon [see the pre-alpha version here](https://github.com/khulnasoft/cipherguard-windows).
+We are using npm to manage the styleguide package in project using it.
+Checkout npm documentation: https://docs.npmjs.com/developers
 
-<br>
+In a nutshell, once you are done changing you can publish the styleguide using npm tools as following:
 
-# Contributing
+1. Change the version, rebuild and tag the new package.
 
-Contributing to cipherguard with code starts by reading [Contributing.md](https://github.com/khulnasoft/cipherguard_api/blob/master/CONTRIBUTING.md). Join the [community forum](https://community.cipherguard.khulnasoft.com) to join discussions about feature requests, translations, development, and more.
+If you want to bump the minor version of the package by instance to go from v3.1.2 to v3.2.0
+```
+npm version v3.2.0
+```
 
-<br>
+In a development scenario if you want to publish an alpha version of the package, you might want to go from
+v3.1.2 to v3.2.0-alpha-0
+```
+npm version v3.2.0-alpha.0
+```
 
-# Reporting a security issue
+Npm offers additional versions identifiers to not have to deal manually with the version numbers, if you want check out
+the [npm version documentation](https://docs.npmjs.com/cli/v7/commands/npm-version).
 
-If you've found a security-related issue with cipherguard, please email [security@cipherguard.khulnasoft.com](mailto:security@cipherguard.khulnasoft.com). Submitting to GitHub makes the vulnerability public, making it easy to exploit. We'll do a public disclosure of the security issue once it's been fixed.
+2. Publish the new version of the package.
 
-After receiving a report, cipherguard will take the following steps:
+Once the package versioned you can publish it on the npm production channel to make it available to others.
+```
+npm publish
+```
 
-- Confirmation that the issue has been received and that it's in the process of being addressed.
-- Attempt to reproduce the problem and confirm the vulnerability.
-- Prepare a patch/fix and associated automated tests.
-- Release a new version of all the affected versions.
-- Prominently announce the problem in the release notes.
-- If requested, give credit to the reporter.
+In a development scenario, you would prefer to publish the package on the alpha channel
+```
+npm publish --tag alpha
+```
 
-<br>
+3. Upgrade the styleguide in the third party projects.
 
-# License
+Upgrade the version of the styleguide in your project.
+```
+npm upgrade cipherguard-styleguide
+```
 
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License (AGPL) as published by the Free Software Foundation version 3.
+In some passbolt projects an additional grunt task help you manage the deployment of the styleguide assets
+```
+grunt styleguide-update
+```
 
-The name "Cipherguard" is a registered trademark of Khulnasoft Ltd', and Khulnasoft Ltd' hereby declines to grant a trademark license to "Cipherguard" pursuant to the GNU Affero General Public License version 3 Section 7(e), without a separate agreement with Khulnasoft Ltd'.
+How to use Storybook?
+=============================
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See GNU Affero General Public License for more details.
+We try to refer all the styleguide components in Storybook. This way you can play with every single component in
+an isolated way.
 
-You should have received a copy of the GNU Affero General Public License along with this program. If not, see [GNU Affero General Public License v3](https://www.gnu.org/licenses/agpl-3.0.html).
+Besides, we develop any new component by first testing it against Storybook and hence avoiding
+the whole application reload.
+
+To get started with storybook, first install its dependencies. As long as storybook has not migrated completely
+to webpack 4, the dependencies will need to be installed manually.
+
+```
+npm run dev:storybook:install
+```
+
+To run Storybook, you just need to run the following command:
+
+```
+npm run dev:storybook:start
+```
+
+Building the related static website is possible as well using the following command:
+
+```
+npm run dev:storybook:build
+```
+
+Executing the stories locally to ensure no regression was introduced can be done as following:
+
+```
+npm run test:storybook
+```

@@ -1,216 +1,227 @@
-/**
- * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Khulnasoft Ltd' (https://www.cipherguard.khulnasoft.com)
- *
- * Licensed under GNU Affero General Public License version 3 of the or any later version.
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Khulnasoft Ltd' (https://www.cipherguard.khulnasoft.com)
- * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
- * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
- * @since         2.0.0
- */
-var path = require('path');
-
-/**
- * This Gruntfile provides tasks and commands to build and distribute the project
- *
- * @param grunt object
- */
 module.exports = function(grunt) {
 
-  /**
-   * Path shortcuts
-   * @type object
-   */
-  var paths = {
-    node_modules: 'node_modules/',
-    node_modules_styleguide: 'node_modules/cipherguard-styleguide/',
-    webroot: 'webroot/',
-    img: 'webroot/img/',
-    css: 'webroot/css/',
-    js: 'webroot/js/',
-    locales: 'resources/locales/',
-    cakephp_locales: 'vendor/cakephp/localized/resources/locales/'
-  };
+  var banner = '/**!\n'+
+    ' * @name\t\t<%= pkg.name %>\n'+
+    ' * @version\t\tv<%= pkg.version %>\n' +
+    ' * @date\t\t<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+    ' * @copyright\t<%= pkg.copyright %>\n' +
+    ' * @source\t\t<%= pkg.repository %>\n'+
+    ' * @license\t\t<%= pkg.license %>\n */';
 
-  /**
-   * Import package.json file content
-   * Allow to get access to version and project name for example
-   */
-  var pkg = grunt.file.readJSON('package.json');
+	// ========================================================================
+	// Configure task options
 
-  /**
-   * Load baseline NPM tasks
-   */
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-
-  /**
-   * Register project specific grunt tasks
-   */
-  grunt.registerTask('default', ['dependencies-update', 'styleguide-update']);
-  grunt.registerTask('styleguide-update', 'copy:styleguide');
-  grunt.registerTask('styleguide-watch', ['watch:node-modules-styleguide']);
-  grunt.registerTask('dependencies-update', 'copy:dependencies');
-
-  /**
-   * Tasks definition
-   */
-  grunt.initConfig({
-    pkg: pkg,
-
-    copy: {
-      dependencies: {
-        files: [{
-          // Openpgp
-          cwd: paths.node_modules + 'openpgp/dist',
-          src: ['openpgp.min.js'],
-          dest: paths.js + 'vendors',
-          expand: true
-        }, {
-          // jQuery
-          cwd: paths.node_modules + 'jquery/dist',
-          src: ['jquery.min.js'],
-          dest: paths.js + 'vendors',
-          expand: true
-        }]
+	grunt.initConfig({
+		pkg: grunt.file.readJSON('package.json'),
+		clean: {
+			all: [
+				'build/css/*',
+				'src/css/**',
+			],
+      css: [
+        'src/css/**'
+      ]
+		},
+		less: {
+      options: {
+        javascriptEnabled: true
       },
-      styleguide: {
-        files: [{
-          // Fonts
-          cwd: paths.node_modules_styleguide + 'src/fonts',
-          src: '*',
-          dest: paths.webroot + 'fonts',
-          expand: true
-        }, {
-          // Images for webroots (favicons, etc.)
-          cwd: paths.node_modules_styleguide + 'src/img/webroot',
-          src: '*',
-          dest: paths.webroot,
-          expand: true
-        }, {
-          // Images
-          cwd: paths.node_modules_styleguide + 'src/img',
-          src: [
-            // Default Avatars
-            'avatar/**',
-            // Cipherguard logos
-            'logo/icon-20_white.png', 'logo/icon-20_grey.png', 'logo/icon-20.png',
-            'logo/icon-48_white.png', 'logo/icon-48.png',
-            'logo/logo.png', 'logo/logo@2x.png', 'logo/logo.svg', 'logo/logo_white.svg', 'logo/logo_white.png',
-            // Image for inputs and controls
-            'controls/check_black.svg',
-            'controls/check_white.svg',
-            'controls/chevron-down_black.svg',
-            'controls/chevron-down_white.svg',
-            'controls/chevron-down_blue.svg',
-            'controls/dot_white.svg',
-            'controls/dot_red.svg',
-            'controls/dot_black.svg',
-            'controls/infinite-bar.gif',
-            'controls/loading_light.svg',
-            'controls/loading_dark.svg',
-            'controls/overlay-opacity-50.png',
-            'controls/success.svg',
-            'controls/fail.svg',
-            'controls/warning.svg',
-            'controls/attention.svg',
-            // Login page 3rd party logo
-            'third_party/firefox_logo.png',
-            'third_party/FirefoxAMO_black.svg',
-            'third_party/FirefoxAMO_white.svg',
-            'third_party/ChromeWebStore_black.svg',
-            'third_party/ChromeWebStore_white.svg',
-            'third_party/edge-addon-black.svg',
-            'third_party/edge-addon-white.svg',
-            'third_party/chosen-sprite.png',
-            'third_party/chosen-sprite@2x.png',
-            'third_party/firefox.svg',
-            'third_party/chrome.svg',
-            'third_party/edge.svg',
-            'third_party/brave.svg',
-            'third_party/vivaldi.svg',
-
-            // Smtp provider 3rd party logo
-            'third_party/aws-ses.svg',
-            'third_party/azure.svg',
-            'third_party/elastic-email.svg',
-            'third_party/gmail.svg',
-            'third_party/mailgun.svg',
-            'third_party/mailjet.svg',
-            'third_party/mandrill.svg',
-            'third_party/sendgrid.svg',
-            'third_party/sendinblue.svg',
-            'third_party/zoho.svg',
-
-            // Setup
-            'illustrations/email.png',
-            // Themes preview
-            'themes/*.png',
-            // Totp images
-            'diagrams/totp.svg',
-            'third_party/duo.svg',
-            'third_party/google-authenticator.svg',
-            'third_party/yubikey.svg',
-          ],
-          dest: paths.webroot + 'img',
-          expand: true
-        }, {
-          // CSS
-          cwd: paths.node_modules_styleguide + 'build/css/themes/default',
-          src: ['api_main.min.css', 'api_authentication.min.css', 'ext_authentication.min.css'],
-          dest: paths.webroot + 'css/themes/default',
-          expand: true
-        }, {
-          // Midgar css theme
-          cwd: paths.node_modules_styleguide + 'build/css/themes/midgar',
-          src: ['api_main.min.css', 'api_authentication.min.css', 'ext_authentication.min.css'],
-          dest: paths.webroot + 'css/themes/midgar',
-          expand: true
-        }, {
-          // Solarized light css theme
-          cwd: paths.node_modules_styleguide + 'build/css/themes/solarized_light',
-          src: ['api_main.min.css', 'api_authentication.min.css', 'ext_authentication.min.css'],
-          dest: paths.webroot + 'css/themes/solarized_light',
-          expand: true
-        }, {
-          // Solarized dark css theme
-          cwd: paths.node_modules_styleguide + 'build/css/themes/solarized_dark',
-          src: ['api_main.min.css', 'api_authentication.min.css', 'ext_authentication.min.css'],
-          dest: paths.webroot + 'css/themes/solarized_dark',
-          expand: true
-        },{
-          // Translation files
-          cwd: paths.node_modules_styleguide + 'src/locales',
-          src: ['**'],
-          dest: paths.webroot + 'locales',
-          expand: true
-        }, {
-          // Javascript applications
-          cwd: paths.node_modules_styleguide + 'build/js/dist',
-          src: ['api-account-recovery.js', 'api-app.js', 'api-recover.js', 'api-setup.js', 'api-triage.js', 'api-vendors.js', 'api-feedback.js'],
-          dest: paths.js + 'app',
-          expand: true
-        },]
+			public: {
+				expand: true,
+				flatten: true,
+				cwd: "src/less/",
+				src: "*.less",
+				dest: "src/css/",
+				ext: ".css"
+			},
+      theme_default: {
+        expand: true,
+        flatten: true,
+        cwd: "src/less/themes/default",
+        src: "*.less",
+        dest: "src/css/themes/default",
+        ext: ".css"
       },
-      locales: {
-        // CakePHP Locale Resources
-        files: [{
-          cwd: paths.cakephp_locales,
-          src: ['fr_FR/*.po'],
-          dest: paths.locales,
-          expand: true
-        }]
+      theme_midgar: {
+        expand: true,
+        flatten: true,
+        cwd: "src/less/themes/midgar",
+        src: "*.less",
+        dest: "src/css/themes/midgar",
+        ext: ".css"
+      },
+      theme_solarized_light: {
+        expand: true,
+        flatten: true,
+        cwd: "src/less/themes/solarized_light",
+        src: "*.less",
+        dest: "src/css/themes/solarized_light",
+        ext: ".css"
+      },
+      theme_solarized_dark: {
+        expand: true,
+        flatten: true,
+        cwd: "src/less/themes/solarized_dark",
+        src: "*.less",
+        dest: "src/css/themes/solarized_dark",
+        ext: ".css"
+      }
+		},
+		shell: {
+      'build-apps': {
+        command: [
+          'npm run build'
+        ].join(' && ')
+      },
+      'externalize': {
+        command: [
+          'npm run i18n:externalize'
+        ].join(' && ')
+      }
+		},
+		cssmin: {
+			public: {
+				expand: true,
+				cwd: 'src/css/',
+				src: ['*.css', '!*.min.css'],
+				dest: 'build/css/',
+				ext: '.min.css'
+			},
+      theme_default: {
+        expand: true,
+        cwd: 'src/css/themes/default',
+        src: ['*.css', '!*.min.css'],
+        dest: 'build/css/themes/default',
+        ext: '.min.css'
+      },
+      theme_midgar: {
+        expand: true,
+        cwd: 'src/css/themes/midgar',
+        src: ['*.css', '!*.min.css'],
+        dest: 'build/css/themes/midgar',
+        ext: '.min.css'
+      },
+      theme_solarized_light: {
+        expand: true,
+        cwd: 'src/css/themes/solarized_light',
+        src: ['*.css', '!*.min.css'],
+        dest: 'build/css/themes/solarized_light',
+        ext: '.min.css'
+      },
+      theme_solarized_dark: {
+        expand: true,
+        cwd: 'src/css/themes/solarized_dark',
+        src: ['*.css', '!*.min.css'],
+        dest: 'build/css/themes/solarized_dark',
+        ext: '.min.css'
+      }
+		},
+    header: {
+      public: {
+        options: {
+          text: banner
+        },
+        expand: true,
+        cwd: 'build/css',
+        src: ['*.css', '*.min.css'],
+        dest: 'build/css',
+        ext: '.min.css'
+      },
+      default: {
+        options: {
+          text: banner
+        },
+        expand: true,
+        cwd: 'build/css/themes/default',
+        src: ['*.min.css'],
+        dest: 'build/css/themes/default',
+        ext: '.min.css'
+      },
+      midgar: {
+        options: {
+          text: banner
+        },
+        expand: true,
+        cwd: 'build/css/themes/midgar',
+        src: ['*.min.css'],
+        dest: 'build/css/themes/midgar',
+        ext: '.min.css'
       }
     },
-
+    symlink: {
+      options: {
+        // Enable overwrite to delete symlinks before recreating them
+        overwrite: true,
+      },
+      expanded: {
+        files: [
+          {
+            expand: true,
+            overwrite: true,
+            cwd: 'src',
+            src: ['locales'],
+            dest: 'build'
+          },
+        ]
+      },
+    },
     watch: {
-      'node-modules-styleguide': {
-        files: [paths.node_modules_styleguide + 'build/**/*'],
-        tasks: ['styleguide-update']
+      less: {
+        files: [
+          'Gruntfile.js',
+          'package.json',
+          'src/less/*.less',
+          'src/less/**/*.less'
+        ],
+        tasks: ['css']
       }
     }
   });
+
+	// ========================================================================
+	// Initialise
+
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-symlink');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-header');
+  grunt.loadNpmTasks('grunt-shell');
+
+	// ========================================================================
+	// Register Tasks
+
+  // grunt.registerTask('bundle-reports', [ 'shell:bundle-reports']);
+
+	// 'grunt' will check code quality, and if no errors,
+	// compile LESS to CSS, and minify and concatonate all JS and CSS
+  grunt.registerTask('default', ['clean:all', 'less', 'cssmin', 'header', 'shell:build-apps', 'externalize-locale-string', 'symlink']);
+  grunt.registerTask('css', [ 'clean:css', 'less', 'cssmin']);
+  grunt.registerTask('externalize-locale-string', ['shell:externalize']);
+
+  // Tasks to add the custom theme in the less and watch config
+  grunt.registerTask('custom_theme', 'Add the custom theme in less task', function() {
+    grunt.config.data.less.theme_custom = {
+      expand: true,
+      flatten: true,
+      cwd: "src/less/themes/custom",
+      src: "*.less",
+      dest: "src/css/themes/custom",
+      ext: ".css"
+    };
+  });
+  grunt.registerTask('custom_theme_watch', 'Add the custom theme in less task', function() {
+    grunt.config.data.watch = {
+      less: {
+        files: [
+          'src/less/*.less',
+          'src/less/**/*.less'
+        ],
+        tasks: ['build_custom_theme']
+      }
+    };
+  });
+  grunt.registerTask('build_custom_theme', ['custom_theme', 'less']);
+  grunt.registerTask('watch_custom_theme', ['custom_theme_watch', 'watch']);
 };

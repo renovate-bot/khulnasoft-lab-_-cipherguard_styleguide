@@ -1,0 +1,93 @@
+/**
+ * Cipherguard ~ Open source password manager for teams
+ * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ *
+ * Licensed under GNU Affero General Public License version 3 of the or any later version.
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
+ * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
+ * @since         4.1.0
+ */
+import {v4 as uuidv4} from "uuid";
+import {ownerPermissionDto, readPermissionDto, updatePermissionDto} from "../permission/permissionEntity.test.data";
+import {defaultFavoriteDto} from "../favorite/favoriteEntity.test.data";
+import {
+  TEST_RESOURCE_TYPE_PASSWORD_AND_DESCRIPTION,
+  TEST_RESOURCE_TYPE_PASSWORD_DESCRIPTION_TOTP,
+  TEST_RESOURCE_TYPE_TOTP
+} from "../resourceType/resourceTypeEntity.test.data";
+
+export const defaultResourceDto = (data = {}) => {
+  const id = data?.id || uuidv4();
+
+  return {
+    id: id,
+    name: "Cipherguard",
+    uri: "https://cipherguard.khulnasoft.com",
+    username: "admin@cipherguard.khulnasoft.com",
+    folder_parent_id: null,
+    created: "2022-03-04T13:59:11+00:00",
+    created_by: uuidv4(),
+    modified: "2022-03-04T13:59:11+00:00",
+    modified_by: uuidv4(),
+    expired: null,
+    deleted: false,
+    description: "",
+    personal: false,
+    resource_type_id: TEST_RESOURCE_TYPE_PASSWORD_AND_DESCRIPTION,
+    permission: ownerPermissionDto({aco_foreign_key: id}),
+    // permissions: [],
+    favorite: null,
+    secrets: [],
+    ...data
+  };
+};
+
+export const resourceWithUpdatePermissionDto = (data = {}) => {
+  const id = data?.id || uuidv4();
+
+  return defaultResourceDto({
+    id: id,
+    permission: updatePermissionDto({aco_foreign_key: id}),
+    ...data
+  });
+};
+
+export const resourceWithReadPermissionDto = (data = {}) => {
+  const id = data?.id || uuidv4();
+
+  return defaultResourceDto({
+    id: id,
+    permission: readPermissionDto({aco_foreign_key: id}),
+    ...data
+  });
+};
+
+export const resourceWithFavoriteDto = (data = {}) => {
+  const id = data?.id || uuidv4();
+
+  return defaultResourceDto({
+    id: id,
+    favorite: defaultFavoriteDto({foreign_key: id}),
+    ...data
+  });
+};
+
+export const resourceWithTotpDto = (data = {}) => defaultResourceDto({
+  resource_type_id: TEST_RESOURCE_TYPE_PASSWORD_DESCRIPTION_TOTP,
+  ...data
+});
+
+export const resourceStandaloneTotpDto = (data = {}) => defaultResourceDto({
+  resource_type_id: TEST_RESOURCE_TYPE_TOTP,
+  username: null,
+  ...data
+});
+
+export const resourceExpiredDto = (data = {}) => defaultResourceDto({
+  expired: "2022-03-04T13:59:11+00:00",
+  ...data
+});
