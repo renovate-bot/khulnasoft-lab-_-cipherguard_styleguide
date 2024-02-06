@@ -75,7 +75,7 @@
         "ext-pdo": "*",
         "ext-curl": "*",
         "composer/composer": "^2.6.4",
-        "cakephp/cakephp": "^4.4.15",
+        "cakephp/cakephp": "^5.0.0",
         "cakephp/chronos": "2.4.*",
         "longwave/laminas-diactoros": "^2.14.1",
         "cakephp/migrations": "dev-master#b5d90c06d25443672ae1ec2f1e592002ca1ce85f",
