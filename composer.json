@@ -99,7 +99,7 @@
     "require-dev": {
         "phpstan/phpstan": "~1.10.0",
         "psy/psysh": "@stable",
-        "cakephp/debug_kit": "^4.4.1",
+        "cakephp/debug_kit": "^5.0.0",
         "cakephp/bake": "^3.0.0",
         "phpunit/phpunit": "~9.5.2",
         "cakephp/cakephp-codesniffer": "^5.0",
