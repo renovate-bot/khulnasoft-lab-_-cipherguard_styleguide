@@ -76,7 +76,7 @@
         "ext-curl": "*",
         "composer/composer": "^2.6.4",
         "cakephp/cakephp": "^5.0.0",
-        "cakephp/chronos": "2.4.*",
+        "cakephp/chronos": "3.0.*",
         "longwave/laminas-diactoros": "^2.14.1",
         "cakephp/migrations": "dev-master#b5d90c06d25443672ae1ec2f1e592002ca1ce85f",
         "robmorgan/phinx": "0.x-dev#a409b03e1e3e5f8f60d0d3179704abc9bc80e817",
