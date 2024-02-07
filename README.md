@@ -1,9 +1,11 @@
+```
  ____ _ ___  _  _ ____ ____ ____ _  _ ____ ____ ___ 
  |___ | |--' |--| |=== |--< |__, |__| |--| |--< |__>
 
   The open source password manager for teams          
   (c) 2023 Cipherguard SA
   https://www.khulnasoft.com
+```
 
 
 License
