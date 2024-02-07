@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.0.0
@@ -324,7 +324,7 @@ class ChooseSecurityToken extends Component {
           </div>
           }
           <p>
-            <Trans>This security token will be displayed when your passphrase is requested, so you can quickly verify the form is coming from passbolt.</Trans>
+            <Trans>This security token will be displayed when your passphrase is requested, so you can quickly verify the form is coming from cipherguard.</Trans>
             &nbsp;
             <Trans>
               This will help protect you from <a href="https://en.wikipedia.org/wiki/Phishing" target="_blank" rel="noopener noreferrer">

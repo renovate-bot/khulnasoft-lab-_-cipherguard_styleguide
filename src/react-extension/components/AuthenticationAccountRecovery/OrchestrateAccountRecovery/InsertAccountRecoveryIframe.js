@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -42,8 +42,8 @@ class InsertAccountRecoveryIframe extends Component {
    * @returns {void}
    */
   async loadIframe() {
-    const portId = await this.props.port.request("passbolt.port.generate-id", "AccountRecovery");
-    this.iframeRef.current.contentWindow.location = `${this.props.browserExtensionUrl}webAccessibleResources/passbolt-iframe-account-recovery.html?passbolt=${portId}`;
+    const portId = await this.props.port.request("cipherguard.port.generate-id", "AccountRecovery");
+    this.iframeRef.current.contentWindow.location = `${this.props.browserExtensionUrl}webAccessibleResources/cipherguard-iframe-account-recovery.html?cipherguard=${portId}`;
   }
 
   /**
@@ -52,7 +52,7 @@ class InsertAccountRecoveryIframe extends Component {
    */
   render() {
     return (
-      <iframe id="passbolt-iframe-account-recovery" ref={this.iframeRef} className="full-screen"/>
+      <iframe id="cipherguard-iframe-account-recovery" ref={this.iframeRef} className="full-screen"/>
     );
   }
 }

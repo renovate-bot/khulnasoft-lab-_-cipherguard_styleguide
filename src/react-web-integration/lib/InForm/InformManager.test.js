@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.3.0
@@ -892,7 +892,7 @@ describe("InformManager", () => {
       url: "http://localhost/",
       username: "",
     };
-    expect(window.port.emit).toHaveBeenCalledWith('passbolt.web-integration.autosave', save);
+    expect(window.port.emit).toHaveBeenCalledWith('cipherguard.web-integration.autosave', save);
   });
 
   it("As LU I should auto save a form with only password field", async() => {
@@ -911,7 +911,7 @@ describe("InformManager", () => {
       url: "http://localhost/",
       username: "",
     };
-    expect(window.port.emit).toHaveBeenCalledWith('passbolt.web-integration.autosave', save);
+    expect(window.port.emit).toHaveBeenCalledWith('cipherguard.web-integration.autosave', save);
   });
 
   it("As LU I shouldn't see the inform call to action on a page with no login form", async() => {

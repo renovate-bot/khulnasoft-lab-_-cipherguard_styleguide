@@ -12,7 +12,7 @@ export default {
 };
 
 const mockedPort = new MockPort();
-mockedPort.addRequestListener("passbolt.folders.update", data => data);
+mockedPort.addRequestListener("cipherguard.folders.update", data => data);
 
 const defaultContext = {
   folders: [

@@ -148,7 +148,7 @@ class ResourceCreatePage extends React.Component {
     const ignoreUris = ["chrome://newtab/", "about:newtab"];
 
     try {
-      const tabInfo = await this.props.context.port.request("passbolt.quickaccess.prepare-resource", this.props.context.getOpenerTabId());
+      const tabInfo = await this.props.context.port.request("cipherguard.quickaccess.prepare-resource", this.props.context.getOpenerTabId());
       if (!ignoreNames.includes(tabInfo["name"])) {
         name = tabInfo["name"].substring(0, 255);
       }
@@ -278,7 +278,7 @@ class ResourceCreatePage extends React.Component {
     };
 
     try {
-      const resource = await this.props.context.port.request("passbolt.resources.create", resourceDto, secretDto);
+      const resource = await this.props.context.port.request("cipherguard.resources.create", resourceDto, secretDto);
       /*
        * Remove the create step from the history.
        * The user needs to be redirected to the home page and not the create page while clicking on go back

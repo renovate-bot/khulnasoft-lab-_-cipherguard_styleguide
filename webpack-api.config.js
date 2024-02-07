@@ -3,7 +3,7 @@ const path = require("path");
 const config = {
   entry: {
     "api-account-recovery": path.resolve(__dirname, "./src/react-extension/ApiAccountRecovery.entry.js"), // The account recovery application served by the API
-    "api-app": path.resolve(__dirname, "./src/react-extension/ApiApp.entry.js"), // The passbolt application served by the API
+    "api-app": path.resolve(__dirname, "./src/react-extension/ApiApp.entry.js"), // The cipherguard application served by the API
     "api-recover": path.resolve(__dirname, "./src/react-extension/ApiRecover.entry.js"), // The recover application served by the API
     "api-setup": path.resolve(__dirname, "./src/react-extension/ApiSetup.entry.js"), // The setup application served by the API
     "api-triage": path.resolve(__dirname, "./src/react-extension/ApiTriage.entry.js"), // The triage application served by the API

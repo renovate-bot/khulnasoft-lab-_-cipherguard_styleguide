@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.7.0
@@ -25,11 +25,11 @@ class Intro extends Component {
         <div className="storybook-intro-hero-left">
           <h1><img src="img/logo/logo.svg" alt="Cipherguard logo"/></h1>
           <p className="storybook-intro-hero-subtitle">
-            Welcome to passbolt user interface design kit.
+            Welcome to cipherguard user interface design kit.
           </p>
           <div className="storybook-intro-hero-actions">
             <a target="_blank" rel="noopener noreferrer" href="https://cipherguard.khulnasoft.com" className="button primary">Visit our website</a>
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/passbolt" className="button secondary">Follow on github</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/cipherguard" className="button secondary">Follow on github</a>
           </div>
         </div>
         <div className="storybook-intro-hero-right">

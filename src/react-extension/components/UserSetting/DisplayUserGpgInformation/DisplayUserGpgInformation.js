@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  */
@@ -91,7 +91,7 @@ class DisplayUserGpgInformation extends React.Component {
    * Fetch the user key id
    */
   async fetchGpgkeyInfo() {
-    const gpgkeyInfo = await this.props.context.port.request('passbolt.keyring.get-public-key-info-by-user', this.user.id);
+    const gpgkeyInfo = await this.props.context.port.request('cipherguard.keyring.get-public-key-info-by-user', this.user.id);
     // format the gpgkey info.
     const keyId = gpgkeyInfo.key_id;
     const type = this.gpgkeyType[gpgkeyInfo.algorithm];

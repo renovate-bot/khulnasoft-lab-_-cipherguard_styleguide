@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.3.0
@@ -86,7 +86,7 @@ class SaveResource extends React.Component {
   }
 
   async loadPasswordMetaFromTabForm() {
-    const {name, uri, username, secret_clear} = await this.props.context.port.request("passbolt.quickaccess.prepare-autosave");
+    const {name, uri, username, secret_clear} = await this.props.context.port.request("cipherguard.quickaccess.prepare-autosave");
     this.setState({name, uri, username, password: secret_clear});
     this.loadPassword(secret_clear);
     this.setState({loaded: true});
@@ -146,7 +146,7 @@ class SaveResource extends React.Component {
     };
 
     try {
-      await this.props.context.port.request("passbolt.resources.create", resourceDto, secretDto);
+      await this.props.context.port.request("cipherguard.resources.create", resourceDto, secretDto);
       this.handleClose();
     } catch (error) {
       this.handleSubmitError(error);

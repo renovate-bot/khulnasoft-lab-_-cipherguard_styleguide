@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.3.0
@@ -336,7 +336,7 @@ class TransferToMobile extends React.Component {
    * Fetch the user key id
    */
   async getPrivateKey() {
-    return await this.context.port.request('passbolt.keyring.get-private-key');
+    return await this.context.port.request('cipherguard.keyring.get-private-key');
   }
 
   /**
@@ -346,7 +346,7 @@ class TransferToMobile extends React.Component {
    * @returns {Promise<String>} fingerprint
    */
   async getFingerprint() {
-    const key = await this.context.port.request('passbolt.keyring.get-public-key-info-by-user', this.user.id);
+    const key = await this.context.port.request('cipherguard.keyring.get-public-key-info-by-user', this.user.id);
     if (!key || !key.fingerprint) {
       throw new Error('The user fingerprint is not set.');
     }
@@ -372,7 +372,7 @@ class TransferToMobile extends React.Component {
 
     try {
       const data = {total_pages: totalPages, hash: hash};
-      const transferDto = await this.context.port.request('passbolt.mobile.transfer.create', data);
+      const transferDto = await this.context.port.request('cipherguard.mobile.transfer.create', data);
       const firstQrCode = await this.buildFirstQrCode(transferDto, totalPages, hash);
       qrCodes.unshift(firstQrCode);
       this.setState({qrCodes, step: 'in progress', page: 0, transferDto}, () => {
@@ -392,7 +392,7 @@ class TransferToMobile extends React.Component {
     let transferDto;
     try {
       this.request = 1;
-      transferDto = await this.context.port.request('passbolt.mobile.transfer.get', this.state.transferDto.id);
+      transferDto = await this.context.port.request('cipherguard.mobile.transfer.get', this.state.transferDto.id);
       this.request = 0;
     } catch (error) {
       // if there is an error, consider the transfer cancelled
@@ -450,7 +450,7 @@ class TransferToMobile extends React.Component {
       // cancel server side if we had the time to create a transfer entity there
       if (this.state.transferDto && this.state.transferDto !== TransferToMobileSteps.CANCEL) {
         const transferDto = {id: this.state.transferDto.id, status: TransferToMobileSteps.CANCEL};
-        await this.context.port.request('passbolt.mobile.transfer.update', transferDto);
+        await this.context.port.request('cipherguard.mobile.transfer.update', transferDto);
       }
     } catch (error) {
       // not much to recover from
@@ -618,8 +618,8 @@ class TransferToMobile extends React.Component {
               <p>
                 <Trans>Cipherguard is available on AppStore & PlayStore</Trans>
               </p>
-              <a className="app-store" href="https://apps.apple.com/lv/app/passbolt-password-manager/id1569629432" target="_blank" rel="noopener noreferrer"></a>
-              <a className="play-store" href="https://play.google.com/store/apps/details?id=com.passbolt.mobile.android" target="_blank" rel="noopener noreferrer"></a>
+              <a className="app-store" href="https://apps.apple.com/lv/app/cipherguard-password-manager/id1569629432" target="_blank" rel="noopener noreferrer"></a>
+              <a className="play-store" href="https://play.google.com/store/apps/details?id=com.cipherguard.mobile.android" target="_blank" rel="noopener noreferrer"></a>
               <h4><Trans>Transfer your account key</Trans></h4>
               <div className="transfer-account">
                 <MobileTransferIcon/>

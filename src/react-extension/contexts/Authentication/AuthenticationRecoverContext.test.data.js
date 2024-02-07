@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -22,18 +22,18 @@ import MockPort from "../../test/mock/MockPort";
  */
 export function defaultAuthenticationRecoverAppContext(appContext) {
   const port = new MockPort();
-  port.addRequestListener("passbolt.recover.start", jest.fn(() => ({locale: "fr-FR"})));
-  port.addRequestListener("passbolt.recover.first-install", jest.fn(() => Promise.resolve(false)));
-  port.addRequestListener("passbolt.recover.import-key", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.recover.verify-passphrase", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.recover.set-security-token", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.recover.complete", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.recover.sign-in", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.recover.generate-account-recovery-request-key", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.recover.request-account-recovery", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.recover.request-help-credentials-lost", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.recover.has-user-enabled-account-recovery", jest.fn(() => Promise.resolve(true)));
-  port.addRequestListener("passbolt.recover.lost-passphrase-case", jest.fn(() => Promise.resolve(false)));
+  port.addRequestListener("cipherguard.recover.start", jest.fn(() => ({locale: "fr-FR"})));
+  port.addRequestListener("cipherguard.recover.first-install", jest.fn(() => Promise.resolve(false)));
+  port.addRequestListener("cipherguard.recover.import-key", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.recover.verify-passphrase", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.recover.set-security-token", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.recover.complete", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.recover.sign-in", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.recover.generate-account-recovery-request-key", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.recover.request-account-recovery", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.recover.request-help-credentials-lost", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.recover.has-user-enabled-account-recovery", jest.fn(() => Promise.resolve(true)));
+  port.addRequestListener("cipherguard.recover.lost-passphrase-case", jest.fn(() => Promise.resolve(false)));
   port._port = {
     onDisconnect: {
       addListener: jest.fn()
@@ -65,6 +65,6 @@ export function defaultProps(props) {
  * @returns {object}
  */
 export function withAccountRecoveryEnabled(props) {
-  props.context.port.addRequestListener("passbolt.recover.has-user-enabled-account-recovery", () => Promise.resolve(true));
+  props.context.port.addRequestListener("cipherguard.recover.has-user-enabled-account-recovery", () => Promise.resolve(true));
   return props;
 }

@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -22,13 +22,13 @@ import {defaultAppContext} from "../ExtAppContext.test.data";
  */
 export function defaultAuthenticationAccountRecoveryAppContext(appContext = {}) {
   const port = new MockPort();
-  port.addRequestListener("passbolt.account-recovery.continue", jest.fn());
-  port.addRequestListener("passbolt.account-recovery.get-account", jest.fn());
-  port.addRequestListener("passbolt.account-recovery.verify-passphrase", jest.fn());
-  port.addRequestListener("passbolt.account-recovery.recover-account", jest.fn());
-  port.addRequestListener("passbolt.account-recovery.sign-in", jest.fn());
-  port.addRequestListener("passbolt.account-recovery.request-help-credentials-lost", jest.fn());
-  port.addRequestListener("passbolt.account-recovery.download-recovery-kit", jest.fn());
+  port.addRequestListener("cipherguard.account-recovery.continue", jest.fn());
+  port.addRequestListener("cipherguard.account-recovery.get-account", jest.fn());
+  port.addRequestListener("cipherguard.account-recovery.verify-passphrase", jest.fn());
+  port.addRequestListener("cipherguard.account-recovery.recover-account", jest.fn());
+  port.addRequestListener("cipherguard.account-recovery.sign-in", jest.fn());
+  port.addRequestListener("cipherguard.account-recovery.request-help-credentials-lost", jest.fn());
+  port.addRequestListener("cipherguard.account-recovery.download-recovery-kit", jest.fn());
 
   const defaultAuthenticationRecover = {
     port: port,

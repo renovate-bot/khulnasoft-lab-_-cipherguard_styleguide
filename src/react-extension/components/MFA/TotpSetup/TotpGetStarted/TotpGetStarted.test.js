@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2023 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2023 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2023 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2023 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.4.0
@@ -50,7 +50,7 @@ describe("TotpGetStarted", () => {
 
       await page.clickOnCancelButton();
       expect(page.totpSignInIllustation).not.toBeNull();
-      expect(page.totpSignInIllustationDescription.textContent).toEqual("You sign in to passbolt just like you normally do.");
+      expect(page.totpSignInIllustationDescription.textContent).toEqual("You sign in to cipherguard just like you normally do.");
       expect(page.totpPhoneIllustation).not.toBeNull();
       expect(page.totpPhoneIllustationDescription.textContent).toEqual("When using a new browser, you need an additional code from your phone.");
       expect(page.totpEnterCodeIllustation).not.toBeNull();

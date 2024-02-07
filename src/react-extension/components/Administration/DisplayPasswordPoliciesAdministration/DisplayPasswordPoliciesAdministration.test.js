@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.2.0
@@ -39,7 +39,7 @@ describe("DisplayPasswordPoliciesAdministration", () => {
     jest.resetModules();
 
     props = defaultProps();
-    props.context.port.addRequestListener("passbolt.password-policies.get-admin-settings", () => settingsDto);
+    props.context.port.addRequestListener("cipherguard.password-policies.get-admin-settings", () => settingsDto);
     page = new DisplayPasswordPoliciesAdministrationPage(context, props);
   });
 
@@ -85,7 +85,7 @@ describe("DisplayPasswordPoliciesAdministration", () => {
       const newPasswordLength = "20";
       const newPassphraseWordCount = "20";
 
-      context.port.addRequestListener("passbolt.password-policies.save", passwordSettingsDto => {
+      context.port.addRequestListener("cipherguard.password-policies.save", passwordSettingsDto => {
         const expectedPasswordGeneratorSettings = Object.assign({}, settingsDto.password_generator_settings, {
           length: newPasswordLength,
         });
@@ -126,7 +126,7 @@ describe("DisplayPasswordPoliciesAdministration", () => {
       expect.assertions(1);
 
       const expectedErrorMessage = "Something wrong happened";
-      props.context.port.addRequestListener("passbolt.password-policies.save", () => { throw new Error(expectedErrorMessage); });
+      props.context.port.addRequestListener("cipherguard.password-policies.save", () => { throw new Error(expectedErrorMessage); });
 
       const spyOnFeddback = jest.spyOn(props.actionFeedbackContext, "displayError");
 
@@ -318,7 +318,7 @@ describe("DisplayPasswordPoliciesAdministration", () => {
       const currentSettings = defaultPasswordPoliciesDto({source: 'env'});
 
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.password-policies.get-admin-settings", () => currentSettings);
+      props.context.port.addRequestListener("cipherguard.password-policies.get-admin-settings", () => currentSettings);
       const page = new DisplayPasswordPoliciesAdministrationPage(context, props);
 
       await waitForTrue(() => Boolean(page.sourceChangingBanner));
@@ -331,7 +331,7 @@ describe("DisplayPasswordPoliciesAdministration", () => {
       const currentSettings = defaultPasswordPoliciesDto({source: 'db'});
 
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.password-policies.get-admin-settings", () => currentSettings);
+      props.context.port.addRequestListener("cipherguard.password-policies.get-admin-settings", () => currentSettings);
       const page = new DisplayPasswordPoliciesAdministrationPage(context, props);
 
       await waitFor(() => {});
@@ -344,7 +344,7 @@ describe("DisplayPasswordPoliciesAdministration", () => {
       const currentSettings = defaultPasswordPoliciesDto({source: 'default'});
 
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.password-policies.get-admin-settings", () => currentSettings);
+      props.context.port.addRequestListener("cipherguard.password-policies.get-admin-settings", () => currentSettings);
       const page = new DisplayPasswordPoliciesAdministrationPage(context, props);
 
       await waitFor(() => {});
@@ -362,7 +362,7 @@ describe("DisplayPasswordPoliciesAdministration", () => {
         source: null
       });
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.password-policies.get-admin-settings", () => settingsDto);
+      props.context.port.addRequestListener("cipherguard.password-policies.get-admin-settings", () => settingsDto);
       page = new DisplayPasswordPoliciesAdministrationPage(context, props);
       await waitForTrue(() => Boolean(page.settingsSource));
 
@@ -377,7 +377,7 @@ describe("DisplayPasswordPoliciesAdministration", () => {
         source: 'db'
       });
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.password-policies.get-admin-settings", () => settingsDto);
+      props.context.port.addRequestListener("cipherguard.password-policies.get-admin-settings", () => settingsDto);
       page = new DisplayPasswordPoliciesAdministrationPage(context, props);
       await waitForTrue(() => Boolean(page.settingsSource?.textContent?.includes('database')));
 
@@ -392,7 +392,7 @@ describe("DisplayPasswordPoliciesAdministration", () => {
         source: 'env'
       });
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.password-policies.get-admin-settings", () => settingsDto);
+      props.context.port.addRequestListener("cipherguard.password-policies.get-admin-settings", () => settingsDto);
       page = new DisplayPasswordPoliciesAdministrationPage(context, props);
       await waitForTrue(() => Boolean(page.settingsSource?.textContent?.includes('environment variables')));
 

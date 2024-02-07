@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.2.0
@@ -20,8 +20,8 @@ import PasswordPoliciesViewModel from "../../../../shared/models/passwordPolicie
 import {withTranslation} from "react-i18next";
 import {MASKS, SecretGeneratorComplexity} from "../../../../shared/lib/SecretGenerator/SecretGeneratorComplexity";
 
-const PASSBOLT_MINIMAL_ENTROPY_REQUIREMENT = 80;
-const PASSBOLT_MINIMAL_ENTROPY_ADVISED = 112;
+const CIPHERGURD_MINIMAL_ENTROPY_REQUIREMENT = 80;
+const CIPHERGURD_MINIMAL_ENTROPY_ADVISED = 112;
 
 /**
  * The Administration Password policies Context
@@ -95,7 +95,7 @@ export class AdminPasswordPoliciesContextProvider extends React.Component {
    */
   async findSettings(callback = () => {}) {
     this.setProcessing(true);
-    const result = await this.props.context.port.request("passbolt.password-policies.get-admin-settings");
+    const result = await this.props.context.port.request("cipherguard.password-policies.get-admin-settings");
     const currentSettings = new PasswordPoliciesViewModel(result);
     //Init saved setting
     this.setState({currentSettings, settings: currentSettings}, callback);
@@ -188,7 +188,7 @@ export class AdminPasswordPoliciesContextProvider extends React.Component {
    * @returns {number};
    */
   getMinimalRequiredEntropy() {
-    return PASSBOLT_MINIMAL_ENTROPY_REQUIREMENT;
+    return CIPHERGURD_MINIMAL_ENTROPY_REQUIREMENT;
   }
 
   /**
@@ -196,7 +196,7 @@ export class AdminPasswordPoliciesContextProvider extends React.Component {
    * @returns {number};
    */
   getMinimalAdvisedEntropy() {
-    return PASSBOLT_MINIMAL_ENTROPY_ADVISED;
+    return CIPHERGURD_MINIMAL_ENTROPY_ADVISED;
   }
 
   /**
@@ -207,7 +207,7 @@ export class AdminPasswordPoliciesContextProvider extends React.Component {
     this.setProcessing(true);
     try {
       const newSettings = new PasswordPoliciesDto(this.state.settings);
-      const result = await this.props.context.port.request("passbolt.password-policies.save", newSettings);
+      const result = await this.props.context.port.request("cipherguard.password-policies.save", newSettings);
       const currentSettings = new PasswordPoliciesViewModel(result);
       this.setState({currentSettings, settings: currentSettings});
     } finally {

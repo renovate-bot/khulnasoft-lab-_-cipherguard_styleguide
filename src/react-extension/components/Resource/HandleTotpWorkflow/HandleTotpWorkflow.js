@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.4.0
@@ -254,7 +254,7 @@ export class HandleTotpWorkflow extends React.Component {
       this.props.context.resourceTypesSettings.DEFAULT_RESOURCE_TYPES_SLUGS.TOTP
     );
 
-    return this.props.context.port.request("passbolt.resources.create", resourceDto, secretDto);
+    return this.props.context.port.request("cipherguard.resources.create", resourceDto, secretDto);
   }
 
   /**
@@ -270,7 +270,7 @@ export class HandleTotpWorkflow extends React.Component {
       this.props.context.resourceTypesSettings.DEFAULT_RESOURCE_TYPES_SLUGS.TOTP
     );
 
-    return this.props.context.port.request("passbolt.resources.update", resourceDto, secretDto);
+    return this.props.context.port.request("cipherguard.resources.update", resourceDto, secretDto);
   }
 
   /**

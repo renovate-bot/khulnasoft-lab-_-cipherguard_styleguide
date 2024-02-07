@@ -152,13 +152,13 @@ const isParentHostname = function(parent, child) {
   if (lastIndexOf !== -1) {
     /*
      * The resource hostname has to be the last part of the given hostname.
-     * It will prevent an attacker to use a hostname such as www.cipherguard.khulnasoft.com.attacker.com, and make passbolt
+     * It will prevent an attacker to use a hostname such as www.cipherguard.khulnasoft.com.attacker.com, and make cipherguard
      * recognize it as cipherguard.khulnasoft.com.
      */
     if (lastIndexOf + parent.length === child.length) {
       /*
        * Whatever is found before the resource hostname in the hostname has to be a subdomain or nan.
-       * It will prevent an attacker to use a hostname such as www.attacher-cipherguard.khulnasoft.com, and make passbolt
+       * It will prevent an attacker to use a hostname such as www.attacher-cipherguard.khulnasoft.com, and make cipherguard
        * recognize it as cipherguard.khulnasoft.com.
        */
       if (child[lastIndexOf - 1] === undefined || child[lastIndexOf - 1] === '.') {

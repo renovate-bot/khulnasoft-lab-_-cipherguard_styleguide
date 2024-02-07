@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -123,7 +123,7 @@ class DisplayUserDetailsAccountRecovery extends React.Component {
    * @returns {Promise<void>}
    */
   async findUserRequests() {
-    const unsortedUserRequests = await this.props.context.port.request('passbolt.account-recovery.get-user-requests', this.selectedUser.id);
+    const unsortedUserRequests = await this.props.context.port.request('cipherguard.account-recovery.get-user-requests', this.selectedUser.id);
     const userRequests = unsortedUserRequests.sort((a, b) => new Date(b.created) - new Date(a.created));
     this.setState({userRequests});
   }

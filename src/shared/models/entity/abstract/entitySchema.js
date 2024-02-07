@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -183,14 +183,14 @@ class EntitySchema {
         EntitySchema.validatePropTypeString(propName, prop, propSchema);
         break;
         /*
-         * Note on 'array' - unchecked as not in use beyond array of objects in passbolt
+         * Note on 'array' - unchecked as not in use beyond array of objects in cipherguard
          * Currently it must be done manually when bootstrapping collections
          * example: foldersCollection, permissionsCollection, etc.
          *
          * Note on 'object' - we do not check if property of type 'object' validate (or array of objects, see above)
          * Currently it must be done manually in the entities when bootstrapping associations
          *
-         * Note on 'integer' and 'number' - Min / max supported, not needed in passbolt
+         * Note on 'integer' and 'number' - Min / max supported, not needed in cipherguard
          */
       case 'integer':
       case 'number':
@@ -438,7 +438,7 @@ class EntitySchema {
          */
 
       /*
-       * Not in json-schema but needed by passbolt
+       * Not in json-schema but needed by cipherguard
        * cowboy style section 🤠
        */
       case 'x-url':

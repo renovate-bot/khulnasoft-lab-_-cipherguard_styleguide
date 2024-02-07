@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.0.0
@@ -40,7 +40,7 @@ export default class SiteSettings {
    * @returns {void}
    */
   sanitizeEmailValidateRegex(dto) {
-    const emailValidateRegex = dto?.passbolt?.email?.validate?.regex;
+    const emailValidateRegex = dto?.cipherguard?.email?.validate?.regex;
 
     if (
       !emailValidateRegex
@@ -50,7 +50,7 @@ export default class SiteSettings {
       return;
     }
 
-    dto.passbolt.email.validate.regex = emailValidateRegex
+    dto.cipherguard.email.validate.regex = emailValidateRegex
       .trim()
       .replace(/^\/+/, '') // Trim starting slash
       .replace(/\/+$/, '');   // Trim trailing slash
@@ -63,7 +63,7 @@ export default class SiteSettings {
    */
   canIUse(name) {
     let result = false;
-    const configPath = `passbolt.plugins.${name}`;
+    const configPath = `cipherguard.plugins.${name}`;
     const pluginSettings = getPropValue(this.settings, configPath) || null;
 
     /*
@@ -89,7 +89,7 @@ export default class SiteSettings {
    * @returns {object|null}
    */
   getPluginSettings(name) {
-    const configPath = `passbolt.plugins.${name}`;
+    const configPath = `cipherguard.plugins.${name}`;
     return getPropValue(this.settings, configPath);
   }
 
@@ -117,7 +117,7 @@ export default class SiteSettings {
    * @returns {string|null}
    */
   getServerTimezone() {
-    return getPropValue(this.settings, "passbolt.app.server_timezone");
+    return getPropValue(this.settings, "cipherguard.app.server_timezone");
   }
 
   /**
@@ -125,7 +125,7 @@ export default class SiteSettings {
    * @returns {string|boolean}
    */
   get termsLink() {
-    const termsLink = getPropValue(this.settings, "passbolt.legal.terms.url");
+    const termsLink = getPropValue(this.settings, "cipherguard.legal.terms.url");
     if (termsLink) {
       return sanitizeUrl(termsLink);
     }
@@ -137,7 +137,7 @@ export default class SiteSettings {
    * @returns {string|boolean}
    */
   get privacyLink() {
-    const privacyLink = getPropValue(this.settings, "passbolt.legal.privacy_policy.url");
+    const privacyLink = getPropValue(this.settings, "cipherguard.legal.privacy_policy.url");
     if (privacyLink) {
       return sanitizeUrl(privacyLink);
     }
@@ -149,7 +149,7 @@ export default class SiteSettings {
    * @returns {boolean}
    */
   get registrationPublic() {
-    const registrationPublic = getPropValue(this.settings, "passbolt.registration.public");
+    const registrationPublic = getPropValue(this.settings, "cipherguard.registration.public");
     return registrationPublic === true;
   }
 
@@ -200,7 +200,7 @@ export default class SiteSettings {
    * @returns {object}
    */
   get supportedLocales() {
-    const supportedLocales = getPropValue(this.settings, "passbolt.plugins.locale.options");
+    const supportedLocales = getPropValue(this.settings, "cipherguard.plugins.locale.options");
     return supportedLocales || SiteSettings.DEFAULT_SUPPORTED_LOCALES;
   }
 
@@ -209,7 +209,7 @@ export default class SiteSettings {
    * @return {*}
    */
   get generatorConfiguration() {
-    return getPropValue(this.settings, "passbolt.plugins.generator.configuration");
+    return getPropValue(this.settings, "cipherguard.plugins.generator.configuration");
   }
 
   /**
@@ -217,7 +217,7 @@ export default class SiteSettings {
    * @return {string|null}
    */
   get emailValidateRegex() {
-    return this.settings?.passbolt?.email?.validate?.regex || null;
+    return this.settings?.cipherguard?.email?.validate?.regex || null;
   }
 
   /**

@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -25,12 +25,12 @@ import siteSettingsFixture from "../../test/fixture/Settings/siteSettings";
  */
 export function defaultAuthenticationLoginAppContext(appContext = {}) {
   const port = new MockPort();
-  port.addRequestListener("passbolt.auth.verify-server-key", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.auth.get-server-key", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.auth.verify-passphrase", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.auth.login", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.auth.replace-server-key", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.auth.request-help-credentials-lost", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.auth.verify-server-key", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.auth.get-server-key", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.auth.verify-passphrase", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.auth.login", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.auth.replace-server-key", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.auth.request-help-credentials-lost", jest.fn(() => Promise.resolve()));
 
   const defaultAuthenticationLoginAppContext = {
     port: port,
@@ -46,7 +46,7 @@ export function defaultAuthenticationLoginAppContext(appContext = {}) {
  */
 export function defaultAuthenticationLoginAppContextWithAccountRecoveryDisabled(appContext = {}) {
   const siteSettingsWithAccountRecoveryDisabled = JSON.parse(JSON.stringify(siteSettingsFixture));
-  siteSettingsWithAccountRecoveryDisabled.passbolt.plugins.accountRecovery.enabled = false;
+  siteSettingsWithAccountRecoveryDisabled.cipherguard.plugins.accountRecovery.enabled = false;
   return defaultAuthenticationLoginAppContext({
     siteSettings: new SiteSettings(siteSettingsWithAccountRecoveryDisabled),
     ...appContext,
@@ -81,9 +81,9 @@ export function defaultProps(props) {
  * @returns {object}
  */
 export function withServerKeyChanged(props) {
-  props.context.port.addRequestListener("passbolt.auth.verify-server-key", jest.fn(() => Promise.reject(new ServerKeyChangedError())));
+  props.context.port.addRequestListener("cipherguard.auth.verify-server-key", jest.fn(() => Promise.reject(new ServerKeyChangedError())));
   const serverKey = {fingerprint: "0c1d1761110d1e33c9006d1a5b1b332ed06426d3"};
-  props.context.port.addRequestListener("passbolt.auth.get-server-key", jest.fn(() => Promise.resolve(serverKey)));
+  props.context.port.addRequestListener("cipherguard.auth.get-server-key", jest.fn(() => Promise.resolve(serverKey)));
 
   return props;
 }

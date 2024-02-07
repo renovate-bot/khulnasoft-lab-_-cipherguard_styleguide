@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -22,16 +22,16 @@ import MockPort from "../../test/mock/MockPort";
  */
 export function defaultAuthenticationSetupAppContext(appContext) {
   const port = new MockPort();
-  port.addRequestListener("passbolt.setup.start", jest.fn(() => ({locale: "fr-FR"})));
-  port.addRequestListener("passbolt.setup.is-first-install", jest.fn(() => Promise.resolve(false)));
-  port.addRequestListener("passbolt.setup.generate-key", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.setup.download-recovery-kit", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.setup.import-key", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.setup.verify-passphrase", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.setup.set-account-recovery-user-setting", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.setup.set-security-token", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.setup.complete", jest.fn(() => Promise.resolve()));
-  port.addRequestListener("passbolt.setup.sign-in", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.setup.start", jest.fn(() => ({locale: "fr-FR"})));
+  port.addRequestListener("cipherguard.setup.is-first-install", jest.fn(() => Promise.resolve(false)));
+  port.addRequestListener("cipherguard.setup.generate-key", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.setup.download-recovery-kit", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.setup.import-key", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.setup.verify-passphrase", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.setup.set-account-recovery-user-setting", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.setup.set-security-token", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.setup.complete", jest.fn(() => Promise.resolve()));
+  port.addRequestListener("cipherguard.setup.sign-in", jest.fn(() => Promise.resolve()));
   port._port = {
     onDisconnect: {
       addListener: jest.fn()
@@ -65,6 +65,6 @@ export function withAccountRecoveryEnabled(props) {
   const accountRecoveryOrganizationPolicy = {
     policy: "opt-in"
   };
-  props.context.port.addRequestListener("passbolt.setup.get-account-recovery-organization-policy", () => Promise.resolve(accountRecoveryOrganizationPolicy));
+  props.context.port.addRequestListener("cipherguard.setup.get-account-recovery-organization-policy", () => Promise.resolve(accountRecoveryOrganizationPolicy));
   return props;
 }

@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.3.0
@@ -122,7 +122,7 @@ class InFormCallToActionField {
   async createCallToActionIframe() {
     // IMPORTANT: Calculate position before inserting iframe in document to avoid issue
     const {top, left} = this.calculateFieldPosition();
-    const portId = await port.request("passbolt.port.generate-id", "InFormCallToAction");
+    const portId = await port.request("cipherguard.port.generate-id", "InFormCallToAction");
     const iframe = document.createElement('iframe');
     document.body.appendChild(iframe);
     const browserExtensionUrl = browser.runtime.getURL("/");
@@ -134,7 +134,7 @@ class InFormCallToActionField {
     iframe.style.width = '18px';
     iframe.style.height = '18px';
     iframe.style.zIndex = "123456";  // For you Yahoo with love
-    iframe.contentWindow.location = `${browserExtensionUrl}webAccessibleResources/passbolt-iframe-in-form-call-to-action.html?passbolt=${portId}`;
+    iframe.contentWindow.location = `${browserExtensionUrl}webAccessibleResources/cipherguard-iframe-in-form-call-to-action.html?cipherguard=${portId}`;
     return iframe;
   }
 
@@ -247,7 +247,7 @@ class InFormCallToActionField {
       const identifierToMatch = this.iframeId;
       if (iframe.id === identifierToMatch) {
         iframe.parentNode.removeChild(iframe);
-        port.emit("passbolt.port.disconnect", "InFormCallToAction");
+        port.emit("cipherguard.port.disconnect", "InFormCallToAction");
       }
     });
   }

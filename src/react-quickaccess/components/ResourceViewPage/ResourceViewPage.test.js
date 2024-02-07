@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2023 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2023 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2023 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2023 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.1.0
@@ -130,7 +130,7 @@ describe("ResourceViewPage", () => {
 
       await page.click(page.password);
 
-      expect(props.context.port.request).toHaveBeenCalledWith('passbolt.secret.decrypt', props.context.storage.local.get(["resources"]).resources[0].id);
+      expect(props.context.port.request).toHaveBeenCalledWith('cipherguard.secret.decrypt', props.context.storage.local.get(["resources"]).resources[0].id);
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith('secret-decrypted');
     });
 
@@ -143,7 +143,7 @@ describe("ResourceViewPage", () => {
 
       await page.click(page.copyPasswordButton);
 
-      expect(props.context.port.request).toHaveBeenCalledWith('passbolt.secret.decrypt', props.context.storage.local.get(["resources"]).resources[0].id);
+      expect(props.context.port.request).toHaveBeenCalledWith('cipherguard.secret.decrypt', props.context.storage.local.get(["resources"]).resources[0].id);
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith('secret-decrypted');
     });
 
@@ -172,7 +172,7 @@ describe("ResourceViewPage", () => {
       await page.click(page.totp);
       const code = TotpCodeGeneratorService.generate(totp);
 
-      expect(props.context.port.request).toHaveBeenCalledWith('passbolt.secret.decrypt', props.context.storage.local.get(["resources"]).resources[0].id);
+      expect(props.context.port.request).toHaveBeenCalledWith('cipherguard.secret.decrypt', props.context.storage.local.get(["resources"]).resources[0].id);
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith(code);
     });
 
@@ -187,7 +187,7 @@ describe("ResourceViewPage", () => {
       await page.click(page.copyTotpButton);
       const code = TotpCodeGeneratorService.generate(totp);
 
-      expect(props.context.port.request).toHaveBeenCalledWith('passbolt.secret.decrypt', props.context.storage.local.get(["resources"]).resources[0].id);
+      expect(props.context.port.request).toHaveBeenCalledWith('cipherguard.secret.decrypt', props.context.storage.local.get(["resources"]).resources[0].id);
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith(code);
     });
 

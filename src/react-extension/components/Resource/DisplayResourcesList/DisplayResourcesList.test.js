@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -222,7 +222,7 @@ describe("Display Resources", () => {
       jest.spyOn(props.context.port, 'request').mockImplementationOnce(() => {});
       await page.resource(2).selectFavorite();
       await waitFor(() => {
-        expect(props.context.port.request).toHaveBeenCalledWith('passbolt.favorite.add', props.resourceWorkspaceContext.filteredResources[1].id);
+        expect(props.context.port.request).toHaveBeenCalledWith('cipherguard.favorite.add', props.resourceWorkspaceContext.filteredResources[1].id);
         expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalled();
       });
     });
@@ -232,7 +232,7 @@ describe("Display Resources", () => {
       jest.spyOn(props.context.port, 'request').mockImplementationOnce(() => {});
       await page.resource(1).selectFavorite();
       await waitFor(() => {
-        expect(props.context.port.request).toHaveBeenCalledWith('passbolt.favorite.delete', props.resourceWorkspaceContext.filteredResources[0].id);
+        expect(props.context.port.request).toHaveBeenCalledWith('cipherguard.favorite.delete', props.resourceWorkspaceContext.filteredResources[0].id);
         expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalled();
       });
     });
@@ -261,14 +261,14 @@ describe("Display Resources", () => {
       jest.spyOn(props.context.port, 'request').mockImplementationOnce(() => ({password: 'secret-password'}));
       jest.spyOn(ActionFeedbackContext._currentValue, 'displaySuccess').mockImplementation(() => {});
       await page.resource(1).selectPassword();
-      expect(props.context.port.request).toHaveBeenCalledWith('passbolt.secret.decrypt', props.resourceWorkspaceContext.filteredResources[0].id);
+      expect(props.context.port.request).toHaveBeenCalledWith('cipherguard.secret.decrypt', props.resourceWorkspaceContext.filteredResources[0].id);
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith('secret-password');
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalled();
 
       jest.spyOn(props.context.port, 'request').mockImplementationOnce(() => ({password: 'secret-password', description: "", totp: totp}));
       await page.resource(4).selectTotp();
       const code = TotpCodeGeneratorService.generate(totp);
-      expect(props.context.port.request).toHaveBeenCalledWith('passbolt.secret.decrypt', props.resourceWorkspaceContext.filteredResources[3].id);
+      expect(props.context.port.request).toHaveBeenCalledWith('cipherguard.secret.decrypt', props.resourceWorkspaceContext.filteredResources[3].id);
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith(code);
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalled();
     });
@@ -297,14 +297,14 @@ describe("Display Resources", () => {
       jest.spyOn(ActionFeedbackContext._currentValue, 'displaySuccess').mockImplementationOnce(() => {});
       await page.resource(1).selectViewPassword();
       expect(page.resource(1).password).toBe('secret-password');
-      expect(props.context.port.request).toHaveBeenCalledWith('passbolt.secret.decrypt', props.resourceWorkspaceContext.filteredResources[0].id);
+      expect(props.context.port.request).toHaveBeenCalledWith('cipherguard.secret.decrypt', props.resourceWorkspaceContext.filteredResources[0].id);
       await page.resource(1).selectViewPassword();
       expect(page.resource(1).password).toBe('Copy password to clipboard');
 
       jest.spyOn(props.context.port, 'request').mockImplementationOnce(() => ({password: 'secret-password', description: "", totp: totp}));
       await page.resource(4).selectViewTotp();
       const code = TotpCodeGeneratorService.generate(totp);
-      expect(props.context.port.request).toHaveBeenCalledWith('passbolt.secret.decrypt', props.resourceWorkspaceContext.filteredResources[3].id);
+      expect(props.context.port.request).toHaveBeenCalledWith('cipherguard.secret.decrypt', props.resourceWorkspaceContext.filteredResources[3].id);
       expect(page.resource(4).totp.replaceAll(/\s+/g, "")).toBe(code);
       await page.resource(4).selectViewTotp();
       expect(page.resource(4).totp).toBe('Copy TOTP to clipboard');

@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -65,7 +65,7 @@ describe("ImportResources", () => {
       const extension = 'csv';
       const options = {credentials: {password: null, keyFile: null}, folders: false, tags: false};
 
-      expect(props.context.port.request).toHaveBeenCalledWith("passbolt.import-resources.import-file", extension, base64Content, options);
+      expect(props.context.port.request).toHaveBeenCalledWith("cipherguard.import-resources.import-file", extension, base64Content, options);
       expect(props.resourceWorkspaceContext.onResourceFileImportResult).toHaveBeenCalled();
       expect(props.resourceWorkspaceContext.onResourceFileToImport).toHaveBeenCalled();
       expect(props.dialogContext.open).toHaveBeenCalledWith(ImportResourcesResult);
@@ -197,7 +197,7 @@ describe("ImportResources", () => {
       expect(page.importFolder).not.toBeNull();
       expect(page.importFolder.checked).toBeTruthy();
       expect(props.context.port.request).toHaveBeenCalledWith(
-        "passbolt.import-resources.import-file",
+        "cipherguard.import-resources.import-file",
         expect.any(String),
         expect.any(String),
         expect.objectContaining({
@@ -221,7 +221,7 @@ describe("ImportResources", () => {
       expect(page.importFolder).not.toBeNull();
       expect(page.importFolder.checked).toBeFalsy();
       expect(props.context.port.request).toHaveBeenCalledWith(
-        "passbolt.import-resources.import-file",
+        "cipherguard.import-resources.import-file",
         expect.any(String),
         expect.any(String),
         expect.objectContaining({
@@ -249,7 +249,7 @@ describe("ImportResources", () => {
 
       expect(page.importFolder).toBeNull();
       expect(props.context.port.request).toHaveBeenCalledWith(
-        "passbolt.import-resources.import-file",
+        "cipherguard.import-resources.import-file",
         expect.any(String),
         expect.any(String),
         expect.objectContaining({
@@ -270,7 +270,7 @@ describe("ImportResources", () => {
 
       expect(page.importFolder).toBeNull();
       expect(props.context.port.request).toHaveBeenCalledWith(
-        "passbolt.import-resources.import-file",
+        "cipherguard.import-resources.import-file",
         expect.any(String),
         expect.any(String),
         expect.objectContaining({
@@ -295,7 +295,7 @@ describe("ImportResources", () => {
       expect(page.importTag).not.toBeNull();
       expect(page.importTag.checked).toBeTruthy();
       expect(props.context.port.request).toHaveBeenCalledWith(
-        "passbolt.import-resources.import-file",
+        "cipherguard.import-resources.import-file",
         expect.any(String),
         expect.any(String),
         expect.objectContaining({
@@ -319,7 +319,7 @@ describe("ImportResources", () => {
       expect(page.importTag).not.toBeNull();
       expect(page.importTag.checked).toBeFalsy();
       expect(props.context.port.request).toHaveBeenCalledWith(
-        "passbolt.import-resources.import-file",
+        "cipherguard.import-resources.import-file",
         expect.any(String),
         expect.any(String),
         expect.objectContaining({
@@ -347,7 +347,7 @@ describe("ImportResources", () => {
 
       expect(page.importTag).toBeNull();
       expect(props.context.port.request).toHaveBeenCalledWith(
-        "passbolt.import-resources.import-file",
+        "cipherguard.import-resources.import-file",
         expect.any(String),
         expect.any(String),
         expect.objectContaining({
@@ -368,7 +368,7 @@ describe("ImportResources", () => {
 
       expect(page.importTag).toBeNull();
       expect(props.context.port.request).toHaveBeenCalledWith(
-        "passbolt.import-resources.import-file",
+        "cipherguard.import-resources.import-file",
         expect.any(String),
         expect.any(String),
         expect.objectContaining({

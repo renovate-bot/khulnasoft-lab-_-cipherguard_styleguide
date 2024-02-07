@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.1.0
@@ -372,7 +372,7 @@ class ChangeUserSecurityToken extends Component {
               <h3><Trans>Why is this token needed?</Trans></h3>
               <p>
                 <Trans>This security token will be displayed when your passphrase is requested,
-                  so you can verify quickly the form is coming from passbolt.</Trans>&nbsp;
+                  so you can verify quickly the form is coming from cipherguard.</Trans>&nbsp;
                 <Trans>This will help protect you from <a href="https://en.wikipedia.org/wiki/Phishing" target="_blank" rel="noopener noreferrer">
                 phishing attacks</a>.</Trans>
               </p>

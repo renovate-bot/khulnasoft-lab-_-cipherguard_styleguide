@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.9.0
@@ -58,19 +58,19 @@ describe("TestSsoSettingsDialog", () => {
       });
 
       let ssoLoginResolve = null;
-      props.context.port.addRequestListener('passbolt.sso.dry-run', async configurationId => {
+      props.context.port.addRequestListener('cipherguard.sso.dry-run', async configurationId => {
         expect(configurationId).toBe(expectedConfigurationId);
         return new Promise(resolve => {
           ssoLoginResolve = resolve;
         });
       });
 
-      props.context.port.addRequestListener("passbolt.sso.activate-settings", async(configurationId, ssoToken) => {
+      props.context.port.addRequestListener("cipherguard.sso.activate-settings", async(configurationId, ssoToken) => {
         expect(configurationId).toBe(expectedConfigurationId);
         expect(ssoToken).toBe(expectedSsoToken);
       });
 
-      props.context.port.addRequestListener("passbolt.sso.generate-sso-kit", providerId => {
+      props.context.port.addRequestListener("cipherguard.sso.generate-sso-kit", providerId => {
         expect(providerId).toBe(expectedProviderId);
       });
 
@@ -113,7 +113,7 @@ describe("TestSsoSettingsDialog", () => {
         provider: SsoProviders.find(provider => provider.id === "azure")
       });
 
-      props.context.port.addRequestListener('passbolt.sso.dry-run', async() => {
+      props.context.port.addRequestListener('cipherguard.sso.dry-run', async() => {
         throw expectedError;
       });
 
@@ -137,8 +137,8 @@ describe("TestSsoSettingsDialog", () => {
         provider: SsoProviders.find(provider => provider.id === "azure")
       });
 
-      props.context.port.addRequestListener('passbolt.sso.dry-run', async() => uuid());
-      props.context.port.addRequestListener("passbolt.sso.activate-settings", async() => {
+      props.context.port.addRequestListener('cipherguard.sso.dry-run', async() => uuid());
+      props.context.port.addRequestListener("cipherguard.sso.activate-settings", async() => {
         throw expectedError;
       });
 
@@ -174,7 +174,7 @@ describe("TestSsoSettingsDialog", () => {
         provider: SsoProviders.find(provider => provider.id === "azure")
       });
 
-      props.context.port.addRequestListener('passbolt.sso.dry-run', async() => {
+      props.context.port.addRequestListener('cipherguard.sso.dry-run', async() => {
         throw expectedError;
       });
 

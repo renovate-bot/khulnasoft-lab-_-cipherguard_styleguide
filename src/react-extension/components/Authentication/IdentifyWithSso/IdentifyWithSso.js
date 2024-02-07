@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.11.0
@@ -142,7 +142,7 @@ class IdentifyWithSso extends Component {
     return (
       <div className="enter-username">
         <h1><Trans>Welcome back!</Trans></h1>
-        <p><Trans>Your browser is not configured to work with this passbolt instance.</Trans> <Trans>Please authenticate with the Single Sign-On provider to continue.</Trans></p>
+        <p><Trans>Your browser is not configured to work with this cipherguard instance.</Trans> <Trans>Please authenticate with the Single Sign-On provider to continue.</Trans></p>
         <div className="sso-login-form form-actions">
           <button type="button" className={`sso-login-button ${processingClassName} ${ssoProvider.id}`} onClick={this.handleSsoRecoverClick} disabled={isDisabled} >
             <span className="provider-logo">

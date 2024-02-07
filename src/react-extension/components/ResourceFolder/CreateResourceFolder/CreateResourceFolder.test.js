@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -36,7 +36,7 @@ describe("Create Folder", () => {
   describe('As LU I should create a folder', () => {
     it('As System I should send a create request', async() => {
       expect.assertions(1);
-      const expectedParameters =  ["passbolt.folders.create", {folder_parent_id: props.folderParentId, name: "My super folder"}];
+      const expectedParameters =  ["cipherguard.folders.create", {folder_parent_id: props.folderParentId, name: "My super folder"}];
       jest.spyOn(props.context.port, 'request').mockImplementationOnce(() => ({id: 'some folder id'}));
       await page.create({name: 'My super folder'});
       expect(props.context.port.request).toHaveBeenCalledWith(...expectedParameters);

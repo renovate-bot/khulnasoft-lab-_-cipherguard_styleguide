@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.0.0
@@ -33,7 +33,7 @@ describe("Login", () => {
     it(`As AN I should be able to enter my secret key passphrase, scenario: ${JSON.stringify(_props)}`, async() => {
       expect.assertions(2);
       const props = defaultProps(_props);
-      props.context.port.addRequestListener('passbolt.remember-me.get-user-latest-choice', async() => false);
+      props.context.port.addRequestListener('cipherguard.remember-me.get-user-latest-choice', async() => false);
 
       const page = new LoginPage(props);
 
@@ -49,7 +49,7 @@ describe("Login", () => {
     it(`As AN I should be able to remember my passphrase if the feature is disabled, scenario: ${JSON.stringify(_props)}`, async() => {
       expect.assertions(2);
       const props = defaultProps({..._props, canRememberMe: false});
-      props.context.port.addRequestListener('passbolt.remember-me.get-user-latest-choice', async() => false);
+      props.context.port.addRequestListener('cipherguard.remember-me.get-user-latest-choice', async() => false);
 
       const page = new LoginPage(props);
 
@@ -65,7 +65,7 @@ describe("Login", () => {
     it(`As AN I should be able to remember my passphrase if the feature is enabled, scenario: ${JSON.stringify(_props)}`, async() => {
       expect.assertions(2);
       const props = defaultProps({..._props, canRememberMe: true});
-      props.context.port.addRequestListener('passbolt.remember-me.get-user-latest-choice', async() => false);
+      props.context.port.addRequestListener('cipherguard.remember-me.get-user-latest-choice', async() => false);
 
       const page = new LoginPage(props);
 
@@ -94,7 +94,7 @@ describe("Login", () => {
       let checkResolve = null;
       const onSignIn = jest.fn(() => new Promise(resolve => checkResolve = resolve));
       const props = defaultProps({..._props, onSignIn});
-      props.context.port.addRequestListener('passbolt.remember-me.get-user-latest-choice', async() => false);
+      props.context.port.addRequestListener('cipherguard.remember-me.get-user-latest-choice', async() => false);
       const page = new LoginPage(props);
 
       await waitFor(() => {});
@@ -114,7 +114,7 @@ describe("Login", () => {
       let checkResolve = null;
       const onSignIn = jest.fn(() => new Promise(resolve => checkResolve = resolve));
       const props = defaultProps({..._props, onSignIn});
-      props.context.port.addRequestListener('passbolt.remember-me.get-user-latest-choice', async() => false);
+      props.context.port.addRequestListener('cipherguard.remember-me.get-user-latest-choice', async() => false);
       const page = new LoginPage(props);
 
       await waitFor(() => {});
@@ -196,7 +196,7 @@ describe("Login", () => {
     });
   });
 
-  describe("As a registered user I can use the SSO feature to sign in to passbolt", () => {
+  describe("As a registered user I can use the SSO feature to sign in to cipherguard", () => {
     it('As AN I cannot see the SSO login button if I do not have an SSO kit set on my browser profile', async() => {
       expect.assertions(1);
       const props = defaultProps({

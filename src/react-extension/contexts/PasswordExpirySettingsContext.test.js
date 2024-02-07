@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.4.0
@@ -24,13 +24,13 @@ beforeEach(() => {
 
 describe("PasswordExpirySettingsContext", () => {
   describe('::findSettings', () => {
-    it('should not call for passbolt.password-expiry.find if the feature flag is disabled', async() => {
+    it('should not call for cipherguard.password-expiry.find if the feature flag is disabled', async() => {
       expect.assertions(1);
 
       const props = defaultProps();
       props.context.siteSettings.canIUse = () => false;
 
-      props.context.port.addRequestListener('passbolt.password-expiry.find', () => {
+      props.context.port.addRequestListener('cipherguard.password-expiry.find', () => {
         throw new Error("Shouldn't not be called");
       });
 
@@ -41,13 +41,13 @@ describe("PasswordExpirySettingsContext", () => {
       expect(context.getSettings()).toStrictEqual(null);
     });
 
-    it('should call for passbolt.password-expiry.find to retrieve the settings', async() => {
+    it('should call for cipherguard.password-expiry.find to retrieve the settings', async() => {
       expect.assertions(1);
 
       const expectedSettings = defaultPasswordExpirySettingsEntityDto();
 
       const props = defaultProps();
-      props.context.port.addRequestListener('passbolt.password-expiry.find', () => expectedSettings);
+      props.context.port.addRequestListener('cipherguard.password-expiry.find', () => expectedSettings);
 
       const context = new PasswordExpirySettingsContextProvider(props);
       mockState(context);
@@ -56,14 +56,14 @@ describe("PasswordExpirySettingsContext", () => {
       expect(context.getSettings()).toStrictEqual(expectedSettings);
     });
 
-    it('should not called twice passbolt.password-expiry.find', async() => {
+    it('should not called twice cipherguard.password-expiry.find', async() => {
       expect.assertions(2);
 
       const expectedSettings = defaultPasswordExpirySettingsEntityDto();
 
       let callCount = 0;
       const props = defaultProps();
-      props.context.port.addRequestListener('passbolt.password-expiry.find', () => {
+      props.context.port.addRequestListener('cipherguard.password-expiry.find', () => {
         callCount++;
         return expectedSettings;
       });
@@ -118,7 +118,7 @@ describe("PasswordExpirySettingsContext", () => {
       });
 
       const props = defaultProps();
-      props.context.port.addRequestListener('passbolt.password-expiry.find', () => expectedSettings);
+      props.context.port.addRequestListener('cipherguard.password-expiry.find', () => expectedSettings);
 
       const context = new PasswordExpirySettingsContextProvider(props);
       mockState(context);
@@ -137,7 +137,7 @@ describe("PasswordExpirySettingsContext", () => {
       });
 
       const props = defaultProps();
-      props.context.port.addRequestListener('passbolt.password-expiry.find', () => expectedSettings);
+      props.context.port.addRequestListener('cipherguard.password-expiry.find', () => expectedSettings);
 
       const context = new PasswordExpirySettingsContextProvider(props);
       mockState(context);

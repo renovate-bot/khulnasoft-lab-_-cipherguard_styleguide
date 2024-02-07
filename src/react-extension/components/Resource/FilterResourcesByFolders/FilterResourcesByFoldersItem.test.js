@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -90,7 +90,7 @@ describe("As LU I should see each folders", () => {
       await page.filterResourcesByFoldersItem.onDropFolder(3);
       expect(props.dragContext.onDragStart).toHaveBeenCalled();
       expect(props.dragContext.onDragEnd).toHaveBeenCalled();
-      expect(appContext.port.request).toHaveBeenCalledWith("passbolt.folders.open-move-confirmation-dialog", {folders: ["3ed65efd-7c41-5906-9c02-71e2d95951dc"], resources: [], folderParentId: foldersMock[1].id});
+      expect(appContext.port.request).toHaveBeenCalledWith("cipherguard.folders.open-move-confirmation-dialog", {folders: ["3ed65efd-7c41-5906-9c02-71e2d95951dc"], resources: [], folderParentId: foldersMock[1].id});
     });
 
     it('As LU I should be able to close folder to hide the child folders', async() => {

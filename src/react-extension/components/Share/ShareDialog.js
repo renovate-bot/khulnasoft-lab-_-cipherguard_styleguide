@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2019 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2019 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2019 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2019 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -51,10 +51,10 @@ class ShareDialog extends Component {
    */
   async componentDidMount() {
     if (this.props.context.shareDialogProps.resourcesIds) {
-      this.resources = await this.props.context.port.request('passbolt.share.get-resources', this.props.context.shareDialogProps.resourcesIds);
+      this.resources = await this.props.context.port.request('cipherguard.share.get-resources', this.props.context.shareDialogProps.resourcesIds);
     }
     if (this.props.context.shareDialogProps.foldersIds) {
-      this.folders = await this.props.context.port.request('passbolt.share.get-folders', this.props.context.shareDialogProps.foldersIds);
+      this.folders = await this.props.context.port.request('cipherguard.share.get-folders', this.props.context.shareDialogProps.foldersIds);
     }
 
     this.shareChanges = new ShareChanges(this.resources, this.folders);
@@ -257,11 +257,11 @@ class ShareDialog extends Component {
       throw new Error(this.translate("Multi resource and folder share is not implemented."));
     }
     if (this.props.context.shareDialogProps.resourcesIds) {
-      await this.props.context.port.request("passbolt.share.resources.save", this.resources, this.shareChanges.getResourcesChanges());
+      await this.props.context.port.request("cipherguard.share.resources.save", this.resources, this.shareChanges.getResourcesChanges());
       return;
     }
     if (this.props.context.shareDialogProps.foldersIds) {
-      await this.props.context.port.request("passbolt.share.folders.save", this.folders, this.shareChanges.getFoldersChanges());
+      await this.props.context.port.request("cipherguard.share.folders.save", this.folders, this.shareChanges.getFoldersChanges());
     }
   }
 
@@ -333,7 +333,7 @@ class ShareDialog extends Component {
    * @returns {Promise<object>}
    */
   async getFingerprintForUser(userId) {
-    const keyInfo = await this.props.context.port.request('passbolt.keyring.get-public-key-info-by-user', userId);
+    const keyInfo = await this.props.context.port.request('cipherguard.keyring.get-public-key-info-by-user', userId);
     return keyInfo.fingerprint;
   }
 

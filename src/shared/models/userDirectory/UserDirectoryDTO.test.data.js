@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2023 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2023 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2023 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2023 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https=//www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.0.0
@@ -40,10 +40,10 @@ export const mockedData = {
   users_parent_group: undefined,
   domains: {
     org_domain: {
-      base_dn: "DC=passbolt,DC=local",
+      base_dn: "DC=cipherguard,DC=local",
       connection_type: "plain",
       directory_type: "ad",
-      domain_name: "passbolt.local",
+      domain_name: "cipherguard.local",
       password: "password",
       port: 389,
       hosts: ["127.0.0.1"],

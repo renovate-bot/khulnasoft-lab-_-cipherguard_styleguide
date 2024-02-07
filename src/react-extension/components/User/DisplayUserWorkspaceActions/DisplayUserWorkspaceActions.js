@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -144,7 +144,7 @@ class DisplayUserWorkspaceActions extends React.Component {
    */
   async handleDeleteClickEvent() {
     try {
-      await this.props.context.port.request("passbolt.users.delete-dry-run", this.selectedUser.id);
+      await this.props.context.port.request("cipherguard.users.delete-dry-run", this.selectedUser.id);
       this.displayDeleteUserDialog();
     } catch (error) {
       if (error.name === "DeleteDryRunError") {
@@ -353,7 +353,7 @@ class DisplayUserWorkspaceActions extends React.Component {
    * Resend an invite to the given user
    */
   resendInvite() {
-    this.props.context.port.request('passbolt.users.resend-invite', this.selectedUser.username)
+    this.props.context.port.request('cipherguard.users.resend-invite', this.selectedUser.username)
       .then(this.onResendInviteSuccess.bind(this))
       .catch(this.onResendInviteFailure.bind(this));
   }

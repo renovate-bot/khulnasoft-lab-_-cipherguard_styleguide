@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.0.0
@@ -17,9 +17,9 @@ import {withAppContext} from "../../../../shared/context/AppContext/AppContext";
 import PropTypes from "prop-types";
 import {Trans, withTranslation} from "react-i18next";
 
-const CHROME_STORE_BROWSER_EXTENSION_URL = "https://chrome.google.com/webstore/detail/passbolt-extension/didegimhafipceonhjepacocaffmoppf";
-const FIREFOX_STORE_BROWSER_EXTENSION_URL = "https://addons.mozilla.org/firefox/addon/passbolt";
-const EDGE_STORE_BROWSER_EXTENSION_URL = "https://microsoftedge.microsoft.com/addons/detail/passbolt-extension/ljeppgjhohmhpbdhjjjbiflabdgfkhpo";
+const CHROME_STORE_BROWSER_EXTENSION_URL = "https://chrome.google.com/webstore/detail/cipherguard-extension/didegimhafipceonhjepacocaffmoppf";
+const FIREFOX_STORE_BROWSER_EXTENSION_URL = "https://addons.mozilla.org/firefox/addon/cipherguard";
+const EDGE_STORE_BROWSER_EXTENSION_URL = "https://microsoftedge.microsoft.com/addons/detail/cipherguard-extension/ljeppgjhohmhpbdhjjjbiflabdgfkhpo";
 
 class InstallExtension extends Component {
   constructor(props) {

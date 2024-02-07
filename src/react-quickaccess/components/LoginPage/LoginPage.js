@@ -55,7 +55,7 @@ class LoginPage extends React.Component {
    * @returns {Promise<void>}
    */
   async initDefaultRememberMeChoice() {
-    const defaultRememberMeChoice = await this.props.context.port.request('passbolt.remember-me.get-user-latest-choice');
+    const defaultRememberMeChoice = await this.props.context.port.request('cipherguard.remember-me.get-user-latest-choice');
     if (defaultRememberMeChoice !== this.state.rememberMe) {
       this.setState({rememberMe: defaultRememberMeChoice});
     }
@@ -86,14 +86,14 @@ class LoginPage extends React.Component {
 
   async login() {
     let passphrase = this.passphraseInputRef.current.value;
-    await this.props.context.port.request("passbolt.auth.login", passphrase, this.state.rememberMe);
+    await this.props.context.port.request("cipherguard.auth.login", passphrase, this.state.rememberMe);
     passphrase = null;
     this.passphraseInputRef.current.value = null;
     await this.handleLoginSuccess();
   }
 
   async handleLoginSuccess() {
-    const isMfaRequired = await this.props.context.port.request("passbolt.auth.is-mfa-required");
+    const isMfaRequired = await this.props.context.port.request("cipherguard.auth.is-mfa-required");
     if (!isMfaRequired) {
       this.props.loginSuccessCallback();
       this.props.history.push("/webAccessibleResources/quickaccess/home");

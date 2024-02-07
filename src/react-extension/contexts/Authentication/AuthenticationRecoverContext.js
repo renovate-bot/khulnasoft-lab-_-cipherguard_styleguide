@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -140,14 +140,14 @@ export class AuthenticationRecoverContextProvider extends React.Component {
    * @returns {Promise<void>}
    */
   async initialize() {
-    await this.props.context.port.request('passbolt.recover.start');
-    const userPassphrasePolicies = await this.props.context.port.request('passbolt.recover.get-user-passphrase-policies');
+    await this.props.context.port.request('cipherguard.recover.start');
+    const userPassphrasePolicies = await this.props.context.port.request('cipherguard.recover.get-user-passphrase-policies');
     // The user locale is retrieved by the recover start, update the application locale
     await this.props.context.initLocale();
 
-    const isLostPassphraseCase = await this.props.context.port.request('passbolt.recover.lost-passphrase-case');
+    const isLostPassphraseCase = await this.props.context.port.request('cipherguard.recover.lost-passphrase-case');
     if (isLostPassphraseCase) {
-      const hasUserEnrolledToAccountRecovery = await this.props.context.port.request('passbolt.recover.has-user-enabled-account-recovery');
+      const hasUserEnrolledToAccountRecovery = await this.props.context.port.request('cipherguard.recover.has-user-enabled-account-recovery');
       const state = hasUserEnrolledToAccountRecovery
         ? AuthenticationRecoverWorkflowStates.GENERATE_ACCOUNT_RECOVERY_GPG_KEY
         : AuthenticationRecoverWorkflowStates.HELP_CREDENTIALS_LOST;
@@ -155,7 +155,7 @@ export class AuthenticationRecoverContextProvider extends React.Component {
       return;
     }
 
-    const isFirstInstall = await this.props.context.port.request('passbolt.recover.first-install');
+    const isFirstInstall = await this.props.context.port.request('cipherguard.recover.first-install');
     const isChromeBrowser = detectBrowserName() === BROWSER_NAMES.CHROME;
 
     const state = isFirstInstall && isChromeBrowser
@@ -191,7 +191,7 @@ export class AuthenticationRecoverContextProvider extends React.Component {
    */
   async importGpgKey(armoredKey) {
     try {
-      await this.props.context.port.request("passbolt.recover.import-key", armoredKey);
+      await this.props.context.port.request("cipherguard.recover.import-key", armoredKey);
       await this.setState({state: AuthenticationRecoverWorkflowStates.VALIDATE_PASSPHRASE});
     } catch (error) {
       if (error.name === "GpgKeyError") {
@@ -212,7 +212,7 @@ export class AuthenticationRecoverContextProvider extends React.Component {
    */
   async checkPassphrase(passphrase, rememberMe = false) {
     try {
-      await this.props.context.port.request("passbolt.recover.verify-passphrase", passphrase);
+      await this.props.context.port.request("cipherguard.recover.verify-passphrase", passphrase);
       this.setState({
         state: AuthenticationRecoverWorkflowStates.CHOOSE_SECURITY_TOKEN,
         rememberMe: rememberMe
@@ -233,11 +233,11 @@ export class AuthenticationRecoverContextProvider extends React.Component {
    */
   async chooseSecurityToken(securityTokenDto) {
     try {
-      await this.props.context.port.request("passbolt.recover.set-security-token", securityTokenDto);
+      await this.props.context.port.request("cipherguard.recover.set-security-token", securityTokenDto);
       this.setState({state: AuthenticationRecoverWorkflowStates.COMPLETING_RECOVER});
-      await this.props.context.port.request('passbolt.recover.complete');
+      await this.props.context.port.request('cipherguard.recover.complete');
       this.setState({state: AuthenticationRecoverWorkflowStates.SIGNING_IN});
-      await this.props.context.port.request("passbolt.recover.sign-in", this.state.rememberMe);
+      await this.props.context.port.request("cipherguard.recover.sign-in", this.state.rememberMe);
     } catch (error) {
       await this.setState({state: AuthenticationRecoverWorkflowStates.UNEXPECTED_ERROR, error: error});
     }
@@ -248,7 +248,7 @@ export class AuthenticationRecoverContextProvider extends React.Component {
    * @returns {Promise<void>}
    */
   async needHelpCredentialsLost() {
-    const hasUserAccountRecoveryEnabled = await this.props.context.port.request("passbolt.recover.has-user-enabled-account-recovery");
+    const hasUserAccountRecoveryEnabled = await this.props.context.port.request("cipherguard.recover.has-user-enabled-account-recovery");
     if (hasUserAccountRecoveryEnabled) {
       await this.setState({state: AuthenticationRecoverWorkflowStates.INITIATE_ACCOUNT_RECOVERY});
     } else {
@@ -270,7 +270,7 @@ export class AuthenticationRecoverContextProvider extends React.Component {
    */
   async requestHelpCredentialsLost() {
     try {
-      await this.props.context.port.request('passbolt.recover.request-help-credentials-lost');
+      await this.props.context.port.request('cipherguard.recover.request-help-credentials-lost');
       await this.setState({state: AuthenticationRecoverWorkflowStates.CHECK_MAILBOX});
     } catch (error) {
       await this.setState({state: AuthenticationRecoverWorkflowStates.UNEXPECTED_ERROR, error: error});
@@ -285,7 +285,7 @@ export class AuthenticationRecoverContextProvider extends React.Component {
   async generateAccountRecoveryGpgKey(passphrase) {
     const generateKeyDto = {passphrase};
     try {
-      await this.props.context.port.request('passbolt.recover.generate-account-recovery-request-key', generateKeyDto);
+      await this.props.context.port.request('cipherguard.recover.generate-account-recovery-request-key', generateKeyDto);
       await this.setState({state: AuthenticationRecoverWorkflowStates.CHOOSE_ACCOUNT_RECOVERY_SECURITY_TOKEN});
     } catch (error) {
       await this.setState({state: AuthenticationRecoverWorkflowStates.UNEXPECTED_ERROR, error: error});
@@ -299,9 +299,9 @@ export class AuthenticationRecoverContextProvider extends React.Component {
    */
   async chooseAccountRecoverySecurityToken(securityTokenDto) {
     try {
-      await this.props.context.port.request('passbolt.recover.set-security-token', securityTokenDto);
+      await this.props.context.port.request('cipherguard.recover.set-security-token', securityTokenDto);
       this.setState({state: AuthenticationRecoverWorkflowStates.REQUESTING_ACCOUNT_RECOVERY});
-      await this.props.context.port.request('passbolt.recover.initiate-account-recovery-request');
+      await this.props.context.port.request('cipherguard.recover.initiate-account-recovery-request');
       this.setState({state: AuthenticationRecoverWorkflowStates.CHECK_ACCOUNT_RECOVERY_EMAIL});
     } catch (error) {
       await this.setState({state: AuthenticationRecoverWorkflowStates.UNEXPECTED_ERROR, error: error});
@@ -313,7 +313,7 @@ export class AuthenticationRecoverContextProvider extends React.Component {
    * @param {string} key the private to check in its armored form
    */
   async validatePrivateKey(key) {
-    await this.props.context.port.request('passbolt.recover.validate-private-key', key);
+    await this.props.context.port.request('cipherguard.recover.validate-private-key', key);
   }
 
   /**
@@ -322,7 +322,7 @@ export class AuthenticationRecoverContextProvider extends React.Component {
    * @returns {Promise<boolean>}
    */
   async hasKeyExpirationDate(armoredKey) {
-    const keyInfo = await this.props.context.port.request('passbolt.keyring.get-key-info', armoredKey);
+    const keyInfo = await this.props.context.port.request('cipherguard.keyring.get-key-info', armoredKey);
     return keyInfo.expires && keyInfo.expires !== 'Infinity';
   }
 

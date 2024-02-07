@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -25,7 +25,7 @@ beforeEach(() => {
   enableFetchMocks();
 });
 
-//@todo: put in a mock lib like it is done in passbolt-browser-extension
+//@todo: put in a mock lib like it is done in cipherguard-browser-extension
 const mockApiResponseError = (status, errorMessage, body = {}) => Promise.resolve({
   status: status,
   body: JSON.stringify({
@@ -50,7 +50,7 @@ describe("Unit testing apiClient with mocked fetch", () => {
     }
   });
 
-  const url = 'https://test.cipherguard.khulnasoft.com/passbolt-unit-test';
+  const url = 'https://test.cipherguard.khulnasoft.com/cipherguard-unit-test';
   const resourceName = 'fake-resource';
   const options = (new ApiClientOptions())
     .setBaseUrl(url)
@@ -614,30 +614,30 @@ describe("Unit testing apiClient with mocked fetch", () => {
   });
 
   each([
-    {baseUrl: "http://local.passbolt.dev", resourceName: "/resource", expected: "http://local.passbolt.dev/resource"},
-    {baseUrl: "http://local.passbolt.dev/", resourceName: "/resource", expected: "http://local.passbolt.dev/resource"},
-    {baseUrl: "http://local.passbolt.dev", resourceName: "resource", expected: "http://local.passbolt.dev/resource"},
-    {baseUrl: "http://local.passbolt.dev/", resourceName: "resource", expected: "http://local.passbolt.dev/resource"},
-    {baseUrl: "http://local.passbolt.dev", resourceName: "/resource/other", expected: "http://local.passbolt.dev/resource/other"},
-    {baseUrl: "http://local.passbolt.dev/", resourceName: "/resource/other", expected: "http://local.passbolt.dev/resource/other"},
-    {baseUrl: "http://local.passbolt.dev", resourceName: "resource/other", expected: "http://local.passbolt.dev/resource/other"},
-    {baseUrl: "http://local.passbolt.dev/", resourceName: "resource/other", expected: "http://local.passbolt.dev/resource/other"},
-    {baseUrl: "http://local.passbolt.dev", resourceName: "/resource/other/", expected: "http://local.passbolt.dev/resource/other"},
-    {baseUrl: "http://local.passbolt.dev/", resourceName: "/resource/other/", expected: "http://local.passbolt.dev/resource/other"},
-    {baseUrl: "http://local.passbolt.dev", resourceName: "resource/other/", expected: "http://local.passbolt.dev/resource/other"},
-    {baseUrl: "http://local.passbolt.dev/", resourceName: "resource/other/", expected: "http://local.passbolt.dev/resource/other"},
-    {baseUrl: "http://local.passbolt.dev/subfolder", resourceName: "/resource", expected: "http://local.passbolt.dev/subfolder/resource"},
-    {baseUrl: "http://local.passbolt.dev/subfolder/", resourceName: "/resource", expected: "http://local.passbolt.dev/subfolder/resource"},
-    {baseUrl: "http://local.passbolt.dev/subfolder", resourceName: "resource", expected: "http://local.passbolt.dev/subfolder/resource"},
-    {baseUrl: "http://local.passbolt.dev/subfolder/", resourceName: "resource", expected: "http://local.passbolt.dev/subfolder/resource"},
-    {baseUrl: "http://local.passbolt.dev/subfolder", resourceName: "/resource/other", expected: "http://local.passbolt.dev/subfolder/resource/other"},
-    {baseUrl: "http://local.passbolt.dev/subfolder/", resourceName: "/resource/other", expected: "http://local.passbolt.dev/subfolder/resource/other"},
-    {baseUrl: "http://local.passbolt.dev/subfolder", resourceName: "resource/other", expected: "http://local.passbolt.dev/subfolder/resource/other"},
-    {baseUrl: "http://local.passbolt.dev/subfolder/", resourceName: "resource/other", expected: "http://local.passbolt.dev/subfolder/resource/other"},
-    {baseUrl: "http://local.passbolt.dev/subfolder", resourceName: "/resource/other/", expected: "http://local.passbolt.dev/subfolder/resource/other"},
-    {baseUrl: "http://local.passbolt.dev/subfolder/", resourceName: "/resource/other/", expected: "http://local.passbolt.dev/subfolder/resource/other"},
-    {baseUrl: "http://local.passbolt.dev/subfolder", resourceName: "resource/other/", expected: "http://local.passbolt.dev/subfolder/resource/other"},
-    {baseUrl: "http://local.passbolt.dev/subfolder/", resourceName: "resource/other/", expected: "http://local.passbolt.dev/subfolder/resource/other"},
+    {baseUrl: "http://local.cipherguard.dev", resourceName: "/resource", expected: "http://local.cipherguard.dev/resource"},
+    {baseUrl: "http://local.cipherguard.dev/", resourceName: "/resource", expected: "http://local.cipherguard.dev/resource"},
+    {baseUrl: "http://local.cipherguard.dev", resourceName: "resource", expected: "http://local.cipherguard.dev/resource"},
+    {baseUrl: "http://local.cipherguard.dev/", resourceName: "resource", expected: "http://local.cipherguard.dev/resource"},
+    {baseUrl: "http://local.cipherguard.dev", resourceName: "/resource/other", expected: "http://local.cipherguard.dev/resource/other"},
+    {baseUrl: "http://local.cipherguard.dev/", resourceName: "/resource/other", expected: "http://local.cipherguard.dev/resource/other"},
+    {baseUrl: "http://local.cipherguard.dev", resourceName: "resource/other", expected: "http://local.cipherguard.dev/resource/other"},
+    {baseUrl: "http://local.cipherguard.dev/", resourceName: "resource/other", expected: "http://local.cipherguard.dev/resource/other"},
+    {baseUrl: "http://local.cipherguard.dev", resourceName: "/resource/other/", expected: "http://local.cipherguard.dev/resource/other"},
+    {baseUrl: "http://local.cipherguard.dev/", resourceName: "/resource/other/", expected: "http://local.cipherguard.dev/resource/other"},
+    {baseUrl: "http://local.cipherguard.dev", resourceName: "resource/other/", expected: "http://local.cipherguard.dev/resource/other"},
+    {baseUrl: "http://local.cipherguard.dev/", resourceName: "resource/other/", expected: "http://local.cipherguard.dev/resource/other"},
+    {baseUrl: "http://local.cipherguard.dev/subfolder", resourceName: "/resource", expected: "http://local.cipherguard.dev/subfolder/resource"},
+    {baseUrl: "http://local.cipherguard.dev/subfolder/", resourceName: "/resource", expected: "http://local.cipherguard.dev/subfolder/resource"},
+    {baseUrl: "http://local.cipherguard.dev/subfolder", resourceName: "resource", expected: "http://local.cipherguard.dev/subfolder/resource"},
+    {baseUrl: "http://local.cipherguard.dev/subfolder/", resourceName: "resource", expected: "http://local.cipherguard.dev/subfolder/resource"},
+    {baseUrl: "http://local.cipherguard.dev/subfolder", resourceName: "/resource/other", expected: "http://local.cipherguard.dev/subfolder/resource/other"},
+    {baseUrl: "http://local.cipherguard.dev/subfolder/", resourceName: "/resource/other", expected: "http://local.cipherguard.dev/subfolder/resource/other"},
+    {baseUrl: "http://local.cipherguard.dev/subfolder", resourceName: "resource/other", expected: "http://local.cipherguard.dev/subfolder/resource/other"},
+    {baseUrl: "http://local.cipherguard.dev/subfolder/", resourceName: "resource/other", expected: "http://local.cipherguard.dev/subfolder/resource/other"},
+    {baseUrl: "http://local.cipherguard.dev/subfolder", resourceName: "/resource/other/", expected: "http://local.cipherguard.dev/subfolder/resource/other"},
+    {baseUrl: "http://local.cipherguard.dev/subfolder/", resourceName: "/resource/other/", expected: "http://local.cipherguard.dev/subfolder/resource/other"},
+    {baseUrl: "http://local.cipherguard.dev/subfolder", resourceName: "resource/other/", expected: "http://local.cipherguard.dev/subfolder/resource/other"},
+    {baseUrl: "http://local.cipherguard.dev/subfolder/", resourceName: "resource/other/", expected: "http://local.cipherguard.dev/subfolder/resource/other"},
   ]).describe("Should set a proper baseUrl with ending slashes in baseUrl and starting slash in resource name", scenario => {
     it(`with the URL: ${scenario.baseUrl}/${scenario.resourceName}`, async() => {
       expect.assertions(1);

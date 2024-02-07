@@ -21,6 +21,6 @@ module.exports = {
   "staticDirs": ['../src', {from: '../src', to: '/webAccessibleResources' }],
   "env": (config) => ({
     ...config,
-    ORIGIN_URL: 'https://passbolt.github.io/passbolt_styleguide',
+    ORIGIN_URL: 'https://khulnasoft.github.io/cipherguard_styleguide',
   }),
 }

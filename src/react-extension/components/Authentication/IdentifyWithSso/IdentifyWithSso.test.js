@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2023 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2023 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2023 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2023 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.12.0
@@ -44,7 +44,7 @@ describe("IdentifyWithSso", () => {
 
     it('As AN I want to be redirected to the setup or recover page after a successful login attempt', async() => {
       expect.assertions(3);
-      const expectedUrl = "https://www.passbolt.test";
+      const expectedUrl = "https://www.cipherguard.test";
       const popupUrl = "https://third-party.auth.com";
       const expectedToken = uuid();
       const location = window.location;

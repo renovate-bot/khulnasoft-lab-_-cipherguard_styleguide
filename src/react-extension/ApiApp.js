@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  */
@@ -47,7 +47,7 @@ import RbacContextProvider from "../shared/context/Rbac/RbacContext";
 import AdminRbacContextProvider from "./contexts/Administration/AdministrationRbacContext/AdministrationRbacContext";
 
 /**
- * The passbolt application served by the API.
+ * The cipherguard application served by the API.
  * Briefly it takes care of:
  * - The passwords workspace
  * - The users workspace

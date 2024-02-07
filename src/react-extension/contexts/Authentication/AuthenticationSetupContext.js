@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -136,10 +136,10 @@ export class AuthenticationSetupContextProvider extends React.Component {
    * @returns {Promise<void>}
    */
   async initialize() {
-    const isFirstInstall = await this.props.context.port.request('passbolt.setup.is-first-install');
+    const isFirstInstall = await this.props.context.port.request('cipherguard.setup.is-first-install');
     const isChromeBrowser = detectBrowserName() === BROWSER_NAMES.CHROME;
-    await this.props.context.port.request('passbolt.setup.start');
-    const userPassphrasePolicies = await this.props.context.port.request('passbolt.setup.get-user-passphrase-policies');
+    await this.props.context.port.request('cipherguard.setup.start');
+    const userPassphrasePolicies = await this.props.context.port.request('cipherguard.setup.get-user-passphrase-policies');
     // In case of error the background page should just disconnect the extension setup application.
     let state = AuthenticationSetupWorkflowStates.GENERATE_GPG_KEY;
     if (isFirstInstall && isChromeBrowser) {
@@ -172,7 +172,7 @@ export class AuthenticationSetupContextProvider extends React.Component {
   async generateGpgKey(passphrase) {
     const generateKeyDto = {passphrase};
     try {
-      const armoredKey = await this.props.context.port.request('passbolt.setup.generate-key', generateKeyDto);
+      const armoredKey = await this.props.context.port.request('cipherguard.setup.generate-key', generateKeyDto);
       await this.setState({
         state: AuthenticationSetupWorkflowStates.DOWNLOAD_RECOVERY_KIT,
         armored_key: armoredKey,
@@ -189,7 +189,7 @@ export class AuthenticationSetupContextProvider extends React.Component {
    */
   async downloadRecoveryKit() {
     try {
-      await this.props.context.port.request('passbolt.setup.download-recovery-kit');
+      await this.props.context.port.request('cipherguard.setup.download-recovery-kit');
     } catch (error) {
       this.setState({state: AuthenticationSetupWorkflowStates.UNEXPECTED_ERROR, error: error});
     }
@@ -201,7 +201,7 @@ export class AuthenticationSetupContextProvider extends React.Component {
    */
   async handleRecoveryKitDownloaded() {
     if (await this.isAccountRecoveryOrganizationPolicyEnabled()) {
-      const accountRecoveryOrganizationPolicy = await this.props.context.port.request('passbolt.setup.get-account-recovery-organization-policy');
+      const accountRecoveryOrganizationPolicy = await this.props.context.port.request('cipherguard.setup.get-account-recovery-organization-policy');
       await this.setState({
         state: AuthenticationSetupWorkflowStates.CHOOSE_ACCOUNT_RECOVERY_PREFERENCE,
         accountRecoveryOrganizationPolicy: accountRecoveryOrganizationPolicy
@@ -219,7 +219,7 @@ export class AuthenticationSetupContextProvider extends React.Component {
     if (!this.props.context.siteSettings.canIUse('accountRecovery')) {
       return false;
     }
-    const accountRecoveryOrganizationPolicy = await this.props.context.port.request('passbolt.setup.get-account-recovery-organization-policy');
+    const accountRecoveryOrganizationPolicy = await this.props.context.port.request('cipherguard.setup.get-account-recovery-organization-policy');
 
     return accountRecoveryOrganizationPolicy
       && accountRecoveryOrganizationPolicy?.policy !== 'disabled';
@@ -244,7 +244,7 @@ export class AuthenticationSetupContextProvider extends React.Component {
    */
   async importGpgKey(armoredKey) {
     try {
-      await this.props.context.port.request("passbolt.setup.import-key", armoredKey);
+      await this.props.context.port.request("cipherguard.setup.import-key", armoredKey);
       await this.setState({
         state: AuthenticationSetupWorkflowStates.VALIDATE_PASSPHRASE,
         gpgKeyGenerated: false,
@@ -268,12 +268,12 @@ export class AuthenticationSetupContextProvider extends React.Component {
    */
   async checkPassphrase(passphrase, rememberMe = false) {
     try {
-      await this.props.context.port.request("passbolt.setup.verify-passphrase", passphrase);
+      await this.props.context.port.request("cipherguard.setup.verify-passphrase", passphrase);
       this.setState({rememberMe});
 
       if (await this.isAccountRecoveryOrganizationPolicyEnabled()) {
         this.setState({
-          accountRecoveryOrganizationPolicy: await this.props.context.port.request('passbolt.setup.get-account-recovery-organization-policy'),
+          accountRecoveryOrganizationPolicy: await this.props.context.port.request('cipherguard.setup.get-account-recovery-organization-policy'),
           state: AuthenticationSetupWorkflowStates.CHOOSE_ACCOUNT_RECOVERY_PREFERENCE
         });
       } else {
@@ -295,7 +295,7 @@ export class AuthenticationSetupContextProvider extends React.Component {
    */
   async chooseAccountRecoveryPreference(status) {
     try {
-      await this.props.context.port.request('passbolt.setup.set-account-recovery-user-setting', status);
+      await this.props.context.port.request('cipherguard.setup.set-account-recovery-user-setting', status);
       await this.setState({state: AuthenticationSetupWorkflowStates.CHOOSE_SECURITY_TOKEN});
     } catch (error) {
       await this.setState({state: AuthenticationSetupWorkflowStates.UNEXPECTED_ERROR, error: error});
@@ -309,11 +309,11 @@ export class AuthenticationSetupContextProvider extends React.Component {
    */
   async chooseSecurityToken(securityTokenDto) {
     try {
-      await this.props.context.port.request("passbolt.setup.set-security-token", securityTokenDto);
+      await this.props.context.port.request("cipherguard.setup.set-security-token", securityTokenDto);
       this.setState({state: AuthenticationSetupWorkflowStates.COMPLETING_SETUP});
-      await this.props.context.port.request('passbolt.setup.complete');
+      await this.props.context.port.request('cipherguard.setup.complete');
       this.setState({state: AuthenticationSetupWorkflowStates.SIGNING_IN});
-      await this.props.context.port.request('passbolt.setup.sign-in', this.state.rememberMe);
+      await this.props.context.port.request('cipherguard.setup.sign-in', this.state.rememberMe);
     } catch (error) {
       await this.setState({state: AuthenticationSetupWorkflowStates.UNEXPECTED_ERROR, error: error});
     }
@@ -324,7 +324,7 @@ export class AuthenticationSetupContextProvider extends React.Component {
    * @param {string} key the private to check in its armored form
    */
   async validatePrivateKey(key) {
-    await this.props.context.port.request('passbolt.setup.validate-private-key', key);
+    await this.props.context.port.request('cipherguard.setup.validate-private-key', key);
   }
 
   /**

@@ -18,7 +18,7 @@ const tags = [{
   slug: 'apache'
 }];
 const mockedPort = new MockPort();
-mockedPort.addRequestListener("passbolt.tags.find-all", () => tags);
+mockedPort.addRequestListener("cipherguard.tags.find-all", () => tags);
 
 const context = {
   siteSettings: {

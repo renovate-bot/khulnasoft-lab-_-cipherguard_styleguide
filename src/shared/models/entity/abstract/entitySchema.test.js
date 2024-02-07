@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -190,13 +190,13 @@ describe("Entity schema isValidStringFormat", () => {
     expect(EntitySchema.isValidStringFormat('http://localhost', 'x-url')).toBe(true);
     expect(EntitySchema.isValidStringFormat('http://localhost:8080', 'x-url')).toBe(true);
 
-    expect(EntitySchema.isValidStringFormat('https://passbolt.test', 'x-url')).toBe(true);
-    expect(EntitySchema.isValidStringFormat('https://passbolt.test:8080', 'x-url')).toBe(true);
-    expect(EntitySchema.isValidStringFormat('https://www.passbolt.test', 'x-url')).toBe(true);
-    expect(EntitySchema.isValidStringFormat('https://www.passbolt.test:8080', 'x-url')).toBe(true);
+    expect(EntitySchema.isValidStringFormat('https://cipherguard.test', 'x-url')).toBe(true);
+    expect(EntitySchema.isValidStringFormat('https://cipherguard.test:8080', 'x-url')).toBe(true);
+    expect(EntitySchema.isValidStringFormat('https://www.cipherguard.test', 'x-url')).toBe(true);
+    expect(EntitySchema.isValidStringFormat('https://www.cipherguard.test:8080', 'x-url')).toBe(true);
 
-    expect(EntitySchema.isValidStringFormat('https://passbolt.test/img/test.png', 'x-url')).toBe(true);
-    expect(EntitySchema.isValidStringFormat('https://passbolt.test:8080/img/test.png', 'x-url')).toBe(true);
+    expect(EntitySchema.isValidStringFormat('https://cipherguard.test/img/test.png', 'x-url')).toBe(true);
+    expect(EntitySchema.isValidStringFormat('https://cipherguard.test:8080/img/test.png', 'x-url')).toBe(true);
 
     expect(EntitySchema.isValidStringFormat('https://192.168.1.1', 'x-url')).toBe(true);
     expect(EntitySchema.isValidStringFormat('http://192.168.1.1', 'x-url')).toBe(true);
@@ -206,7 +206,7 @@ describe("Entity schema isValidStringFormat", () => {
     expect(EntitySchema.isValidStringFormat('localhost', 'x-url')).toBe(true);
 
     expect(EntitySchema.isValidStringFormat('//localhost', 'x-url')).toBe(false);
-    expect(EntitySchema.isValidStringFormat('//www.passbolt.test', 'x-url')).toBe(false);
+    expect(EntitySchema.isValidStringFormat('//www.cipherguard.test', 'x-url')).toBe(false);
     expect(EntitySchema.isValidStringFormat('mailto://test@cipherguard.khulnasoft.com', 'x-url')).toBe(false);
     expect(EntitySchema.isValidStringFormat('tel://123456789', 'x-url')).toBe(false);
     expect(EntitySchema.isValidStringFormat('moz-extension://134c1a66-c6e3-1343-a5d4-63c511465c17/test.png', 'x-url')).toBe(false);

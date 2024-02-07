@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.2.0
@@ -74,7 +74,7 @@ export class AdministrationUserPassphrasePoliciesContextProvider extends React.C
   async findSettings() {
     this.setState({processing: true});
 
-    const result = await this.props.context.port.request("passbolt.user-passphrase-policies.find");
+    const result = await this.props.context.port.request("cipherguard.user-passphrase-policies.find");
     const settings = UserPassphrasePoliciesViewModel.fromEntityDto(result);
 
     //Init saved setting
@@ -136,7 +136,7 @@ export class AdministrationUserPassphrasePoliciesContextProvider extends React.C
 
     try {
       const settingsDto = this.state.settings.toEntityDto();
-      const result = await this.props.context.port.request("passbolt.user-passphrase-policies.save", settingsDto);
+      const result = await this.props.context.port.request("cipherguard.user-passphrase-policies.save", settingsDto);
       const settings = UserPassphrasePoliciesViewModel.fromEntityDto(result);
       this.setState({
         settings,

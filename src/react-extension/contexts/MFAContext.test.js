@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.10.0
@@ -88,8 +88,8 @@ describe("MFAContext", () => {
     it("should return false if settings are defined", async() => {
       expect.assertions(1);
       jest.spyOn(props.context.port, "request").mockImplementation(event => {
-        if (event === "passbolt.mfa-policy.get-policy") { return MfaMandatoryPolicy; }
-        if (event === "passbolt.mfa-policy.get-mfa-settings") { return noMfaUserDefinedWithoutTotp.settings; }
+        if (event === "cipherguard.mfa-policy.get-policy") { return MfaMandatoryPolicy; }
+        if (event === "cipherguard.mfa-policy.get-mfa-settings") { return noMfaUserDefinedWithoutTotp.settings; }
       });
 
       await mfaContextProvider.checkMfaChoiceRequired();
@@ -100,8 +100,8 @@ describe("MFAContext", () => {
     it("should return true if settings are not defined and organisation settings are defined", async() => {
       expect.assertions(1);
       jest.spyOn(props.context.port, "request").mockImplementation(event => {
-        if (event === "passbolt.mfa-policy.get-policy") { return MfaMandatoryPolicy; }
-        if (event === "passbolt.mfa-policy.get-mfa-settings") {
+        if (event === "cipherguard.mfa-policy.get-policy") { return MfaMandatoryPolicy; }
+        if (event === "cipherguard.mfa-policy.get-mfa-settings") {
           return noMfaUserDefinedWithTotp.settings;
         }
       });
@@ -114,8 +114,8 @@ describe("MFAContext", () => {
     it("should return false if settings are not defined and organisation settings are not defined", async() => {
       expect.assertions(1);
       jest.spyOn(props.context.port, "request").mockImplementation(event => {
-        if (event === "passbolt.mfa-policy.get-policy") { return MfaMandatoryPolicy; }
-        if (event === "passbolt.mfa-policy.get-mfa-settings") {
+        if (event === "cipherguard.mfa-policy.get-policy") { return MfaMandatoryPolicy; }
+        if (event === "cipherguard.mfa-policy.get-mfa-settings") {
           return noMfaUserDefinedWithoutTotp.settings;
         }
       });
@@ -128,8 +128,8 @@ describe("MFAContext", () => {
     it("should return false if settings are not defined and organisation settings are not defined", async() => {
       expect.assertions(1);
       jest.spyOn(props.context.port, "request").mockImplementation(event => {
-        if (event === "passbolt.mfa-policy.get-policy") { return MfaPolicyEnumerationTypes.MANDATORY; }
-        if (event === "passbolt.mfa-policy.get-mfa-settings") {
+        if (event === "cipherguard.mfa-policy.get-policy") { return MfaPolicyEnumerationTypes.MANDATORY; }
+        if (event === "cipherguard.mfa-policy.get-mfa-settings") {
           return noMfaUserDefinedWithoutTotp.settings;
         }
       });
@@ -193,7 +193,7 @@ describe("MFAContext", () => {
       await mfaContextProvider.removeProvider();
 
       expect(mfaContextProvider.isProcessing()).toBeFalsy();
-      expect(props.context.port.request).toHaveBeenCalledWith("passbolt.mfa-setup.remove-provider", {"provider": "totp"});
+      expect(props.context.port.request).toHaveBeenCalledWith("cipherguard.mfa-setup.remove-provider", {"provider": "totp"});
     });
   });
 

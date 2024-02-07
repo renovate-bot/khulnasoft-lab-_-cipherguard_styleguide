@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.2.0
@@ -52,13 +52,13 @@ describe("As LU I should be able to configure my account on my mobile phone", ()
        * await page.clickStart();
        *
        * let expectedData = context.user.id;
-       * let expectedParameters =  ['passbolt.keyring.get-public-key-info-by-user', expectedData];
+       * let expectedParameters =  ['cipherguard.keyring.get-public-key-info-by-user', expectedData];
        * expect(context.port.request).toHaveBeenCalledWith(...expectedParameters);
        */
 
       /*
        * expectedData = {folder_parent_id: "some folder parent id", name: "My super folder"};
-       * expectedParameters =  ['passbolt.mobile.transfer.create', expectedData];
+       * expectedParameters =  ['cipherguard.mobile.transfer.create', expectedData];
        * expect(context.port.request).toHaveBeenCalledWith(...expectedParameters);
        */
     });

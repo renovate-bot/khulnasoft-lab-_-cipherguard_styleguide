@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -32,7 +32,7 @@ export function defaultProps(props = {}) {
  * @param {Object} props The props to override
  * @returns {object}
  */
-export function passboltApiFetchErrorProps(props = {}) {
+export function cipherguardApiFetchErrorProps(props = {}) {
   const error = new CipherguardApiFetchError("Could not finalize API request", {
     body: {
       message: "The provided Gpg doesn't fit the minimal requirements.",
@@ -48,7 +48,7 @@ export function passboltApiFetchErrorProps(props = {}) {
  * @param {Object} props The props to override
  * @returns {object}
  */
-export function passboltEntityValidationErrorProps(props = {}) {
+export function cipherguardEntityValidationErrorProps(props = {}) {
   const error = new EntityValidationError("Could not validate Entity");
   error.addError("algorithm", "enum", "The algorithm value is not included in the supported list.");
   const defaultProps = {error};

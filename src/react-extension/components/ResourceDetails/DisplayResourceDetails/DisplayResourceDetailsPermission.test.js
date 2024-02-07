@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -64,7 +64,7 @@ describe("See permissions", () => {
       expect(page.displayPermissionList.name(1)).toBe('Ada Lovelace (ada@cipherguard.khulnasoft.com)');
       expect(page.displayPermissionList.name(2)).toBe('Admin User (admin@cipherguard.khulnasoft.com)');
       expect(page.displayPermissionList.name(3)).toBe('Marketing');
-      expect(context.port.request).toHaveBeenCalledWith("passbolt.resources.find-permissions", props.resourceWorkspaceContext.details.resource.id);
+      expect(context.port.request).toHaveBeenCalledWith("cipherguard.resources.find-permissions", props.resourceWorkspaceContext.details.resource.id);
     });
 
     it('I should be able to see each permission type', async() => {

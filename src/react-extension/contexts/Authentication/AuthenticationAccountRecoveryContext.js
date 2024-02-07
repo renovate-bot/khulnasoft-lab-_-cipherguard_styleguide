@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -118,7 +118,7 @@ export class AuthenticationAccountRecoveryContextProvider extends React.Componen
    */
   async verifyCanContinueAccountRecovery() {
     try {
-      await this.props.context.port.request("passbolt.account-recovery.continue");
+      await this.props.context.port.request("cipherguard.account-recovery.continue");
       return true;
     } catch (error) {
       // It shouldn't occur. For any errors at this stage, the background page will destroy the iframe an let the application served by the API take care of it.
@@ -133,7 +133,7 @@ export class AuthenticationAccountRecoveryContextProvider extends React.Componen
    */
   async goToValidatePassphrase() {
     try {
-      const account = await this.props.context.port.request("passbolt.account-recovery.get-account");
+      const account = await this.props.context.port.request("cipherguard.account-recovery.get-account");
       await this.setState({state: AuthenticationAccountRecoveryWorkflowStates.VERIFY_PASSPHRASE, account: account});
     } catch (error) {
       await this.handleUnexpectedError(error);
@@ -149,7 +149,7 @@ export class AuthenticationAccountRecoveryContextProvider extends React.Componen
    */
   async verifyPassphrase(passphrase) {
     try {
-      await this.props.context.port.request("passbolt.account-recovery.verify-passphrase", passphrase);
+      await this.props.context.port.request("cipherguard.account-recovery.verify-passphrase", passphrase);
     } catch (error) {
       if (error.name === "InvalidMasterPasswordError") {
         throw error;
@@ -167,7 +167,7 @@ export class AuthenticationAccountRecoveryContextProvider extends React.Componen
   async complete(passphrase, rememberMe = false) {
     await this.setState({state: AuthenticationAccountRecoveryWorkflowStates.RECOVERING_ACCOUNT});
     try {
-      await this.props.context.port.request("passbolt.account-recovery.recover-account", passphrase);
+      await this.props.context.port.request("cipherguard.account-recovery.recover-account", passphrase);
       this.passphrase = passphrase;
       this.rememberMe = rememberMe;
       this.setState({state: AuthenticationAccountRecoveryWorkflowStates.DOWNLOAD_RECOVERY_KIT});
@@ -182,7 +182,7 @@ export class AuthenticationAccountRecoveryContextProvider extends React.Componen
    */
   async downloadRecoveryKit() {
     try {
-      await this.props.context.port.request('passbolt.account-recovery.download-recovery-kit');
+      await this.props.context.port.request('cipherguard.account-recovery.download-recovery-kit');
     } catch (error) {
       this.setState({state: AuthenticationAccountRecoveryWorkflowStates.UNEXPECTED_ERROR, error: error});
     }
@@ -207,7 +207,7 @@ export class AuthenticationAccountRecoveryContextProvider extends React.Componen
   async signIn(passphrase, rememberMe = false) {
     this.setState({state: AuthenticationAccountRecoveryWorkflowStates.SIGNING_IN});
     try {
-      await this.props.context.port.request("passbolt.account-recovery.sign-in", passphrase, rememberMe);
+      await this.props.context.port.request("cipherguard.account-recovery.sign-in", passphrase, rememberMe);
     } catch (error) {
       await this.handleUnexpectedError(error);
     }
@@ -236,7 +236,7 @@ export class AuthenticationAccountRecoveryContextProvider extends React.Componen
    */
   async requestHelpCredentialsLost() {
     try {
-      await this.props.context.port.request('passbolt.account-recovery.request-help-credentials-lost');
+      await this.props.context.port.request('cipherguard.account-recovery.request-help-credentials-lost');
       await this.setState({state: AuthenticationAccountRecoveryWorkflowStates.CHECK_MAILBOX});
     } catch (error) {
       await this.setState({state: AuthenticationAccountRecoveryWorkflowStates.UNEXPECTED_ERROR, error: error});

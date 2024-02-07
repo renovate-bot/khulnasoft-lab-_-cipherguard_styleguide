@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.12.0
@@ -79,7 +79,7 @@ class ExtAuthenticationSetup extends Component {
    * Using SiteSettings
    */
   async getSiteSettings() {
-    const settings = await this.props.port.request("passbolt.organization-settings.get");
+    const settings = await this.props.port.request("cipherguard.organization-settings.get");
     const siteSettings = new SiteSettings(settings);
     this.setState({siteSettings});
   }
@@ -88,7 +88,7 @@ class ExtAuthenticationSetup extends Component {
    * Get extension version
    */
   async getExtensionVersion() {
-    const extensionVersion = await this.props.port.request('passbolt.addon.get-version');
+    const extensionVersion = await this.props.port.request('cipherguard.addon.get-version');
     this.setState({extensionVersion});
   }
 
@@ -96,7 +96,7 @@ class ExtAuthenticationSetup extends Component {
    * Init the locale
    */
   async initLocale() {
-    const {locale} = await this.props.port.request("passbolt.setup.get-and-init-locale");
+    const {locale} = await this.props.port.request("cipherguard.setup.get-and-init-locale");
     this.setState({locale});
   }
 
@@ -106,7 +106,7 @@ class ExtAuthenticationSetup extends Component {
    */
   async onUpdateLocaleRequested(locale) {
     const localeDto = {locale};
-    await this.props.port.request("passbolt.setup.update-locale", localeDto);
+    await this.props.port.request("cipherguard.setup.update-locale", localeDto);
     this.setState({locale});
   }
 

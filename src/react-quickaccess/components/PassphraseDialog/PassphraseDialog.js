@@ -62,7 +62,7 @@ class PassphraseDialog extends React.Component {
     }
 
     try {
-      await this.props.context.port.request('passbolt.keyring.private.checkpassphrase', this.state.passphrase);
+      await this.props.context.port.request('cipherguard.keyring.private.checkpassphrase', this.state.passphrase);
       this.handlePassphraseSuccess();
     } catch (error) {
       this.handlePassphraseError();

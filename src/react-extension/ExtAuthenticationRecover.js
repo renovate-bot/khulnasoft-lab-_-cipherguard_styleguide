@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.12.0
@@ -91,7 +91,7 @@ class ExtAuthenticationRecover extends Component {
    * Using SiteSettings
    */
   async getSiteSettings() {
-    const settings = await this.props.port.request("passbolt.organization-settings.get");
+    const settings = await this.props.port.request("cipherguard.organization-settings.get");
     const siteSettings = new SiteSettings(settings);
     const trustedDomain = siteSettings.url;
     this.setState({siteSettings, trustedDomain});
@@ -101,7 +101,7 @@ class ExtAuthenticationRecover extends Component {
    * Get extension version
    */
   async getExtensionVersion() {
-    const extensionVersion = await this.props.port.request('passbolt.addon.get-version');
+    const extensionVersion = await this.props.port.request('cipherguard.addon.get-version');
     this.setState({extensionVersion});
   }
 
@@ -109,7 +109,7 @@ class ExtAuthenticationRecover extends Component {
    * Init the locale
    */
   async initLocale() {
-    const {locale} = await this.props.port.request("passbolt.locale.get");
+    const {locale} = await this.props.port.request("cipherguard.locale.get");
     this.setState({locale});
   }
 
@@ -119,7 +119,7 @@ class ExtAuthenticationRecover extends Component {
    */
   async onUpdateLocaleRequested(locale) {
     const localeDto = {locale};
-    await this.props.port.request("passbolt.locale.update-user-locale", localeDto);
+    await this.props.port.request("cipherguard.locale.update-user-locale", localeDto);
     this.setState({locale});
   }
 

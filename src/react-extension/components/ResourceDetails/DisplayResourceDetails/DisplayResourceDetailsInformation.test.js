@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -144,7 +144,7 @@ describe("DisplayResourceDetailsInformation", () => {
       await page.displayInformationList.click(page.displayInformationList.password);
 
       expect.assertions(3);
-      expect(props.context.port.request).toHaveBeenCalledWith("passbolt.secret.decrypt", props.resourceWorkspaceContext.details.resource.id);
+      expect(props.context.port.request).toHaveBeenCalledWith("cipherguard.secret.decrypt", props.resourceWorkspaceContext.details.resource.id);
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith('secret-copy');
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalledWith("The secret has been copied to clipboard");
     });
@@ -169,7 +169,7 @@ describe("DisplayResourceDetailsInformation", () => {
       expect.assertions(3);
       await page.displayInformationList.click(page.displayInformationList.viewPassword);
       expect(page.displayInformationList.password.textContent).toBe('secret-copy');
-      expect(props.context.port.request).toHaveBeenCalledWith('passbolt.secret.decrypt', props.resourceWorkspaceContext.details.resource.id);
+      expect(props.context.port.request).toHaveBeenCalledWith('cipherguard.secret.decrypt', props.resourceWorkspaceContext.details.resource.id);
       await page.displayInformationList.click(page.displayInformationList.viewPassword);
       expect(page.displayInformationList.password.textContent).toBe('Copy password to clipboard');
     });

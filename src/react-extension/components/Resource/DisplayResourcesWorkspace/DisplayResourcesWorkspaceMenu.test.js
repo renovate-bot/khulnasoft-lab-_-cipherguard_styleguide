@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -124,7 +124,7 @@ describe("See Workspace Menu", () => {
 
       await page.displayMenu.clickOnMenu(page.displayMenu.copyMenu);
 
-      expect(context.port.request).toHaveBeenCalledWith('passbolt.secret.decrypt', propsOneResourceOwned.resourceWorkspaceContext.selectedResources[0].id);
+      expect(context.port.request).toHaveBeenCalledWith('cipherguard.secret.decrypt', propsOneResourceOwned.resourceWorkspaceContext.selectedResources[0].id);
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith('secret-password');
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalled();
     });
@@ -142,7 +142,7 @@ describe("See Workspace Menu", () => {
 
       await page.displayMenu.clickOnMenu(page.displayMenu.dropdownMenuSecret);
 
-      expect(context.port.request).toHaveBeenCalledWith('passbolt.secret.decrypt', propsOneResourceOwned.resourceWorkspaceContext.selectedResources[0].id);
+      expect(context.port.request).toHaveBeenCalledWith('cipherguard.secret.decrypt', propsOneResourceOwned.resourceWorkspaceContext.selectedResources[0].id);
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith('secret-password');
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalled();
     });
@@ -215,7 +215,7 @@ describe("See Workspace Menu", () => {
 
       await page.displayMenu.clickOnMenu(page.displayMenu.dropdownMenuTotp);
 
-      expect(context.port.request).toHaveBeenCalledWith('passbolt.secret.decrypt', propsOneResourceOwned.resourceWorkspaceContext.selectedResources[0].id);
+      expect(context.port.request).toHaveBeenCalledWith('cipherguard.secret.decrypt', propsOneResourceOwned.resourceWorkspaceContext.selectedResources[0].id);
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith(expect.stringMatching(/^[0-9]{6}/));
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalled();
     });

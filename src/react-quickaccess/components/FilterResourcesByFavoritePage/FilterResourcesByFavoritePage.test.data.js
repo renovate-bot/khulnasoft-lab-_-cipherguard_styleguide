@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.7.4
@@ -23,7 +23,7 @@ import resourcesFixture from "../../../react-extension/test/fixture/Resources/re
  */
 export function defaultProps(props = {}) {
   const port = new MockPort();
-  port.addRequestListener("passbolt.resources.find-all", () => new Promise(resolve => setTimeout(() => resolve([]), 4000)));
+  port.addRequestListener("cipherguard.resources.find-all", () => new Promise(resolve => setTimeout(() => resolve([]), 4000)));
   const defaultContext = {port};
 
   const defaultProps = {
@@ -41,7 +41,7 @@ export function defaultProps(props = {}) {
  */
 export function noResourcesProps(props) {
   const port = new MockPort();
-  port.addRequestListener("passbolt.resources.find-all", () => []);
+  port.addRequestListener("cipherguard.resources.find-all", () => []);
   const defaultContext = {port};
   const context = Object.assign(defaultContext, props?.context);
   return defaultProps({context});
@@ -54,7 +54,7 @@ export function noResourcesProps(props) {
  */
 export function withFilteredResourcesProps(props) {
   const port = new MockPort();
-  port.addRequestListener("passbolt.resources.find-all", () => resourcesFixture);
+  port.addRequestListener("cipherguard.resources.find-all", () => resourcesFixture);
   const defaultContext = {port};
   const context = Object.assign(defaultContext, props?.context);
   return defaultProps({context});

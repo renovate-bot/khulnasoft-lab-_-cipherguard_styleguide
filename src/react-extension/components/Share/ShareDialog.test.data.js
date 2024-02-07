@@ -1715,19 +1715,19 @@ export const autocompleteResult = [
 ];
 
 export const mockResultsResources = {
-  'passbolt.share.get-resources': resources,
-  'passbolt.keyring.get-public-key-info-by-user': gpgKey,
-  "passbolt.share.resources.save": true,
+  'cipherguard.share.get-resources': resources,
+  'cipherguard.keyring.get-public-key-info-by-user': gpgKey,
+  "cipherguard.share.resources.save": true,
 };
 
 export const mockResultsFolders = {
-  'passbolt.share.get-folders': folders,
-  'passbolt.keyring.get-public-key-info-by-user': gpgKey,
-  "passbolt.share.folders.save": true,
+  'cipherguard.share.get-folders': folders,
+  'cipherguard.keyring.get-public-key-info-by-user': gpgKey,
+  "cipherguard.share.folders.save": true,
 };
 
 export const mockResultsResourcesAndFolders = {
-  'passbolt.share.get-resources': resources,
-  'passbolt.share.get-folders': folders,
-  'passbolt.keyring.get-public-key-info-by-user': gpgKey,
+  'cipherguard.share.get-resources': resources,
+  'cipherguard.share.get-folders': folders,
+  'cipherguard.keyring.get-public-key-info-by-user': gpgKey,
 };

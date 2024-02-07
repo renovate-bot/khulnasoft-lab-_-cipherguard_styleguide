@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -64,7 +64,7 @@ describe("As Lu I should see the share dialog", () => {
 
     it('As LU I see a success toaster message after sharing resources to users and groups with success', async() => {
       expect.assertions(18);
-      expect(context.port.request).toHaveBeenCalledWith('passbolt.share.get-resources', shareDialogProps.resourcesIds);
+      expect(context.port.request).toHaveBeenCalledWith('cipherguard.share.get-resources', shareDialogProps.resourcesIds);
       expect(page.exists()).toBeTruthy();
       expect(page.title).toBe('Share 3 resources');
       expect(page.count).toBe(11);
@@ -107,7 +107,7 @@ describe("As Lu I should see the share dialog", () => {
         {"aco": "Resource", "aco_foreign_key": "690b6e40-f371-579c-b0c6-86e8ef383adc", "aro": "User", "aro_foreign_key": "d57c10f5-639d-5160-9c81-8a0c6c4ec856", "is_new": true, "type": 1},
         {"aco": "Resource", "aco_foreign_key": "ecf0ed85-3bfc-5f45-b11d-74e9a86aa313", "aro": "User", "aro_foreign_key": "d57c10f5-639d-5160-9c81-8a0c6c4ec856", "is_new": true, "type": 1}];
 
-      expect(context.port.request).toHaveBeenCalledWith("passbolt.share.resources.save", resources, permissionDto);
+      expect(context.port.request).toHaveBeenCalledWith("cipherguard.share.resources.save", resources, permissionDto);
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalledWith('The permissions have been changed successfully.');
       expect(props.onClose).toBeCalled();
     });
@@ -223,7 +223,7 @@ describe("As Lu I should see the share dialog", () => {
 
     it('As LU I see a success toaster message after sharing one resource to users and groups with success', async() => {
       expect.assertions(12);
-      expect(context.port.request).toHaveBeenCalledWith('passbolt.share.get-resources', shareDialogProps.resourcesIds);
+      expect(context.port.request).toHaveBeenCalledWith('cipherguard.share.get-resources', shareDialogProps.resourcesIds);
       expect(page.exists()).toBeTruthy();
       expect(page.title).toBe('Share resource');
       expect(page.subtitle).toBe('apache');
@@ -256,7 +256,7 @@ describe("As Lu I should see the share dialog", () => {
         {"aco": "Resource", "aco_foreign_key": "690b6e40-f371-579c-b0c6-86e8ef383adc", "aro": "User", "aro_foreign_key": "d57c10f5-639d-5160-9c81-8a0c6c4ec856", "is_new": true, "type": 1},
         {"aco": "Resource", "aco_foreign_key": "ecf0ed85-3bfc-5f45-b11d-74e9a86aa313", "aro": "User", "aro_foreign_key": "d57c10f5-639d-5160-9c81-8a0c6c4ec856", "is_new": true, "type": 1}];
 
-      expect(context.port.request).toHaveBeenCalledWith("passbolt.share.resources.save", resources, permissionDto);
+      expect(context.port.request).toHaveBeenCalledWith("cipherguard.share.resources.save", resources, permissionDto);
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalledWith('The permissions have been changed successfully.');
       expect(props.onClose).toBeCalled();
     });
@@ -278,7 +278,7 @@ describe("As Lu I should see the share dialog", () => {
 
     it('As LU I see a success toaster message after sharing one folder to users and groups with success', async() => {
       expect.assertions(12);
-      expect(context.port.request).toHaveBeenCalledWith('passbolt.share.get-folders', shareDialogProps.foldersIds);
+      expect(context.port.request).toHaveBeenCalledWith('cipherguard.share.get-folders', shareDialogProps.foldersIds);
       expect(page.exists()).toBeTruthy();
       expect(page.title).toBe('Share folder');
       expect(page.subtitle).toBe('apache');
@@ -311,7 +311,7 @@ describe("As Lu I should see the share dialog", () => {
 
       const permissionDto = [{"aco": "Folder", "aco_foreign_key": shareDialogProps.foldersIds[0], "aro": "User", "aro_foreign_key": "af5e1f70-a0ee-5b76-935b-c846f8a6a190", "is_new": true, "type": 1}];
 
-      expect(context.port.request).toHaveBeenCalledWith("passbolt.share.folders.save", folders, permissionDto);
+      expect(context.port.request).toHaveBeenCalledWith("cipherguard.share.folders.save", folders, permissionDto);
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalledWith('The permissions have been changed successfully.');
       expect(props.onClose).toBeCalled();
     });

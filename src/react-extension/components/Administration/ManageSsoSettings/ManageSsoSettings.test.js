@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.9.0
@@ -38,7 +38,7 @@ describe("ManageSsoSettings", () => {
     it('As a signed-in administrator on the administration workspace, I can see the SSO settings populated with the current settings: without settings', async() => {
       expect.assertions(3);
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.sso.get-current", async() => defaultSsoSettings());
+      props.context.port.addRequestListener("cipherguard.sso.get-current", async() => defaultSsoSettings());
 
       const page = new ManageSsoSettingsPage(props);
 
@@ -60,7 +60,7 @@ describe("ManageSsoSettings", () => {
       const settingsData = withAzureSsoSettings();
 
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.sso.get-current", async() => settingsData);
+      props.context.port.addRequestListener("cipherguard.sso.get-current", async() => settingsData);
 
       const exepectedRedirectUrl = `${props.context.userSettings.getTrustedDomain()}/sso/${settingsData.provider}/redirect`;
 
@@ -101,7 +101,7 @@ describe("ManageSsoSettings", () => {
       const settingsData = withGoogleSsoSettings();
 
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.sso.get-current", async() => settingsData);
+      props.context.port.addRequestListener("cipherguard.sso.get-current", async() => settingsData);
 
       const exepectedRedirectUrl = `${props.context.userSettings.getTrustedDomain()}/sso/${settingsData.provider}/redirect`;
 
@@ -135,7 +135,7 @@ describe("ManageSsoSettings", () => {
 
       const error = new Error("Something went wrong!");
       const props = defaultProps(mockDialogContext);
-      props.context.port.addRequestListener("passbolt.sso.get-current", async() => { throw error; });
+      props.context.port.addRequestListener("cipherguard.sso.get-current", async() => { throw error; });
 
       new ManageSsoSettingsPage(props);
 
@@ -154,8 +154,8 @@ describe("ManageSsoSettings", () => {
       const settingsData = withAzureSsoSettings();
 
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.sso.get-current", async() => settingsData);
-      props.context.port.addRequestListener("passbolt.sso.delete-settings", async settingsId => {
+      props.context.port.addRequestListener("cipherguard.sso.get-current", async() => settingsData);
+      props.context.port.addRequestListener("cipherguard.sso.delete-settings", async settingsId => {
         expect(settingsId).toStrictEqual(settingsData.id);
       });
 
@@ -186,7 +186,7 @@ describe("ManageSsoSettings", () => {
       expect.assertions(2);
       const settingsData = withAzureSsoSettings();
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.sso.get-current", async() => settingsData);
+      props.context.port.addRequestListener("cipherguard.sso.get-current", async() => settingsData);
 
       const page = new ManageSsoSettingsPage(props);
 
@@ -228,8 +228,8 @@ describe("ManageSsoSettings", () => {
       const promptValue = "none";
       const emailClaimValue = "upn";
 
-      props.context.port.addRequestListener("passbolt.sso.get-current", async() => settingsData);
-      props.context.port.addRequestListener("passbolt.sso.save-draft", async ssoSettings => {
+      props.context.port.addRequestListener("cipherguard.sso.get-current", async() => settingsData);
+      props.context.port.addRequestListener("cipherguard.sso.save-draft", async ssoSettings => {
         expect(ssoSettings).toStrictEqual({
           provider: settingsData.provider,
           data: {
@@ -281,8 +281,8 @@ describe("ManageSsoSettings", () => {
         google_client_secret: uuid(),
       };
 
-      props.context.port.addRequestListener("passbolt.sso.get-current", async() => settingsData);
-      props.context.port.addRequestListener("passbolt.sso.save-draft", async ssoSettings => {
+      props.context.port.addRequestListener("cipherguard.sso.get-current", async() => settingsData);
+      props.context.port.addRequestListener("cipherguard.sso.save-draft", async ssoSettings => {
         expect(ssoSettings).toStrictEqual({
           provider: settingsData.provider,
           data: {

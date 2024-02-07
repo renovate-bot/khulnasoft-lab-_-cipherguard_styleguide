@@ -45,7 +45,7 @@ const SEARCH_VISIBLE_ROUTES = [
   '/webAccessibleResources/quickaccess/resources/tag'
 ];
 
-const PASSBOLT_GETTING_STARTED_URL = "https://www.cipherguard.khulnasoft.com/start";
+const CIPHERGURD_GETTING_STARTED_URL = "https://www.cipherguard.khulnasoft.com/start";
 
 // Supported bootstrap features.
 export const BOOTSTRAP_FEATURE = {
@@ -106,7 +106,7 @@ class ExtQuickAccess extends React.Component {
    */
   async componentDidMount() {
     try {
-      this.state.port.on('passbolt.passphrase.request', this.handleBackgroundPageRequiresPassphraseEvent);
+      this.state.port.on('cipherguard.passphrase.request', this.handleBackgroundPageRequiresPassphraseEvent);
       this.handlePassphraseRequest();
       await this.checkPluginIsConfigured();
       await this.getUser();
@@ -204,21 +204,21 @@ class ExtQuickAccess extends React.Component {
   }
 
   async checkPluginIsConfigured() {
-    const isConfigured = await this.state.port.request('passbolt.addon.is-configured');
+    const isConfigured = await this.state.port.request('cipherguard.addon.is-configured');
     if (!isConfigured) {
-      browser.tabs.create({url: PASSBOLT_GETTING_STARTED_URL});
+      browser.tabs.create({url: CIPHERGURD_GETTING_STARTED_URL});
       window.close();
     }
   }
 
   async getUser() {
-    const storageData = await this.props.storage.local.get(["_passbolt_data"]);
-    const userSettings = new UserSettings(storageData._passbolt_data.config);
+    const storageData = await this.props.storage.local.get(["_cipherguard_data"]);
+    const userSettings = new UserSettings(storageData._cipherguard_data.config);
     this.setState({userSettings});
   }
 
   async getSiteSettings() {
-    const siteSettingsDto = await this.state.port.request('passbolt.organization-settings.get');
+    const siteSettingsDto = await this.state.port.request('cipherguard.organization-settings.get');
     const siteSettings = new SiteSettings(siteSettingsDto);
     this.setState({siteSettings});
   }
@@ -228,8 +228,8 @@ class ExtQuickAccess extends React.Component {
    */
   async getLoggedInUser() {
     const canIUseRbac = this.state.siteSettings.canIUse('rbacs');
-    const loggedInUser = await this.props.port.request("passbolt.users.find-logged-in-user");
-    const rbacsDto = canIUseRbac ? await this.props.port.request("passbolt.rbacs.find-me") : [];
+    const loggedInUser = await this.props.port.request("cipherguard.users.find-logged-in-user");
+    const rbacsDto = canIUseRbac ? await this.props.port.request("cipherguard.rbacs.find-me") : [];
     const rbacs = new RbacsCollection(rbacsDto);
     this.setState({loggedInUser, rbacs});
   }
@@ -239,13 +239,13 @@ class ExtQuickAccess extends React.Component {
    * Using ResourceTypesSettings
    */
   async getResourceTypes() {
-    const resourceTypes = await this.props.port.request("passbolt.resource-type.get-all");
+    const resourceTypes = await this.props.port.request("cipherguard.resource-type.get-all");
     const resourceTypesSettings = new ResourceTypesSettings(this.state.siteSettings, resourceTypes);
     this.setState({resourceTypesSettings});
   }
 
   async getLocale() {
-    const {locale} = await this.state.port.request("passbolt.locale.get");
+    const {locale} = await this.state.port.request("cipherguard.locale.get");
     this.setState({locale});
   }
 
@@ -253,13 +253,13 @@ class ExtQuickAccess extends React.Component {
    * Retrieve the authentication status.
    *
    * If the user is authenticated but the MFA challenge is required, close the quickaccess and redirect the user to
-   * the passbolt application.
+   * the cipherguard application.
    *
    * This function requires the user settings to be present in the component state.
    * @returns {Promise<void>}
    */
   async checkAuthStatus() {
-    const {isAuthenticated, isMfaRequired} = await this.state.port.request("passbolt.auth.check-status");
+    const {isAuthenticated, isMfaRequired} = await this.state.port.request("cipherguard.auth.check-status");
     if (isMfaRequired) {
       this.redirectToMfaAuthentication();
       return;

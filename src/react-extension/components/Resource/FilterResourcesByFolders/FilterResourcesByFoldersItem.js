@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -237,7 +237,7 @@ class FilterResourcesByFoldersItem extends React.Component {
     const folderParentId = this.props.folder.id;
     const isDroppingOnDraggedItem = this.draggedItems.folders.some(item => item.id === folderParentId);
     if (!isDroppingOnDraggedItem) {
-      this.props.context.port.request("passbolt.folders.open-move-confirmation-dialog", {folders, resources, folderParentId});
+      this.props.context.port.request("cipherguard.folders.open-move-confirmation-dialog", {folders, resources, folderParentId});
     }
 
     // The dragLeave event is not fired when a drop is happening. Cancel the state manually.

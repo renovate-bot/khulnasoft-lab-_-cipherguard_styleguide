@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.4.0
@@ -48,7 +48,7 @@ describe("StandaloneTotpViewModel", () => {
 
     it("should construct a ViewModel from url", () => {
       expect.assertions(7);
-      const url = new URL('otpauth://totp/pro.passbolt.local:admin@cipherguard.khulnasoft.com?issuer=pro.passbolt.local&secret=OFL3VF3OU4BZP45D4ZME6KTF654JRSSO4Q2EO6FJFGPKHRHYSVJA');
+      const url = new URL('otpauth://totp/pro.cipherguard.local:admin@cipherguard.khulnasoft.com?issuer=pro.cipherguard.local&secret=OFL3VF3OU4BZP45D4ZME6KTF654JRSSO4Q2EO6FJFGPKHRHYSVJA');
       const viewModel = StandaloneTotpViewModel.createStandaloneTotpFromUrl(url);
 
       expect(() => new StandaloneTotpViewModel({})).not.toThrow();

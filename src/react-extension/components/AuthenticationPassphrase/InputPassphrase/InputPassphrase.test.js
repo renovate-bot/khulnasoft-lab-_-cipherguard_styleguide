@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.12.0
@@ -36,7 +36,7 @@ const getAppContext = function(appContext) {
     setContext: () => {}
   };
 
-  defaultAppContext.port.addRequestListener('passbolt.remember-me.get-user-latest-choice', async() => false);
+  defaultAppContext.port.addRequestListener('cipherguard.remember-me.get-user-latest-choice', async() => false);
   return Object.assign(defaultAppContext, appContext || {});
 };
 
@@ -118,7 +118,7 @@ describe("InputPassphrase", () => {
 
   it("Should not display the remember me section if no remember me options provided", () => {
     const siteSettingsFixtureWithoutRememberMe = JSON.parse(JSON.stringify(siteSettingsFixture));
-    siteSettingsFixtureWithoutRememberMe.passbolt.plugins.rememberMe.options = {};
+    siteSettingsFixtureWithoutRememberMe.cipherguard.plugins.rememberMe.options = {};
     const siteSettings = new SiteSettings(siteSettingsFixtureWithoutRememberMe);
     const appContext = getAppContext({siteSettings});
     const {container} = renderInputPassphrase(appContext);
@@ -202,7 +202,7 @@ describe("InputPassphrase", () => {
 
     // Mock the request function to make it return an error.
     jest.spyOn(context.port, 'request').mockImplementation(jest.fn(message => {
-      if (message === "passbolt.keyring.private.checkpassphrase") {
+      if (message === "cipherguard.keyring.private.checkpassphrase") {
         throw new Error();
       }
     }));
@@ -238,7 +238,7 @@ describe("InputPassphrase", () => {
 
     // Mock the request function to make it return an error.
     jest.spyOn(context.port, 'request').mockImplementation(jest.fn(message => {
-      if (message === "passbolt.keyring.private.checkpassphrase") {
+      if (message === "cipherguard.keyring.private.checkpassphrase") {
         throw new Error();
       }
     }));

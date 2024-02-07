@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.3.0
@@ -194,7 +194,7 @@ class InFormManager {
    * Whenever the user clicks on the in-form call-to-action, it inserts the in-form menu iframe
    */
   handleInFormMenuInsertionEvent() {
-    port.on('passbolt.in-form-menu.open', () => {
+    port.on('cipherguard.in-form-menu.open', () => {
       this.menuField = new InFormMenuField(this.lastCallToActionFieldClicked.field);
     });
   }
@@ -203,7 +203,7 @@ class InFormManager {
    * Whenever the user clicks on the in-form menu, it removes the in-form menu iframe
    */
   handleInFormMenuRemoveEvent() {
-    port.on('passbolt.in-form-menu.close', () => {
+    port.on('cipherguard.in-form-menu.close', () => {
       this.menuField.removeMenuIframe();
     });
   }
@@ -218,14 +218,14 @@ class InFormManager {
 
   /** Whenever one requires to get the type and value of the input attached to the last call-to-action performed */
   handleGetLastCallToActionClickedInput() {
-    port.on('passbolt.web-integration.last-performed-call-to-action-input', requestId => {
+    port.on('cipherguard.web-integration.last-performed-call-to-action-input', requestId => {
       port.emit(requestId, 'SUCCESS', {type: this.lastCallToActionFieldClicked.fieldType, value: this.lastCallToActionFieldClicked.field.value});
     });
   }
 
   /** Whenever one requires to get the current credentials */
   handleGetCurrentCredentials() {
-    port.on('passbolt.web-integration.get-credentials', requestId => {
+    port.on('cipherguard.web-integration.get-credentials', requestId => {
       const currentFieldType = this.lastCallToActionFieldClicked?.fieldType;
       const isUsernameType = currentFieldType === 'username';
       const isPasswordType = currentFieldType === 'password';
@@ -247,7 +247,7 @@ class InFormManager {
    * Whenever one requests to fill the current page form with given credentials
    */
   handleFillCredentials() {
-    port.on('passbolt.web-integration.fill-credentials', ({username, password}) => {
+    port.on('cipherguard.web-integration.fill-credentials', ({username, password}) => {
       const currentFieldType = this.lastCallToActionFieldClicked?.fieldType;
       const isUsernameType = currentFieldType === 'username';
       const isPasswordType = currentFieldType === 'password';
@@ -277,7 +277,7 @@ class InFormManager {
    * Whenever one requests to fill the current page form with a password
    */
   handleFillPassword() {
-    port.on('passbolt.web-integration.fill-password', password => {
+    port.on('cipherguard.web-integration.fill-password', password => {
       const passwordFields = this.callToActionFields
         .filter(callToActionField => callToActionField.fieldType === 'password');
       // Autofill only empty passwords field

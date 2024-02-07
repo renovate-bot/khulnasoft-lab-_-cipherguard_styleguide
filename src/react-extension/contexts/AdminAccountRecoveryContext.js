@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -69,7 +69,7 @@ export class AdminAccountRecoveryContextProvider extends React.Component {
     if (!this.props.context.siteSettings.canIUse('accountRecovery')) {
       return;
     }
-    const currentPolicy = await this.props.context.port.request("passbolt.account-recovery.get-organization-policy");
+    const currentPolicy = await this.props.context.port.request("cipherguard.account-recovery.get-organization-policy");
     this.setState({currentPolicy});
   }
 
@@ -125,7 +125,7 @@ export class AdminAccountRecoveryContextProvider extends React.Component {
       return null;
     }
 
-    return this.props.context.port.request('passbolt.keyring.get-key-info', armoredKey);
+    return this.props.context.port.request('cipherguard.keyring.get-key-info', armoredKey);
   }
 
   /**
@@ -142,7 +142,7 @@ export class AdminAccountRecoveryContextProvider extends React.Component {
    * @returns {Promise<void>}
    */
   async downloadPrivateKey(privateKey) {
-    await this.props.context.port.request("passbolt.account-recovery.download-organization-generated-key", privateKey);
+    await this.props.context.port.request("cipherguard.account-recovery.download-organization-generated-key", privateKey);
   }
 
   /**
@@ -151,7 +151,7 @@ export class AdminAccountRecoveryContextProvider extends React.Component {
    */
   async save(privateGpgKeyDto) {
     const policySaveDto = this.buildPolicySaveDto();
-    const currentPolicy = await this.props.context.port.request('passbolt.account-recovery.save-organization-policy', policySaveDto, privateGpgKeyDto);
+    const currentPolicy = await this.props.context.port.request('cipherguard.account-recovery.save-organization-policy', policySaveDto, privateGpgKeyDto);
     const policyChanges = {};
     this.setState({currentPolicy, policyChanges});
     this.props.accountRecoveryContext.reloadAccountRecoveryPolicy();

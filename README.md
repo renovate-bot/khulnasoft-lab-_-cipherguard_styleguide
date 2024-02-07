@@ -1,11 +1,8 @@
-	      ____                  __          ____
-	     / __ \____  _____ ____/ /_  ____  / / /_
-	    / /_/ / __ `/ ___/ ___/ __ \/ __ \/ / __/
-	   / ____/ /_/ (__  |__  ) /_/ / /_/ / / /_
-	  /_/    \__,_/____/____/_.___/\____/_/\__/
+ ____ _ ___  _  _ ____ ____ ____ _  _ ____ ____ ___ 
+ |___ | |--' |--| |=== |--< |__, |__| |--| |--< |__>
 
 	The open source password manager for teams
-	(c) 2023 Cipherguard SA
+	(c) 2023 KhulnaSoft Ltd
 
 
 License
@@ -13,14 +10,14 @@ License
 
 Cipherguard - Open source password manager for teams
 
-(c) 2023 Cipherguard SA
+(c) 2023 KhulnaSoft Ltd
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General
 Public License (AGPL) as published by the Free Software Foundation version 3.
 
-The name "Cipherguard" is a registered trademark of Cipherguard SA, and Cipherguard SA hereby declines to grant a trademark
+The name "Cipherguard" is a registered trademark of KhulnaSoft Ltd, and KhulnaSoft Ltd hereby declines to grant a trademark
 license to "Cipherguard" pursuant to the GNU Affero General Public License version 3 Section 7(e), without a separate
-agreement with Cipherguard SA.
+agreement with KhulnaSoft Ltd.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
 warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See GNU Affero General Public License for more details.
@@ -35,7 +32,7 @@ About
 
 This is the official styleguide for Cipherguard the open source password manager for teams.
 This styleguide is used to extend, minify and test the stylesheets used by the different
-passbolt components such as the website, the firefox addon, etc.
+cipherguard components such as the website, the firefox addon, etc.
 
 In /src and /build you can find the assets that are used by other projects, like the images
 the less files, the minified css files, fonts, etc.
@@ -110,7 +107,7 @@ Upgrade the version of the styleguide in your project.
 npm upgrade cipherguard-styleguide
 ```
 
-In some passbolt projects an additional grunt task help you manage the deployment of the styleguide assets
+In some cipherguard projects an additional grunt task help you manage the deployment of the styleguide assets
 ```
 grunt styleguide-update
 ```

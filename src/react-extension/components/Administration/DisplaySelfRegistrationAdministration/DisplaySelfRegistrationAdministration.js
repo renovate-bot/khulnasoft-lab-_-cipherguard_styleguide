@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.9.0
@@ -318,7 +318,7 @@ class DisplaySelfRegistrationAdministration extends React.Component {
               </label>
             </div>
             <p className="description" id="enabled-description">
-              <Trans>All the users with an email address ending with the domain in the safe list are allowed to register on passbolt.</Trans>
+              <Trans>All the users with an email address ending with the domain in the safe list are allowed to register on cipherguard.</Trans>
             </p>
             {
               MapObject.iterators(this.allowedDomains).map(key => (
@@ -348,7 +348,7 @@ class DisplaySelfRegistrationAdministration extends React.Component {
         <div className="col4 last">
           <div className="sidebar-help">
             <h3><Trans>What is user self registration?</Trans></h3>
-            <p><Trans>User self registration enables users with an email from a whitelisted domain to create their passbolt account without prior admin invitation.</Trans></p>
+            <p><Trans>User self registration enables users with an email from a whitelisted domain to create their cipherguard account without prior admin invitation.</Trans></p>
             <a className="button" href="https://help.cipherguard.khulnasoft.com/configure/self-registration" target="_blank" rel="noopener noreferrer">
               <Icon name="document"/>
               <span><Trans>Read the documentation</Trans></span>

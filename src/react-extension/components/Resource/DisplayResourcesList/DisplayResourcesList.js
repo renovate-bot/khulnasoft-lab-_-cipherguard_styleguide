@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SARL (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft LtdRL (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SARL (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft LtdRL (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -570,7 +570,7 @@ class DisplayResourcesList extends React.Component {
    * @throw UserAbortsOperationError If the user cancel the operation
    */
   decryptResourceSecret(resourceId) {
-    return this.props.context.port.request("passbolt.secret.decrypt", resourceId);
+    return this.props.context.port.request("cipherguard.secret.decrypt", resourceId);
   }
 
   async handleFavoriteClick(resource) {
@@ -647,7 +647,7 @@ class DisplayResourcesList extends React.Component {
 
   async favoriteResource(resource) {
     try {
-      await this.props.context.port.request('passbolt.favorite.add', resource.id);
+      await this.props.context.port.request('cipherguard.favorite.add', resource.id);
       this.displaySuccessNotification(this.translate("The password has been added as a favorite"));
     } catch (error) {
       this.displayErrorNotification(error.message);
@@ -656,7 +656,7 @@ class DisplayResourcesList extends React.Component {
 
   async unfavoriteResource(resource) {
     try {
-      await this.props.context.port.request('passbolt.favorite.delete', resource.id);
+      await this.props.context.port.request('cipherguard.favorite.delete', resource.id);
       this.displaySuccessNotification(this.translate("The password has been removed from favorites"));
     } catch (error) {
       this.displayErrorNotification(error.message);
@@ -837,7 +837,7 @@ class DisplayResourcesList extends React.Component {
                 filterType === ResourceWorkspaceFilterTypes.ALL) &&
               <React.Fragment>
                 <div className="empty-content">
-                  <h1><Trans>Welcome to passbolt!</Trans></h1>
+                  <h1><Trans>Welcome to cipherguard!</Trans></h1>
                   <p>
                     <Trans>It does feel a bit empty here.</Trans>&nbsp;
                     <Trans>Create your first password or wait for a team member to share one with you.</Trans>

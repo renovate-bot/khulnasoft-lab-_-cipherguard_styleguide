@@ -56,7 +56,7 @@ class HomePage extends React.Component {
       this.sortResourcesAlphabetically(resources);
       this.setState({resources});
     }
-    this.props.context.port.request('passbolt.resources.update-local-storage');
+    this.props.context.port.request('cipherguard.resources.update-local-storage');
   }
 
   sortResourcesAlphabetically(resources) {
@@ -79,7 +79,7 @@ class HomePage extends React.Component {
 
   async getActiveTabUrl() {
     try {
-      const activeTabUrl = await this.props.context.port.request("passbolt.active-tab.get-url", this.props.context.getOpenerTabId());
+      const activeTabUrl = await this.props.context.port.request("cipherguard.active-tab.get-url", this.props.context.getOpenerTabId());
       this.setState({activeTabUrl});
     } catch (error) {
       console.error(error);
@@ -175,7 +175,7 @@ class HomePage extends React.Component {
   async handleUseOnThisTabClick(resource) {
     this.setState({usingOnThisTab: true});
     try {
-      await this.props.context.port.request('passbolt.quickaccess.use-resource-on-current-tab', resource.id, this.props.context.getOpenerTabId());
+      await this.props.context.port.request('cipherguard.quickaccess.use-resource-on-current-tab', resource.id, this.props.context.getOpenerTabId());
       window.close();
     } catch (error) {
       if (error && error.name === "UserAbortsOperationError") {

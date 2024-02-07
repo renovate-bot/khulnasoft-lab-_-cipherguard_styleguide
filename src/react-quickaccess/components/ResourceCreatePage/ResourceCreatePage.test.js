@@ -19,7 +19,7 @@ beforeEach(() => {
 // Cleanup after each test.
 afterEach(() => {
   cleanup();
-  delete window.passbolt;
+  delete window.cipherguard;
   jest.clearAllTimers();
 });
 
@@ -28,14 +28,14 @@ describe("ResourceCreatePage", () => {
     it("should intialize the name and uri input fields with the active tab metadata", async() => {
       expect.assertions(4);
       const context = defaultAppContext();
-      // mock the passbolt messaging layer.
+      // mock the cipherguard messaging layer.
       const expectedSecret = "AAAAAAAAAAAAAAAAAA";
       context.port = {
         request: event => new Promise(resolve => {
-          if (event === "passbolt.quickaccess.prepare-resource") {
+          if (event === "cipherguard.quickaccess.prepare-resource") {
             resolve({
               name: "Cipherguard Browser Extension Test",
-              uri: "https://passbolt-browser-extension/test",
+              uri: "https://cipherguard-browser-extension/test",
               secret_clear: expectedSecret
             });
           }
@@ -60,7 +60,7 @@ describe("ResourceCreatePage", () => {
       const nameInput = component.container.querySelector('[name="name"]');
       expect(nameInput.value).toBe("Cipherguard Browser Extension Test");
       const uriInput = component.container.querySelector('[name="uri"]');
-      expect(uriInput.value).toBe("https://passbolt-browser-extension/test");
+      expect(uriInput.value).toBe("https://cipherguard-browser-extension/test");
       const usernameInput = component.container.querySelector('[name="username"]');
       expect(usernameInput.value).toBe(context.userSettings.username);
       const passwordInput = component.container.querySelector('[name="password"]');
@@ -68,10 +68,10 @@ describe("ResourceCreatePage", () => {
     });
 
     it("should not initialize with chrome new tab metadata", async() => {
-      // mock the passbolt messaging layer.
-      window.passbolt = {
+      // mock the cipherguard messaging layer.
+      window.cipherguard = {
         request: event => new Promise(resolve => {
-          if (event === "passbolt.quickaccess.prepare-resource") {
+          if (event === "cipherguard.quickaccess.prepare-resource") {
             resolve({
               name: "newtab",
               uri: "chrome://newtab/"
@@ -101,10 +101,10 @@ describe("ResourceCreatePage", () => {
     });
 
     it("should not initialize with firefox new tab metadata", async() => {
-      // mock the passbolt messaging layer.
-      window.passbolt = {
+      // mock the cipherguard messaging layer.
+      window.cipherguard = {
         request: event => new Promise(resolve => {
-          if (event === "passbolt.quickaccess.prepare-resource") {
+          if (event === "cipherguard.quickaccess.prepare-resource") {
             resolve({
               name: "",
               uri: "about:newtab"
@@ -149,21 +149,21 @@ describe("ResourceCreatePage", () => {
 
       const pwnedWarningMessage = () => component.container.querySelector('.pwned-password.warning-message');
       const complexityText = () => component.container.querySelector('.complexity-text');
-      // Mock the passbolt messaging layer.
+      // Mock the cipherguard messaging layer.
       context.port = {
         request: function(event, value) {
           return new Promise((resolve, reject) => {
-            if (event === "passbolt.quickaccess.prepare-resource") {
+            if (event === "cipherguard.quickaccess.prepare-resource") {
               resolve({
                 name: "Cipherguard Browser Extension Test",
-                uri: "https://passbolt-browser-extension/test",
+                uri: "https://cipherguard-browser-extension/test",
               });
-            } else if (event === "passbolt.resources.create") {
+            } else if (event === "cipherguard.resources.create") {
               createPasswordEventMockCallback(arguments[1], arguments[2]);
               resolve({
                 id: "newly-created-resource-id"
               });
-            } else if (event === "passbolt.secrets.powned-password") {
+            } else if (event === "cipherguard.secrets.powned-password") {
               if (value === "hello-world") {
                 resolve(3);
               } else if (value === "unavailable") {
@@ -213,13 +213,13 @@ describe("ResourceCreatePage", () => {
       const submitButton = component.container.querySelector('button[type="submit"]');
       fireEvent.click(submitButton, {button: 0});
 
-      // Wait the passbolt.request that request the addon code to create the password is completed.
+      // Wait the cipherguard.request that request the addon code to create the password is completed.
       await waitFor(() => {});
 
       // Assert the request to create a password has been called and contain the expected parameters.
       const resourceMeta = {
         name: "Cipherguard Browser Extension Test",
-        uri: "https://passbolt-browser-extension/test",
+        uri: "https://cipherguard-browser-extension/test",
         username: "test@cipherguard.khulnasoft.com",
         resource_type_id: context.resourceTypesSettings.findResourceTypeIdBySlug(context.resourceTypesSettings.DEFAULT_RESOURCE_TYPES_SLUGS.PASSWORD_AND_DESCRIPTION)
       };

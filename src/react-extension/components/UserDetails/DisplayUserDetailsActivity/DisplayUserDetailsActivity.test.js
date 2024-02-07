@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -36,7 +36,7 @@ describe("See user activities", () => {
    */
   it('As LU I can see activities of a user with at least one activity', async() => {
     const context = defaultAppContext();
-    context.port.addRequestListener('passbolt.actionlogs.find-all-for', () => activitiesMock);
+    context.port.addRequestListener('cipherguard.actionlogs.find-all-for', () => activitiesMock);
     const page = new DisplayUserDetailsActivityPage(context, props);
     await page.clickOnTitle();
 
@@ -59,7 +59,7 @@ describe("See user activities", () => {
     const dataSet = [activitiesMock, lastActivityMock];
     let currentDataSetIndex = 0;
     const context = defaultAppContext();
-    context.port.addRequestListener('passbolt.actionlogs.find-all-for', () => dataSet[currentDataSetIndex++]);
+    context.port.addRequestListener('cipherguard.actionlogs.find-all-for', () => dataSet[currentDataSetIndex++]);
 
     const page = new DisplayUserDetailsActivityPage(context, props);
     await page.clickOnTitle();
@@ -86,7 +86,7 @@ describe("See user activities", () => {
     const context = defaultAppContext();
     let resolveFindAllForRequest = null;
 
-    context.port.addRequestListener('passbolt.actionlogs.find-all-for', () => new Promise(resolve => resolveFindAllForRequest = resolve));
+    context.port.addRequestListener('cipherguard.actionlogs.find-all-for', () => new Promise(resolve => resolveFindAllForRequest = resolve));
     const page = new DisplayUserDetailsActivityPage(context, props);
 
     expect.assertions(3);

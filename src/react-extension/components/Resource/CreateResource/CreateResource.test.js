@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -190,7 +190,7 @@ describe("See the Create Resource", () => {
 
       await page.passwordCreate.click(page.passwordCreate.saveButton);
       await waitFor(() => {});
-      expect(context.port.request).toHaveBeenCalledWith("passbolt.resources.create", onApiUpdateResourceMeta, resourceMeta.password);
+      expect(context.port.request).toHaveBeenCalledWith("cipherguard.resources.create", onApiUpdateResourceMeta, resourceMeta.password);
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalled();
       expect(props.onClose).toBeCalled();
     });
@@ -235,7 +235,7 @@ describe("See the Create Resource", () => {
 
       await page.passwordCreate.click(page.passwordCreate.saveButton);
 
-      expect(context.port.request).toHaveBeenCalledWith("passbolt.resources.create", onApiUpdateResourceDto, onApiUpdateSecretDto);
+      expect(context.port.request).toHaveBeenCalledWith("cipherguard.resources.create", onApiUpdateResourceDto, onApiUpdateSecretDto);
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalled();
       expect(props.onClose).toBeCalled();
     });

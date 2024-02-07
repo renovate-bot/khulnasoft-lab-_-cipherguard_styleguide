@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.0.0
@@ -65,63 +65,63 @@ import mockRequestRbacsFindMe from "./request/mockRequestRbacsFindMe";
 
 export default storage => {
   const mockPort = new MockPort(storage);
-  mockPort.addRequestListener("passbolt.folders.create", mockRequestFoldersCreate);
-  mockPort.addRequestListener("passbolt.folders.delete", mockRequestFoldersDelete);
-  mockPort.addRequestListener("passbolt.folders.update", mockRequestFoldersUpdate);
-  mockPort.addRequestListener("passbolt.folders.find-permissions", mockRequestFoldersFindPermissions);
-  mockPort.addRequestListener("passbolt.user.get", mockRequestUserGet);
-  mockPort.addRequestListener("passbolt.role.get-all", mockRequestRoleGet);
-  mockPort.addRequestListener("passbolt.organization-settings.get", mockRequestSiteSettings);
-  mockPort.addRequestListener("passbolt.recover.site-settings", mockRequestSiteSettings);
-  mockPort.addRequestListener("passbolt.setup.site-settings", mockRequestSiteSettings);
-  mockPort.addRequestListener("passbolt.folders.update-local-storage", mockRequestFoldersUpdateLocalStorage);
-  mockPort.addRequestListener("passbolt.resources.update-local-storage", mockRequestResourcesUpdateLocalStorage);
-  mockPort.addRequestListener("passbolt.users.update-local-storage", mockRequestUsersUpdateLocalStorage);
-  mockPort.addRequestListener("passbolt.users.find-logged-in-user", mockRequestUsersFindLoggedInUser);
-  mockPort.addRequestListener("passbolt.resources.create", mockRequestResourcesCreate);
-  mockPort.addRequestListener("passbolt.resources.update", mockRequestResourcesUpdate);
-  mockPort.addRequestListener("passbolt.share.get-resources", mockRequestShareGetResources);
-  mockPort.addRequestListener("passbolt.share.search-aros", mockRequestShareSearchAros);
-  mockPort.addRequestListener("passbolt.secret.decrypt", mockRequestSecretDecrypt);
+  mockPort.addRequestListener("cipherguard.folders.create", mockRequestFoldersCreate);
+  mockPort.addRequestListener("cipherguard.folders.delete", mockRequestFoldersDelete);
+  mockPort.addRequestListener("cipherguard.folders.update", mockRequestFoldersUpdate);
+  mockPort.addRequestListener("cipherguard.folders.find-permissions", mockRequestFoldersFindPermissions);
+  mockPort.addRequestListener("cipherguard.user.get", mockRequestUserGet);
+  mockPort.addRequestListener("cipherguard.role.get-all", mockRequestRoleGet);
+  mockPort.addRequestListener("cipherguard.organization-settings.get", mockRequestSiteSettings);
+  mockPort.addRequestListener("cipherguard.recover.site-settings", mockRequestSiteSettings);
+  mockPort.addRequestListener("cipherguard.setup.site-settings", mockRequestSiteSettings);
+  mockPort.addRequestListener("cipherguard.folders.update-local-storage", mockRequestFoldersUpdateLocalStorage);
+  mockPort.addRequestListener("cipherguard.resources.update-local-storage", mockRequestResourcesUpdateLocalStorage);
+  mockPort.addRequestListener("cipherguard.users.update-local-storage", mockRequestUsersUpdateLocalStorage);
+  mockPort.addRequestListener("cipherguard.users.find-logged-in-user", mockRequestUsersFindLoggedInUser);
+  mockPort.addRequestListener("cipherguard.resources.create", mockRequestResourcesCreate);
+  mockPort.addRequestListener("cipherguard.resources.update", mockRequestResourcesUpdate);
+  mockPort.addRequestListener("cipherguard.share.get-resources", mockRequestShareGetResources);
+  mockPort.addRequestListener("cipherguard.share.search-aros", mockRequestShareSearchAros);
+  mockPort.addRequestListener("cipherguard.secret.decrypt", mockRequestSecretDecrypt);
   mockPort.addRequestListener("cipherguard.khulnasoft.comments.create", mockRequestCommentsCreate);
   mockPort.addRequestListener("cipherguard.khulnasoft.comments.find-all-by-resource", mockRequestCommentsFind);
-  mockPort.addRequestListener("passbolt.resource.update-description", mockRequestResourceUpdateDescription);
-  mockPort.addRequestListener("passbolt.tags.find-all", mockRequestTagsGet);
-  mockPort.addRequestListener("passbolt.tags.update", mockRequestUpdateTags);
-  mockPort.addRequestListener("passbolt.tags.update-resource-tags", mockRequestTagsUpdateResourceTags);
-  mockPort.addRequestListener("passbolt.tags.delete", mockRequestDeleteTags);
-  mockPort.addRequestListener("passbolt.resources.find-permissions", mockRequestResourcesFindPermissions);
-  mockPort.addRequestListener("passbolt.favorite.add", mockRequestResourceAddFavorite);
-  mockPort.addRequestListener("passbolt.favorite.delete", mockRequestResourceDeleteFavorite);
-  mockPort.addRequestListener("passbolt.resources.delete-all", mockRequestResourcesDelete);
-  mockPort.addRequestListener("passbolt.actionlogs.find-all-for", mockRequestFindActivities);
-  mockPort.addRequestListener("passbolt.addon.get-version", mockRequestGetVersion);
-  mockPort.addRequestListener("passbolt.groups.update-local-storage", mockRequestGroupsUpdateLocalStorage);
-  mockPort.addRequestListener("passbolt.resources.find-all", mockRequestResources);
-  mockPort.addRequestListener("passbolt.keyring.get-public-key-info-by-user", mockRequestGpgKeysFindByUserId);
-  mockPort.addRequestListener("passbolt.keyring.get-private-key", mockRequestPrivateKeys);
-  mockPort.addRequestListener("passbolt.users.delete-dry-run", mockRequestUserDeleteDryRun);
-  mockPort.addRequestListener("passbolt.import-passwords.import-file", mockRequestImportFile);
-  mockPort.addRequestListener("passbolt.users.disable-mfa", mockRequestDisableMFA);
-  mockPort.addRequestListener("passbolt.groups.delete-dry-run", mockRequestGroupDeleteDryRun);
-  mockPort.addRequestListener("passbolt.groups.create", mockRequestGroupsCreate);
-  mockPort.addRequestListener("passbolt.groups.update", mockRequestGroupsUpdate);
-  mockPort.addRequestListener("passbolt.themes.find-all", mockRequestFindAllThemes);
-  mockPort.addRequestListener("passbolt.auth.is-authenticated", mockRequestAuthIsAuthenticated);
-  mockPort.addRequestListener("passbolt.locale.get", mockRequestGetLocale);
-  mockPort.addRequestListener("passbolt.password-policies.get", mockRequestPasswordPolicies);
-  mockPort.addRequestListener("passbolt.mobile.transfer.create", mockRequestMobileTransferCreate);
-  mockPort.addRequestListener("passbolt.mobile.transfer.update", mockRequestMobileTransferUpdate);
-  mockPort.addRequestListener("passbolt.mobile.transfer.get", mockRequestMobileTransferGet);
-  mockPort.addRequestListener("passbolt.account-recovery.get-account", mockRequestAccountRecoveryGetAccount);
-  mockPort.addRequestListener("passbolt.recover.has-user-enabled-account-recovery", mockRequestHasUserEnabledAccountRecovery);
-  mockPort.addRequestListener("passbolt.rbacs.find-me", mockRequestRbacsFindMe);
+  mockPort.addRequestListener("cipherguard.resource.update-description", mockRequestResourceUpdateDescription);
+  mockPort.addRequestListener("cipherguard.tags.find-all", mockRequestTagsGet);
+  mockPort.addRequestListener("cipherguard.tags.update", mockRequestUpdateTags);
+  mockPort.addRequestListener("cipherguard.tags.update-resource-tags", mockRequestTagsUpdateResourceTags);
+  mockPort.addRequestListener("cipherguard.tags.delete", mockRequestDeleteTags);
+  mockPort.addRequestListener("cipherguard.resources.find-permissions", mockRequestResourcesFindPermissions);
+  mockPort.addRequestListener("cipherguard.favorite.add", mockRequestResourceAddFavorite);
+  mockPort.addRequestListener("cipherguard.favorite.delete", mockRequestResourceDeleteFavorite);
+  mockPort.addRequestListener("cipherguard.resources.delete-all", mockRequestResourcesDelete);
+  mockPort.addRequestListener("cipherguard.actionlogs.find-all-for", mockRequestFindActivities);
+  mockPort.addRequestListener("cipherguard.addon.get-version", mockRequestGetVersion);
+  mockPort.addRequestListener("cipherguard.groups.update-local-storage", mockRequestGroupsUpdateLocalStorage);
+  mockPort.addRequestListener("cipherguard.resources.find-all", mockRequestResources);
+  mockPort.addRequestListener("cipherguard.keyring.get-public-key-info-by-user", mockRequestGpgKeysFindByUserId);
+  mockPort.addRequestListener("cipherguard.keyring.get-private-key", mockRequestPrivateKeys);
+  mockPort.addRequestListener("cipherguard.users.delete-dry-run", mockRequestUserDeleteDryRun);
+  mockPort.addRequestListener("cipherguard.import-passwords.import-file", mockRequestImportFile);
+  mockPort.addRequestListener("cipherguard.users.disable-mfa", mockRequestDisableMFA);
+  mockPort.addRequestListener("cipherguard.groups.delete-dry-run", mockRequestGroupDeleteDryRun);
+  mockPort.addRequestListener("cipherguard.groups.create", mockRequestGroupsCreate);
+  mockPort.addRequestListener("cipherguard.groups.update", mockRequestGroupsUpdate);
+  mockPort.addRequestListener("cipherguard.themes.find-all", mockRequestFindAllThemes);
+  mockPort.addRequestListener("cipherguard.auth.is-authenticated", mockRequestAuthIsAuthenticated);
+  mockPort.addRequestListener("cipherguard.locale.get", mockRequestGetLocale);
+  mockPort.addRequestListener("cipherguard.password-policies.get", mockRequestPasswordPolicies);
+  mockPort.addRequestListener("cipherguard.mobile.transfer.create", mockRequestMobileTransferCreate);
+  mockPort.addRequestListener("cipherguard.mobile.transfer.update", mockRequestMobileTransferUpdate);
+  mockPort.addRequestListener("cipherguard.mobile.transfer.get", mockRequestMobileTransferGet);
+  mockPort.addRequestListener("cipherguard.account-recovery.get-account", mockRequestAccountRecoveryGetAccount);
+  mockPort.addRequestListener("cipherguard.recover.has-user-enabled-account-recovery", mockRequestHasUserEnabledAccountRecovery);
+  mockPort.addRequestListener("cipherguard.rbacs.find-me", mockRequestRbacsFindMe);
 
   // Deprecated events
   const deprecatedEvent = () => { throw new Error(`This event is deprecated.`); };
-  mockPort.addRequestListener("passbolt.site.settings", deprecatedEvent);
-  mockPort.addRequestListener("passbolt.recover.site-settings", deprecatedEvent);
-  mockPort.addRequestListener("passbolt.setup.site-settings", deprecatedEvent);
+  mockPort.addRequestListener("cipherguard.site.settings", deprecatedEvent);
+  mockPort.addRequestListener("cipherguard.recover.site-settings", deprecatedEvent);
+  mockPort.addRequestListener("cipherguard.setup.site-settings", deprecatedEvent);
 
   return mockPort;
 };

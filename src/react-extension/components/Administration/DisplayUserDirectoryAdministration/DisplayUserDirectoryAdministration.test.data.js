@@ -62,14 +62,14 @@ export const mockResult = {
   "domains": {
     "org_domain": {
       "directory_type": "ad",
-      "base_dn": "DC=passbolt,DC=local",
+      "base_dn": "DC=cipherguard,DC=local",
       "connection_type": "plain",
       "username": "username",
       "authentication_type": "basic",
       "password": "password",
       "port": 389,
       "hosts": ["127.0.0.1"],
-      "domain_name": "passbolt.local",
+      "domain_name": "cipherguard.local",
     }
   },
   "fields_mapping": {
@@ -147,9 +147,9 @@ export const mockModel = {
   portError: null,
   username: 'username',
   password: 'password',
-  domain: 'passbolt.local',
+  domain: 'cipherguard.local',
   domainError: null,
-  baseDn: 'DC=passbolt,DC=local',
+  baseDn: 'DC=cipherguard,DC=local',
   groupPath: undefined,
   groupCustomFilters: undefined,
   userPath: undefined,

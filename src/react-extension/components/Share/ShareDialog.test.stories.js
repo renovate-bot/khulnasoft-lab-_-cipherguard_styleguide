@@ -19,9 +19,9 @@ const context = defaultAppContext({
   port: {
     request: path => {
       switch (path) {
-        case 'passbolt.share.get-resources':
+        case 'cipherguard.share.get-resources':
           return resources;
-        case 'passbolt.share.search-aros':
+        case 'cipherguard.share.search-aros':
           return autocompleteResult;
       }
     }

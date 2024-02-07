@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since        3.0.0
@@ -34,9 +34,9 @@ class InsertAppIframe extends Component {
    * @returns {void}
    */
   async loadAppIframe() {
-    const portId = await this.props.port.request("passbolt.port.generate-id", "App");
-    const url = new URL(`${this.props.browserExtensionUrl}webAccessibleResources/passbolt-iframe-app.html`);
-    url.searchParams.append("passbolt", portId);
+    const portId = await this.props.port.request("cipherguard.port.generate-id", "App");
+    const url = new URL(`${this.props.browserExtensionUrl}webAccessibleResources/cipherguard-iframe-app.html`);
+    url.searchParams.append("cipherguard", portId);
 
     // If the user aims to a location, extract it and add it as parameter of the iframe url.
     const pathname = this.getPagePathname();
@@ -76,7 +76,7 @@ class InsertAppIframe extends Component {
    */
   render() {
     return (
-      <iframe id="passbolt-iframe-app" ref={this.iframeRef} className="full-screen" allow={`clipboard-write ${this.props.browserExtensionUrl}webAccessibleResources/passbolt-iframe-app.html`}/>
+      <iframe id="cipherguard-iframe-app" ref={this.iframeRef} className="full-screen" allow={`clipboard-write ${this.props.browserExtensionUrl}webAccessibleResources/cipherguard-iframe-app.html`}/>
     );
   }
 }

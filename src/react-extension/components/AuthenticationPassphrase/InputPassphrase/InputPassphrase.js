@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.12.0
@@ -56,7 +56,7 @@ class InputPassphrase extends Component {
    * @returns {Promise<void>}
    */
   async initDefaultRememberMeChoice() {
-    const defaultRememberMeChoice = await this.props.context.port.request('passbolt.remember-me.get-user-latest-choice');
+    const defaultRememberMeChoice = await this.props.context.port.request('cipherguard.remember-me.get-user-latest-choice');
     this.setState({
       rememberMe: defaultRememberMeChoice,
       rememberMeDuration: this.getUntilILogOutDurationOrDefault(defaultRememberMeChoice)
@@ -116,7 +116,7 @@ class InputPassphrase extends Component {
    */
   async isValidPassphrase() {
     try {
-      await this.props.context.port.request("passbolt.keyring.private.checkpassphrase", this.state.passphrase);
+      await this.props.context.port.request("cipherguard.keyring.private.checkpassphrase", this.state.passphrase);
     } catch (error) {
       return false;
     }

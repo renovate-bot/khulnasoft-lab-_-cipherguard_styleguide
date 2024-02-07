@@ -14,7 +14,7 @@ const Template = args =>
   <DisplayUserTheme {...args}/>;
 
 const mockedPort = new MockPort();
-mockedPort.addRequestListener('passbolt.themes.find-all', () => themes);
+mockedPort.addRequestListener('cipherguard.themes.find-all', () => themes);
 
 export const Initial = Template.bind({});
 Initial.args = defaultProps({context: defaultAppContext({port: mockedPort})});

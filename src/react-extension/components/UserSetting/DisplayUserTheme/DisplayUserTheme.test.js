@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2023 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2023 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2023 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2023 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.3.0
@@ -46,7 +46,7 @@ describe("Display user theme", () => {
       expect.assertions(4);
       await page.theme(2).select();
       await waitFor(() => {});
-      expect(props.context.port.request).toHaveBeenCalledWith("passbolt.themes.change", "midgar");
+      expect(props.context.port.request).toHaveBeenCalledWith("cipherguard.themes.change", "midgar");
       expect(props.actionFeedbackContext.displaySuccess).toHaveBeenCalled();
       expect(props.loadingContext.add).toHaveBeenCalledTimes(2);
       expect(props.loadingContext.remove).toHaveBeenCalledTimes(2);
@@ -57,7 +57,7 @@ describe("Display user theme", () => {
       jest.spyOn(props.context.port, "request").mockImplementationOnce(() => Promise.reject("error"));
       await page.theme(3).select();
       await waitFor(() => {});
-      expect(props.context.port.request).toHaveBeenCalledWith("passbolt.themes.change", "solarized_dark");
+      expect(props.context.port.request).toHaveBeenCalledWith("cipherguard.themes.change", "solarized_dark");
       expect(props.actionFeedbackContext.displaySuccess).toHaveBeenCalledTimes(0);
       expect(props.dialogContext.open).toHaveBeenCalledWith(NotifyError, {error: "error"});
       expect(props.loadingContext.add).toHaveBeenCalledTimes(2);

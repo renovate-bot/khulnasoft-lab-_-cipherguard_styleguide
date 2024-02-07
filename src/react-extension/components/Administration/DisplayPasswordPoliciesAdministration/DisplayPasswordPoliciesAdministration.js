@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.2.0
@@ -288,7 +288,7 @@ class DisplayPasswordPoliciesAdministration extends React.Component {
                 <div id="passwordLength-error" className="error-message">{errors.passwordLength}</div>
               }
             </div>
-            <p><Trans>You can set the default length for the passwords that are generated randomly by passbolt in the password generator.</Trans></p>
+            <p><Trans>You can set the default length for the passwords that are generated randomly by cipherguard in the password generator.</Trans></p>
             <div className={`input text ${this.hasAllInputDisabled() ? 'disabled' : ''}`}>
               <label htmlFor="configure-password-generator-form-masks">
                 <Trans>Selected set of characters</Trans>
@@ -321,7 +321,7 @@ class DisplayPasswordPoliciesAdministration extends React.Component {
                   <Trans>Exclude look-alike characters</Trans>
                 </label>
               </div>
-              <p><Trans>You can select the set of characters used for the passwords that are generated randomly by passbolt in the password generator.</Trans></p>
+              <p><Trans>You can select the set of characters used for the passwords that are generated randomly by cipherguard in the password generator.</Trans></p>
             </div>
           </div>
           }
@@ -363,7 +363,7 @@ class DisplayPasswordPoliciesAdministration extends React.Component {
                 <div id="wordsCount-error"  className="error-message">{errors.wordsCount}</div>
               }
             </div>
-            <p><Trans>You can set the default length for the passphrases that are generated randomly by passbolt in the password generator.</Trans></p>
+            <p><Trans>You can set the default length for the passphrases that are generated randomly by cipherguard in the password generator.</Trans></p>
             <div className={`input text ${this.hasAllInputDisabled() ? 'disabled' : ''}`}>
               <label htmlFor="configure-passphrase-generator-form-words-separator"><Trans>Words separator</Trans></label>
               <input type="text" id="configure-passphrase-generator-form-words-separator" name="wordsSeparator" value={settings.wordsSeparator} onChange={this.handleInputChange}
@@ -387,7 +387,7 @@ class DisplayPasswordPoliciesAdministration extends React.Component {
             </span>
           </h4>
           <span className="input toggle-switch form-element">
-            <Trans>Allow passbolt to access external services to check if a password has been compromised.</Trans>
+            <Trans>Allow cipherguard to access external services to check if a password has been compromised.</Trans>
           </span>
         </div>
         <div className="col4 last">

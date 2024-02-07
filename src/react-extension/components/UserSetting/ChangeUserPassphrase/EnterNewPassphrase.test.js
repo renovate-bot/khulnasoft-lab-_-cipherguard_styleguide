@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.1.0
@@ -185,7 +185,7 @@ describe("As LU I should see the user confirm passphrase page", () => {
 
     it('As LU I should be inform about ExternalServiceUnavailableError for powned password service', async() => {
       expect.assertions(1);
-      props.context.port.addRequestListener("passbolt.secrets.powned-password", () => Promise.reject());
+      props.context.port.addRequestListener("cipherguard.secrets.powned-password", () => Promise.reject());
       await page.insertPassphrase("ispowned service unavailable");
       await waitForTrue(() => Boolean(page.passphraseWarningMessage));
       expect(page.passphraseWarningMessage.textContent).toBe("The pwnedpasswords service is unavailable, your passphrase might be part of an exposed data breach");

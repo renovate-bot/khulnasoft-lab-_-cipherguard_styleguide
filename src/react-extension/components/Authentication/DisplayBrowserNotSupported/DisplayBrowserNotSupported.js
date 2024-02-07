@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.0.0
@@ -79,7 +79,7 @@ class DisplayBrowserNotSupported extends Component {
     return (
       <div className="browser-not-supported">
         <h1><Trans>Sorry, your browser is not supported.</Trans></h1>
-        <p><Trans>Please download one of these browsers to get started with passbolt:</Trans></p>
+        <p><Trans>Please download one of these browsers to get started with cipherguard:</Trans></p>
         <div className="browser-button-list">
           {this.compatibleBrowserList.map((browserInfo, key) =>
             <button key={key} className={`browser${browserInfo.name === this.state.selectedBrowser.name ? ' focused' : ''}`} target="_blank" onClick={() => this.handleBrowserButtonClick(browserInfo)}>

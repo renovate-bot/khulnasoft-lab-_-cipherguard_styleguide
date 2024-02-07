@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.3.0
@@ -45,7 +45,7 @@ class ExportAccountToDesktop extends React.Component {
    */
   async handleDownloadAccount() {
     try {
-      await this.props.context.port.request('passbolt.desktop.export-account');
+      await this.props.context.port.request('cipherguard.desktop.export-account');
       await this.props.actionFeedbackContext.displaySuccess(this.props.t("The account kit has been downloaded successfully."));
     } catch (error) {
       // Could be that the user canceled or couldn't remember the passphrase
@@ -78,7 +78,7 @@ class ExportAccountToDesktop extends React.Component {
               <p>
                 <Trans>Cipherguard is available on the Windows store.</Trans>
               </p>
-              <a className="windows-store" href="https://apps.microsoft.com/store/detail/passbolt/TBD" target="_blank" rel="noopener noreferrer">
+              <a className="windows-store" href="https://apps.microsoft.com/store/detail/cipherguard/TBD" target="_blank" rel="noopener noreferrer">
                 <svg width="160" height="56" viewBox="0 0 160 56" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g clipPath="url(#clip0_94_20105)">
                     <path d="M159.592 0.410278H0.425781V55.2598H159.592V0.410278Z" fill="black" />

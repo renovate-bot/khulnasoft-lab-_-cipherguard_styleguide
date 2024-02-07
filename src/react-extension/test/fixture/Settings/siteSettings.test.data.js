@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2023 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2023 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2023 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2023 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.12.0
@@ -27,7 +27,7 @@ export const defaultCeSiteSettings = siteSettings => {
         "public_path": "img\/public\/"
       }
     },
-    "passbolt": {
+    "cipherguard": {
       "legal": {
         "privacy_policy": {
           "url": ""
@@ -81,7 +81,7 @@ export const defaultCeSiteSettings = siteSettings => {
         "selenium_api": {
           "version": "2.2.0"
         },
-        "passbolt_test_data": {
+        "cipherguard_test_data": {
           "version": "2.0"
         },
         "accountSettings": {
@@ -190,8 +190,8 @@ export const defaultCeSiteSettings = siteSettings => {
 
 export const defaultProSiteSettings = siteSettings => {
   const defaultData = defaultCeSiteSettings();
-  defaultData.passbolt.edition = "pro";
-  defaultData.passbolt.plugins = Object.assign(defaultData.passbolt.plugins, {
+  defaultData.cipherguard.edition = "pro";
+  defaultData.cipherguard.plugins = Object.assign(defaultData.cipherguard.plugins, {
     "accountRecoveryRequestHelp": {
       "enabled": true
     },
@@ -235,9 +235,9 @@ export const defaultProSiteSettings = siteSettings => {
 
 export const customEmailValidationSiteSettings = siteSettings => {
   const defaultData = defaultProSiteSettings();
-  defaultData.passbolt.email = {
+  defaultData.cipherguard.email = {
     "validate": {
-      "regex": "\/.*@passbolt.(c|com)$\/"
+      "regex": "\/.*@cipherguard.(c|com)$\/"
     }
   };
 

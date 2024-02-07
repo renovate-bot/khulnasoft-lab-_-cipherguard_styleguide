@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -252,7 +252,7 @@ describe("See the Edit Resource", () => {
       };
 
       await page.passwordEdit.click(page.passwordEdit.saveButton);
-      expect(props.context.port.request).toHaveBeenCalledWith("passbolt.resources.update", onApiUpdateResourceMeta, onApiUpdateSecretDto);
+      expect(props.context.port.request).toHaveBeenCalledWith("cipherguard.resources.update", onApiUpdateResourceMeta, onApiUpdateSecretDto);
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalled();
       expect(props.onClose).toBeCalled();
     });
@@ -286,7 +286,7 @@ describe("See the Edit Resource", () => {
       };
 
       await page.passwordEdit.click(page.passwordEdit.saveButton);
-      expect(props.context.port.request).toHaveBeenCalledWith("passbolt.resources.update", onApiUpdateResourceMeta, null);
+      expect(props.context.port.request).toHaveBeenCalledWith("cipherguard.resources.update", onApiUpdateResourceMeta, null);
     });
 
     it('should requests the addon without the secret if it hasn"t changed (with resource type PASSWORD_STRING).', async() => {
@@ -320,13 +320,13 @@ describe("See the Edit Resource", () => {
       };
 
       await page.passwordEdit.click(page.passwordEdit.saveButton);
-      expect(props.context.port.request).toHaveBeenCalledWith("passbolt.resources.update", onApiUpdateResourceMeta, null);
+      expect(props.context.port.request).toHaveBeenCalledWith("cipherguard.resources.update", onApiUpdateResourceMeta, null);
     });
 
     it('should requests the addon without the secret if it hasn"t changed (with resource type PASSWORD_DESCRIPTION_TOTP).', async() => {
       expect.assertions(1);
       const props = defaultProps(); // The props to pass
-      props.context.port.addRequestListener('passbolt.secrets.powned-password', () => 0);
+      props.context.port.addRequestListener('cipherguard.secrets.powned-password', () => 0);
       jest.spyOn(props.context.port, 'request');
       const resource = props.context.resources[0];
       resource.resource_type_id = TEST_RESOURCE_TYPE_PASSWORD_DESCRIPTION_TOTP;
@@ -337,7 +337,7 @@ describe("See the Edit Resource", () => {
         digits: 7,
         algorithm: "SHA256"
       };
-      props.context.port.addRequestListener('passbolt.secret.decrypt', () => ({
+      props.context.port.addRequestListener('cipherguard.secret.decrypt', () => ({
         password: "secret-decrypted",
         description: "",
         totp: defaultTotp
@@ -364,7 +364,7 @@ describe("See the Edit Resource", () => {
 
       await waitForTrue(() => !page.passwordEdit.saveButton.disabled);
       await page.passwordEdit.click(page.passwordEdit.saveButton);
-      expect(props.context.port.request).toHaveBeenCalledWith("passbolt.resources.update", onApiUpdateResourceMeta, null);
+      expect(props.context.port.request).toHaveBeenCalledWith("cipherguard.resources.update", onApiUpdateResourceMeta, null);
     });
 
     it('requests the addon to edit a resource with non encrypted description when clicking on the submit button.', async() => {
@@ -414,7 +414,7 @@ describe("See the Edit Resource", () => {
 
       await page.passwordEdit.click(page.passwordEdit.saveButton);
 
-      expect(props.context.port.request).toHaveBeenCalledWith("passbolt.resources.update", onApiUpdateResourceDto, onApiUpdateSecretDto);
+      expect(props.context.port.request).toHaveBeenCalledWith("cipherguard.resources.update", onApiUpdateResourceDto, onApiUpdateSecretDto);
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalled();
       expect(props.onClose).toBeCalled();
     });

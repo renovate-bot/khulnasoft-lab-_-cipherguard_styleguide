@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.3.0
@@ -34,7 +34,7 @@ describe("DisplayAdministrationUserPassphrasePolicies", () => {
       expect.assertions(2);
       const context = defaultAppContext();
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.user-passphrase-policies.find", () => null);
+      props.context.port.addRequestListener("cipherguard.user-passphrase-policies.find", () => null);
 
       const page = new DisplayAdministrationUserPassphrasePoliciesPage(context, props);
       await waitForTrue(() => page.exists());
@@ -47,7 +47,7 @@ describe("DisplayAdministrationUserPassphrasePolicies", () => {
       expect.assertions(3);
       const context = defaultAppContext();
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.user-passphrase-policies.find", () => null);
+      props.context.port.addRequestListener("cipherguard.user-passphrase-policies.find", () => null);
 
       const page = new DisplayAdministrationUserPassphrasePoliciesPage(context, props);
       await waitForTrue(() => page.exists());
@@ -62,7 +62,7 @@ describe("DisplayAdministrationUserPassphrasePolicies", () => {
       expect.assertions(2);
       const context = defaultAppContext();
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.user-passphrase-policies.find", () => null);
+      props.context.port.addRequestListener("cipherguard.user-passphrase-policies.find", () => null);
 
       const page = new DisplayAdministrationUserPassphrasePoliciesPage(context, props);
       await waitForTrue(() => page.exists());
@@ -81,7 +81,7 @@ describe("DisplayAdministrationUserPassphrasePolicies", () => {
 
         const context = defaultAppContext();
         const props = defaultProps();
-        props.context.port.addRequestListener("passbolt.user-passphrase-policies.find", () => dto);
+        props.context.port.addRequestListener("cipherguard.user-passphrase-policies.find", () => dto);
 
         const page = new DisplayAdministrationUserPassphrasePoliciesPage(context, props);
         await waitForTrue(() => page.exists());
@@ -97,7 +97,7 @@ describe("DisplayAdministrationUserPassphrasePolicies", () => {
       expect.assertions(1);
       const context = defaultAppContext();
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.user-passphrase-policies.find", () => null);
+      props.context.port.addRequestListener("cipherguard.user-passphrase-policies.find", () => null);
 
       const page = new DisplayAdministrationUserPassphrasePoliciesPage(context, props);
       await waitForTrue(() => page.exists());
@@ -114,7 +114,7 @@ describe("DisplayAdministrationUserPassphrasePolicies", () => {
       const strongEntityDto = defaultUserPassphrasePoliciesEntityDto({
         entropy_minimum: 112
       });
-      props.context.port.addRequestListener("passbolt.user-passphrase-policies.find", () => strongEntityDto);
+      props.context.port.addRequestListener("cipherguard.user-passphrase-policies.find", () => strongEntityDto);
 
       const page = new DisplayAdministrationUserPassphrasePoliciesPage(context, props);
       await waitForTrue(() => page.exists());
@@ -130,7 +130,7 @@ describe("DisplayAdministrationUserPassphrasePolicies", () => {
       const context = defaultAppContext();
       const props = defaultProps();
       const entityDto = defaultUserPassphrasePoliciesEntityDto();
-      props.context.port.addRequestListener("passbolt.user-passphrase-policies.find", () => entityDto);
+      props.context.port.addRequestListener("cipherguard.user-passphrase-policies.find", () => entityDto);
 
       const page = new DisplayAdministrationUserPassphrasePoliciesPage(context, props);
       await waitForTrue(() => page.exists());
@@ -158,8 +158,8 @@ describe("DisplayAdministrationUserPassphrasePolicies", () => {
         entropy_minimum: 128,
         external_dictionary_check: true
       };
-      props.context.port.addRequestListener("passbolt.user-passphrase-policies.find", () => entityDto);
-      props.context.port.addRequestListener("passbolt.user-passphrase-policies.save", entityDtoToSave => {
+      props.context.port.addRequestListener("cipherguard.user-passphrase-policies.find", () => entityDto);
+      props.context.port.addRequestListener("cipherguard.user-passphrase-policies.save", entityDtoToSave => {
         expect(entityDtoToSave?.entropy_minimum).toStrictEqual(expectedData.entropy_minimum);
         expect(entityDtoToSave?.external_dictionary_check).toStrictEqual(expectedData.external_dictionary_check);
         return expectedData;
@@ -179,10 +179,10 @@ describe("DisplayAdministrationUserPassphrasePolicies", () => {
       const context = defaultAppContext();
       const props = defaultProps();
       const entityDto = defaultUserPassphrasePoliciesEntityDto();
-      props.context.port.addRequestListener("passbolt.user-passphrase-policies.find", () => entityDto);
+      props.context.port.addRequestListener("cipherguard.user-passphrase-policies.find", () => entityDto);
 
       let savePromise;
-      props.context.port.addRequestListener("passbolt.user-passphrase-policies.save", () => new Promise(resolve => {
+      props.context.port.addRequestListener("cipherguard.user-passphrase-policies.save", () => new Promise(resolve => {
         savePromise = resolve;
       }));
 
@@ -205,10 +205,10 @@ describe("DisplayAdministrationUserPassphrasePolicies", () => {
       const context = defaultAppContext();
       const props = defaultProps();
       const entityDto = defaultUserPassphrasePoliciesEntityDto();
-      props.context.port.addRequestListener("passbolt.user-passphrase-policies.find", () => entityDto);
+      props.context.port.addRequestListener("cipherguard.user-passphrase-policies.find", () => entityDto);
 
       let savePromise;
-      props.context.port.addRequestListener("passbolt.user-passphrase-policies.save", () => new Promise(resolve => {
+      props.context.port.addRequestListener("cipherguard.user-passphrase-policies.save", () => new Promise(resolve => {
         savePromise = resolve;
       }));
 
@@ -232,8 +232,8 @@ describe("DisplayAdministrationUserPassphrasePolicies", () => {
       const props = defaultProps();
       const entityDto = defaultUserPassphrasePoliciesEntityDto();
       const expectedError = new Error("Something went wrong!");
-      props.context.port.addRequestListener("passbolt.user-passphrase-policies.find", () => entityDto);
-      props.context.port.addRequestListener("passbolt.user-passphrase-policies.save", () => { throw expectedError; });
+      props.context.port.addRequestListener("cipherguard.user-passphrase-policies.find", () => entityDto);
+      props.context.port.addRequestListener("cipherguard.user-passphrase-policies.save", () => { throw expectedError; });
 
       const page = new DisplayAdministrationUserPassphrasePoliciesPage(context, props);
       await waitForTrue(() => page.exists());

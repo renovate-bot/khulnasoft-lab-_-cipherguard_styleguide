@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -87,10 +87,10 @@ class ManageAccountRecoveryUserSettings extends Component {
     this.toggleProcessing();
     const accountRecoveryUserSettingDto = {status: this.state.status};
     try {
-      await this.props.context.port.request("passbolt.account-recovery.save-user-settings", accountRecoveryUserSettingDto);
+      await this.props.context.port.request("cipherguard.account-recovery.save-user-settings", accountRecoveryUserSettingDto);
       this.props.accountRecoveryContext.setUserAccountRecoveryStatus(this.state.status);
       // The logged-in user has to be refreshed to keep the local storage up to date and prevent to display again the enrollment
-      const loggedInUser = await this.props.context.port.request("passbolt.users.find-logged-in-user", true);
+      const loggedInUser = await this.props.context.port.request("cipherguard.users.find-logged-in-user", true);
       this.props.context.setContext({loggedInUser});
       this.props.actionFeedbackContext.displaySuccess(this.translate("The account recovery subscription setting has been updated."));
       this.close();

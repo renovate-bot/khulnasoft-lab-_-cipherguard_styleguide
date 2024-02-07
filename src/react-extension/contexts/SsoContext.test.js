@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.9.0
@@ -36,7 +36,7 @@ describe("SsoContextProvider", () => {
 
       await contextProvider.loadSsoConfiguration();
 
-      expect(props.context.port.requestListeners["passbolt.sso.get-local-configured-provider"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.sso.get-local-configured-provider"]).toHaveBeenCalled();
       expect(contextProvider.state.ssoLocalConfiguredProvider).toEqual(scenario.providerId);
     });
 
@@ -76,14 +76,14 @@ describe("SsoContextProvider", () => {
       await contextProvider.loadSsoConfiguration();
       await contextProvider.runSignInProcess();
 
-      expect(props.context.port.requestListeners["passbolt.sso.sign-in-with-azure"]).toHaveBeenCalledTimes(1);
-      expect(props.context.port.requestListeners["passbolt.auth.post-login-redirect"]).toHaveBeenCalledTimes(1);
+      expect(props.context.port.requestListeners["cipherguard.sso.sign-in-with-azure"]).toHaveBeenCalledTimes(1);
+      expect(props.context.port.requestListeners["cipherguard.auth.post-login-redirect"]).toHaveBeenCalledTimes(1);
     });
 
     it("Should throw an error when something wrong happens during sign-in", async() => {
       const error = new Error("An unexpected error occured");
       const props = defaultProps(null, "azure");
-      props.context.port.addRequestListener("passbolt.sso.sign-in-with-azure", jest.fn(() => Promise.reject(error)));
+      props.context.port.addRequestListener("cipherguard.sso.sign-in-with-azure", jest.fn(() => Promise.reject(error)));
       const contextProvider = new SsoContextProvider(props);
       mockComponentSetState(contextProvider);
 
@@ -97,8 +97,8 @@ describe("SsoContextProvider", () => {
         expect(e).toStrictEqual(error);
       }
 
-      expect(props.context.port.requestListeners["passbolt.sso.sign-in-with-azure"]).toHaveBeenCalledTimes(1);
-      expect(props.context.port.requestListeners["passbolt.auth.post-login-redirect"]).not.toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.sso.sign-in-with-azure"]).toHaveBeenCalledTimes(1);
+      expect(props.context.port.requestListeners["cipherguard.auth.post-login-redirect"]).not.toHaveBeenCalled();
     });
 
     it("Should throw an error when the pasphrase mismatch", async() => {
@@ -107,7 +107,7 @@ describe("SsoContextProvider", () => {
       error.name = "InvalidMasterPasswordError";
 
       const props = defaultProps(null, "azure");
-      props.context.port.addRequestListener("passbolt.auth.post-login-redirect", jest.fn(() => Promise.reject(error)));
+      props.context.port.addRequestListener("cipherguard.auth.post-login-redirect", jest.fn(() => Promise.reject(error)));
       const contextProvider = new SsoContextProvider(props);
       mockComponentSetState(contextProvider);
 
@@ -128,7 +128,7 @@ describe("SsoContextProvider", () => {
       error.name = "OutdatedSsoKitError";
 
       const props = defaultProps(null, "azure");
-      props.context.port.addRequestListener("passbolt.auth.post-login-redirect", jest.fn(() => Promise.reject(error)));
+      props.context.port.addRequestListener("cipherguard.auth.post-login-redirect", jest.fn(() => Promise.reject(error)));
       const contextProvider = new SsoContextProvider(props);
       mockComponentSetState(contextProvider);
 

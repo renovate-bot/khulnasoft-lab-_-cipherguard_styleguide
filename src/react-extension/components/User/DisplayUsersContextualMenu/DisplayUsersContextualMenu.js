@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -112,7 +112,7 @@ class DisplayUsersContextualMenu extends React.Component {
    * Handle the copy of public key
    */
   async handlePublicKeyCopy() {
-    const gpgkeyInfo = await this.props.context.port.request('passbolt.keyring.get-public-key-info-by-user', this.user.id);
+    const gpgkeyInfo = await this.props.context.port.request('cipherguard.keyring.get-public-key-info-by-user', this.user.id);
     await ClipBoard.copy(gpgkeyInfo.armored_key, this.props.context.port);
     this.props.actionFeedbackContext.displaySuccess(this.translate("The public key has been copied to clipboard"));
     this.props.hide();
@@ -149,7 +149,7 @@ class DisplayUsersContextualMenu extends React.Component {
    */
   async handleDeleteClickEvent() {
     try {
-      await this.props.context.port.request("passbolt.users.delete-dry-run", this.user.id);
+      await this.props.context.port.request("cipherguard.users.delete-dry-run", this.user.id);
       this.displayDeleteUserDialog();
     } catch (error) {
       if (error.name === "DeleteDryRunError") {
@@ -272,7 +272,7 @@ class DisplayUsersContextualMenu extends React.Component {
    * Resend an invite to the given user
    */
   resendInvite() {
-    this.props.context.port.request("passbolt.users.resend-invite", this.user.username)
+    this.props.context.port.request("cipherguard.users.resend-invite", this.user.username)
       .then(this.onResendInviteSuccess.bind(this))
       .catch(this.onResendInviteFailure.bind(this));
   }

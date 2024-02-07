@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -167,7 +167,7 @@ class EditUserProfile extends Component {
    */
   async updateUserProfile() {
     const userToUpdateDto = this.buildUserToUpdateDto();
-    await this.props.context.port.request("passbolt.users.update", userToUpdateDto);
+    await this.props.context.port.request("cipherguard.users.update", userToUpdateDto);
     if (this.canIUseLocale) {
       const localeToUpdateDto = this.buildLocaleToUpdateDto();
       await this.props.userSettingsContext.onUpdateLocaleUserRequested(localeToUpdateDto);
@@ -200,7 +200,7 @@ class EditUserProfile extends Component {
    */
   async onSaveSuccess() {
     await this.props.actionFeedbackContext.displaySuccess(this.translate("The user has been updated successfully"));
-    const loggedInUser = await this.props.context.port.request("passbolt.users.find-logged-in-user", true);
+    const loggedInUser = await this.props.context.port.request("cipherguard.users.find-logged-in-user", true);
     this.props.context.setContext({loggedInUser});
     this.props.context.onUpdateLocaleRequested();
     this.props.onClose();

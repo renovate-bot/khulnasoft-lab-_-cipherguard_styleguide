@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -98,7 +98,7 @@ describe("See Delete Group Dialog", () => {
           {aco_foreign_key: "7ecd7376-8540-58c1-88d9-678c027d464a", id: "e8ffb030-09f5-54cd-ad64-68e3e983a3d4"}
         ]
       };
-      expect(context.port.request).toHaveBeenCalledWith("passbolt.groups.delete", mockGroup.id, permissionTransfer);
+      expect(context.port.request).toHaveBeenCalledWith("cipherguard.groups.delete", mockGroup.id, permissionTransfer);
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalled();
     });
 

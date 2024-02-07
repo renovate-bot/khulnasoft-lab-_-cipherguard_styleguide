@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -61,7 +61,7 @@ describe("See the Create Dialog Group", () => {
       page.createGroup.fillInput(page.createGroup.usernameInput, "ada");
       jest.runOnlyPendingTimers();
 
-      expect(context.port.request).toHaveBeenCalledWith("passbolt.keyring.get-public-key-info-by-user", mockUsers[1].id);
+      expect(context.port.request).toHaveBeenCalledWith("cipherguard.keyring.get-public-key-info-by-user", mockUsers[1].id);
       await waitFor(() => {});
       await page.createGroup.click(page.createGroup.userAutocomplete);
 
@@ -83,7 +83,7 @@ describe("See the Create Dialog Group", () => {
       };
       await page.createGroup.click(page.createGroup.saveButton);
 
-      expect(context.port.request).toHaveBeenCalledWith("passbolt.groups.create", groupDto);
+      expect(context.port.request).toHaveBeenCalledWith("cipherguard.groups.create", groupDto);
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalled();
       expect(props.onClose).toBeCalled();
     });
@@ -97,7 +97,7 @@ describe("See the Create Dialog Group", () => {
       page.createGroup.fillInput(page.createGroup.usernameInput, "ada");
       jest.runOnlyPendingTimers();
 
-      expect(context.port.request).toHaveBeenCalledWith("passbolt.keyring.get-public-key-info-by-user", mockUsers[1].id);
+      expect(context.port.request).toHaveBeenCalledWith("cipherguard.keyring.get-public-key-info-by-user", mockUsers[1].id);
       await waitFor(() => {});
       await page.createGroup.click(page.createGroup.userAutocomplete);
 
@@ -131,7 +131,7 @@ describe("See the Create Dialog Group", () => {
       page.createGroup.fillInput(page.createGroup.usernameInput, "ada");
       jest.runOnlyPendingTimers();
 
-      expect(context.port.request).toHaveBeenCalledWith("passbolt.keyring.get-public-key-info-by-user", mockUsers[1].id);
+      expect(context.port.request).toHaveBeenCalledWith("cipherguard.keyring.get-public-key-info-by-user", mockUsers[1].id);
       await waitFor(() => {});
 
       await page.createGroup.click(page.createGroup.userAutocomplete);
@@ -168,7 +168,7 @@ describe("See the Create Dialog Group", () => {
       page.createGroup.fillInput(page.createGroup.usernameInput, "ada");
       jest.runOnlyPendingTimers();
 
-      expect(context.port.request).toHaveBeenCalledWith("passbolt.keyring.get-public-key-info-by-user", mockUsers[1].id);
+      expect(context.port.request).toHaveBeenCalledWith("cipherguard.keyring.get-public-key-info-by-user", mockUsers[1].id);
       await waitFor(() => {});
       await page.createGroup.click(page.createGroup.userAutocomplete);
 
@@ -193,7 +193,7 @@ describe("See the Create Dialog Group", () => {
       page.createGroup.fillInput(page.createGroup.usernameInput, "ada");
       jest.runOnlyPendingTimers();
 
-      expect(context.port.request).toHaveBeenCalledWith("passbolt.keyring.get-public-key-info-by-user", mockUsers[1].id);
+      expect(context.port.request).toHaveBeenCalledWith("cipherguard.keyring.get-public-key-info-by-user", mockUsers[1].id);
       await waitFor(() => {});
       await page.createGroup.click(page.createGroup.userAutocomplete);
 

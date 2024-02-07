@@ -11,16 +11,16 @@ export function defaultAppContext(appContext) {
 }
 
 export function mockExtensionCall(context) {
-  context.port.addRequestListener("passbolt.resources.create", () => {});
+  context.port.addRequestListener("cipherguard.resources.create", () => {});
 
-  context.port.addRequestListener("passbolt.quickaccess.prepare-autosave", () => ({
+  context.port.addRequestListener("cipherguard.quickaccess.prepare-autosave", () => ({
     name: "",
     uri: "",
     username: "",
     secret_clear: ""
   }));
 
-  context.port.addRequestListener("passbolt.secrets.powned-password", value => {
+  context.port.addRequestListener("cipherguard.secrets.powned-password", value => {
     if (value === "hello-world") {
       return 3;
     } else if (value === "unavailable") {
@@ -32,7 +32,7 @@ export function mockExtensionCall(context) {
 
 export function mockExtensionCallWithTabInfo(context) {
   mockExtensionCall(context);
-  context.port.addRequestListener("passbolt.quickaccess.prepare-autosave", () => ({
+  context.port.addRequestListener("cipherguard.quickaccess.prepare-autosave", () => ({
     name: "test",
     uri: "www.test.com",
     username: "test@cipherguard.khulnasoft.com",

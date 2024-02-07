@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.9.0
@@ -41,12 +41,12 @@ describe("See the Create Resource - save resource", () => {
 
     const resourceMeta = {
       name: "Cipherguard Browser Extension Test",
-      uri: "https://passbolt-browser-extension/test",
+      uri: "https://cipherguard-browser-extension/test",
       username: "test@cipherguard.khulnasoft.com",
       resource_type_id: context.resourceTypesSettings.findResourceTypeIdBySlug(context.resourceTypesSettings.DEFAULT_RESOURCE_TYPES_SLUGS.PASSWORD_AND_DESCRIPTION)
     };
 
-    context.port.addRequestListener("passbolt.quickaccess.prepare-autosave", async() => ({
+    context.port.addRequestListener("cipherguard.quickaccess.prepare-autosave", async() => ({
       name: resourceMeta.name,
       uri: resourceMeta.uri,
       username: resourceMeta.username,
@@ -54,7 +54,7 @@ describe("See the Create Resource - save resource", () => {
     }));
 
     let isPageReady = false;
-    context.port.addRequestListener("passbolt.secrets.powned-password", async value => {
+    context.port.addRequestListener("cipherguard.secrets.powned-password", async value => {
       isPageReady = true;
       if (value === "hello-world") {
         return 3;
@@ -82,7 +82,7 @@ describe("See the Create Resource - save resource", () => {
       password: "unavailable",
       description: ""
     };
-    expect(context.port.request).toHaveBeenCalledWith("passbolt.resources.create", resourceMeta, secretDto);
+    expect(context.port.request).toHaveBeenCalledWith("cipherguard.resources.create", resourceMeta, secretDto);
   });
 
   it("As a signed-in user creating a password on the quickaccess, I should see a complexity as Quality if the passphrase is empty", async() => {

@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -35,7 +35,7 @@ describe("As AN I should see the account recovery restart from scratch", () => {
       // title
       expect(page.title).toBe("Sorry, wrong computer or browser...");
       // message
-      expect(page.message).toBe('You need to finalize the account recovery process with the same computer you used for the account recovery request.If you changed systems, or reinstalled passbolt web extension in the meantime, you will need to start the account recovery process from scratch.');
+      expect(page.message).toBe('You need to finalize the account recovery process with the same computer you used for the account recovery request.If you changed systems, or reinstalled cipherguard web extension in the meantime, you will need to start the account recovery process from scratch.');
       // download
       expect(page.linkToRestartFromScratch).toBe('Restart from scratch');
     });

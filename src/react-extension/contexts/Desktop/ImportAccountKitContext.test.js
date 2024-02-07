@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.3.0
@@ -54,7 +54,7 @@ describe("ImportAccountKitContext", () => {
       const accountKit = defaultAccountKit();
       await importAccountKitContext.verifyAccountKit(accountKit);
 
-      expect(props.context.port.request).toHaveBeenCalledWith("passbolt.background.verify-account-kit", accountKit);
+      expect(props.context.port.request).toHaveBeenCalledWith("cipherguard.background.verify-account-kit", accountKit);
       expect(importAccountKitContext.state.state).toEqual(ImportAccountKitWorkflowStates.VERIFY_PASSPHRASE);
     });
 
@@ -80,7 +80,7 @@ describe("ImportAccountKitContext", () => {
 
       await importAccountKitContext.verifyPassphrase(passphrase);
 
-      expect(props.context.port.request).toHaveBeenCalledWith("passbolt.auth-import.verify-passphrase", passphrase);
+      expect(props.context.port.request).toHaveBeenCalledWith("cipherguard.auth-import.verify-passphrase", passphrase);
       expect(importAccountKitContext.state.state).toEqual(ImportAccountKitWorkflowStates.IMPORTING_ACCOUNT);
       expect(importAccountKitContext.importAccountAndConnect).toHaveBeenCalled();
     });
@@ -105,7 +105,7 @@ describe("ImportAccountKitContext", () => {
 
       await importAccountKitContext.importAccountAndConnect(passphrase);
 
-      expect(props.context.port.request).toHaveBeenCalledWith("passbolt.auth-import.import-account");
+      expect(props.context.port.request).toHaveBeenCalledWith("cipherguard.auth-import.import-account");
       expect(importAccountKitContext.state.state).toEqual(ImportAccountKitWorkflowStates.SIGNING_IN);
     });
 
@@ -116,7 +116,7 @@ describe("ImportAccountKitContext", () => {
 
       await importAccountKitContext.importAccountAndConnect(passphrase);
 
-      expect(props.context.port.request).toHaveBeenCalledWith("passbolt.auth.login", passphrase);
+      expect(props.context.port.request).toHaveBeenCalledWith("cipherguard.auth.login", passphrase);
     });
 
     it("should navigate to UNEXPECTED_ERROR_STATE in case of error", async() => {

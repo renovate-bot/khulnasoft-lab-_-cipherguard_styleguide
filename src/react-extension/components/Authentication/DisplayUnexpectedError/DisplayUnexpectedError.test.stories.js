@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.0.0
@@ -17,8 +17,8 @@ import {MemoryRouter, Route} from "react-router-dom";
 import DisplayUnexpectedError from "./DisplayUnexpectedError";
 import {
   defaultProps,
-  passboltApiFetchErrorProps,
-  passboltEntityValidationErrorProps
+  cipherguardApiFetchErrorProps,
+  cipherguardEntityValidationErrorProps
 } from "./DisplayUnexpectedError.test.data";
 
 export default {
@@ -54,13 +54,13 @@ SignInError.parameters = {
 };
 
 export const ErrorWithData = Template.bind({});
-ErrorWithData.args = passboltApiFetchErrorProps();
+ErrorWithData.args = cipherguardApiFetchErrorProps();
 ErrorWithData.parameters = {
   css: "ext_authentication"
 };
 
 export const ErrorWithDetails = Template.bind({});
-ErrorWithDetails.args = passboltEntityValidationErrorProps();
+ErrorWithDetails.args = cipherguardEntityValidationErrorProps();
 ErrorWithDetails.parameters = {
   css: "ext_authentication"
 };

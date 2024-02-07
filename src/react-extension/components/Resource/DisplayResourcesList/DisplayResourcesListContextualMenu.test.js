@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -90,7 +90,7 @@ describe("DisplayResourcesListContextualMenu", () => {
       expect.assertions(4);
       jest.spyOn(props.context.port, 'request').mockImplementationOnce(() => plaintextSecretPasswordStringDto());
       await page.copyPassword();
-      expect(props.context.port.request).toHaveBeenCalledWith('passbolt.secret.decrypt', props.resource.id);
+      expect(props.context.port.request).toHaveBeenCalledWith('cipherguard.secret.decrypt', props.resource.id);
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith('secret-password');
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalled();
       expect(props.hide).toHaveBeenCalled();
@@ -174,7 +174,7 @@ describe("DisplayResourcesListContextualMenu", () => {
       expect.assertions(4);
       jest.spyOn(props.context.port, 'request').mockImplementationOnce(() => plaintextSecretPasswordDescriptionTotpDto());
       await page.copyTotp();
-      expect(props.context.port.request).toHaveBeenCalledWith('passbolt.secret.decrypt', props.resource.id);
+      expect(props.context.port.request).toHaveBeenCalledWith('cipherguard.secret.decrypt', props.resource.id);
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith(expect.stringMatching(/^[0-9]{6}/));
       expect(ActionFeedbackContext._currentValue.displaySuccess).toHaveBeenCalled();
       expect(props.hide).toHaveBeenCalled();

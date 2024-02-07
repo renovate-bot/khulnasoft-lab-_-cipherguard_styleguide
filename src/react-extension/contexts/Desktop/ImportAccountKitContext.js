@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.3.0
@@ -118,7 +118,7 @@ export class ImportAccountKitContextProvider extends React.Component {
   async verifyAccountKit(accountKit) {
     try {
       this.setProcessing(true);
-      const accountKitValidated = await this.props.context.port.request("passbolt.background.verify-account-kit", accountKit);
+      const accountKitValidated = await this.props.context.port.request("cipherguard.background.verify-account-kit", accountKit);
       return this.setState({state: ImportAccountKitWorkflowStates.VERIFY_PASSPHRASE, accountKit: accountKitValidated});
     } catch (error) {
       console.error(error);
@@ -135,7 +135,7 @@ export class ImportAccountKitContextProvider extends React.Component {
    */
   async verifyPassphrase(passphrase) {
     try {
-      await this.props.context.port.request("passbolt.auth-import.verify-passphrase", passphrase);
+      await this.props.context.port.request("cipherguard.auth-import.verify-passphrase", passphrase);
       this.navigate(ImportAccountKitWorkflowStates.IMPORTING_ACCOUNT);
       await this.importAccountAndConnect(passphrase);
     } catch (error) {
@@ -154,9 +154,9 @@ export class ImportAccountKitContextProvider extends React.Component {
   async importAccountAndConnect(passphrase) {
     try {
       this.flushAccountKit();
-      await this.props.context.port.request("passbolt.auth-import.import-account");
+      await this.props.context.port.request("cipherguard.auth-import.import-account");
       this.navigate(ImportAccountKitWorkflowStates.SIGNING_IN);
-      await this.props.context.port.request("passbolt.auth.login", passphrase);
+      await this.props.context.port.request("cipherguard.auth.login", passphrase);
     } catch (error) {
       console.error(error);
       return this.setState({unexpectedError: error, state: ImportAccountKitWorkflowStates.UNEXPECTED_ERROR_STATE});

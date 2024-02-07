@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.1.0
@@ -86,7 +86,7 @@ export class UserSettingsContextProvider extends React.Component {
    * @param passphrase A passphrase
    */
   async onCheckProvidePassphraseRequested(passphrase) {
-    await this.props.context.port.request('passbolt.auth.verify-passphrase', passphrase);
+    await this.props.context.port.request('cipherguard.auth.verify-passphrase', passphrase);
     await this.setState({state: UserSettingsContextState.PASSPHRASE_TO_PROVIDE_CHECKED, oldPassphrase: passphrase});
   }
 
@@ -102,7 +102,7 @@ export class UserSettingsContextProvider extends React.Component {
    * @param {string} passphrase The new passphrase
    */
   async onUpdatePassphraseRequested(passphrase) {
-    await this.props.context.port.request('passbolt.user.update-private-key', this.state.oldPassphrase, passphrase);
+    await this.props.context.port.request('cipherguard.user.update-private-key', this.state.oldPassphrase, passphrase);
     await this.setState({state: UserSettingsContextState.PASSPHRASE_UPDATED, oldPassphrase: null});
   }
 
@@ -110,7 +110,7 @@ export class UserSettingsContextProvider extends React.Component {
    * Whenever the download of the recovery kit is requested
    */
   async onDownloadRecoveryKitRequested() {
-    await this.props.context.port.request('passbolt.keyring.download-my-private-key');
+    await this.props.context.port.request('cipherguard.keyring.download-my-private-key');
   }
 
   /**
@@ -118,7 +118,7 @@ export class UserSettingsContextProvider extends React.Component {
    * @param securityTokenDto The security token DTO
    */
   async onUpdateSecurityTokenRequested(securityTokenDto) {
-    await this.props.context.port.request('passbolt.users.update-security-token', securityTokenDto);
+    await this.props.context.port.request('cipherguard.users.update-security-token', securityTokenDto);
   }
 
   /**
@@ -126,7 +126,7 @@ export class UserSettingsContextProvider extends React.Component {
    * @param localeDto The locale DTO
    */
   async handleUpdateLocaleUserRequested(localeDto) {
-    await this.props.context.port.request("passbolt.locale.update-user-locale", localeDto);
+    await this.props.context.port.request("cipherguard.locale.update-user-locale", localeDto);
   }
 
   /**

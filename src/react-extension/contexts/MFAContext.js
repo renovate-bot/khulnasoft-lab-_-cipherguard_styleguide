@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.10.0
@@ -127,7 +127,7 @@ export class MfaContextProvider extends React.Component {
     if (this.mfaPolicyService) {
       result = await this.mfaPolicyService.find();
     } else {
-      result = await this.props.context.port.request("passbolt.mfa-policy.get-policy");
+      result = await this.props.context.port.request("cipherguard.mfa-policy.get-policy");
     }
     policy = result ? result.policy : null;
     this.setState({policy});
@@ -146,7 +146,7 @@ export class MfaContextProvider extends React.Component {
     if (this.mfaService) {
       settings = await this.mfaService.getUserSettings();
     } else {
-      settings = await this.props.context.port.request("passbolt.mfa-policy.get-mfa-settings");
+      settings = await this.props.context.port.request("cipherguard.mfa-policy.get-mfa-settings");
     }
     mfaUserSettings = settings.MfaAccountSettings;
     mfaOrganisationSettings = settings.MfaOrganizationSettings;
@@ -288,7 +288,7 @@ export class MfaContextProvider extends React.Component {
   async validateTotpCode(otpProvisioningUri, totp) {
     try {
       this.setProcessing(true);
-      await this.props.context.port.request("passbolt.mfa-setup.verify-totp-code", {
+      await this.props.context.port.request("cipherguard.mfa-setup.verify-totp-code", {
         otpProvisioningUri,
         totp
       });
@@ -308,7 +308,7 @@ export class MfaContextProvider extends React.Component {
   async validateYubikeyCode(hotp) {
     try {
       this.setProcessing(true);
-      await this.props.context.port.request("passbolt.mfa-setup.verify-yubikey-code", {
+      await this.props.context.port.request("cipherguard.mfa-setup.verify-yubikey-code", {
         hotp
       });
     } catch (error) {
@@ -326,7 +326,7 @@ export class MfaContextProvider extends React.Component {
   async removeProvider() {
     try {
       this.setProcessing(true);
-      await this.props.context.port.request("passbolt.mfa-setup.remove-provider", {provider: this.state.provider});
+      await this.props.context.port.request("cipherguard.mfa-setup.remove-provider", {provider: this.state.provider});
     } catch (error) {
       console.error(error);
       throw error;

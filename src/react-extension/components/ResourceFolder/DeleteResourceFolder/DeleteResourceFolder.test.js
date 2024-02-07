@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -36,7 +36,7 @@ describe("Delete Folder", () => {
 
   describe('As LU I should delete a folder', () => {
     it('As System I should send a create request', async() => {
-      const expectedParameters =  ["passbolt.folders.delete", "some folder id", false];
+      const expectedParameters =  ["cipherguard.folders.delete", "some folder id", false];
       jest.spyOn(context.port, 'request').mockImplementationOnce(() => ({id: 'some folder id'}));
       await page.delete(false);
       expect(context.port.request).toHaveBeenCalledWith(...expectedParameters);
@@ -58,7 +58,7 @@ describe("Delete Folder", () => {
     });
 
     it('As LU I should delete the sub-folders of the folder to delete', async() => {
-      const expectedParameters =  ["passbolt.folders.delete", "some folder id", true];
+      const expectedParameters =  ["cipherguard.folders.delete", "some folder id", true];
       jest.spyOn(context.port, 'request').mockImplementationOnce(() => ({id: 'some folder id'}));
       await page.delete(true);
       expect(context.port.request).toHaveBeenCalledWith(...expectedParameters);

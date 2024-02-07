@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.8.3
@@ -125,8 +125,8 @@ describe("DisplaySelfRegistrationAdministration", () => {
       expect.assertions(7);
       // We expect to not have 4 items
       expect(page.inputByIndex(0).value).toBe('cipherguard.khulnasoft.com');
-      expect(page.inputByIndex(1).value).toBe('passbolt.io');
-      expect(page.inputByIndex(2).value).toBe('passbolt.lu');
+      expect(page.inputByIndex(1).value).toBe('cipherguard.io');
+      expect(page.inputByIndex(2).value).toBe('cipherguard.lu');
       expect(page.inputByIndex(3)).toBeNull();
 
       await page.addDomain();
@@ -271,7 +271,7 @@ describe("DisplaySelfRegistrationAdministration", () => {
     it('As a logged in administrator I can remove a domain from an existing list of domains', async() => {
       expect.assertions(2);
 
-      expect(page.inputByIndex(1).value).toBe("passbolt.io");
+      expect(page.inputByIndex(1).value).toBe("cipherguard.io");
       await page.removeDomain(1);
       expect(page.inputByIndex(1)).toBeNull();
     });
@@ -279,7 +279,7 @@ describe("DisplaySelfRegistrationAdministration", () => {
     it('As a logged in administrator I can not remove the domain when there’s only one item in the list of domains allowed to self register', async() => {
       expect.assertions(4);
 
-      expect(page.inputByIndex(1).value).toBe("passbolt.io");
+      expect(page.inputByIndex(1).value).toBe("cipherguard.io");
       await page.removeDomain(1);
       await page.removeDomain(2);
       expect(page.inputByIndex(1)).toBeNull();

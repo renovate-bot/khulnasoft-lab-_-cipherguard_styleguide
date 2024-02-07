@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -54,14 +54,14 @@ class DisplayUserSettingsWorkspaceActions extends React.Component {
    * Whenever the user wants to download his public key
    */
   async handleDownloadPublicKey() {
-    await this.props.context.port.request("passbolt.keyring.download-my-public-key");
+    await this.props.context.port.request("cipherguard.keyring.download-my-public-key");
   }
 
   /**
    * Whenever the user wants to download his private key
    */
   async handleDownloadPrivateKey() {
-    await this.props.context.port.request("passbolt.keyring.download-my-private-key");
+    await this.props.context.port.request("cipherguard.keyring.download-my-private-key");
   }
 
   /**

@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -156,14 +156,14 @@ class DisplayEmailNotificationsAdministration extends React.Component {
           {settings && this.hasDatabaseSetting() && this.hasFileConfigSetting() &&
           <div className="warning message" id="email-notification-setting-overridden-banner">
             <p>
-              <Trans>Settings have been found in your database as well as in your passbolt.php (or environment variables).</Trans> <Trans>The settings displayed in the form below are the one stored in your database and have precedence over others.</Trans>
+              <Trans>Settings have been found in your database as well as in your cipherguard.php (or environment variables).</Trans> <Trans>The settings displayed in the form below are the one stored in your database and have precedence over others.</Trans>
             </p>
           </div>
           }
           {settings && !this.hasDatabaseSetting() && this.hasFileConfigSetting() &&
           <div className="warning message" id="email-notification-fileconfig-exists-banner">
             <p>
-              <Trans>You seem to have Email Notification Settings defined in your passbolt.php (or via environment variables).</Trans> <Trans>Submitting the form will overwrite those settings with the ones you choose in the form below.</Trans>
+              <Trans>You seem to have Email Notification Settings defined in your cipherguard.php (or via environment variables).</Trans> <Trans>Submitting the form will overwrite those settings with the ones you choose in the form below.</Trans>
             </p>
           </div>
           }
@@ -324,7 +324,7 @@ class DisplayEmailNotificationsAdministration extends React.Component {
                 <input type="checkbox" className="toggle-switch-checkbox checkbox" name="userCreate" disabled={this.hasAllInputDisabled()}
                   onChange={this.handleInputChange} checked={settings.userCreate} id="send-user-create-toggle-button"/>
                 <label className="text" htmlFor="send-user-create-toggle-button">
-                  <Trans>When new users are invited to passbolt, notify them.</Trans>
+                  <Trans>When new users are invited to cipherguard, notify them.</Trans>
                 </label>
               </span>
               <span className="input toggle-switch form-element">

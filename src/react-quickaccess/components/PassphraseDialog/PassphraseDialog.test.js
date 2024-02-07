@@ -26,7 +26,7 @@ describe("PassphraseDialog", () => {
         <PassphraseDialog debug context={appContext} onComplete={onComplete} />
       </MockTranslationProvider>
     );
-    // mock the passbolt messaging layer.
+    // mock the cipherguard messaging layer.
     appContext.port = {
       emit: () => new Promise(resolve => resolve()),
       request: () => new Promise(resolve => resolve())

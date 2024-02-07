@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -83,8 +83,8 @@ export class ApiClient {
    * @throws {TypeError} if id is empty or not a string
    * @throws {TypeError} if urlOptions key or values are not a string
    * @throws {CipherguardServiceUnavailableError} if service is not reachable
-   * @throws {CipherguardBadResponseError} if passbolt API responded with non parsable JSON
-   * @throws {CipherguardApiFetchError} if passbolt API response is not OK (non 2xx status)
+   * @throws {CipherguardBadResponseError} if cipherguard API responded with non parsable JSON
+   * @throws {CipherguardApiFetchError} if cipherguard API response is not OK (non 2xx status)
    * @returns {Promise<*>}
    * @public
    */
@@ -104,8 +104,8 @@ export class ApiClient {
    * @throws {TypeError} if id is empty or not a string
    * @throws {TypeError} if urlOptions key or values are not a string
    * @throws {CipherguardServiceUnavailableError} if service is not reachable
-   * @throws {CipherguardBadResponseError} if passbolt API responded with non parsable JSON
-   * @throws {CipherguardApiFetchError} if passbolt API response is not OK (non 2xx status)
+   * @throws {CipherguardBadResponseError} if cipherguard API responded with non parsable JSON
+   * @throws {CipherguardApiFetchError} if cipherguard API response is not OK (non 2xx status)
    * @returns {Promise<*>}
    * @public
    */
@@ -133,8 +133,8 @@ export class ApiClient {
    * @param {Object} [urlOptions] Optional url parameters for example {"contain[something]": "1"}
    * @throws {TypeError} if urlOptions key or values are not a string
    * @throws {CipherguardServiceUnavailableError} if service is not reachable
-   * @throws {CipherguardBadResponseError} if passbolt API responded with non parsable JSON
-   * @throws {CipherguardApiFetchError} if passbolt API response is not OK (non 2xx status)
+   * @throws {CipherguardBadResponseError} if cipherguard API responded with non parsable JSON
+   * @throws {CipherguardApiFetchError} if cipherguard API response is not OK (non 2xx status)
    * @returns {Promise<*>}
    * @public
    */
@@ -150,8 +150,8 @@ export class ApiClient {
    * @param {Object} [urlOptions] Optional url parameters for example {"contain[something]": "1"}
    * @throws {TypeError} if body is empty or cannot converted to valid JSON string
    * @throws {CipherguardServiceUnavailableError} if service is not reachable
-   * @throws {CipherguardBadResponseError} if passbolt API responded with non parsable JSON
-   * @throws {CipherguardApiFetchError} if passbolt API response is not OK (non 2xx status)
+   * @throws {CipherguardBadResponseError} if cipherguard API responded with non parsable JSON
+   * @throws {CipherguardApiFetchError} if cipherguard API response is not OK (non 2xx status)
    * @returns {Promise<*>}
    * @public
    */
@@ -171,8 +171,8 @@ export class ApiClient {
    * @throws {TypeError} if id is empty or not a string
    * @throws {TypeError} if body is empty or cannot converted to valid JSON string
    * @throws {CipherguardServiceUnavailableError} if service is not reachable
-   * @throws {CipherguardBadResponseError} if passbolt API responded with non parsable JSON
-   * @throws {CipherguardApiFetchError} if passbolt API response is not OK (non 2xx status)
+   * @throws {CipherguardBadResponseError} if cipherguard API responded with non parsable JSON
+   * @throws {CipherguardApiFetchError} if cipherguard API response is not OK (non 2xx status)
    * @returns {Promise<*>}
    * @public
    */
@@ -201,8 +201,8 @@ export class ApiClient {
    * @param {Object} [urlOptions] Optional url parameters for example {"contain[something]": "1"}
    * @throws {TypeError} if body is empty or cannot converted to valid JSON string
    * @throws {CipherguardServiceUnavailableError} if service is not reachable
-   * @throws {CipherguardBadResponseError} if passbolt API responded with non parsable JSON
-   * @throws {CipherguardApiFetchError} if passbolt API response is not OK (non 2xx status)
+   * @throws {CipherguardBadResponseError} if cipherguard API responded with non parsable JSON
+   * @throws {CipherguardApiFetchError} if cipherguard API response is not OK (non 2xx status)
    * @returns {Promise<*>}
    * @public
    */
@@ -364,8 +364,8 @@ export class ApiClient {
    * @param {Object} [options] (optional) more fetch options
    * @throws {TypeError} if method, url are not defined or of the wrong type
    * @throws {CipherguardServiceUnavailableError} if service is not reachable
-   * @throws {CipherguardBadResponseError} if passbolt API responded with non parsable JSON
-   * @throws {CipherguardApiFetchError} if passbolt API response is not OK (non 2xx status)
+   * @throws {CipherguardBadResponseError} if cipherguard API responded with non parsable JSON
+   * @throws {CipherguardApiFetchError} if cipherguard API response is not OK (non 2xx status)
    * @returns {Promise<*>}
    * @public
    */

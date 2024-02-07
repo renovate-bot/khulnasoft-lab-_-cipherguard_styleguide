@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.8.0
@@ -154,7 +154,7 @@ describe("ManageSmtpAdministrationSettings", () => {
     it('As a signed-in administrator on the administration workspace, I can see the Email server settings populated with the configuration file settings', async() => {
       expect.assertions(8);
       const props = defaultProps();
-      const smtpSettings = withExistingSmtpSettings({client: "passbolt.dev", source: "file"});
+      const smtpSettings = withExistingSmtpSettings({client: "cipherguard.dev", source: "file"});
       fetch.doMockOnceIf(/smtp\/settings.json/, () => mockApiResponse(smtpSettings));
       const page = new ManageSmtpAdministrationSettingsPage(props);
 
@@ -341,7 +341,7 @@ describe("ManageSmtpAdministrationSettings", () => {
 
       await waitFor(() => {});
 
-      expect(page.passboltHelpPage).toBeTruthy();
+      expect(page.cipherguardHelpPage).toBeTruthy();
     });
 
     it("As a signed-in administrator in the “Email server” setting, after choosing a provider different than 'Other' I can see a second helpbox", async() => {
@@ -356,7 +356,7 @@ describe("ManageSmtpAdministrationSettings", () => {
       const awsSesSmtpProviderIndex = SmtpProviders.findIndex(provider => provider.id === "aws-ses");
       await page.selectProviderInSelectField(awsSesSmtpProviderIndex);
 
-      expect(page.passboltHelpPage).toBeTruthy();
+      expect(page.cipherguardHelpPage).toBeTruthy();
       expect(page.smtpProviderHelpPage).toBeTruthy();
       expect(page.smtpProviderHelpPage.getAttribute("href")).toBe(SmtpProviders[awsSesSmtpProviderIndex].help_page);
       expect(page.smtpProviderHelpPage.getAttribute("target")).toBe("_blank");
@@ -373,13 +373,13 @@ describe("ManageSmtpAdministrationSettings", () => {
 
       await waitFor(() => {});
 
-      expect(page.passboltHelpPage).toBeTruthy();
+      expect(page.cipherguardHelpPage).toBeTruthy();
       expect(page.smtpProviderHelpPage).toBeTruthy();
 
       const otherSmtpProviderIndex = SmtpProviders.findIndex(provider => provider.id === "other");
       await page.selectProviderInSelectField(otherSmtpProviderIndex - 1);
 
-      expect(page.passboltHelpPage).toBeTruthy();
+      expect(page.cipherguardHelpPage).toBeTruthy();
       expect(page.smtpProviderHelpPage).toBeFalsy();
     });
 
@@ -400,7 +400,7 @@ describe("ManageSmtpAdministrationSettings", () => {
         sender_name: "",
         host: "",
         port: "",
-        client: "passbolt.dev:9090"
+        client: "cipherguard.dev:9090"
       };
       await page.setFormWith(emptyFields);
       await page.clickOn(page.toolbarActionsSaveButton, () => true);
@@ -416,11 +416,11 @@ describe("ManageSmtpAdministrationSettings", () => {
       const withFieldErroneous = {
         username: 1234,
         password: 1234,
-        sender_email: "email at passbolt dot com",
+        sender_email: "email at cipherguard dot com",
         sender_name: 1234,
         host: "this is no host",
         port: -1,
-        client: "passboltveryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryerylongdomain.subdomain.dev",
+        client: "cipherguardveryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryeryerylongdomain.subdomain.dev",
       };
       await page.setFormWith(withFieldErroneous);
 

@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -109,7 +109,7 @@ class EditResourceTags extends React.Component {
    * @return {Promise<void>}
    */
   async fetchAllTags() {
-    const allTags = await this.props.context.port.request("passbolt.tags.find-all");
+    const allTags = await this.props.context.port.request("cipherguard.tags.find-all");
     if (allTags) {
       this.setState({allTags});
     }
@@ -407,7 +407,7 @@ class EditResourceTags extends React.Component {
   async updateTags() {
     try {
       this.props.loadingContext.add();
-      await this.props.context.port.request("passbolt.tags.update-resource-tags", this.props.resourceId, this.state.tags);
+      await this.props.context.port.request("cipherguard.tags.update-resource-tags", this.props.resourceId, this.state.tags);
       this.props.loadingContext.remove();
       await this.props.actionFeedbackContext.displaySuccess(this.translate("The tags have been updated successfully"));
       this.setState({processing: false});

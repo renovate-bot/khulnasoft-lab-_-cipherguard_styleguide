@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.12.0
@@ -60,10 +60,10 @@ class HandleProgressEvents extends React.Component {
    * Listen the progress dialog event from the context and acts accordingly
    */
   listen() {
-    this.props.context.port.on('passbolt.progress.open-progress-dialog', this.handleProgressDialogOpenEvent);
-    this.props.context.port.on("passbolt.progress.update", this.handleProgressDialogUpdateEvent);
-    this.props.context.port.on("passbolt.progress.update-goals", this.handleProgressDialogUpdateGoalsEvent);
-    this.props.context.port.on('passbolt.progress.close-progress-dialog', this.handleProgressDialogCloseEvent);
+    this.props.context.port.on('cipherguard.progress.open-progress-dialog', this.handleProgressDialogOpenEvent);
+    this.props.context.port.on("cipherguard.progress.update", this.handleProgressDialogUpdateEvent);
+    this.props.context.port.on("cipherguard.progress.update-goals", this.handleProgressDialogUpdateGoalsEvent);
+    this.props.context.port.on('cipherguard.progress.close-progress-dialog', this.handleProgressDialogCloseEvent);
   }
 
   /**

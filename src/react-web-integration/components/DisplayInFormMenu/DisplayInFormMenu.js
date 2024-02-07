@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.3.0
@@ -68,7 +68,7 @@ class DisplayInFormMenu extends React.Component {
     if (this.inFormMenuRef.current.contains(event.target)) {
       return;
     }
-    this.props.context.port.request('passbolt.in-form-menu.close');
+    this.props.context.port.request('cipherguard.in-form-menu.close');
   }
 
   /**
@@ -285,7 +285,7 @@ class DisplayInFormMenu extends React.Component {
    * Whenever the display configuration of the menu is received
    */
   async handleDisplayConfigurationReceivedEvent() {
-    const configuration = await this.props.context.port.request('passbolt.in-form-menu.init');
+    const configuration = await this.props.context.port.request('cipherguard.in-form-menu.init');
     this.setState({configuration});
     if (!this.isPasswordFilled) {
       // Pre-generate the password
@@ -298,7 +298,7 @@ class DisplayInFormMenu extends React.Component {
    * @returns {Promise<void>}
    */
   async generateSecret() {
-    const passwordPolicies = await this.props.context.port.request('passbolt.password-policies.get', true);
+    const passwordPolicies = await this.props.context.port.request('cipherguard.password-policies.get', true);
     const generatedPassword = SecretGenerator.generate(passwordPolicies);
     this.setState({generatedPassword});
   }
@@ -307,21 +307,21 @@ class DisplayInFormMenu extends React.Component {
    * Whenever the user requests to create a new credential
    */
   handleCreateNewCredentialsRequestedEvent() {
-    this.props.context.port.request('passbolt.in-form-menu.create-new-credentials');
+    this.props.context.port.request('cipherguard.in-form-menu.create-new-credentials');
   }
 
   /**
    * Whenever the user requests to browse credentials
    */
   handleBrowseCredentialsRequestedEvent() {
-    this.props.context.port.request('passbolt.in-form-menu.browse-credentials');
+    this.props.context.port.request('cipherguard.in-form-menu.browse-credentials');
   }
 
   /**
    * Whenever the user requests to save the credentials
    */
   handleSaveCredentialsRequestedEvent() {
-    this.props.context.port.request('passbolt.in-form-menu.save-credentials');
+    this.props.context.port.request('cipherguard.in-form-menu.save-credentials');
   }
 
   /**
@@ -331,7 +331,7 @@ class DisplayInFormMenu extends React.Component {
   async handleUseSuggestedResourceRequestedEvent(resourceId) {
     this.setState({resourceIdProcessing: resourceId});
     try {
-      await this.props.context.port.request('passbolt.in-form-menu.use-suggested-resource', resourceId);
+      await this.props.context.port.request('cipherguard.in-form-menu.use-suggested-resource', resourceId);
     } catch (error) {
       console.error(error);
     }
@@ -342,7 +342,7 @@ class DisplayInFormMenu extends React.Component {
    * Whenever the user request to generate a password for the current page
    */
   handleGeneratePasswordRequestedEvent() {
-    this.props.context.port.request('passbolt.in-form-menu.fill-password', this.state.generatedPassword);
+    this.props.context.port.request('cipherguard.in-form-menu.fill-password', this.state.generatedPassword);
   }
 
   /**

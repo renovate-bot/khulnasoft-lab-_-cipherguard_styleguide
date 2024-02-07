@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -46,7 +46,7 @@ describe("As AN I should see the Enter Username Form Page", () => {
 
     it('As AN I should be able to submit a username with success with no terms or privacy policy required by the API', async() => {
       const siteSettingsFixtureClone = JSON.parse(JSON.stringify(siteSettingsFixture));
-      siteSettingsFixtureClone.passbolt.legal = {};
+      siteSettingsFixtureClone.cipherguard.legal = {};
       const siteSettings = new SiteSettings(siteSettingsFixtureClone);
       const props = defaultProps({context: {siteSettings}});
       jest.spyOn(props.apiTriageContext, 'onTriageRequested').mockImplementation(() => {});
@@ -137,7 +137,7 @@ describe("As AN I should see the Enter Username Form Page", () => {
    * });
    *
    * it('As AN I should be redirected to register if no account match and the registration is public', async() => {
-   *   const siteSettingsResult = '{"body":{"passbolt":{"registration":{"public":true},"legal":{"privacy_policy":{"url":"https://www.cipherguard.khulnasoft.com/privacy"},"terms":{"url":"https://www.cipherguard.khulnasoft.com/terms"}}}}}';
+   *   const siteSettingsResult = '{"body":{"cipherguard":{"registration":{"public":true},"legal":{"privacy_policy":{"url":"https://www.cipherguard.khulnasoft.com/privacy"},"terms":{"url":"https://www.cipherguard.khulnasoft.com/terms"}}}}}';
    *   mockFetchGet("http://localhost/settings.json?api-version=v2", new Response(siteSettingsResult, {url: 'http://localhost/settings.json?api-version=v2', status: 200}), {overwriteRoutes: true});
    *   page = new EnterUsernameFormPage(props);
    *

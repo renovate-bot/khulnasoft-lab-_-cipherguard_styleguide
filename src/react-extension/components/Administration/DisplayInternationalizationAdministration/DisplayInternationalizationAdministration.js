@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.2.0
@@ -102,7 +102,7 @@ class DisplayInternationalizationAdministration extends React.Component {
         <div className="col4 last">
           <div className="sidebar-help">
             <h3><Trans>Want to contribute?</Trans></h3>
-            <p><Trans>Your language is missing or you discovered an error in the translation, help us to improve passbolt.</Trans></p>
+            <p><Trans>Your language is missing or you discovered an error in the translation, help us to improve cipherguard.</Trans></p>
             <a className="button" href="https://help.cipherguard.khulnasoft.com/contribute/translation" target="_blank" rel="noopener noreferrer">
               <Icon name="heart-o"/>
               <span><Trans>Contribute</Trans></span>

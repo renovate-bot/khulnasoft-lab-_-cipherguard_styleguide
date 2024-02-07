@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.9.0
@@ -126,7 +126,7 @@ export class AdminSsoContextProvider extends React.Component {
   async loadSsoConfiguration() {
     let ssoConfig = null;
     try {
-      ssoConfig = await this.props.context.port.request("passbolt.sso.get-current");
+      ssoConfig = await this.props.context.port.request("cipherguard.sso.get-current");
     } catch (error) {
       this.props.dialogContext.open(NotifyError, {error});
     }
@@ -452,7 +452,7 @@ export class AdminSsoContextProvider extends React.Component {
 
     let draftConfiguration;
     try {
-      draftConfiguration = await this.props.context.port.request("passbolt.sso.save-draft", ssoSettings);
+      draftConfiguration = await this.props.context.port.request("cipherguard.sso.save-draft", ssoSettings);
     } catch (e) {
       this.handleError(e);
       this.setState({processing: false});
@@ -488,7 +488,7 @@ export class AdminSsoContextProvider extends React.Component {
     this.setState({processing: true});
     try {
       const ssoSettings = this.getSsoConfiguration();
-      await this.props.context.port.request("passbolt.sso.delete-settings", ssoSettings.id);
+      await this.props.context.port.request("cipherguard.sso.delete-settings", ssoSettings.id);
       this.props.actionFeedbackContext.displaySuccess(this.props.t("The SSO settings has been deleted successfully"));
       this.isSsoConfigExisting = false;
       this.setState({

@@ -82,7 +82,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The user ada@cipherguard.khulnasoft.com was mapped with an existing user in passbolt.",
+      "message": "The user ada@cipherguard.khulnasoft.com was mapped with an existing user in cipherguard.",
       "model": "Users",
       "data": {
         "id": "f848277c-5398-58f8-a82a-72397af2d450",
@@ -99,7 +99,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The user betty@cipherguard.khulnasoft.com was mapped with an existing user in passbolt.",
+      "message": "The user betty@cipherguard.khulnasoft.com was mapped with an existing user in cipherguard.",
       "model": "Users",
       "data": {
         "id": "e97b14ba-8957-57c9-a357-f78a6e1e1a46",
@@ -116,7 +116,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The user zoe@cipherguard.khulnasoft.com was successfully added to passbolt.",
+      "message": "The user zoe@cipherguard.khulnasoft.com was successfully added to cipherguard.",
       "model": "Users",
       "data": {
         "username": "zoe@cipherguard.khulnasoft.com",
@@ -147,7 +147,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The previously deleted user sofia@cipherguard.khulnasoft.com was not re-added to passbolt.",
+      "message": "The previously deleted user sofia@cipherguard.khulnasoft.com was not re-added to cipherguard.",
       "model": "Users",
       "data": [],
       "action": "create",
@@ -165,7 +165,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The user max@cipherguard.khulnasoft.com was successfully added to passbolt.",
+      "message": "The user max@cipherguard.khulnasoft.com was successfully added to cipherguard.",
       "model": "Users",
       "data": {
         "username": "max@cipherguard.khulnasoft.com",
@@ -198,7 +198,7 @@ export const mockSynchronizeBody = {
   ],
   "groups": [
     {
-      "message": "The group Administrators was successfully added to passbolt.",
+      "message": "The group Administrators was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -224,7 +224,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Users was successfully added to passbolt.",
+      "message": "The group Users was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -250,7 +250,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Guests was successfully added to passbolt.",
+      "message": "The group Guests was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -276,7 +276,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Print Operators was successfully added to passbolt.",
+      "message": "The group Print Operators was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -302,7 +302,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Backup Operators was successfully added to passbolt.",
+      "message": "The group Backup Operators was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -328,7 +328,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Replicator was successfully added to passbolt.",
+      "message": "The group Replicator was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -354,7 +354,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Remote Desktop Users was successfully added to passbolt.",
+      "message": "The group Remote Desktop Users was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -380,7 +380,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Network Configuration Operators was successfully added to passbolt.",
+      "message": "The group Network Configuration Operators was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -406,7 +406,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Performance Monitor Users was successfully added to passbolt.",
+      "message": "The group Performance Monitor Users was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -432,7 +432,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Performance Log Users was successfully added to passbolt.",
+      "message": "The group Performance Log Users was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -458,7 +458,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Distributed COM Users was successfully added to passbolt.",
+      "message": "The group Distributed COM Users was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -484,7 +484,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group IIS_IUSRS was successfully added to passbolt.",
+      "message": "The group IIS_IUSRS was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -510,7 +510,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Cryptographic Operators was successfully added to passbolt.",
+      "message": "The group Cryptographic Operators was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -536,7 +536,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Event Log Readers was successfully added to passbolt.",
+      "message": "The group Event Log Readers was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -562,7 +562,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Certificate Service DCOM Access was successfully added to passbolt.",
+      "message": "The group Certificate Service DCOM Access was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -588,7 +588,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group RDS Remote Access Servers was successfully added to passbolt.",
+      "message": "The group RDS Remote Access Servers was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -614,7 +614,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group RDS Endpoint Servers was successfully added to passbolt.",
+      "message": "The group RDS Endpoint Servers was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -640,7 +640,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group RDS Management Servers was successfully added to passbolt.",
+      "message": "The group RDS Management Servers was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -666,7 +666,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Hyper-V Administrators was successfully added to passbolt.",
+      "message": "The group Hyper-V Administrators was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -692,7 +692,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Access Control Assistance Operators was successfully added to passbolt.",
+      "message": "The group Access Control Assistance Operators was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -718,7 +718,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Remote Management Users was successfully added to passbolt.",
+      "message": "The group Remote Management Users was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -744,7 +744,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group System Managed Accounts Group was successfully added to passbolt.",
+      "message": "The group System Managed Accounts Group was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -770,7 +770,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Storage Replica Administrators was successfully added to passbolt.",
+      "message": "The group Storage Replica Administrators was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -796,7 +796,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Domain Computers was successfully added to passbolt.",
+      "message": "The group Domain Computers was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -822,7 +822,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Domain Controllers was successfully added to passbolt.",
+      "message": "The group Domain Controllers was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -848,7 +848,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Schema Admins was successfully added to passbolt.",
+      "message": "The group Schema Admins was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -874,7 +874,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Enterprise Admins was successfully added to passbolt.",
+      "message": "The group Enterprise Admins was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -900,7 +900,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Cert Publishers was successfully added to passbolt.",
+      "message": "The group Cert Publishers was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -926,7 +926,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Domain Admins was successfully added to passbolt.",
+      "message": "The group Domain Admins was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -952,7 +952,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Domain Users was successfully added to passbolt.",
+      "message": "The group Domain Users was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -978,7 +978,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Domain Guests was successfully added to passbolt.",
+      "message": "The group Domain Guests was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1004,7 +1004,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Group Policy Creator Owners was successfully added to passbolt.",
+      "message": "The group Group Policy Creator Owners was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1030,7 +1030,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group RAS and IAS Servers was successfully added to passbolt.",
+      "message": "The group RAS and IAS Servers was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1056,7 +1056,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Server Operators was successfully added to passbolt.",
+      "message": "The group Server Operators was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1082,7 +1082,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Account Operators was successfully added to passbolt.",
+      "message": "The group Account Operators was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1108,7 +1108,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Pre-Windows 2000 Compatible Access was successfully added to passbolt.",
+      "message": "The group Pre-Windows 2000 Compatible Access was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1134,7 +1134,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Incoming Forest Trust Builders was successfully added to passbolt.",
+      "message": "The group Incoming Forest Trust Builders was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1160,7 +1160,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Windows Authorization Access Group was successfully added to passbolt.",
+      "message": "The group Windows Authorization Access Group was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1186,7 +1186,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Terminal Server License Servers was successfully added to passbolt.",
+      "message": "The group Terminal Server License Servers was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1212,7 +1212,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Allowed RODC Password Replication Group was successfully added to passbolt.",
+      "message": "The group Allowed RODC Password Replication Group was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1238,7 +1238,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Denied RODC Password Replication Group was successfully added to passbolt.",
+      "message": "The group Denied RODC Password Replication Group was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1264,7 +1264,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Read-only Domain Controllers was successfully added to passbolt.",
+      "message": "The group Read-only Domain Controllers was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1290,7 +1290,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Enterprise Read-only Domain Controllers was successfully added to passbolt.",
+      "message": "The group Enterprise Read-only Domain Controllers was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1316,7 +1316,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Cloneable Domain Controllers was successfully added to passbolt.",
+      "message": "The group Cloneable Domain Controllers was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1342,7 +1342,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Protected Users was successfully added to passbolt.",
+      "message": "The group Protected Users was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1368,7 +1368,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Key Admins was successfully added to passbolt.",
+      "message": "The group Key Admins was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1394,7 +1394,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Enterprise Key Admins was successfully added to passbolt.",
+      "message": "The group Enterprise Key Admins was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1420,7 +1420,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group DnsAdmins was successfully added to passbolt.",
+      "message": "The group DnsAdmins was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1446,7 +1446,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group DnsUpdateProxy was successfully added to passbolt.",
+      "message": "The group DnsUpdateProxy was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1472,7 +1472,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Finance was successfully added to passbolt.",
+      "message": "The group Finance was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1524,7 +1524,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Operations could not be mapped with an existing group in passbolt because it was created after.",
+      "message": "The group Operations could not be mapped with an existing group in cipherguard because it was created after.",
       "model": "Groups",
       "data": [],
       "action": "create",
@@ -1533,7 +1533,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group DevOps was successfully added to passbolt.",
+      "message": "The group DevOps was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1559,7 +1559,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Test1 was successfully added to passbolt.",
+      "message": "The group Test1 was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1585,7 +1585,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Test2 was successfully added to passbolt.",
+      "message": "The group Test2 was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1637,7 +1637,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group TestGroup was successfully added to passbolt.",
+      "message": "The group TestGroup was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1689,7 +1689,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Administration was successfully added to passbolt.",
+      "message": "The group Administration was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1715,7 +1715,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group Developers was successfully added to passbolt.",
+      "message": "The group Developers was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",
@@ -1767,7 +1767,7 @@ export const mockSynchronizeBody = {
       "version": "2"
     },
     {
-      "message": "The group MyParentGroup was successfully added to passbolt.",
+      "message": "The group MyParentGroup was successfully added to cipherguard.",
       "model": "Groups",
       "data": {
         "created_by": "d57c10f5-639d-5160-9c81-8a0c6c4ec856",

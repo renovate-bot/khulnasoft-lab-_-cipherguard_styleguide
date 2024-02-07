@@ -1,13 +1,13 @@
 
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -79,7 +79,7 @@ class DisplayUserTheme extends React.Component {
    */
   async populate() {
     this.props.loadingContext.add();
-    const themes = await this.props.context.port.request('passbolt.themes.find-all');
+    const themes = await this.props.context.port.request('cipherguard.themes.find-all');
     const selectedTheme = this.props.context.userSettings.getTheme();
     this.setState({themes, selectedTheme});
     this.props.loadingContext.remove();
@@ -95,7 +95,7 @@ class DisplayUserTheme extends React.Component {
     }
     this.props.loadingContext.add();
     this.setState({selectedTheme: theme.name});
-    this.props.context.port.request("passbolt.themes.change", theme.name)
+    this.props.context.port.request("cipherguard.themes.change", theme.name)
       .then(this.onSelectSuccess)
       .catch(this.onSelectFailure)
       .finally(this.onSelectFinally);

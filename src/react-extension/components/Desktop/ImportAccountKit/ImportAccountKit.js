@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.3.0
@@ -159,8 +159,8 @@ class ImportAccountKit extends React.Component {
     let message = null;
     if (!this.state.accountKit) {
       message = this.props.t("A file is required.");
-    } else if (this.state.filename.split('.').pop() !== "passbolt") {
-      message = this.props.t("Only passbolt format is allowed.");
+    } else if (this.state.filename.split('.').pop() !== "cipherguard") {
+      message = this.props.t("Only cipherguard format is allowed.");
     }
     return this.setState({errors: {message}});
   }
@@ -170,7 +170,7 @@ class ImportAccountKit extends React.Component {
    * @returns {Promise<void>}
    */
   openDocumentation() {
-    this.props.context.port.emit("passbolt.rendered.open-to-browser", "https://help.cipherguard.khulnasoft.com/TBD");
+    this.props.context.port.emit("cipherguard.rendered.open-to-browser", "https://help.cipherguard.khulnasoft.com/TBD");
   }
 
   /**
@@ -196,7 +196,7 @@ class ImportAccountKit extends React.Component {
               type="file"
               ref={this.fileUploaderRef}
               onChange={this.handleAccountKitSelected}
-              accept="application/passbolt" />
+              accept="application/cipherguard" />
             <label htmlFor="dialog-upload-account-kit-input">
               <Trans>Account kit</Trans>
             </label>

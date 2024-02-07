@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.9.0
@@ -24,8 +24,8 @@ export default {
 
 function getMockedPort() {
   const mockedPort = new MockPort();
-  mockedPort.addRequestListener("passbolt.organization-settings.get", () => siteSettingsFixture);
-  mockedPort.addRequestListener("passbolt.locale.get", () => ({
+  mockedPort.addRequestListener("cipherguard.organization-settings.get", () => siteSettingsFixture);
+  mockedPort.addRequestListener("cipherguard.locale.get", () => ({
     locale: 'en-UK',
     label: 'English'
   }));
@@ -49,7 +49,7 @@ Initial.parameters = defaultParameters;
 
 const mockedPortWithSso = getMockedPort();
 const ssoLocalConfiguredProvider = "azure";
-mockedPortWithSso.addRequestListener("passbolt.sso.get-local-configured-provider", () => ssoLocalConfiguredProvider);
+mockedPortWithSso.addRequestListener("cipherguard.sso.get-local-configured-provider", () => ssoLocalConfiguredProvider);
 
 export const WithSsoKitAvailable = Template.bind({});
 WithSsoKitAvailable.args = {

@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.1.0
@@ -46,7 +46,7 @@ describe("UserSettings Context", () => {
       await userContext.onProvidePassphraseRequested();
       expect(userContext.state.state).toBe(UserSettingsContextState.PASSPHRASE_TO_PROVIDE_REQUESTED);
       await userContext.onCheckProvidePassphraseRequested(passphrase);
-      expect(userContext.props.context.port.request).toHaveBeenCalledWith("passbolt.auth.verify-passphrase", passphrase);
+      expect(userContext.props.context.port.request).toHaveBeenCalledWith("cipherguard.auth.verify-passphrase", passphrase);
       expect(userContext.state.state).toBe(UserSettingsContextState.PASSPHRASE_TO_PROVIDE_CHECKED);
     });
 
@@ -55,13 +55,13 @@ describe("UserSettings Context", () => {
       const passphrase = 'some passphrase';
       await userContext.onCheckProvidePassphraseRequested(oldPassphrase);
       await userContext.onUpdatePassphraseRequested(passphrase);
-      expect(userContext.props.context.port.request).toHaveBeenCalledWith("passbolt.user.update-private-key", oldPassphrase, passphrase);
+      expect(userContext.props.context.port.request).toHaveBeenCalledWith("cipherguard.user.update-private-key", oldPassphrase, passphrase);
       expect(userContext.state.state).toBe(UserSettingsContextState.PASSPHRASE_UPDATED);
     });
 
     it('As LU I should request to download the recovery kit', async() => {
       await userContext.onDownloadRecoveryKitRequested();
-      expect(userContext.props.context.port.request).toHaveBeenCalledWith("passbolt.keyring.download-my-private-key");
+      expect(userContext.props.context.port.request).toHaveBeenCalledWith("cipherguard.keyring.download-my-private-key");
     });
 
     it('As LU I should update my security token', async() => {
@@ -71,13 +71,13 @@ describe("UserSettings Context", () => {
         code: 'ABC'
       };
       await userContext.onUpdateSecurityTokenRequested(securityTokenDto);
-      expect(userContext.props.context.port.request).toHaveBeenCalledWith("passbolt.users.update-security-token", securityTokenDto);
+      expect(userContext.props.context.port.request).toHaveBeenCalledWith("cipherguard.users.update-security-token", securityTokenDto);
     });
 
     it('As LU I should update the language', async() => {
       const locale = "fr-FR";
       await userContext.state.onUpdateLocaleUserRequested({locale});
-      expect(userContext.props.context.port.request).toHaveBeenCalledWith("passbolt.locale.update-user-locale", {locale});
+      expect(userContext.props.context.port.request).toHaveBeenCalledWith("cipherguard.locale.update-user-locale", {locale});
     });
   });
 });

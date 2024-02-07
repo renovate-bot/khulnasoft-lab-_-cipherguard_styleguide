@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.3.0
@@ -65,7 +65,7 @@ describe("ExportAccountToDesktop", () => {
       expect.assertions(2);
 
       expect(page.windowsStoreButton.getAttribute('class')).toEqual("windows-store");
-      expect(page.windowsStoreButton.getAttribute('href')).toEqual('https://apps.microsoft.com/store/detail/passbolt/TBD');
+      expect(page.windowsStoreButton.getAttribute('href')).toEqual('https://apps.microsoft.com/store/detail/cipherguard/TBD');
     });
 
     it('As LU user on the web application configuring the desktop app I should be able to download the account kit <success>', async() => {
@@ -74,7 +74,7 @@ describe("ExportAccountToDesktop", () => {
 
       await page.clickOnDownloadAccountKit();
 
-      expect(context.port.request).toHaveBeenCalledWith("passbolt.desktop.export-account");
+      expect(context.port.request).toHaveBeenCalledWith("cipherguard.desktop.export-account");
       expect(props.actionFeedbackContext.displaySuccess).toHaveBeenCalledWith("The account kit has been downloaded successfully.");
     });
 
@@ -85,7 +85,7 @@ describe("ExportAccountToDesktop", () => {
 
       await page.clickOnDownloadAccountKit();
 
-      expect(context.port.request).toHaveBeenCalledWith("passbolt.desktop.export-account");
+      expect(context.port.request).toHaveBeenCalledWith("cipherguard.desktop.export-account");
       expect(props.actionFeedbackContext.displayError).toHaveBeenCalledWith(errorMessage);
     });
   });

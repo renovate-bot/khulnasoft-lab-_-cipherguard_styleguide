@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  */
@@ -28,8 +28,8 @@ class ExtBootstrapLogin extends Component {
   }
 
   /**
-   * It returns true if the page is detected as a passbolt app.
-   * For that purpose, it simply checks if <html> has a class 'passbolt' set.
+   * It returns true if the page is detected as a cipherguard app.
+   * For that purpose, it simply checks if <html> has a class 'cipherguard' set.
    * @returns {boolean}
    */
   isCipherguardApp() {
@@ -37,7 +37,7 @@ class ExtBootstrapLogin extends Component {
     const htmlTag = rootNode.lastChild;
 
     return htmlTag?.tagName === "HTML"
-      && htmlTag.classList.contains('passbolt');
+      && htmlTag.classList.contains('cipherguard');
   }
 
   /**
@@ -54,14 +54,14 @@ class ExtBootstrapLogin extends Component {
    * Whenever the background page request the login iframe to be removed.
    */
   handleRemoveIframeRequested() {
-    this.props.port.on("passbolt.auth-bootstrap.remove-iframe", this.removeLoginIframe.bind(this));
+    this.props.port.on("cipherguard.auth-bootstrap.remove-iframe", this.removeLoginIframe.bind(this));
   }
 
   /**
    * Remove the iframe
    */
   removeLoginIframe() {
-    const iframe = document.getElementById("passbolt-iframe-login");
+    const iframe = document.getElementById("cipherguard-iframe-login");
     if (iframe) {
       iframe.remove();
     }

@@ -234,7 +234,7 @@ class ResourceViewPage extends React.Component {
    * @throw UserAbortsOperationError If the user cancel the operation
    */
   decryptResourceSecret(resourceId) {
-    return this.props.context.port.request("passbolt.secret.decrypt", resourceId);
+    return this.props.context.port.request("cipherguard.secret.decrypt", resourceId);
   }
 
   /**
@@ -335,7 +335,7 @@ class ResourceViewPage extends React.Component {
     event.preventDefault();
     this.setState({usingOnThisTab: true});
     try {
-      await this.props.context.port.request('passbolt.quickaccess.use-resource-on-current-tab', this.state.resource.id, this.props.context.getOpenerTabId());
+      await this.props.context.port.request('cipherguard.quickaccess.use-resource-on-current-tab', this.state.resource.id, this.props.context.getOpenerTabId());
       window.close();
     } catch (error) {
       if (error && error.name === "UserAbortsOperationError") {
@@ -434,9 +434,9 @@ class ResourceViewPage extends React.Component {
             <Icon name="chevron-left"/>
             <span className="primary-action-title">{this.state.resource.name}</span>
           </a>
-          <a href={`${this.props.context.userSettings.getTrustedDomain()}/app/passwords/view/${this.props.match.params.id}`} className="secondary-action button-transparent button" target="_blank" rel="noopener noreferrer" title={this.translate("View it in passbolt")}>
+          <a href={`${this.props.context.userSettings.getTrustedDomain()}/app/passwords/view/${this.props.match.params.id}`} className="secondary-action button-transparent button" target="_blank" rel="noopener noreferrer" title={this.translate("View it in cipherguard")}>
             <Icon name="internal-link"/>
-            <span className="visually-hidden"><Trans>Edit in passbolt</Trans></span>
+            <span className="visually-hidden"><Trans>Edit in cipherguard</Trans></span>
           </a>
         </div>
         <ul className="properties">

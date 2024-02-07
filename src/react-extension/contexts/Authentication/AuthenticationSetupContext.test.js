@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -40,28 +40,28 @@ describe("AuthenticationSetupContextProvider", () => {
     it("When the extension was just installed and the browser is Chrome, the machine state should be set to: INTRODUCE_EXTENSION", async() => {
       mockUserAgent('chrome');
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.setup.is-first-install", jest.fn(() => Promise.resolve(true)));
+      props.context.port.addRequestListener("cipherguard.setup.is-first-install", jest.fn(() => Promise.resolve(true)));
       const contextProvider = new AuthenticationSetupContextProvider(props);
       mockComponentSetState(contextProvider);
 
       expect.assertions(3);
       await contextProvider.initialize();
-      expect(props.context.port.requestListeners["passbolt.setup.is-first-install"]).toHaveBeenCalled();
-      expect(props.context.port.requestListeners["passbolt.setup.start"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.setup.is-first-install"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.setup.start"]).toHaveBeenCalled();
       expect(contextProvider.state.state).toEqual(AuthenticationSetupWorkflowStates.INTRODUCE_EXTENSION);
     });
 
     it("When the extension was just installed and the browser is Firefox, the machine state should be set to: GENERATE_GPG_KEY", async() => {
       mockUserAgent('firefox');
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.setup.is-first-install", jest.fn(() => Promise.resolve(true)));
+      props.context.port.addRequestListener("cipherguard.setup.is-first-install", jest.fn(() => Promise.resolve(true)));
       const contextProvider = new AuthenticationSetupContextProvider(props);
       mockComponentSetState(contextProvider);
 
       expect.assertions(3);
       await contextProvider.initialize();
-      expect(props.context.port.requestListeners["passbolt.setup.is-first-install"]).toHaveBeenCalled();
-      expect(props.context.port.requestListeners["passbolt.setup.start"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.setup.is-first-install"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.setup.start"]).toHaveBeenCalled();
       expect(contextProvider.state.state).toEqual(AuthenticationSetupWorkflowStates.GENERATE_GPG_KEY);
     });
 
@@ -73,8 +73,8 @@ describe("AuthenticationSetupContextProvider", () => {
 
       expect.assertions(3);
       await contextProvider.initialize();
-      expect(props.context.port.requestListeners["passbolt.setup.is-first-install"]).toHaveBeenCalled();
-      expect(props.context.port.requestListeners["passbolt.setup.start"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.setup.is-first-install"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.setup.start"]).toHaveBeenCalled();
       expect(contextProvider.state.state).toEqual(AuthenticationSetupWorkflowStates.GENERATE_GPG_KEY);
     });
   });
@@ -101,20 +101,20 @@ describe("AuthenticationSetupContextProvider", () => {
       expect.assertions(2);
       await contextProvider.initialize();
       await contextProvider.generateGpgKey("passphrase");
-      expect(props.context.port.requestListeners["passbolt.setup.generate-key"]).toHaveBeenCalledWith({passphrase: "passphrase"}, undefined);
+      expect(props.context.port.requestListeners["cipherguard.setup.generate-key"]).toHaveBeenCalledWith({passphrase: "passphrase"}, undefined);
       expect(contextProvider.state.state).toEqual(AuthenticationSetupWorkflowStates.DOWNLOAD_RECOVERY_KIT);
     });
 
     it("When an error occurred during the gpg key creation, the machine state should be set to: UNEXPECTED_ERROR", async() => {
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.setup.generate-key", jest.fn(() => Promise.reject(new Error('Unexpected error'))));
+      props.context.port.addRequestListener("cipherguard.setup.generate-key", jest.fn(() => Promise.reject(new Error('Unexpected error'))));
       const contextProvider = new AuthenticationSetupContextProvider(props);
       mockComponentSetState(contextProvider);
 
       expect.assertions(3);
       await contextProvider.initialize();
       await contextProvider.generateGpgKey("passphrase");
-      expect(props.context.port.requestListeners["passbolt.setup.generate-key"]).toHaveBeenCalledWith({passphrase: "passphrase"}, undefined);
+      expect(props.context.port.requestListeners["cipherguard.setup.generate-key"]).toHaveBeenCalledWith({passphrase: "passphrase"}, undefined);
       expect(contextProvider.state.state).toEqual(AuthenticationSetupWorkflowStates.UNEXPECTED_ERROR);
       expect(contextProvider.state.error.message).toEqual("Unexpected error");
     });
@@ -130,20 +130,20 @@ describe("AuthenticationSetupContextProvider", () => {
       await contextProvider.initialize();
       const expectedWorkflowState = contextProvider.state.state;
       await contextProvider.downloadRecoveryKit();
-      expect(props.context.port.requestListeners["passbolt.setup.download-recovery-kit"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.setup.download-recovery-kit"]).toHaveBeenCalled();
       expect(contextProvider.state.state).toEqual(expectedWorkflowState);
     });
 
     it("When an error occurred during the recovery kit download, the machine state should be set to: UNEXPECTED_ERROR", async() => {
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.setup.download-recovery-kit", jest.fn(() => Promise.reject(new Error('Unexpected error'))));
+      props.context.port.addRequestListener("cipherguard.setup.download-recovery-kit", jest.fn(() => Promise.reject(new Error('Unexpected error'))));
       const contextProvider = new AuthenticationSetupContextProvider(props);
       mockComponentSetState(contextProvider);
 
       expect.assertions(3);
       await contextProvider.initialize();
       await contextProvider.downloadRecoveryKit();
-      expect(props.context.port.requestListeners["passbolt.setup.download-recovery-kit"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.setup.download-recovery-kit"]).toHaveBeenCalled();
       expect(contextProvider.state.state).toEqual(AuthenticationSetupWorkflowStates.UNEXPECTED_ERROR);
       expect(contextProvider.state.error.message).toEqual("Unexpected error");
     });
@@ -195,13 +195,13 @@ describe("AuthenticationSetupContextProvider", () => {
       expect.assertions(2);
       await contextProvider.initialize();
       await contextProvider.importGpgKey("armored_key");
-      expect(props.context.port.requestListeners["passbolt.setup.import-key"]).toHaveBeenCalledWith("armored_key", undefined);
+      expect(props.context.port.requestListeners["cipherguard.setup.import-key"]).toHaveBeenCalledWith("armored_key", undefined);
       expect(contextProvider.state.state).toEqual(AuthenticationSetupWorkflowStates.VALIDATE_PASSPHRASE);
     });
 
     it("When an invalid gpg key fails the import, the error should be rethrown and the machine state should remain on: IMPORT_GPG_KEY", async() => {
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.setup.import-key", jest.fn(() => Promise.reject(new GpgKeyError())));
+      props.context.port.addRequestListener("cipherguard.setup.import-key", jest.fn(() => Promise.reject(new GpgKeyError())));
       const contextProvider = new AuthenticationSetupContextProvider(props);
       mockComponentSetState(contextProvider);
 
@@ -212,7 +212,7 @@ describe("AuthenticationSetupContextProvider", () => {
         await contextProvider.importGpgKey("armored_key");
         expect(false).toBeTruthy();
       } catch (error) {
-        expect(props.context.port.requestListeners["passbolt.setup.import-key"]).toHaveBeenCalledWith("armored_key", undefined);
+        expect(props.context.port.requestListeners["cipherguard.setup.import-key"]).toHaveBeenCalledWith("armored_key", undefined);
         expect(contextProvider.state.state).toEqual(AuthenticationSetupWorkflowStates.IMPORT_GPG_KEY);
         expect(error.name).toEqual("GpgKeyError");
       }
@@ -220,14 +220,14 @@ describe("AuthenticationSetupContextProvider", () => {
 
     it("When an error occurred during the gpg key import, the machine state should be set to: UNEXPECTED_ERROR", async() => {
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.setup.import-key", jest.fn(() => Promise.reject(new Error('Unexpected error'))));
+      props.context.port.addRequestListener("cipherguard.setup.import-key", jest.fn(() => Promise.reject(new Error('Unexpected error'))));
       const contextProvider = new AuthenticationSetupContextProvider(props);
       mockComponentSetState(contextProvider);
 
       expect.assertions(3);
       await contextProvider.initialize();
       await contextProvider.importGpgKey("armored_key");
-      expect(props.context.port.requestListeners["passbolt.setup.import-key"]).toHaveBeenCalledWith("armored_key", undefined);
+      expect(props.context.port.requestListeners["cipherguard.setup.import-key"]).toHaveBeenCalledWith("armored_key", undefined);
       expect(contextProvider.state.state).toEqual(AuthenticationSetupWorkflowStates.UNEXPECTED_ERROR);
       expect(contextProvider.state.error.message).toEqual("Unexpected error");
     });
@@ -243,7 +243,7 @@ describe("AuthenticationSetupContextProvider", () => {
       await contextProvider.initialize();
       await contextProvider.importGpgKey();
       await contextProvider.checkPassphrase("passphrase");
-      expect(props.context.port.requestListeners["passbolt.setup.verify-passphrase"]).toHaveBeenCalledWith("passphrase", undefined);
+      expect(props.context.port.requestListeners["cipherguard.setup.verify-passphrase"]).toHaveBeenCalledWith("passphrase", undefined);
       expect(contextProvider.state.state).toEqual(AuthenticationSetupWorkflowStates.CHOOSE_SECURITY_TOKEN);
     });
 
@@ -256,7 +256,7 @@ describe("AuthenticationSetupContextProvider", () => {
       await contextProvider.initialize();
       await contextProvider.importGpgKey();
       await contextProvider.checkPassphrase("passphrase");
-      expect(props.context.port.requestListeners["passbolt.setup.verify-passphrase"]).toHaveBeenCalledWith("passphrase", undefined);
+      expect(props.context.port.requestListeners["cipherguard.setup.verify-passphrase"]).toHaveBeenCalledWith("passphrase", undefined);
       expect(contextProvider.state.state).toEqual(AuthenticationSetupWorkflowStates.CHOOSE_ACCOUNT_RECOVERY_PREFERENCE);
     });
 
@@ -270,13 +270,13 @@ describe("AuthenticationSetupContextProvider", () => {
       await contextProvider.initialize();
       await contextProvider.importGpgKey();
       await contextProvider.checkPassphrase("passphrase");
-      expect(props.context.port.requestListeners["passbolt.setup.verify-passphrase"]).toHaveBeenCalledWith("passphrase", undefined);
+      expect(props.context.port.requestListeners["cipherguard.setup.verify-passphrase"]).toHaveBeenCalledWith("passphrase", undefined);
       expect(contextProvider.state.state).toEqual(AuthenticationSetupWorkflowStates.CHOOSE_SECURITY_TOKEN);
     });
 
     it("When a wrong passphrase is requested to be checked, the error should be rethrown and the machine state should remain on: SIGN_IN", async() => {
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.setup.verify-passphrase", jest.fn(() => Promise.reject(new InvalidMasterPasswordError())));
+      props.context.port.addRequestListener("cipherguard.setup.verify-passphrase", jest.fn(() => Promise.reject(new InvalidMasterPasswordError())));
       const contextProvider = new AuthenticationSetupContextProvider(props);
       mockComponentSetState(contextProvider);
 
@@ -294,7 +294,7 @@ describe("AuthenticationSetupContextProvider", () => {
 
     it("If an unexpected error occurred the machine state should be set to: UNEXPECTED_ERROR", async() => {
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.setup.verify-passphrase", jest.fn(() => Promise.reject(new Error("Unexpected error"))));
+      props.context.port.addRequestListener("cipherguard.setup.verify-passphrase", jest.fn(() => Promise.reject(new Error("Unexpected error"))));
       const contextProvider = new AuthenticationSetupContextProvider(props);
       mockComponentSetState(contextProvider);
 
@@ -315,20 +315,20 @@ describe("AuthenticationSetupContextProvider", () => {
       expect.assertions(2);
       await contextProvider.initialize();
       await contextProvider.chooseAccountRecoveryPreference("approved");
-      expect(props.context.port.requestListeners["passbolt.setup.set-account-recovery-user-setting"]).toHaveBeenCalledWith("approved", undefined);
+      expect(props.context.port.requestListeners["cipherguard.setup.set-account-recovery-user-setting"]).toHaveBeenCalledWith("approved", undefined);
       expect(contextProvider.state.state).toEqual(AuthenticationSetupWorkflowStates.CHOOSE_SECURITY_TOKEN);
     });
 
     it("When the account recovery preferences fails, the machine state should be set to: UNEXPECTED_ERROR", async() => {
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.setup.set-account-recovery-user-setting", jest.fn(() => Promise.reject(new Error("Unexpected error"))));
+      props.context.port.addRequestListener("cipherguard.setup.set-account-recovery-user-setting", jest.fn(() => Promise.reject(new Error("Unexpected error"))));
       const contextProvider = new AuthenticationSetupContextProvider(props);
       mockComponentSetState(contextProvider);
 
       expect.assertions(3);
       await contextProvider.initialize();
       await contextProvider.chooseAccountRecoveryPreference("approved");
-      expect(props.context.port.requestListeners["passbolt.setup.set-account-recovery-user-setting"]).toHaveBeenCalledWith("approved", undefined);
+      expect(props.context.port.requestListeners["cipherguard.setup.set-account-recovery-user-setting"]).toHaveBeenCalledWith("approved", undefined);
       expect(contextProvider.state.state).toEqual(AuthenticationSetupWorkflowStates.UNEXPECTED_ERROR);
       expect(contextProvider.state.error.message).toEqual("Unexpected error");
     });
@@ -343,22 +343,22 @@ describe("AuthenticationSetupContextProvider", () => {
       expect.assertions(4);
       await contextProvider.initialize();
       await contextProvider.chooseSecurityToken({color: "black", textColor: "red"});
-      expect(props.context.port.requestListeners["passbolt.setup.set-security-token"]).toHaveBeenCalledWith({color: "black", textColor: "red"}, undefined);
-      expect(props.context.port.requestListeners["passbolt.setup.complete"]).toHaveBeenCalled();
-      expect(props.context.port.requestListeners["passbolt.setup.sign-in"]).toHaveBeenCalledWith(false, undefined);
+      expect(props.context.port.requestListeners["cipherguard.setup.set-security-token"]).toHaveBeenCalledWith({color: "black", textColor: "red"}, undefined);
+      expect(props.context.port.requestListeners["cipherguard.setup.complete"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.setup.sign-in"]).toHaveBeenCalledWith(false, undefined);
       expect(contextProvider.state.state).toEqual(AuthenticationSetupWorkflowStates.SIGNING_IN);
     });
 
     it("When the security token preferences cannot be set, the machine state should be set to: UNEXPECTED_ERROR", async() => {
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.setup.set-security-token", jest.fn(() => Promise.reject(new Error("Unexpected error"))));
+      props.context.port.addRequestListener("cipherguard.setup.set-security-token", jest.fn(() => Promise.reject(new Error("Unexpected error"))));
       const contextProvider = new AuthenticationSetupContextProvider(props);
       mockComponentSetState(contextProvider);
 
       expect.assertions(3);
       await contextProvider.initialize();
       await contextProvider.chooseSecurityToken({color: "black", textColor: "red"});
-      expect(props.context.port.requestListeners["passbolt.setup.set-security-token"]).toHaveBeenCalledWith({color: "black", textColor: "red"}, undefined);
+      expect(props.context.port.requestListeners["cipherguard.setup.set-security-token"]).toHaveBeenCalledWith({color: "black", textColor: "red"}, undefined);
       expect(contextProvider.state.state).toEqual(AuthenticationSetupWorkflowStates.UNEXPECTED_ERROR);
       expect(contextProvider.state.error.message).toEqual("Unexpected error");
     });

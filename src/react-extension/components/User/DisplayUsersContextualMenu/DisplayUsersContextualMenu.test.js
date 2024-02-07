@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -134,7 +134,7 @@ describe("Display Users Contextual Menu", () => {
 
     await page.resendInvite();
 
-    expect(context.port.request).toHaveBeenLastCalledWith("passbolt.users.resend-invite", "carol@cipherguard.khulnasoft.com");
+    expect(context.port.request).toHaveBeenLastCalledWith("cipherguard.users.resend-invite", "carol@cipherguard.khulnasoft.com");
   });
 
   it("As LU I should not disable an user MFA if I don't have the capability to do it", async() => {
@@ -184,7 +184,7 @@ describe("Display Users Contextual Menu", () => {
 
     await page.delete();
 
-    expect(context.port.request).toHaveBeenLastCalledWith("passbolt.users.delete-dry-run", "640ebc06-5ec1-5322-a1ae-6120ed2f3a74");
+    expect(context.port.request).toHaveBeenLastCalledWith("cipherguard.users.delete-dry-run", "640ebc06-5ec1-5322-a1ae-6120ed2f3a74");
     expect(context.setContext).toHaveBeenLastCalledWith({"deleteUserDialogProps": {user: props.user}});
     expect(props.dialogContext.open).toHaveBeenCalledWith(DeleteUser);
     expect(props.hide).toHaveBeenCalled();
@@ -201,7 +201,7 @@ describe("Display Users Contextual Menu", () => {
 
     await page.delete();
 
-    expect(context.port.request).toHaveBeenLastCalledWith("passbolt.users.delete-dry-run", "640ebc06-5ec1-5322-a1ae-6120ed2f3a74");
+    expect(context.port.request).toHaveBeenLastCalledWith("cipherguard.users.delete-dry-run", "640ebc06-5ec1-5322-a1ae-6120ed2f3a74");
     expect(props.dialogContext.open).toHaveBeenCalledWith(NotifyError, errorDialogProps);
   });
 
@@ -215,7 +215,7 @@ describe("Display Users Contextual Menu", () => {
 
     await page.delete();
 
-    expect(context.port.request).toHaveBeenLastCalledWith("passbolt.users.delete-dry-run", "640ebc06-5ec1-5322-a1ae-6120ed2f3a74");
+    expect(context.port.request).toHaveBeenLastCalledWith("cipherguard.users.delete-dry-run", "640ebc06-5ec1-5322-a1ae-6120ed2f3a74");
     expect(props.dialogContext.open).toHaveBeenCalled();
   });
 

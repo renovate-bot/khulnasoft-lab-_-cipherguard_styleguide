@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -46,7 +46,7 @@ describe("AuthenticationLoginContextProvider", () => {
       expect.assertions(2);
       await contextProvider.componentDidMount();
 
-      expect(props.context.port.requestListeners["passbolt.auth.verify-server-key"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.auth.verify-server-key"]).toHaveBeenCalled();
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.SIGN_IN);
     });
 
@@ -57,21 +57,21 @@ describe("AuthenticationLoginContextProvider", () => {
 
       expect.assertions(4);
       await contextProvider.componentDidMount();
-      expect(props.context.port.requestListeners["passbolt.auth.verify-server-key"]).toHaveBeenCalled();
-      expect(props.context.port.requestListeners["passbolt.auth.get-server-key"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.auth.verify-server-key"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.auth.get-server-key"]).toHaveBeenCalled();
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.ACCEPT_NEW_SERVER_KEY);
       expect(contextProvider.state.serverKey.fingerprint).toEqual("0c1d1761110d1e33c9006d1a5b1b332ed06426d3");
     });
 
     it("If an unexpected error occurred the machine state should be set to: UNEXPECTED_ERROR", async() => {
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.auth.verify-server-key", jest.fn(() => Promise.reject(new Error("Unexpected error"))));
+      props.context.port.addRequestListener("cipherguard.auth.verify-server-key", jest.fn(() => Promise.reject(new Error("Unexpected error"))));
       const contextProvider = new AuthenticationLoginContextProvider(props);
       mockComponentSetState(contextProvider);
 
       expect.assertions(3);
       await contextProvider.componentDidMount();
-      expect(props.context.port.requestListeners["passbolt.auth.verify-server-key"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.auth.verify-server-key"]).toHaveBeenCalled();
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.UNEXPECTED_ERROR);
       expect(contextProvider.state.error.message).toEqual("Unexpected error");
     });
@@ -82,14 +82,14 @@ describe("AuthenticationLoginContextProvider", () => {
           hasUserAnSsoKit: () => true
         }
       });
-      props.context.port.addRequestListener("passbolt.sso.has-sso-login-error", jest.fn(async() => false));
+      props.context.port.addRequestListener("cipherguard.sso.has-sso-login-error", jest.fn(async() => false));
       const contextProvider = new AuthenticationLoginContextProvider(props);
       mockComponentSetState(contextProvider);
 
       expect.assertions(2);
       await contextProvider.componentDidMount();
 
-      expect(props.context.port.requestListeners["passbolt.auth.verify-server-key"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.auth.verify-server-key"]).toHaveBeenCalled();
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.SIGN_IN_SSO);
     });
 
@@ -101,8 +101,8 @@ describe("AuthenticationLoginContextProvider", () => {
       });
       const ssoLoginError = new Error("Sso is disabled");
       ssoLoginError.name = "SsoDisabledError";
-      props.context.port.addRequestListener("passbolt.sso.has-sso-login-error", jest.fn(async() => true));
-      props.context.port.addRequestListener("passbolt.sso.get-qualified-sso-login-error", jest.fn(async() => ssoLoginError));
+      props.context.port.addRequestListener("cipherguard.sso.has-sso-login-error", jest.fn(async() => true));
+      props.context.port.addRequestListener("cipherguard.sso.get-qualified-sso-login-error", jest.fn(async() => ssoLoginError));
 
       const contextProvider = new AuthenticationLoginContextProvider(props);
       mockComponentSetState(contextProvider);
@@ -110,7 +110,7 @@ describe("AuthenticationLoginContextProvider", () => {
       expect.assertions(2);
       await contextProvider.componentDidMount();
 
-      expect(props.context.port.requestListeners["passbolt.auth.verify-server-key"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.auth.verify-server-key"]).toHaveBeenCalled();
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.SSO_DISABLED_ERROR);
     });
 
@@ -122,8 +122,8 @@ describe("AuthenticationLoginContextProvider", () => {
       });
       const ssoLoginError = new Error("Sso provider mismatch");
       ssoLoginError.name = "SsoProviderMismatchError";
-      props.context.port.addRequestListener("passbolt.sso.has-sso-login-error", jest.fn(async() => true));
-      props.context.port.addRequestListener("passbolt.sso.get-qualified-sso-login-error", jest.fn(async() => ssoLoginError));
+      props.context.port.addRequestListener("cipherguard.sso.has-sso-login-error", jest.fn(async() => true));
+      props.context.port.addRequestListener("cipherguard.sso.get-qualified-sso-login-error", jest.fn(async() => ssoLoginError));
 
       const contextProvider = new AuthenticationLoginContextProvider(props);
       mockComponentSetState(contextProvider);
@@ -131,7 +131,7 @@ describe("AuthenticationLoginContextProvider", () => {
       expect.assertions(2);
       await contextProvider.componentDidMount();
 
-      expect(props.context.port.requestListeners["passbolt.auth.verify-server-key"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.auth.verify-server-key"]).toHaveBeenCalled();
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.SSO_PROVIDER_MISMATCH_ERROR);
     });
 
@@ -142,8 +142,8 @@ describe("AuthenticationLoginContextProvider", () => {
         }
       });
       const ssoLoginError = new Error("Unexpected error");
-      props.context.port.addRequestListener("passbolt.sso.has-sso-login-error", jest.fn(async() => true));
-      props.context.port.addRequestListener("passbolt.sso.get-qualified-sso-login-error", jest.fn(async() => ssoLoginError));
+      props.context.port.addRequestListener("cipherguard.sso.has-sso-login-error", jest.fn(async() => true));
+      props.context.port.addRequestListener("cipherguard.sso.get-qualified-sso-login-error", jest.fn(async() => ssoLoginError));
 
       const contextProvider = new AuthenticationLoginContextProvider(props);
       mockComponentSetState(contextProvider);
@@ -151,7 +151,7 @@ describe("AuthenticationLoginContextProvider", () => {
       expect.assertions(2);
       await contextProvider.componentDidMount();
 
-      expect(props.context.port.requestListeners["passbolt.auth.verify-server-key"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.auth.verify-server-key"]).toHaveBeenCalled();
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.SIGN_IN_SSO);
     });
   });
@@ -166,13 +166,13 @@ describe("AuthenticationLoginContextProvider", () => {
       await contextProvider.componentDidMount();
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.ACCEPT_NEW_SERVER_KEY);
       await contextProvider.acceptNewServerKey();
-      expect(props.context.port.requestListeners["passbolt.auth.replace-server-key"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.auth.replace-server-key"]).toHaveBeenCalled();
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.SIGN_IN);
     });
 
     it("When an error occurred when the new server key is accepted, the machine state should be set to: SIGN_IN", async() => {
       const props = withServerKeyChanged(defaultProps());
-      props.context.port.addRequestListener("passbolt.auth.replace-server-key", jest.fn(() => Promise.reject(new Error("Unexpected error"))));
+      props.context.port.addRequestListener("cipherguard.auth.replace-server-key", jest.fn(() => Promise.reject(new Error("Unexpected error"))));
       const contextProvider = new AuthenticationLoginContextProvider(props);
       mockComponentSetState(contextProvider);
 
@@ -180,7 +180,7 @@ describe("AuthenticationLoginContextProvider", () => {
       await contextProvider.componentDidMount();
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.ACCEPT_NEW_SERVER_KEY);
       await contextProvider.acceptNewServerKey();
-      expect(props.context.port.requestListeners["passbolt.auth.replace-server-key"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.auth.replace-server-key"]).toHaveBeenCalled();
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.UNEXPECTED_ERROR);
       expect(contextProvider.state.error.message).toEqual("Unexpected error");
     });
@@ -195,13 +195,13 @@ describe("AuthenticationLoginContextProvider", () => {
       expect.assertions(2);
       await contextProvider.componentDidMount();
       await contextProvider.checkPassphrase("passphrase");
-      expect(props.context.port.requestListeners["passbolt.auth.verify-passphrase"]).toHaveBeenCalledWith("passphrase", undefined);
+      expect(props.context.port.requestListeners["cipherguard.auth.verify-passphrase"]).toHaveBeenCalledWith("passphrase", undefined);
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.SIGN_IN);
     });
 
     it("When a wrong passphrase is requested to be checked, the error should be rethrown and the machine state should remain on: SIGN_IN", async() => {
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.auth.verify-passphrase", jest.fn(() => Promise.reject(new InvalidMasterPasswordError())));
+      props.context.port.addRequestListener("cipherguard.auth.verify-passphrase", jest.fn(() => Promise.reject(new InvalidMasterPasswordError())));
       const contextProvider = new AuthenticationLoginContextProvider(props);
       mockComponentSetState(contextProvider);
 
@@ -211,7 +211,7 @@ describe("AuthenticationLoginContextProvider", () => {
         await contextProvider.checkPassphrase("passphrase");
         expect(false).toBeTruthy();
       } catch (error) {
-        expect(props.context.port.requestListeners["passbolt.auth.verify-passphrase"]).toHaveBeenCalledWith("passphrase", undefined);
+        expect(props.context.port.requestListeners["cipherguard.auth.verify-passphrase"]).toHaveBeenCalledWith("passphrase", undefined);
         expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.SIGN_IN);
         expect(error.name).toEqual("InvalidMasterPasswordError");
       }
@@ -219,14 +219,14 @@ describe("AuthenticationLoginContextProvider", () => {
 
     it("If an unexpected error occurred the machine state should be set to: UNEXPECTED_ERROR", async() => {
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.auth.verify-passphrase", jest.fn(() => Promise.reject(new Error("Unexpected error"))));
+      props.context.port.addRequestListener("cipherguard.auth.verify-passphrase", jest.fn(() => Promise.reject(new Error("Unexpected error"))));
       const contextProvider = new AuthenticationLoginContextProvider(props);
       mockComponentSetState(contextProvider);
 
       expect.assertions(3);
       await contextProvider.componentDidMount();
       await contextProvider.checkPassphrase("passphrase");
-      expect(props.context.port.requestListeners["passbolt.auth.verify-passphrase"]).toHaveBeenCalledWith("passphrase", undefined);
+      expect(props.context.port.requestListeners["cipherguard.auth.verify-passphrase"]).toHaveBeenCalledWith("passphrase", undefined);
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.UNEXPECTED_ERROR);
       expect(contextProvider.state.error.message).toEqual("Unexpected error");
     });
@@ -241,20 +241,20 @@ describe("AuthenticationLoginContextProvider", () => {
       expect.assertions(2);
       await contextProvider.componentDidMount();
       await contextProvider.signIn("passphrase");
-      expect(props.context.port.requestListeners["passbolt.auth.login"]).toHaveBeenCalledWith("passphrase", false, undefined);
+      expect(props.context.port.requestListeners["cipherguard.auth.login"]).toHaveBeenCalledWith("passphrase", false, undefined);
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.SIGNING_IN);
     });
 
     it("When the sign-in fails, the machine state shoudl be set to: SIGN_IN_ERROR", async() => {
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.auth.login", jest.fn(() => Promise.reject(new Error('Unexpected error'))));
+      props.context.port.addRequestListener("cipherguard.auth.login", jest.fn(() => Promise.reject(new Error('Unexpected error'))));
       const contextProvider = new AuthenticationLoginContextProvider(props);
       mockComponentSetState(contextProvider);
 
       expect.assertions(2);
       await contextProvider.componentDidMount();
       await contextProvider.signIn("passphrase");
-      expect(props.context.port.requestListeners["passbolt.auth.login"]).toHaveBeenCalledWith("passphrase", false, undefined);
+      expect(props.context.port.requestListeners["cipherguard.auth.login"]).toHaveBeenCalledWith("passphrase", false, undefined);
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.SIGN_IN_ERROR);
     });
   });
@@ -292,20 +292,20 @@ describe("AuthenticationLoginContextProvider", () => {
       expect.assertions(2);
       await contextProvider.componentDidMount();
       await contextProvider.requestHelpCredentialsLost();
-      expect(props.context.port.requestListeners["passbolt.auth.request-help-credentials-lost"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.auth.request-help-credentials-lost"]).toHaveBeenCalled();
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.CHECK_MAILBOX);
     });
 
     it("When the user fails to initiate an account recovery, the machine state should be set to: UNEXPECTED_ERROR", async() => {
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.auth.request-help-credentials-lost", jest.fn(() => Promise.reject(new Error("Unexpected error"))));
+      props.context.port.addRequestListener("cipherguard.auth.request-help-credentials-lost", jest.fn(() => Promise.reject(new Error("Unexpected error"))));
       const contextProvider = new AuthenticationLoginContextProvider(props);
       mockComponentSetState(contextProvider);
 
       expect.assertions(3);
       await contextProvider.componentDidMount();
       await contextProvider.requestHelpCredentialsLost();
-      expect(props.context.port.requestListeners["passbolt.auth.request-help-credentials-lost"]).toHaveBeenCalled();
+      expect(props.context.port.requestListeners["cipherguard.auth.request-help-credentials-lost"]).toHaveBeenCalled();
       expect(contextProvider.state.state).toEqual(AuthenticationLoginWorkflowStates.UNEXPECTED_ERROR);
       expect(contextProvider.state.error.message).toEqual("Unexpected error");
     });
@@ -396,7 +396,7 @@ describe("AuthenticationLoginContextProvider", () => {
         }
       });
       const deleteLocalKitCallback = jest.fn();
-      props.context.port.addRequestListener("passbolt.sso.delete-local-kit", deleteLocalKitCallback);
+      props.context.port.addRequestListener("cipherguard.sso.delete-local-kit", deleteLocalKitCallback);
       const contextProvider = new AuthenticationLoginContextProvider(props);
       mockComponentSetState(contextProvider);
       await contextProvider.componentDidMount();
@@ -425,7 +425,7 @@ describe("AuthenticationLoginContextProvider", () => {
         }
       });
       const updateProviderCallback = jest.fn();
-      props.context.port.addRequestListener("passbolt.sso.update-provider-local-kit", updateProviderCallback);
+      props.context.port.addRequestListener("cipherguard.sso.update-provider-local-kit", updateProviderCallback);
       const contextProvider = new AuthenticationLoginContextProvider(props);
       mockComponentSetState(contextProvider);
       await contextProvider.componentDidMount();

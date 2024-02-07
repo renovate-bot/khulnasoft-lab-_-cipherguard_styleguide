@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -579,11 +579,11 @@ export class ResourceWorkspaceContextProvider extends React.Component {
    */
   populate() {
     if (this.props.context.siteSettings.canIUse("folders")) {
-      this.props.context.port.request("passbolt.folders.update-local-storage");
+      this.props.context.port.request("cipherguard.folders.update-local-storage");
     }
-    this.props.context.port.request("passbolt.resources.update-local-storage");
-    this.props.context.port.request("passbolt.groups.update-local-storage");
-    this.props.context.port.request("passbolt.users.update-local-storage");
+    this.props.context.port.request("cipherguard.resources.update-local-storage");
+    this.props.context.port.request("cipherguard.groups.update-local-storage");
+    this.props.context.port.request("cipherguard.users.update-local-storage");
   }
 
   /** RESOURCE SEARCH  **/
@@ -690,7 +690,7 @@ export class ResourceWorkspaceContextProvider extends React.Component {
     const filters = {'is-shared-with-group': groupId};
     // get the resources with the group
     this.props.loadingContext.add();
-    const resourcesFilteredByGroup = await this.props.context.port.request('passbolt.resources.find-all', {filters}) || [];
+    const resourcesFilteredByGroup = await this.props.context.port.request('cipherguard.resources.find-all', {filters}) || [];
     const resourceIds = resourcesFilteredByGroup.map(resource => resource.id);
     // keep only the resource with the group
     const groupResources = this.resources.filter(resource => resourceIds.includes(resource.id));

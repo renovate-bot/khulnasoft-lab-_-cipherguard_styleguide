@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.4.0
@@ -74,7 +74,7 @@ export class AdministrationPasswordExpiryContextProvider extends React.Component
   async findSettings() {
     this.setState({processing: true});
 
-    const result = await this.props.context.port.request("passbolt.password-expiry.find");
+    const result = await this.props.context.port.request("cipherguard.password-expiry.find");
     const settings = PasswordExpirySettingsViewModel.fromEntityDto(result);
 
     //Init saved setting
@@ -168,7 +168,7 @@ export class AdministrationPasswordExpiryContextProvider extends React.Component
    * @private
    */
   async doDeleteSettings() {
-    this.props.context.port.request("passbolt.password-expiry.delete", this.state.settings.id);
+    this.props.context.port.request("cipherguard.password-expiry.delete", this.state.settings.id);
     return new PasswordExpirySettingsViewModel();
   }
 
@@ -178,7 +178,7 @@ export class AdministrationPasswordExpiryContextProvider extends React.Component
    * @private
    */
   async doSaveSettings() {
-    const passwordExpirySettingsEntityDto = await this.props.context.port.request("passbolt.password-expiry.save", this.state.settings.toEntityDto());
+    const passwordExpirySettingsEntityDto = await this.props.context.port.request("cipherguard.password-expiry.save", this.state.settings.toEntityDto());
     return new PasswordExpirySettingsViewModel(passwordExpirySettingsEntityDto);
   }
 

@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.2.0
@@ -186,8 +186,8 @@ class ExtAppContextProvider extends React.Component {
    */
   async getLoggedInUser() {
     const canIUseRbac = this.state.siteSettings.canIUse('rbacs');
-    const loggedInUser = await this.props.port.request("passbolt.users.find-logged-in-user");
-    const rbacsDto = canIUseRbac ? await this.props.port.request("passbolt.rbacs.find-me") : [];
+    const loggedInUser = await this.props.port.request("cipherguard.users.find-logged-in-user");
+    const rbacsDto = canIUseRbac ? await this.props.port.request("cipherguard.rbacs.find-me") : [];
     const rbacs = new RbacsCollection(rbacsDto);
     this.setState({loggedInUser, rbacs});
   }
@@ -197,7 +197,7 @@ class ExtAppContextProvider extends React.Component {
    * Using SiteSettings
    */
   async getSiteSettings() {
-    const settings = await this.props.port.request("passbolt.organization-settings.get");
+    const settings = await this.props.port.request("cipherguard.organization-settings.get");
     const siteSettings = new SiteSettings(settings);
     this.setState({siteSettings});
   }
@@ -206,7 +206,7 @@ class ExtAppContextProvider extends React.Component {
    * Get extension version
    */
   async getExtensionVersion() {
-    const extensionVersion = await this.props.port.request("passbolt.addon.get-version");
+    const extensionVersion = await this.props.port.request("cipherguard.addon.get-version");
     this.setState({extensionVersion});
   }
 
@@ -258,7 +258,7 @@ class ExtAppContextProvider extends React.Component {
    * Get the list of roles from local storage and set it in the state
    */
   async getRoles() {
-    const roles = await this.props.port.request("passbolt.role.get-all");
+    const roles = await this.props.port.request("cipherguard.role.get-all");
     this.setState({roles});
   }
 
@@ -269,7 +269,7 @@ class ExtAppContextProvider extends React.Component {
   async getResourceTypes() {
     let resourceTypes = [];
     try {
-      resourceTypes = await this.props.port.request("passbolt.resource-type.get-all");
+      resourceTypes = await this.props.port.request("cipherguard.resource-type.get-all");
     } catch (error) {
       // @deprecated Catching this error will be removed with v4. Expected error with API < v3.0
       console.error(error);
@@ -283,8 +283,8 @@ class ExtAppContextProvider extends React.Component {
    * Using UserSettings
    */
   async getUserSettings() {
-    const storageData = await this.props.storage.local.get(["_passbolt_data"]);
-    const userSettings = new UserSettings(storageData._passbolt_data.config);
+    const storageData = await this.props.storage.local.get(["_cipherguard_data"]);
+    const userSettings = new UserSettings(storageData._cipherguard_data.config);
     this.setState({userSettings});
   }
 
@@ -292,7 +292,7 @@ class ExtAppContextProvider extends React.Component {
    * Init the locale
    */
   async initLocale() {
-    const {locale} = await this.props.port.request("passbolt.locale.get");
+    const {locale} = await this.props.port.request("cipherguard.locale.get");
     this.setState({locale});
   }
 
@@ -310,8 +310,8 @@ class ExtAppContextProvider extends React.Component {
       const resources = changes.resources.newValue;
       this.setState({resources});
     }
-    if (changes._passbolt_data && changes._passbolt_data.newValue) {
-      const userData = changes._passbolt_data.newValue;
+    if (changes._cipherguard_data && changes._cipherguard_data.newValue) {
+      const userData = changes._cipherguard_data.newValue;
       const userSettings = new UserSettings(userData.config);
       this.setState({userSettings});
     }
@@ -342,7 +342,7 @@ class ExtAppContextProvider extends React.Component {
    * Listen when the user wants to logout.
    */
   onLogoutRequested() {
-    const requestLogout = () => this.props.port.request('passbolt.auth.logout', true);
+    const requestLogout = () => this.props.port.request('cipherguard.auth.logout', true);
     // Indicate that the session is logout by the user before requesting a logout
     this.setState({isSessionLogoutByUser: true}, requestLogout);
   }
@@ -357,21 +357,21 @@ class ExtAppContextProvider extends React.Component {
         callback();
       }
     };
-    this.props.port.on('passbolt.auth.after-logout', displayExpiredSession);
+    this.props.port.on('cipherguard.auth.after-logout', displayExpiredSession);
   }
 
   /**
    * Whenever the subscription key is requested
    */
   async onGetSubscriptionKeyRequested() {
-    return await this.props.port.request("passbolt.subscription.get");
+    return await this.props.port.request("cipherguard.subscription.get");
   }
 
   /**
    * Whenever the update of the locale is requested
    */
   async onUpdateLocaleRequested() {
-    const {locale} = await this.props.port.request("passbolt.locale.get");
+    const {locale} = await this.props.port.request("cipherguard.locale.get");
     this.setState({locale});
   }
 

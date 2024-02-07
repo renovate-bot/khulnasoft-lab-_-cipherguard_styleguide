@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -286,7 +286,7 @@ class EditUser extends Component {
     if (this.isSuspendedUserFeatureEnabled()) {
       userDto.disabled = this.getFormattedDate(this.state.disabled);
     }
-    return await this.props.context.port.request("passbolt.users.update", userDto);
+    return await this.props.context.port.request("cipherguard.users.update", userDto);
   }
 
   /**
@@ -295,7 +295,7 @@ class EditUser extends Component {
   async updateLoggedInUserIfNeeded() {
     const newContext = {editUserDialogProps: null};
     if (this.isLoggedInUserAsEditing) {
-      const loggedInUser = await this.props.context.port.request("passbolt.users.find-logged-in-user", true);
+      const loggedInUser = await this.props.context.port.request("cipherguard.users.find-logged-in-user", true);
       this.props.context.setContext({loggedInUser});
     }
     await this.props.context.setContext(newContext);
@@ -509,7 +509,7 @@ class EditUser extends Component {
                     className="toggle-switch-checkbox checkbox"
                   />
                   <label htmlFor="is_suspended_checkbox"> <Trans>Suspend this user</Trans></label>
-                  <Tooltip message={this.translate("This user will not be able to sign in to passbolt and receive email notifications. Other users can share resource with it and add this user to a group.")}>
+                  <Tooltip message={this.translate("This user will not be able to sign in to cipherguard and receive email notifications. Other users can share resource with it and add this user to a group.")}>
                     <Icon name="info-circle"/>
                   </Tooltip>
                 </span>

@@ -40,6 +40,6 @@ const mockTabInfo = {
 };
 
 export const mockResults = {
-  "passbolt.quickaccess.prepare-resource": mockTabInfo,
-  "passbolt.resources.create": {}
+  "cipherguard.quickaccess.prepare-resource": mockTabInfo,
+  "cipherguard.resources.create": {}
 };

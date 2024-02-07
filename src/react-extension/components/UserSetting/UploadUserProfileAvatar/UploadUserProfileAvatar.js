@@ -1,13 +1,13 @@
 
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -173,7 +173,7 @@ class UploadUserProfileAvatar extends React.Component {
       return;
     }
     const avatarDto = await this.createAvatarDto();
-    await this.props.context.port.request("passbolt.users.update-avatar", this.user.id, avatarDto)
+    await this.props.context.port.request("cipherguard.users.update-avatar", this.user.id, avatarDto)
       .then(this.onUploadSuccess.bind(this))
       .catch(this.onUploadFailure.bind(this));
   }
@@ -276,7 +276,7 @@ class UploadUserProfileAvatar extends React.Component {
    * Refresh the user profile
    */
   async refreshUserProfile() {
-    const loggedInUser = await this.props.context.port.request("passbolt.users.find-logged-in-user", true);
+    const loggedInUser = await this.props.context.port.request("cipherguard.users.find-logged-in-user", true);
     this.props.context.setContext({loggedInUser});
   }
 

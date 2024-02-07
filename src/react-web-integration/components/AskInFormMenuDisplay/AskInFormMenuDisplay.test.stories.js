@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.3.0
@@ -71,7 +71,7 @@ const parameters = {
 };
 
 const inactiveMockedPort = new MockPort();
-inactiveMockedPort.addRequestListener('passbolt.in-form-cta.check-status', () => ({isAuthenticated: false, isMfaRequired: false}));
+inactiveMockedPort.addRequestListener('cipherguard.in-form-cta.check-status', () => ({isAuthenticated: false, isMfaRequired: false}));
 export const Inactive = Template.bind({});
 Inactive.args = {
   context: {
@@ -81,8 +81,8 @@ Inactive.args = {
 Inactive.parameters = parameters;
 
 const activeWithNoSuggestionMockedPort = new MockPort();
-activeWithNoSuggestionMockedPort.addRequestListener('passbolt.in-form-cta.check-status', () => ({isAuthenticated: true, isMfaRequired: false}));
-activeWithNoSuggestionMockedPort.addRequestListener('passbolt.in-form-cta.suggested-resources', () => 0);
+activeWithNoSuggestionMockedPort.addRequestListener('cipherguard.in-form-cta.check-status', () => ({isAuthenticated: true, isMfaRequired: false}));
+activeWithNoSuggestionMockedPort.addRequestListener('cipherguard.in-form-cta.suggested-resources', () => 0);
 export const ActiveWithNoSuggestion = Template.bind({});
 ActiveWithNoSuggestion.args = {
   context: {
@@ -92,8 +92,8 @@ ActiveWithNoSuggestion.args = {
 ActiveWithNoSuggestion.parameters = parameters;
 
 const activeWithOneSuggestionMockedPort = new MockPort();
-activeWithOneSuggestionMockedPort.addRequestListener('passbolt.in-form-cta.check-status', () => ({isAuthenticated: true, isMfaRequired: false}));
-activeWithOneSuggestionMockedPort.addRequestListener('passbolt.in-form-cta.suggested-resources', () => 1);
+activeWithOneSuggestionMockedPort.addRequestListener('cipherguard.in-form-cta.check-status', () => ({isAuthenticated: true, isMfaRequired: false}));
+activeWithOneSuggestionMockedPort.addRequestListener('cipherguard.in-form-cta.suggested-resources', () => 1);
 export const ActiveWithOneSuggestion = Template.bind({});
 ActiveWithOneSuggestion.args = {
   context: {

@@ -15,7 +15,7 @@ const Template = args =>
   </MemoryRouter>;
 
 const mockedPort = new MockPort();
-mockedPort.addRequestListener("passbolt.folders.create", data => data);
+mockedPort.addRequestListener("cipherguard.folders.create", data => data);
 
 export const Initial = Template.bind({});
 Initial.args = {

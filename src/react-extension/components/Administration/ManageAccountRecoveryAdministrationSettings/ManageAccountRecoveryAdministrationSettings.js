@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -352,7 +352,7 @@ class ManageAccountRecoveryAdministrationSettings extends React.Component {
             {this.isPolicyEnabled() &&
               <>
                 <p>
-                  <Trans>Your organization recovery key will be used to decrypt and recover the private key and passphrase of the users that are participating in the account recovery program.</Trans> <Trans>The organization private recovery key should not be stored in passbolt.</Trans> <Trans>You should keep it offline in a safe place.</Trans>
+                  <Trans>Your organization recovery key will be used to decrypt and recover the private key and passphrase of the users that are participating in the account recovery program.</Trans> <Trans>The organization private recovery key should not be stored in cipherguard.</Trans> <Trans>You should keep it offline in a safe place.</Trans>
                 </p>
                 <div className="recovery-key-details">
                   <table className="table-info recovery-key">

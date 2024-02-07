@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.4.0
@@ -38,7 +38,7 @@ describe("DisplayAdministrationPasswordExpirySettingsPage", () => {
       expect.assertions(2);
       const context = defaultAppContext();
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.password-expiry.find", () => defaultPasswordExpirySettingsEntityDto());
+      props.context.port.addRequestListener("cipherguard.password-expiry.find", () => defaultPasswordExpirySettingsEntityDto());
 
       const page = new DisplayAdministrationPasswordExpirySettingsPage(context, props);
       await waitForTrue(() => page.exists());
@@ -51,7 +51,7 @@ describe("DisplayAdministrationPasswordExpirySettingsPage", () => {
       expect.assertions(3);
       const context = defaultAppContext();
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.password-expiry.find", () => defaultPasswordExpirySettingsEntityDto());
+      props.context.port.addRequestListener("cipherguard.password-expiry.find", () => defaultPasswordExpirySettingsEntityDto());
 
       const page = new DisplayAdministrationPasswordExpirySettingsPage(context, props);
       await waitForTrue(() => page.exists());
@@ -71,8 +71,8 @@ describe("DisplayAdministrationPasswordExpirySettingsPage", () => {
 
       const expectedPasswordExpirySettingsDto = defaultPasswordExpirySettingsViewModelDto();
 
-      props.context.port.addRequestListener("passbolt.password-expiry.find", () => disabledPasswordExpirySettingsViewModelDto());
-      props.context.port.addRequestListener("passbolt.password-expiry.save", async passwordExpirySettingsDto => {
+      props.context.port.addRequestListener("cipherguard.password-expiry.find", () => disabledPasswordExpirySettingsViewModelDto());
+      props.context.port.addRequestListener("cipherguard.password-expiry.save", async passwordExpirySettingsDto => {
         expect(passwordExpirySettingsDto).toStrictEqual(expectedPasswordExpirySettingsDto);
         return passwordExpirySettingsDto;
       });
@@ -92,8 +92,8 @@ describe("DisplayAdministrationPasswordExpirySettingsPage", () => {
       const currentSettings = passwordExpirySettingsEntityDtoFromApi();
       const expectedPasswordExpirySettingsId = currentSettings.id;
 
-      props.context.port.addRequestListener("passbolt.password-expiry.find", () => currentSettings);
-      props.context.port.addRequestListener("passbolt.password-expiry.delete", async passwordExpirySettingsId => {
+      props.context.port.addRequestListener("cipherguard.password-expiry.find", () => currentSettings);
+      props.context.port.addRequestListener("cipherguard.password-expiry.delete", async passwordExpirySettingsId => {
         expect(passwordExpirySettingsId).toStrictEqual(expectedPasswordExpirySettingsId);
       });
 
@@ -108,7 +108,7 @@ describe("DisplayAdministrationPasswordExpirySettingsPage", () => {
       expect.assertions(1);
       const context = defaultAppContext();
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.password-expiry.find", () => disabledPasswordExpirySettingsViewModelDto());
+      props.context.port.addRequestListener("cipherguard.password-expiry.find", () => disabledPasswordExpirySettingsViewModelDto());
 
       const page = new DisplayAdministrationPasswordExpirySettingsPage(context, props);
       await waitForTrue(() => page.exists());
@@ -122,7 +122,7 @@ describe("DisplayAdministrationPasswordExpirySettingsPage", () => {
       expect.assertions(2);
       const context = defaultAppContext();
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.password-expiry.find", () => disabledPasswordExpirySettingsViewModelDto());
+      props.context.port.addRequestListener("cipherguard.password-expiry.find", () => disabledPasswordExpirySettingsViewModelDto());
 
       const page = new DisplayAdministrationPasswordExpirySettingsPage(context, props);
       await waitForTrue(() => page.exists());
@@ -139,10 +139,10 @@ describe("DisplayAdministrationPasswordExpirySettingsPage", () => {
       expect.assertions(2);
       const context = defaultAppContext();
       const props = defaultProps();
-      props.context.port.addRequestListener("passbolt.password-expiry.find", () => disabledPasswordExpirySettingsViewModelDto());
+      props.context.port.addRequestListener("cipherguard.password-expiry.find", () => disabledPasswordExpirySettingsViewModelDto());
 
       let savePromise;
-      props.context.port.addRequestListener("passbolt.password-expiry.save", () => new Promise(resolve => {
+      props.context.port.addRequestListener("cipherguard.password-expiry.save", () => new Promise(resolve => {
         savePromise = resolve;
       }));
 
@@ -168,8 +168,8 @@ describe("DisplayAdministrationPasswordExpirySettingsPage", () => {
       const props = defaultProps();
       const entityDto = defaultPasswordExpirySettingsViewModelDto();
       const expectedError = new Error("Something went wrong!");
-      props.context.port.addRequestListener("passbolt.password-expiry.find", () => entityDto);
-      props.context.port.addRequestListener("passbolt.password-expiry.save", () => { throw expectedError; });
+      props.context.port.addRequestListener("cipherguard.password-expiry.find", () => entityDto);
+      props.context.port.addRequestListener("cipherguard.password-expiry.save", () => { throw expectedError; });
 
       const page = new DisplayAdministrationPasswordExpirySettingsPage(context, props);
       await waitForTrue(() => page.exists());

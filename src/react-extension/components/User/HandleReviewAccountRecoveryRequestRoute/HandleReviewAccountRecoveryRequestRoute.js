@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since        3.6.0
@@ -46,7 +46,7 @@ class HandleReviewAccountRecoveryRequestRoute extends React.Component {
     let accountRecoveryRequest;
 
     try {
-      accountRecoveryRequest = await this.props.context.port.request("passbolt.account-recovery.get-request", accountRecoveryRequestId);
+      accountRecoveryRequest = await this.props.context.port.request("cipherguard.account-recovery.get-request", accountRecoveryRequestId);
     } catch (error) {
       this.handleAccountRecoveryRequestNotFound();
       return;

@@ -64,7 +64,7 @@ class FilterResourcesByFavoritePage extends React.Component {
 
   async findAndLoadResources() {
     const filters = {'is-favorite': true};
-    const resources = await this.props.context.port.request('passbolt.resources.find-all', {filters});
+    const resources = await this.props.context.port.request('cipherguard.resources.find-all', {filters});
     this.sortResourcesAlphabetically(resources);
     this.setState({resources});
   }

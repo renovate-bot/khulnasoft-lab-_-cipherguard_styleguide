@@ -13,7 +13,7 @@ export function defaultAppContext(appContext) {
       canIUse: () => true
     },
     userSettings: {
-      getTrustedDomain: () => 'https://passbolt.local'
+      getTrustedDomain: () => 'https://cipherguard.local'
     },
     loggedInUser: {
       id: "220ebc06-5ec1-5322-a1ae-6120ed2f3a74",

@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -146,9 +146,9 @@ export class AuthenticationLoginContextProvider extends React.Component {
       return;
     }
 
-    const isSsoLoginErrorState = await this.props.context.port.request("passbolt.sso.has-sso-login-error");
+    const isSsoLoginErrorState = await this.props.context.port.request("cipherguard.sso.has-sso-login-error");
     if (isSsoLoginErrorState) {
-      const ssoError = await this.props.context.port.request("passbolt.sso.get-qualified-sso-login-error");
+      const ssoError = await this.props.context.port.request("cipherguard.sso.get-qualified-sso-login-error");
       const isExpectedError = EXPECTED_SSO_LOGIN_ERROR.findIndex(errorType => errorType === ssoError.name) > -1;
       if (isExpectedError) {
         /*
@@ -170,7 +170,7 @@ export class AuthenticationLoginContextProvider extends React.Component {
    */
   async verifyServerKey() {
     try {
-      await this.props.context.port.request('passbolt.auth.verify-server-key');
+      await this.props.context.port.request('cipherguard.auth.verify-server-key');
       return true;
     } catch (error) {
       await this.handleVerifyServerKeyFailure(error);
@@ -186,7 +186,7 @@ export class AuthenticationLoginContextProvider extends React.Component {
     if (error.name === "KeyIsExpiredError") {
       // Nothing to do. @todo document why?
     } else if (error.name === "ServerKeyChangedError") {
-      const serverKey = await this.props.context.port.request('passbolt.auth.get-server-key');
+      const serverKey = await this.props.context.port.request('cipherguard.auth.get-server-key');
       await this.setState({state: AuthenticationLoginWorkflowStates.ACCEPT_NEW_SERVER_KEY, serverKey});
     } else if (error.name === "UserNotFoundError") {
       // This case should be treated by the background page itself, and the login form should not be displayed.
@@ -202,7 +202,7 @@ export class AuthenticationLoginContextProvider extends React.Component {
    */
   async checkPassphrase(passphrase) {
     try {
-      await this.props.context.port.request('passbolt.auth.verify-passphrase', passphrase);
+      await this.props.context.port.request('cipherguard.auth.verify-passphrase', passphrase);
     } catch (error) {
       if (error.name === "InvalidMasterPasswordError" || error.name === "GpgKeyError") {
         // Expected errors controlled by the component CheckPassphrase, throw it.
@@ -222,8 +222,8 @@ export class AuthenticationLoginContextProvider extends React.Component {
   async signIn(passphrase, rememberMe = false) {
     await this.setState({state: AuthenticationLoginWorkflowStates.SIGNING_IN});
     try {
-      await this.props.context.port.request('passbolt.auth.login', passphrase, rememberMe);
-      this.props.context.port.request('passbolt.auth.post-login-redirect');
+      await this.props.context.port.request('cipherguard.auth.login', passphrase, rememberMe);
+      this.props.context.port.request('cipherguard.auth.post-login-redirect');
     } catch (error) {
       await this.setState({state: AuthenticationLoginWorkflowStates.SIGN_IN_ERROR, error});
     }
@@ -291,7 +291,7 @@ export class AuthenticationLoginContextProvider extends React.Component {
    * Handles the confirmation of the removal of the SSO kit and switch the state to SIGN_IN
    */
   async handleUserConfirmSsoDisable() {
-    await this.props.context.port.request('passbolt.sso.delete-local-kit');
+    await this.props.context.port.request('cipherguard.sso.delete-local-kit');
     await this.props.ssoContext.loadSsoConfiguration();
     this.setState({state: AuthenticationLoginWorkflowStates.SIGN_IN});
   }
@@ -310,7 +310,7 @@ export class AuthenticationLoginContextProvider extends React.Component {
    */
   async handleUserConfirmSsoProviderChange() {
     const provider = this.getNewSsoProvider().id;
-    await this.props.context.port.request('passbolt.sso.update-provider-local-kit', provider);
+    await this.props.context.port.request('cipherguard.sso.update-provider-local-kit', provider);
     await this.props.ssoContext.loadSsoConfiguration();
     this.setState({state: AuthenticationLoginWorkflowStates.SIGN_IN_SSO});
   }
@@ -321,7 +321,7 @@ export class AuthenticationLoginContextProvider extends React.Component {
    */
   async acceptNewServerKey() {
     try {
-      await this.props.context.port.request('passbolt.auth.replace-server-key');
+      await this.props.context.port.request('cipherguard.auth.replace-server-key');
       this.setState({state: AuthenticationLoginWorkflowStates.SIGN_IN});
     } catch (error) {
       await this.setState({state: AuthenticationLoginWorkflowStates.UNEXPECTED_ERROR, error: error});
@@ -347,7 +347,7 @@ export class AuthenticationLoginContextProvider extends React.Component {
    */
   async requestHelpCredentialsLost() {
     try {
-      await this.props.context.port.request('passbolt.auth.request-help-credentials-lost');
+      await this.props.context.port.request('cipherguard.auth.request-help-credentials-lost');
       await this.setState({state: AuthenticationLoginWorkflowStates.CHECK_MAILBOX});
     } catch (error) {
       await this.setState({state: AuthenticationLoginWorkflowStates.UNEXPECTED_ERROR, error: error});

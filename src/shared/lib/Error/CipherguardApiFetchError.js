@@ -1,7 +1,7 @@
 /**
  * Application error
  *
- * @copyright (c) 2019 Cipherguard SA
+ * @copyright (c) 2019 KhulnaSoft Ltd
  * @licence GNU Affero General Public License http://www.gnu.org/licenses/agpl-3.0.en.html
  */
 

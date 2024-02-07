@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         4.3.0
@@ -36,7 +36,7 @@ describe("ImportAccountKit", () => {
       expect(page.uploadLabel.textContent).toEqual("Account kit");
       expect(page.uploadButton).not.toBeNull();
       expect(page.uploadInput).not.toBeNull();
-      expect(page.uploadAcceptFile).toEqual("application/passbolt");
+      expect(page.uploadAcceptFile).toEqual("application/cipherguard");
       expect(page.importButton.textContent).toEqual("Import account");
     });
 
@@ -48,7 +48,7 @@ describe("ImportAccountKit", () => {
       await page.click(page.getHelpMessage);
 
       expect(page.getHelpMessage).not.toBeNull();
-      expect(props.context.port.emit).toHaveBeenCalledWith("passbolt.rendered.open-to-browser", "https://help.cipherguard.khulnasoft.com/TBD");
+      expect(props.context.port.emit).toHaveBeenCalledWith("cipherguard.rendered.open-to-browser", "https://help.cipherguard.khulnasoft.com/TBD");
     });
 
     it('As an unknown user I should be notified if I have uploaded a wrong file format', async() => {
@@ -63,7 +63,7 @@ describe("ImportAccountKit", () => {
       await page.click(page.importButton);
 
       expect(page.hasError).toBeTruthy();
-      expect(page.errorMessage.textContent).toEqual("Only passbolt format is allowed.");
+      expect(page.errorMessage.textContent).toEqual("Only cipherguard format is allowed.");
     });
 
     it('As an unknown user I should be notified if the file is missing', async() => {

@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.8.3
@@ -16,7 +16,7 @@ import each from 'jest-each';
 import DomainUtil from './DomainUtil';
 
 describe("DomainUtil", () => {
-  const passboltDomain = "cipherguard.khulnasoft.com";
+  const cipherguardDomain = "cipherguard.khulnasoft.com";
   const matchError =  "Cannot parse domain. The domain does not match the pattern.";
   const validDomainError = "Cannot parse domain. The domain is not valid.";
 
@@ -28,12 +28,12 @@ describe("DomainUtil", () => {
     });
     it("should extract sub domain from valid email", () => {
       expect.assertions(1);
-      const email = "test@passbolt.subdomain.com";
-      expect(DomainUtil.extractDomainFromEmail(email)).toEqual("passbolt.subdomain.com");
+      const email = "test@cipherguard.subdomain.com";
+      expect(DomainUtil.extractDomainFromEmail(email)).toEqual("cipherguard.subdomain.com");
     });
     it("should not extract valid domain if email is not valid", () => {
       expect.assertions(1);
-      const email = "test@passbolt$.com";
+      const email = "test@cipherguard$.com";
       expect(DomainUtil.extractDomainFromEmail(email)).toEqual("");
     });
     it("should not extract domain if it is not a email", () => {
@@ -45,7 +45,7 @@ describe("DomainUtil", () => {
   describe("DomainUtil::isProfessional", () => {
     it("should validate professional domain", () => {
       expect.assertions(1);
-      const result = DomainUtil.isProfessional(passboltDomain);
+      const result = DomainUtil.isProfessional(cipherguardDomain);
       expect(result).toBeTruthy();
     });
     it("should not validate professional domain if it is a public domain", () => {
@@ -58,15 +58,15 @@ describe("DomainUtil", () => {
     each([
       {
         scenario: "TLD",
-        domain: passboltDomain,
+        domain: cipherguardDomain,
       },
       {
         scenario: "TLD with subdomain",
-        domain: `test.${passboltDomain}`,
+        domain: `test.${cipherguardDomain}`,
       },
       {
         scenario: "TLD with 4 subdomain",
-        domain: `${("test.").repeat(4)}${passboltDomain}`,
+        domain: `${("test.").repeat(4)}${cipherguardDomain}`,
       },
     ]).describe("should validate", _props => {
       it(`should validate: ${_props.scenario}`, () => {
@@ -87,11 +87,11 @@ describe("DomainUtil", () => {
       },
       {
         scenario: "Not a domain allowed",
-        domain: "passbolt.io/passwords",
+        domain: "cipherguard.io/passwords",
       },
       {
         scenario: "Regex wild mark attack",
-        domain: "passboltxdev",
+        domain: "cipherguardxdev",
       },
       {
         scenario: "IP v6 with port",
@@ -111,11 +111,11 @@ describe("DomainUtil", () => {
       },
       {
         scenario: "TLD with Port",
-        domain: "passbolt.dev:4443",
+        domain: "cipherguard.dev:4443",
       },
       {
         scenario: "TLD valid but not respecting max size",
-        domain: `${("test.").repeat(20)}${passboltDomain}`,
+        domain: `${("test.").repeat(20)}${cipherguardDomain}`,
       },
     ]).describe("should not parse", _props => {
       it(`should not validate: ${_props.scenario}`, () => {
@@ -131,15 +131,15 @@ describe("DomainUtil", () => {
     each([
       {
         scenario: "TLD",
-        domain: passboltDomain,
+        domain: cipherguardDomain,
       },
       {
         scenario: "TLD with subdomain",
-        domain: `test.${passboltDomain}`,
+        domain: `test.${cipherguardDomain}`,
       },
       {
         scenario: "TLD with 4 subdomain",
-        domain: `${("test.").repeat(4)}${passboltDomain}`,
+        domain: `${("test.").repeat(4)}${cipherguardDomain}`,
       },
       {
         scenario: "IP v4",
@@ -163,11 +163,11 @@ describe("DomainUtil", () => {
       },
       {
         scenario: "Not a domain allowed",
-        domain: "passbolt.io/passwords",
+        domain: "cipherguard.io/passwords",
       },
       {
         scenario: "Regex wild mark attack",
-        domain: "passboltxdev",
+        domain: "cipherguardxdev",
       },
       {
         scenario: "IP v6 with port",
@@ -179,11 +179,11 @@ describe("DomainUtil", () => {
       },
       {
         scenario: "TLD with Port",
-        domain: "passbolt.dev:4443",
+        domain: "cipherguard.dev:4443",
       },
       {
         scenario: "TLD valid but not respecting max size",
-        domain: `${("test.").repeat(20)}${passboltDomain}`,
+        domain: `${("test.").repeat(20)}${cipherguardDomain}`,
       },
     ]).describe("should not parse", _props => {
       it(`should not validate: ${_props.scenario}`, () => {

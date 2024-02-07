@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.3.0
@@ -35,8 +35,8 @@ class AskInFormMenuDisplay extends React.Component {
    * Whenever the component is mounted
    */
   componentDidMount() {
-    this.props.context.port.on("passbolt.auth.after-logout", this.handleUserLoggedOut.bind(this));
-    this.props.context.port.on("passbolt.auth.after-login", this.handleUserLoggedIn.bind(this));
+    this.props.context.port.on("cipherguard.auth.after-logout", this.handleUserLoggedOut.bind(this));
+    this.props.context.port.on("cipherguard.auth.after-login", this.handleUserLoggedIn.bind(this));
     this.checkAuthenticationStatus();
   }
 
@@ -44,7 +44,7 @@ class AskInFormMenuDisplay extends React.Component {
    * Handle when the user is logged in.
    */
   async handleUserLoggedIn() {
-    const suggestedResourcesCount = await this.props.context.port.request("passbolt.in-form-cta.suggested-resources");
+    const suggestedResourcesCount = await this.props.context.port.request("cipherguard.in-form-cta.suggested-resources");
     this.setState({
       status: {
         isActive: true,
@@ -101,7 +101,7 @@ class AskInFormMenuDisplay extends React.Component {
   }
 
   /**
-   * Whenever the user clicks on the in-form passbolt icon
+   * Whenever the user clicks on the in-form cipherguard icon
    */
   handleIconClick() {
     this.execute();
@@ -111,11 +111,11 @@ class AskInFormMenuDisplay extends React.Component {
    * Check the user authentication status
    */
   async checkAuthenticationStatus() {
-    const {isAuthenticated, isMfaRequired} = await this.props.context.port.request("passbolt.in-form-cta.check-status");
+    const {isAuthenticated, isMfaRequired} = await this.props.context.port.request("cipherguard.in-form-cta.check-status");
     const isActive = isAuthenticated && !isMfaRequired;
     let suggestedResourcesCount = 0;
     if (isActive) {
-      suggestedResourcesCount = await this.props.context.port.request("passbolt.in-form-cta.suggested-resources");
+      suggestedResourcesCount = await this.props.context.port.request("cipherguard.in-form-cta.suggested-resources");
     }
     this.setState({
       isReady: true,
@@ -130,7 +130,7 @@ class AskInFormMenuDisplay extends React.Component {
    * Perform the call-to-action
    */
   execute() {
-    this.props.context.port.request("passbolt.in-form-cta.execute");
+    this.props.context.port.request("cipherguard.in-form-cta.execute");
   }
 
   /**

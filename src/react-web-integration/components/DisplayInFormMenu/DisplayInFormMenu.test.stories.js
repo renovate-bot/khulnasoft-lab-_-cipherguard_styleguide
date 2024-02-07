@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.3.0
@@ -41,8 +41,8 @@ const suggestion = [
 ];
 
 const initMockPort = (mockPort, initResponse = {inputType: "", inputValue: "", suggestedResources: suggestion}, passwordSettings = defaultPasswordPoliciesDto()) => {
-  mockPort.addRequestListener('passbolt.in-form-menu.init', () => initResponse);
-  mockPort.addRequestListener('passbolt.password-policies.get', () => passwordSettings);
+  mockPort.addRequestListener('cipherguard.in-form-menu.init', () => initResponse);
+  mockPort.addRequestListener('cipherguard.password-policies.get', () => passwordSettings);
 };
 
 const mockPortUsernameEmpty = new MockPort();

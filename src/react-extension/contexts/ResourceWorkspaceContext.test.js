@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -140,7 +140,7 @@ describe("Resource Workspace Context", () => {
       const expectedResourcesCount = 3;
       const leadershipTeamGroup = {group: {id: "516c2db6-0aed-52d8-854f-b3f3499995e7"}};
       mockContextRequest(context, (path, args) => {
-        const isGroupResourcesRequest = path === "passbolt.resources.find-all" && args.filters;
+        const isGroupResourcesRequest = path === "cipherguard.resources.find-all" && args.filters;
         return isGroupResourcesRequest ? mockGroupResources : context.port.request;
       });
       await page.goToAllItems();
@@ -253,7 +253,7 @@ describe("Resource Workspace Context", () => {
       const resource = context.resources[0];
       jest.spyOn(window, 'open').mockImplementationOnce(() => {});
       page.goToResourceUri(resource.uri);
-      expect(window.open).toHaveBeenCalledWith("https://passbolt.dev/", "_blank", "noopener,noreferrer");
+      expect(window.open).toHaveBeenCalledWith("https://cipherguard.dev/", "_blank", "noopener,noreferrer");
     });
 
     it("As LU I not be able to follow an unsafe resource uri", () => {
@@ -306,7 +306,7 @@ describe("Resource Workspace Context", () => {
         sorter: sorter
       };
       mockContextRequest(context, path => {
-        const isGridSettingRequest = path === "passbolt.resources.get-grid-setting";
+        const isGridSettingRequest = path === "cipherguard.resources.get-grid-setting";
         return isGridSettingRequest ? gridSetting : context.port.request;
       });
       await page.goToAllItems();

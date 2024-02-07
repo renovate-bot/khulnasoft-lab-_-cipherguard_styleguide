@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.14.0
@@ -441,7 +441,7 @@ class EditResource extends Component {
     resourceDto.description = this.state.description;
     const plaintextDto = this.hasSecretChanged() ? this.state.password : null;
 
-    return this.props.context.port.request("passbolt.resources.update", resourceDto, plaintextDto);
+    return this.props.context.port.request("cipherguard.resources.update", resourceDto, plaintextDto);
   }
 
   /**
@@ -453,7 +453,7 @@ class EditResource extends Component {
     resourceDto.resource_type_id = this.state.resourceTypeId;
     const plaintextDto = this.hasSecretChanged() ? this.state.password : null;
 
-    return this.props.context.port.request("passbolt.resources.update", resourceDto, plaintextDto);
+    return this.props.context.port.request("cipherguard.resources.update", resourceDto, plaintextDto);
   }
 
   /**
@@ -471,7 +471,7 @@ class EditResource extends Component {
       };
     }
 
-    return this.props.context.port.request("passbolt.resources.update", resourceDto, plaintextDto);
+    return this.props.context.port.request("cipherguard.resources.update", resourceDto, plaintextDto);
   }
 
   /**
@@ -489,7 +489,7 @@ class EditResource extends Component {
       plaintextDto.description = this.state.description;
     }
 
-    return this.props.context.port.request("passbolt.resources.update", resourceDto, plaintextDto);
+    return this.props.context.port.request("cipherguard.resources.update", resourceDto, plaintextDto);
   }
 
   /**
@@ -764,7 +764,7 @@ class EditResource extends Component {
    * @return {Promise<Object>}
    */
   async getDecryptedSecret() {
-    return this.props.context.port.request("passbolt.secret.decrypt", this.props.resourceId);
+    return this.props.context.port.request("cipherguard.secret.decrypt", this.props.resourceId);
   }
 
   /*

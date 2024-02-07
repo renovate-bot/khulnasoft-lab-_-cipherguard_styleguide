@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since        3.0.0
@@ -22,8 +22,8 @@ class HandleLegacyAppjs extends Component {
    * @return {void}
    */
   componentDidMount() {
-    window.addEventListener('passbolt.auth.is-authenticated', this.onIsAuthenticatedRequested.bind(this));
-    window.addEventListener('passbolt.plugin.auth.logout', this.onLogoutRequested.bind(this));
+    window.addEventListener('cipherguard.auth.is-authenticated', this.onIsAuthenticatedRequested.bind(this));
+    window.addEventListener('cipherguard.plugin.auth.logout', this.onLogoutRequested.bind(this));
     this.markPluginAsReady();
     this.handleRouteChanges();
   }
@@ -34,8 +34,8 @@ class HandleLegacyAppjs extends Component {
    * @return {void}
    */
   componentWillUnmount() {
-    window.removeEventListener('passbolt.auth.is-authenticated', this.onIsAuthenticatedRequested.bind(this));
-    window.removeEventListener('passbolt.plugin.auth.logout', this.onLogoutRequested.bind(this));
+    window.removeEventListener('cipherguard.auth.is-authenticated', this.onIsAuthenticatedRequested.bind(this));
+    window.removeEventListener('cipherguard.plugin.auth.logout', this.onLogoutRequested.bind(this));
     clearInterval(this.handleRouteChangesInterval);
   }
 
@@ -44,7 +44,7 @@ class HandleLegacyAppjs extends Component {
    * The legacy user setting mfa page requires this to work properly.
    */
   markPluginAsReady() {
-    document.getElementsByTagName("html")[0].classList.add("passboltplugin-ready");
+    document.getElementsByTagName("html")[0].classList.add("cipherguardplugin-ready");
   }
 
   /**
@@ -65,7 +65,7 @@ class HandleLegacyAppjs extends Component {
         /*
          * Reload the page to switch to let the browser extension detect the url and display the browser extension app.
          * Changing the history is not enough as the pathname of the window location can also contain a subdirectory.
-         * It happens for the cloud as well as passbolt instance installed in a subdirectories.
+         * It happens for the cloud as well as cipherguard instance installed in a subdirectories.
          */
         window.location.reload();
       }
@@ -137,7 +137,7 @@ class HandleLegacyAppjs extends Component {
    * This method works great with the navigation menu but not very well with the legacy user badge menu.
    */
   onLogoutRequested() {
-    this.props.port.request('passbolt.app-boostrap.navigate-to-logout');
+    this.props.port.request('cipherguard.app-boostrap.navigate-to-logout');
   }
 
   /**

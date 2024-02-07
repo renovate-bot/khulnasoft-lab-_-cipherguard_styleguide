@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -63,7 +63,7 @@ export class HandleReviewAccountRecoveryRequestWorkflow extends React.Component 
   async getAccountRecoveryRequest() {
     let accountRecoveryRequest = this.props.accountRecoveryRequest;
     if (!accountRecoveryRequest) {
-      accountRecoveryRequest = await this.props.context.port.request("passbolt.account-recovery.get-request", this.props.accountRecoveryRequestId);
+      accountRecoveryRequest = await this.props.context.port.request("cipherguard.account-recovery.get-request", this.props.accountRecoveryRequestId);
     }
     this.setState({accountRecoveryRequest});
   }
@@ -133,7 +133,7 @@ export class HandleReviewAccountRecoveryRequestWorkflow extends React.Component 
    */
   async handleSave(privateGpgKeyDto) {
     try {
-      await this.props.context.port.request('passbolt.account-recovery.review-request', this.state.accountRecoveryRequest.id, this.state.responseStatus, privateGpgKeyDto);
+      await this.props.context.port.request('cipherguard.account-recovery.review-request', this.state.accountRecoveryRequest.id, this.state.responseStatus, privateGpgKeyDto);
       await this.props.actionFeedbackContext.displaySuccess(this.props.t("The account recovery review has been saved successfully"));
       this.props.onStop();
     } catch (e) {

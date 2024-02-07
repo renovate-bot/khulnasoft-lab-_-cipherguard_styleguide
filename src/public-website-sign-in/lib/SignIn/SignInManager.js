@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.7.0
@@ -44,7 +44,7 @@ class SignInManager {
    * Add class to the html tag element
    */
   addClassToDomElement() {
-    document.documentElement.classList.add("passbolt-extension");
+    document.documentElement.classList.add("cipherguard-extension");
   }
 
   /**
@@ -61,7 +61,7 @@ class SignInManager {
    */
   redirectToSignIn(event) {
     if (event.target.id === "extension-sign-in") {
-      port.request('passbolt.extension.sign-in-url');
+      port.request('cipherguard.extension.sign-in-url');
     }
   }
 
@@ -70,7 +70,7 @@ class SignInManager {
    */
   destroy() {
     document.documentElement.removeEventListener('click', this.redirectToSignIn, true);
-    document.documentElement.classList.remove("passbolt-extension");
+    document.documentElement.classList.remove("cipherguard-extension");
   }
 
   /**

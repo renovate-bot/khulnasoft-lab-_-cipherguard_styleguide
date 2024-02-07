@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -32,8 +32,8 @@ class ExtBootstrapAccountRecovery extends Component {
   }
 
   /**
-   * It returns true if the page is detected as a passbolt app.
-   * For that purpose, it simply checks if <html> has a class 'passbolt' set.
+   * It returns true if the page is detected as a cipherguard app.
+   * For that purpose, it simply checks if <html> has a class 'cipherguard' set.
    * @returns {boolean}
    */
   isCipherguardApp() {
@@ -41,7 +41,7 @@ class ExtBootstrapAccountRecovery extends Component {
     const htmlTag = rootNode.lastChild;
 
     return htmlTag?.tagName === "HTML"
-      && htmlTag.classList.contains('passbolt');
+      && htmlTag.classList.contains('cipherguard');
   }
 
   /**
@@ -58,14 +58,14 @@ class ExtBootstrapAccountRecovery extends Component {
    * Whenever the background page request the recover iframe to be removed.
    */
   handleRemoveIframeRequested() {
-    this.props.port.on("passbolt.account-recovery-bootstrap.remove-iframe", this.removeAccountRecoveryIframe.bind(this));
+    this.props.port.on("cipherguard.account-recovery-bootstrap.remove-iframe", this.removeAccountRecoveryIframe.bind(this));
   }
 
   /**
    * Remove the iframe
    */
   removeAccountRecoveryIframe() {
-    const iframe = document.getElementById("passbolt-iframe-account-recovery");
+    const iframe = document.getElementById("cipherguard-iframe-account-recovery");
     if (iframe) {
       iframe.remove();
     }

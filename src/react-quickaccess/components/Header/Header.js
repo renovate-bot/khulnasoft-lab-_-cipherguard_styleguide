@@ -23,7 +23,7 @@ class Header extends React.Component {
   }
 
   async handleLogoutClick() {
-    this.props.context.port.request("passbolt.auth.logout", false);
+    this.props.context.port.request("cipherguard.auth.logout", false);
     this.props.logoutSuccessCallback();
   }
 
@@ -31,7 +31,7 @@ class Header extends React.Component {
     return (
       <div className="quickaccess-header">
         <div className="logo-svg">
-          <a href={this.props.context.userSettings ? this.props.context.userSettings.getTrustedDomain() : "#"} target="_blank" rel="noopener noreferrer" title={this.translate("open passbolt in a new tab")}>
+          <a href={this.props.context.userSettings ? this.props.context.userSettings.getTrustedDomain() : "#"} target="_blank" rel="noopener noreferrer" title={this.translate("open cipherguard in a new tab")}>
             <svg height="17.5px" role="img" aria-labelledby="logo" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 30 450 20">
               <title id="logo">Cipherguard logo</title>
               <g>

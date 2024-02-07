@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.11.0
@@ -77,7 +77,7 @@ describe("See tags", () => {
 
     it('As LU I should be able to drop a resource on tag', async() => {
       await page.sidebarTagFilterSection.onDropTag(3);
-      expect(context.port.request).toHaveBeenCalledWith("passbolt.tags.add-resources-tag", {"resources": [resource.id], "tag": tagsMock[1]});
+      expect(context.port.request).toHaveBeenCalledWith("cipherguard.tags.add-resources-tag", {"resources": [resource.id], "tag": tagsMock[1]});
     });
 
     it('As LU I should see tags disabled if a resource is dragging', async() => {

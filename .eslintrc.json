@@ -164,7 +164,7 @@
       "never"
     ],
     // require or disallow spacing around embedded expressions of template strings
-    /* PASSBOLT EXTENDED RULES */
+    /* CIPHERGURD EXTENDED RULES */
     "prefer-const": [
       "error"
     ],

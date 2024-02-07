@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2022 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2022 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.6.0
@@ -35,7 +35,7 @@ describe("AdminAccountRecoveryContext", () => {
 
       expect.assertions(2);
       await adminAccountRecoveryContext.findAccountRecoveryPolicy();
-      expect(adminAccountRecoveryContext.props.context.port.request).toHaveBeenCalledWith("passbolt.account-recovery.get-organization-policy");
+      expect(adminAccountRecoveryContext.props.context.port.request).toHaveBeenCalledWith("cipherguard.account-recovery.get-organization-policy");
       expect(adminAccountRecoveryContext.state.currentPolicy).toBe(currentPolicy);
     });
   });
@@ -149,7 +149,7 @@ describe("AdminAccountRecoveryContext", () => {
 
       expect.assertions(2);
       const keyInfo = await adminAccountRecoveryContext.getKeyInfo(armoredKey);
-      expect(adminAccountRecoveryContext.props.context.port.request).toHaveBeenCalledWith("passbolt.keyring.get-key-info", armoredKey);
+      expect(adminAccountRecoveryContext.props.context.port.request).toHaveBeenCalledWith("cipherguard.keyring.get-key-info", armoredKey);
       expect(keyInfo).toBe(mockKeyInfo);
     });
   });
@@ -177,7 +177,7 @@ describe("AdminAccountRecoveryContext", () => {
 
       expect.assertions(1);
       await adminAccountRecoveryContext.downloadPrivateKey(newPrivateKey);
-      expect(adminAccountRecoveryContext.props.context.port.request).toHaveBeenCalledWith("passbolt.account-recovery.download-organization-generated-key", newPrivateKey);
+      expect(adminAccountRecoveryContext.props.context.port.request).toHaveBeenCalledWith("cipherguard.account-recovery.download-organization-generated-key", newPrivateKey);
     });
   });
 
@@ -199,7 +199,7 @@ describe("AdminAccountRecoveryContext", () => {
       await adminAccountRecoveryContext.changePolicy(newPolicy);
       await adminAccountRecoveryContext.changePublicKey(newPublicKey);
       await adminAccountRecoveryContext.save();
-      expect(adminAccountRecoveryContext.props.context.port.request).toHaveBeenCalledWith("passbolt.account-recovery.save-organization-policy", expectedSaveDto, undefined);
+      expect(adminAccountRecoveryContext.props.context.port.request).toHaveBeenCalledWith("cipherguard.account-recovery.save-organization-policy", expectedSaveDto, undefined);
     });
 
     it("it should save the policy changes with a provided current private key", async() => {
@@ -223,7 +223,7 @@ describe("AdminAccountRecoveryContext", () => {
       await adminAccountRecoveryContext.changePolicy(newPolicy);
       await adminAccountRecoveryContext.changePublicKey(newPublicKey);
       await adminAccountRecoveryContext.save(currentPrivateKey);
-      expect(adminAccountRecoveryContext.props.context.port.request).toHaveBeenCalledWith("passbolt.account-recovery.save-organization-policy", expectedSaveDto, currentPrivateKey);
+      expect(adminAccountRecoveryContext.props.context.port.request).toHaveBeenCalledWith("cipherguard.account-recovery.save-organization-policy", expectedSaveDto, currentPrivateKey);
     });
   });
 });

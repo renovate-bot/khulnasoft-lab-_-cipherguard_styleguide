@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -53,7 +53,7 @@ class Icon extends Component {
       <span className={this.getClassName()} onClick={this.props.onClick} style={this.props.style}>
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === '2-columns' &&
@@ -63,7 +63,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === '3-dots-h' &&
@@ -75,7 +75,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === '3-dots-v' &&
@@ -87,7 +87,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'add' &&
@@ -98,7 +98,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'arrow-left' &&
@@ -109,7 +109,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'arrow-right' &&
@@ -120,7 +120,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'ascending' &&
@@ -131,7 +131,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'ban' &&
@@ -142,7 +142,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'broken-link' &&
@@ -154,7 +154,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'calendar' &&
@@ -167,7 +167,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'camera' &&
@@ -178,7 +178,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'caret-down' &&
@@ -188,7 +188,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'caret-left' &&
@@ -198,7 +198,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'caret-right' &&
@@ -208,7 +208,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'caret-up' &&
@@ -218,7 +218,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'check' &&
@@ -228,7 +228,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'clock' &&
@@ -239,7 +239,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'close-circle' &&
@@ -251,7 +251,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'close' &&
@@ -262,7 +262,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'copy-to-clipboard' &&
@@ -273,7 +273,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'descending' &&
@@ -284,7 +284,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'document' &&
@@ -298,7 +298,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'download-a' &&
@@ -310,7 +310,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'download' &&
@@ -322,7 +322,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'edit' &&
@@ -333,7 +333,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'envelope' &&
@@ -344,7 +344,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'expand' &&
@@ -357,7 +357,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'external-link' &&
@@ -369,7 +369,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'eye-close' &&
@@ -380,7 +380,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'eye-open' &&
@@ -391,7 +391,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'filter' &&
@@ -401,7 +401,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'folder' &&
@@ -411,7 +411,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'folders' &&
@@ -422,7 +422,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'info-circle' &&
@@ -434,7 +434,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'internal-link' &&
@@ -446,7 +446,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'layout' &&
@@ -458,7 +458,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'license' &&
@@ -470,7 +470,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'life-ring' &&
@@ -486,7 +486,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'link' &&
@@ -497,7 +497,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'list' &&
@@ -512,7 +512,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'log-out' &&
@@ -524,7 +524,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'plus-circle' &&
@@ -536,7 +536,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'plus-square' &&
@@ -548,7 +548,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'power' &&
@@ -559,7 +559,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'printer' &&
@@ -571,7 +571,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'question-circle' &&
@@ -583,7 +583,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'refresh-1' &&
@@ -595,7 +595,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'refresh' &&
@@ -606,7 +606,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'save' &&
@@ -618,7 +618,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'search' &&
@@ -629,7 +629,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'share' &&
@@ -643,7 +643,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'star' &&
@@ -662,7 +662,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'switch' &&
@@ -675,7 +675,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'theme-dark' &&
@@ -685,7 +685,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'theme-light' &&
@@ -703,7 +703,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'trash' &&
@@ -716,7 +716,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'txt' &&
@@ -729,7 +729,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'upload-a' &&
@@ -742,7 +742,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'upload' &&
@@ -754,7 +754,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'user' &&
@@ -765,7 +765,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'users' &&
@@ -778,7 +778,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'video' &&
@@ -795,7 +795,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'warning' &&
@@ -807,7 +807,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'chevron-left' &&
@@ -817,7 +817,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'chevron-right' &&
@@ -827,7 +827,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'cog' &&
@@ -837,7 +837,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'contrast' &&
@@ -848,7 +848,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'copy-to-clipboard-2' &&
@@ -859,7 +859,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'home-1' &&
@@ -869,7 +869,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'home' &&
@@ -879,7 +879,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'key' &&
@@ -900,7 +900,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'lock' &&
@@ -911,7 +911,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'settings' &&
@@ -929,7 +929,7 @@ class Icon extends Component {
         }
         {/*
           * @copyright     Copyright (c) 2013-2017 Cole Bemis (https://github.com/feathericons/feather)
-          * @copyright     Copyright (c) 2021 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+          * @copyright     Copyright (c) 2021 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
           * @license       https://opensource.org/licenses/MIT MIT License
         */}
         {this.props.name === 'tag' &&

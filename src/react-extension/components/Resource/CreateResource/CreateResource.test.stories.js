@@ -20,7 +20,7 @@ export default {
 };
 
 const mockedPort = new MockPort();
-mockedPort.addRequestListener("passbolt.resources.create", data => data);
+mockedPort.addRequestListener("cipherguard.resources.create", data => data);
 
 const Template = ({context, ...args})  =>
   <AppContext.Provider value={context}>

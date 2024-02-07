@@ -1,6 +1,6 @@
 import {addons} from '@storybook/addons';
-import passboltTheme from "./passboltTheme";
+import cipherguardTheme from "./cipherguardTheme";
 
 addons.setConfig({
-  theme: passboltTheme,
+  theme: cipherguardTheme,
 });

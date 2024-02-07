@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.12.0
@@ -80,8 +80,8 @@ class ExtAuthenticationLogin extends Component {
    * @returns {Promise<void>}
    */
   async initializeUserSettings() {
-    const storageData = await this.props.storage.local.get(["_passbolt_data"]);
-    const userSettings = new UserSettings(storageData._passbolt_data.config);
+    const storageData = await this.props.storage.local.get(["_cipherguard_data"]);
+    const userSettings = new UserSettings(storageData._cipherguard_data.config);
     this.setState({userSettings});
   }
 
@@ -90,7 +90,7 @@ class ExtAuthenticationLogin extends Component {
    * Using SiteSettings
    */
   async getSiteSettings() {
-    const settings = await this.props.port.request("passbolt.organization-settings.get");
+    const settings = await this.props.port.request("cipherguard.organization-settings.get");
     const siteSettings = new SiteSettings(settings);
     this.setState({siteSettings});
   }
@@ -99,7 +99,7 @@ class ExtAuthenticationLogin extends Component {
    * Get extension version
    */
   async getExtensionVersion() {
-    const extensionVersion = await this.props.port.request("passbolt.addon.get-version");
+    const extensionVersion = await this.props.port.request("cipherguard.addon.get-version");
     this.setState({extensionVersion});
   }
 
@@ -107,7 +107,7 @@ class ExtAuthenticationLogin extends Component {
    * Init the locale
    */
   async initLocale() {
-    const {locale} = await this.props.port.request("passbolt.locale.get");
+    const {locale} = await this.props.port.request("cipherguard.locale.get");
     this.setState({locale});
   }
 
@@ -115,7 +115,7 @@ class ExtAuthenticationLogin extends Component {
    * Whenever the update of the locale is requested
    */
   async onUpdateLocaleRequested() {
-    const {locale} = await this.props.port.request("passbolt.locale.get");
+    const {locale} = await this.props.port.request("cipherguard.locale.get");
     this.setState({locale});
   }
 

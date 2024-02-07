@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2023 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2023 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2023 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2023 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.12.0
@@ -63,7 +63,7 @@ each(scenarios).describe("SsoPopupHandlerService", scenario => {
   describe(`SsoPopupHandlerService::exec (with provider '${scenario.providerId}')`, () => {
     it('Should create a popup window', () => {
       expect.assertions(4);
-      const expectedPopupUrl = "http://passbolt.test";
+      const expectedPopupUrl = "http://cipherguard.test";
       const siteDomain = "http://localhost:6006";
 
       const service = new SsoPopupHandlerService(siteDomain, scenario.providerId);
@@ -79,7 +79,7 @@ each(scenarios).describe("SsoPopupHandlerService", scenario => {
 
     it('Should return the token when the popup is on the expected url', async() => {
       expect.assertions(4);
-      const expectedPopupUrl = "http://passbolt.test";
+      const expectedPopupUrl = "http://cipherguard.test";
       const siteDomain = "http://localhost:6006";
       const invalidTolen = "invalid-token";
       const expectedToken = uuid();
@@ -109,7 +109,7 @@ each(scenarios).describe("SsoPopupHandlerService", scenario => {
 
     it('Should return the user email if its available for self_registration when the popup is on the erroneous url with an email', async() => {
       expect.assertions(4);
-      const expectedPopupUrl = "http://passbolt.test";
+      const expectedPopupUrl = "http://cipherguard.test";
       const siteDomain = "http://localhost:6006";
       const expectedEmail = "user@registered-domain.com";
       const invalidEmail = "user-email";
@@ -139,7 +139,7 @@ each(scenarios).describe("SsoPopupHandlerService", scenario => {
 
     it('Should not return when the popup is on the erroneous url without an email', async() => {
       expect.assertions(4);
-      const expectedPopupUrl = "http://passbolt.test";
+      const expectedPopupUrl = "http://cipherguard.test";
       const siteDomain = "http://localhost:6006";
       const expectedPopupUrlError = `${siteDomain}/sso/recover/error`;
 
@@ -160,7 +160,7 @@ each(scenarios).describe("SsoPopupHandlerService", scenario => {
 
     it('Should stop the process if the popup is closed', async() => {
       expect.assertions(2);
-      const expectedPopupUrl = "http://passbolt.test";
+      const expectedPopupUrl = "http://cipherguard.test";
       const siteDomain = "http://localhost:6006/";
 
       const service = new SsoPopupHandlerService(siteDomain, scenario.providerId);

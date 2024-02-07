@@ -94,14 +94,14 @@ class FilterResourcesByGroupPage extends React.Component {
 
   async findAndLoadGroups() {
     const filters = {'has-users': [this.props.context.userSettings.id]};
-    const groups = await this.props.context.port.request("passbolt.groups.find-all", {filters});
+    const groups = await this.props.context.port.request("cipherguard.groups.find-all", {filters});
     this.sortGroupsAlphabetically(groups);
     this.setState({groups});
   }
 
   async findAndLoadResources() {
     const filters = {'is-shared-with-group': this.props.match.params.id};
-    const resources = await this.props.context.port.request('passbolt.resources.find-all', {filters});
+    const resources = await this.props.context.port.request('cipherguard.resources.find-all', {filters});
     this.sortResourcesAlphabetically(resources);
     this.setState({resources});
   }

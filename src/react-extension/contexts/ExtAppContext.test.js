@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2023 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2023 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2023 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2023 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         3.11.0
@@ -47,7 +47,7 @@ describe("ExtApp Context", () => {
       extAppContext.onExpiredSession(callback);
       // expectations
       expect(extAppContext.onExpiredSession).toHaveBeenCalledWith(callback);
-      expect(extAppContext.props.port.on).toHaveBeenCalledWith('passbolt.auth.after-logout', expect.any(Function));
+      expect(extAppContext.props.port.on).toHaveBeenCalledWith('cipherguard.auth.after-logout', expect.any(Function));
       expect(extAppContext.state.isSessionLogoutByUser).toBeFalsy();
     });
 

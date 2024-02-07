@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2019 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2019 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2019 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2019 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.13.0
@@ -341,7 +341,7 @@ class CreateUserGroup extends Component {
       is_admin: groups_user.is_admin
     }));
     const groupDto = {name: this.state.name, groups_users};
-    return await this.props.context.port.request("passbolt.groups.create", groupDto);
+    return await this.props.context.port.request("cipherguard.groups.create", groupDto);
   }
 
   /**
@@ -386,7 +386,7 @@ class CreateUserGroup extends Component {
    * @returns {Promise<array}
    */
   async decorateUsersWithGpgKey(users) {
-    const decorateGroupsUsersWithGpgKey = async user => Object.assign(user, {gpgkey: await this.props.context.port.request('passbolt.keyring.get-public-key-info-by-user', user.id)});
+    const decorateGroupsUsersWithGpgKey = async user => Object.assign(user, {gpgkey: await this.props.context.port.request('cipherguard.keyring.get-public-key-info-by-user', user.id)});
     const usersWithGPGKey = await Promise.all(users.map(decorateGroupsUsersWithGpgKey));
     return usersWithGPGKey;
   }

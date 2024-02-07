@@ -1,12 +1,12 @@
 /**
  * Cipherguard ~ Open source password manager for teams
- * Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  *
  * Licensed under GNU Affero General Public License version 3 of the or any later version.
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) 2020 Cipherguard SA (https://www.cipherguard.khulnasoft.com)
+ * @copyright     Copyright (c) 2020 KhulnaSoft Ltd (https://www.cipherguard.khulnasoft.com)
  * @license       https://opensource.org/licenses/AGPL-3.0 AGPL License
  * @link          https://www.cipherguard.khulnasoft.com Cipherguard(tm)
  * @since         2.12.0
@@ -48,7 +48,7 @@ class HandleFolderMoveStrategyEvents extends React.Component {
    * Listen the progress dialog event from the context and acts accordingly
    */
   listen() {
-    this.props.context.port.on('passbolt.folders.move-strategy.request', this.handleFolderMoveStrategyRequestEvent);
+    this.props.context.port.on('cipherguard.folders.move-strategy.request', this.handleFolderMoveStrategyRequestEvent);
   }
 
   /**
